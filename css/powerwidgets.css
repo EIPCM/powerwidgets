@@ -161,4 +161,50 @@
 }
 /*--------------POWER WARDENLEVEL ENDS---------------------------------------------*/
 /*--------------POWER CIRCULAR STARTS-----------------------------------------*/
+.prep{
+  height: 100px;
+  width: 100px;
+  background-color: #318c84;
+  border-radius: 50%;
+}
+.circle {
+width: 11em;
+height: 11em;
+border-radius: 100%;
+background: linear-gradient(360deg, #FFFFFF 100%, transparent 42.34%) 0 0;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+}
+
+.pie {
+width: 11em;
+height: 11em;
+border-radius: 100%;
+background: linear-gradient(-80deg, #1BB90D 50%, transparent 40%) 0 0;
+background-repeat: no-repeat;
+background-size: 100% 55%;
+position: relative;
+margin-top: -176px;
+border: 1px solid #808D1E;
+}
 /*--------------POWER CIRCULAR ENDS-------------------------------------------*/
+
+
+
+.progress-ring {
+
+}
+
+.progress-ring__circle {
+  transition: 0.35s stroke-dashoffset;
+  // axis compensation
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+input {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 80px;
+}

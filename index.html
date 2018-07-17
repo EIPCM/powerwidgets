@@ -4,7 +4,49 @@
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   </head>
   <div>
-    <div class="indicator">
+
+    <svg
+       class="progress-ring"
+       width="120"
+       fill="#13377f"
+       height="120">
+      <circle
+        class="progress-ring__circle"
+        stroke="#13377f"
+        stroke-width="19"
+        fill="#13377f"
+        r="46"
+        cx="60"
+        cy="60"/>
+      <circle
+        stroke="white"
+        stroke-width="2"
+        fill="#13377f"
+        r="46"
+        cx="60"
+        cy="60"/>
+      <circle
+        stroke="#13377f"
+        stroke-width="2"
+        fill="transparent"
+        r="58"
+        cx="60"
+        cy="60"/>
+      <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
+
+
+    </svg>
+
+    <input
+      value="35"
+      type="number"
+      step="5"
+      min="0"
+      max="100"
+      placeholder="progress"
+      style="margin-left:150px"
+    >
+    <!-- <div class="indicator">
     <div class="powerRow">
       <div class="powerBartitle">Political</div><div class="powerBarWrapper">
         <div class="iconWrapper political">
@@ -65,9 +107,33 @@
       </div>
     </div>
 
-  </div>
+  </div> -->
 
 </div>
 
+<script>
+var circle = document.querySelector('circle');
+var radius = circle.r.baseVal.value;
+var circumference = radius * 2 * Math.PI;
 
+circle.style.strokeDasharray = `${circumference} ${circumference}`;
+circle.style.strokeDashoffset = `${circumference}`;
+
+function setProgress(percent) {
+  const offset = circumference - percent / 100 * circumference;
+  circle.style.strokeDashoffset = offset;
+}
+
+const input = document.querySelector('input');
+setProgress(input.value);
+
+input.addEventListener('change', function(e) {
+  if (input.value < 101 && input.value > -1) {
+    setProgress(input.value);
+  }
+})
+
+
+
+</script>
 </html>
