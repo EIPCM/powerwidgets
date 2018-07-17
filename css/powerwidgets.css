@@ -4,7 +4,7 @@
   */
 
 .indicator{
-  height: 500px;
+  height: 300px;
   width: 500px;
 }
 /*--------------POWER BAR STARTS----------------------------------------------*/
@@ -18,10 +18,12 @@
   width: 150px;
   font-size: large;
   line-height: 75px;
+  font-family: 'Montserrat', sans-serif;
+
 }
 .powerBar{
   height: 47px;
-  border-width: 3px;
+  border-width: 2px;
   border-style: solid;
   border-top-right-radius: 13px;
   border-bottom-right-radius: 13px;
@@ -129,6 +131,7 @@
   height: 50px;
   border-top: 2px solid #6d0949;
   border-bottom: 2px solid #6d0949;
+  overflow: hidden;
   margin-top: 10px;
 }
 #warden_bar_2{
@@ -137,7 +140,7 @@
   height: 50px;
   border-top: 2px solid #6d0949;
   border-bottom: 2px solid #6d0949;
-
+  overflow: hidden;
   margin-top: 10px;
 }
 #warden_bar1_fill{
