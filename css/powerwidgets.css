@@ -1,0 +1,161 @@
+/*POWER Widgets css
+  @author: Darien Miranda <d.miranda@eipcm.org>
+  Copyright 2018 - EIPCM
+  */
+
+.indicator{
+  height: 500px;
+  width: 500px;
+}
+/*--------------POWER BAR STARTS----------------------------------------------*/
+.powerBarWrapper{
+  height: 70px;
+  width: 300px;
+  display: inline-block;
+}
+.powerBartitle{
+  float: left;
+  width: 150px;
+  font-size: large;
+  line-height: 75px;
+}
+.powerBar{
+  height: 47px;
+  border-width: 3px;
+  border-style: solid;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+.iconWrapper{
+  height: 65px;
+  width: 65px;
+  float:left;
+  border-radius: 15px;
+}
+.icon{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 9px;
+  width: 45px;
+  height: 45px;
+}
+.iconWrapper.political{
+  background-color: #ffcccc;
+  border: 2px solid #f90606;
+}
+.iconWrapper.social{
+  background-color: #cce5cc;
+  border: 2px solid #1aba1a;
+
+}
+.iconWrapper.individual{
+  background-color: #cce5ff;
+  border: 2px solid #168af2;
+
+}
+.fill{
+  width: 50%;
+  height: 100%;
+}
+.pwrapper{
+  width: calc(100% - 79px);
+  float:left;
+  margin-top:9px;
+  margin-left:-2px;
+}
+.powerBar{
+  overflow: hidden;
+}
+.powerbar.political{
+  border-color: #f90606;
+}
+.powerbar.social{
+  border-color: #1aba1a;
+}
+.powerbar.individual{
+  border-color: #168af2;
+}
+.fill.political{
+  background-color: #ffcccc;
+}
+.fill.social{
+  background-color: #cce5cc;
+}
+.fill.individual{
+  background-color: #cce5ff;
+}
+.powerRow{
+  float: left;
+  width: 100%;
+}
+/*--------------POWER BAR ENDS------------------------------------------------*/
+/*--------------POWER WARDENLEVEL STARTS-------------------------------------------*/
+.warden{
+  height: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+}
+.badge{
+  height: 68px;
+  width: 68px;
+  border-radius: 10px;
+  border: 2px solid #b7aeb3;
+
+
+}
+.badge img{
+  height: 50px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top:8px;
+
+}
+.earned{
+  background-color:#b27195;
+  border: 2px solid #6d0949;
+
+
+}
+#warden_bar_1{
+  background-color: white;
+  flex:1;
+  height: 50px;
+  border-top: 2px solid #6d0949;
+  border-bottom: 2px solid #6d0949;
+  margin-top: 10px;
+}
+#warden_bar_2{
+  background-color: white;
+  flex:1;
+  height: 50px;
+  border-top: 2px solid #6d0949;
+  border-bottom: 2px solid #6d0949;
+
+  margin-top: 10px;
+}
+#warden_bar1_fill{
+  height: 100%;
+  width: 100%;
+  background-color: #b27195;
+}
+#warden_bar2_fill{
+  height: 100%;
+  width: 100%;
+  background-color: #b27195;
+}
+.level_lbl{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  margin-top:13px;
+
+}
+/*--------------POWER WARDENLEVEL ENDS---------------------------------------------*/
+/*--------------POWER CIRCULAR STARTS-----------------------------------------*/
+/*--------------POWER CIRCULAR ENDS-------------------------------------------*/
