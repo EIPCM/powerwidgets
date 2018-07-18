@@ -2,23 +2,62 @@
   @author: Darien Miranda <d.miranda@eipcm.org>
   Copyright 2018 - EIPCM
   */
-
+.indicators{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+}
 .indicator{
-  height: 300px;
-  width: 500px;
+  width: 49%;
+  float:left;
+  height: 400px;
+}
+.indicatora{
+  border-right: 2px solid #0545a4;
+  border-bottom: 2px solid #0545a4;
+
+}
+.indicatorb{
+  border-bottom: 2px solid #0545a4;
+}
+.indicatorc{
+  border-top: 2px solid #0545a4;
+}
+.indicatord{
+  border-top: 2px solid #0545a4;
+
+  border-left: 2px solid #0545a4;
+}
+.powerContent{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.powerTitle{
+  font-family: 'Fredoka One', cursive;
+  height: 40px;
+  line-height: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  color:#0545a4;
+
 }
 /*--------------POWER BAR STARTS----------------------------------------------*/
 .powerBarWrapper{
   height: 70px;
-  width: 300px;
+  width: 66%;
   display: inline-block;
 }
 .powerBartitle{
   float: left;
-  width: 150px;
+  width: calc(34% - 30px);
   font-size: large;
   line-height: 75px;
+  margin-right: 30px;
+  text-align: right;
   font-family: 'Montserrat', sans-serif;
+
 
 }
 .powerBar{
@@ -106,7 +145,7 @@
   height: 68px;
   width: 68px;
   border-radius: 10px;
-  border: 2px solid #b7aeb3;
+  border: 2px solid #88b7b2;
 
 
 }
@@ -120,8 +159,8 @@
 
 }
 .earned{
-  background-color:#b27195;
-  border: 2px solid #6d0949;
+  background-color:#318c84 ;
+  border: 2px solid #0a5149;
 
 
 }
@@ -129,8 +168,8 @@
   background-color: white;
   flex:1;
   height: 50px;
-  border-top: 2px solid #6d0949;
-  border-bottom: 2px solid #6d0949;
+  border-top: 2px solid #0a5149;
+  border-bottom: 2px solid #0a5149;
   overflow: hidden;
   margin-top: 10px;
 }
@@ -138,20 +177,20 @@
   background-color: white;
   flex:1;
   height: 50px;
-  border-top: 2px solid #6d0949;
-  border-bottom: 2px solid #6d0949;
+  border-top: 2px solid #0a5149;
+  border-bottom: 2px solid #0a5149;
   overflow: hidden;
   margin-top: 10px;
 }
 #warden_bar1_fill{
   height: 100%;
   width: 100%;
-  background-color: #b27195;
+  background-color: #318c84;
 }
 #warden_bar2_fill{
   height: 100%;
   width: 100%;
-  background-color: #b27195;
+  background-color: #318c84;
 }
 .level_lbl{
   text-align: center;
