@@ -4,6 +4,7 @@
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
   </head>
+  <body  onresize="initSpider(event);initPoligons()">
   <div class="indicators">
 
     <div class="indicator indicatora">
@@ -216,12 +217,15 @@
     </div>
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness</div>
+      <div style="margin-left:auto;margin-right:auto;">
+        <canvas id="spider" height="450" width="750"></canvas>
+      </div>
 
     </div>
 
   </div>
 </div>
-
+  </body>
 <script>
 var circle = document.getElementById("circ_1");
 var radius = circle.r.baseVal.value;
@@ -326,5 +330,169 @@ function setWardenProgress(p){
     }
   }
 }
+function initSpider(){
+  var canvas = document.getElementById("spider");
+  var ctx = canvas.getContext("2d");
+  c = 200;
+  var sizeWidth = ctx.canvas.clientWidth;
+  var sizeHeight = ctx.canvas.clientHeight;
+  var scaleWidth = sizeWidth/100;
+  var scaleHeight = sizeHeight/100;
+  centerX = sizeWidth/2;
+  centerY = sizeHeight/2;
+  r = sizeWidth/2 - c;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  // console.log(sizeWidth/2);
+  // console.log(sizeHeight/2);
+  ctx.beginPath();
+  ctx.arc(centerX,centerY,1,0,2*Math.PI)
+  ctx.strokeStyle = '#d7dadd';
+  _goals  = [0,3,6]
+  // draw 10 lines, all with the same distance between each other
+  for (var i = 0; i < 11; i++) {
+    if(_goals.includes(i)){
+      ctx.lineWidth   = 2;
+      ctx.strokeStyle = '#848177';
+
+    }else{
+      ctx.lineWidth   = 1;
+      ctx.strokeStyle = '#d7dadd';
+    }
+    ctx.beginPath();
+    ctx.arc(sizeWidth/2,sizeHeight/2, r - ( i *  r / 10 ) ,0,2*Math.PI)
+    ctx.stroke();
+
+
+  }
+
+  _degrees = [0,40,80,120,160,200,240,280,320];
+  _labels  = [" Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","   Know-how",]
+  _offset = 10; //All lines will be turned with this offset.
+  _extraRadius = 20;
+  ctx.lineWidth   = 1;
+
+  _degrees.forEach(function(d,i){
+    ctx.beginPath();
+    ctx.moveTo(centerX ,centerY);
+    // convert angles to radians. Add offset
+    rx = (d + _offset)  * (Math.PI /180);
+    ry = (d + _offset) * (Math.PI /180);
+    x = centerX + r * Math.cos(rx);
+    y = centerY + r * Math.sin(ry);
+    ctx.lineTo(x,y);
+    ctx.font = "13px Arial";
+    rx = (d + _offset)  * (Math.PI /180);
+    ry = (d + _offset) * (Math.PI /180);
+    x = centerX + r*1.17  * Math.cos(rx);
+    y = centerY + r*1.17 * Math.sin(ry);
+    if(i < 4){
+      textOffset = 20;
+    }else{
+      textOffset = 40;
+    }
+    ctx.fillText(_labels[i],x-textOffset,y);
+
+    ctx.stroke();
+  });
+
+  ctx.closePath();
+
+}
+
+
+
+function addPoligons(values,dashed){
+  _degrees = [0,40,80,120,160,200,240,280,320,360];
+  _offset = 10; //All lines will be turned with this offset.
+  var canvas = document.getElementById("spider");
+  var ctx = canvas.getContext("2d");
+  var sizeWidth = ctx.canvas.clientWidth;
+  var sizeHeight = ctx.canvas.clientHeight;
+  var scaleWidth = sizeWidth/100;
+  var scaleHeight = sizeHeight/100;
+  c = 200;
+  centerX = sizeWidth/2;
+  centerY = sizeHeight/2;
+  r = sizeWidth/2 - c;
+  ctx.lineWidth   = 2;
+  ctx.beginPath();
+  if(dashed){
+    ctx.setLineDash([100]);
+    ctx.strokeStyle = '#84561a';
+  }else{
+    ctx.strokeStyle = '#293b47';
+
+  }
+  values.forEach(function(v,i){
+    vi = Math.abs(v - _degrees.length);
+    _rd  = r - ( vi  *  r / 10 ) //radius distance
+    // convert angles to radians. Add offset
+    // convert angles to radians. Add offset
+    rx = (_degrees[i] + _offset)  * (Math.PI /180);
+    ry = (_degrees[i] + _offset) * (Math.PI /180);
+    x = centerX + _rd * Math.cos(rx);
+    y = centerY + _rd * Math.sin(ry);
+    ctx.lineTo(x,y);
+    if(dashed){
+      ctx.setLineDash([3]);
+    }
+    ctx.moveTo(x,y);
+
+  });
+  ctx.closePath();
+  ctx.stroke();
+  if(dashed){
+    ctx.setLineDash([.0001]);
+  }
+  ctx.fillStyle="#1786e0";
+  ctx.fillStyle="#e23d3d";
+  ctx.fillStyle="#2dc463";
+  values.forEach(function(v,i){
+    vi = Math.abs(v - _degrees.length);
+    _rd  = r - ( vi  *  r / 10 ) //radius distance
+    // convert angles to radians. Add offset
+    // convert angles to radians. Add offset
+    rx = (_degrees[i] + _offset)  * (Math.PI /180);
+    ry = (_degrees[i] + _offset) * (Math.PI /180);
+    x = centerX + _rd * Math.cos(rx);
+    y = centerY + _rd * Math.sin(ry);
+
+    if(i < 2 ){
+      ctx.fillStyle="#2dc463";
+    }else if(i > 2 && i < 5){
+      ctx.fillStyle="#e23d3d";
+    }else if(i > 5){
+      ctx.fillStyle="#1786e0";
+    }else if(i >= _degrees.length -1){
+      ctx.fillStyle="#2dc463";
+    }
+    if(i <= _degrees.length -2){
+      ctx.beginPath();
+      ctx.arc(x,y,5,0,2*Math.PI)
+      ctx.closePath();
+      ctx.fill();
+      ctx.arc(x,y,6,0,2*Math.PI)
+      ctx.stroke();
+    }
+
+
+
+  });
+  ctx.closePath();
+
+}
+window.onload = function()
+ {
+      initSpider();
+      initPoligons();
+ }
+ function initPoligons(){
+   addPoligons([10,10,10,10,10,10,10,10,10,10],false);
+   addPoligons([3,3,3,3,3,3,3,3,3,3],true);
+
+
+ }
 </script>
 </html>

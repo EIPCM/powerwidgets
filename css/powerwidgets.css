@@ -227,9 +227,6 @@ margin-top: -176px;
 border: 1px solid #808D1E;
 }
 /*--------------POWER CIRCULAR ENDS-------------------------------------------*/
-
-
-
 .progress-ring {
 
 }
@@ -247,3 +244,9 @@ input {
   left: 10px;
   width: 80px;
 }
+/*--------------POWER SPIDER START--------------------------------------------*/
+#spider{
+margin-left: auto;margin-right: auto;display: block;
+}
+
+/*--------------POWER SPIDER ENDS---------------------------------------------*/
