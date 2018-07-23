@@ -9,25 +9,18 @@
   margin-top: 100px;
 }
 .indicator{
-  width: 49%;
+  width: 100%;
   float:left;
   height: 400px;
 }
 .indicatora{
-  border-right: 2px solid #0545a4;
-  border-bottom: 2px solid #0545a4;
 
 }
 .indicatorb{
-  border-bottom: 2px solid #0545a4;
 }
 .indicatorc{
-  border-top: 2px solid #0545a4;
 }
 .indicatord{
-  border-top: 2px solid #0545a4;
-
-  border-left: 2px solid #0545a4;
 }
 .powerContent{
   width: 80%;
