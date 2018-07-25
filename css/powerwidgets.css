@@ -11,7 +11,7 @@
 .indicator{
   width: 100%;
   display: block;
-  height: 400px;
+  height: 450px;
 }
 .indicatora{
 
@@ -39,11 +39,13 @@
 }
 /*--------------POWER BAR STARTS----------------------------------------------*/
 .powerBarWrapper{
-  height: 70px;
+  height: 90px;
   width: 66%;
   display: inline-block;
 }
 .powerBartitle{
+  font-weight: bold;
+  color: #0545a4;
   float: left;
   width: calc(34% - 30px);
   font-size: large;
@@ -89,6 +91,14 @@
   border: 2px solid #168af2;
 
 }
+.powerBarLevelsWrapper{
+  padding-left: 70px;
+  height: 15px;
+}
+.iconsmall{
+  height: 20px;
+  width: 20px;
+}
 .fill{
   width: 50%;
   height: 100%;
@@ -102,6 +112,26 @@
 .powerBar{
   overflow: hidden;
 }
+.powerScaleWrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height:.1px;
+}
+.powerScale{
+  height: 10px;margin-top:37px;width: 2px;
+}
+.powerScale.political{
+  background-color: #f90606;
+}
+.powerScale.social{
+  background-color: #1aba1a;
+}
+.powerScale.individual{
+  background-color: #168af2;
+}
+
 .powerbar.political{
   border-color: #f90606;
 }
@@ -163,6 +193,10 @@
   .powerMessage{
     font-size: 1em !important;
   }
+  .powerTitle{
+    font-size: .8em !important;
+
+  }
   .badge{
     height: 30px;
     width: 30px;
@@ -191,7 +225,7 @@
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     margin-top:13px;
-    font-size: .8em;
+    font-size: .7em !important;
 
   }
 }
@@ -225,7 +259,7 @@
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   margin-top:13px;
-  font-size: 1em;
+  font-size: .75em;
 
 }
 /*--------------POWER WARDENLEVEL ENDS---------------------------------------------*/
@@ -235,6 +269,17 @@
   width: 100px;
   background-color: #318c84;
   border-radius: 50%;
+}
+.circularTitle{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #0545a4;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.circularLevelsWrapper{
+  text-align: center;
+  margin-top: 10px;
 }
 .circle {
 width: 11em;
@@ -256,6 +301,23 @@ position: relative;
 margin-top: -176px;
 border: 1px solid #808D1E;
 }
+.circularWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+@media only screen and (max-width: 600px) {
+  .circularWrapper{
+    display: block;
+  }
+  .svgWrapper{
+    width: 100%;
+    text-align:center;
+  }
+  .indicatora{
+    height: 700px;
+  }
+}
 /*--------------POWER CIRCULAR ENDS-------------------------------------------*/
 .progress-ring {
 
@@ -276,7 +338,7 @@ margin-left: auto;margin-right: auto;display: block;
 
 /*--------------POWER SPIDER ENDS---------------------------------------------*/
 .onoffswitch {
-    position: relative; width: 60px;
+    position: relative; width: 50px; margin-left: 30px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
@@ -284,7 +346,7 @@ margin-left: auto;margin-right: auto;display: block;
 }
 .onoffswitch-label {
     display: block; overflow: hidden; cursor: pointer;
-    height: 36px; padding: 0; line-height: 36px;
+    height: 25px; padding: 0; line-height: 36px;
     border: 2px solid #E3E3E3; border-radius: 36px;
     background-color: #FFFFFF;
     transition: background-color 0.3s ease-in;
