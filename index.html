@@ -488,16 +488,16 @@ function addGoals(){
     ctx.fillStyle   = "#848177";
 
     if(sizeWidth <  620){
-      ctx.lineTo(x,sizeHeight - (10 * i) - 50);
+      ctx.lineTo(x,sizeHeight - (10 * i) - 60);
       if( v == 4){
-        ctx.fillText("Goals",x -20,sizeHeight - _marginRightA);
+        ctx.fillText("Goals",x -20,sizeHeight - _marginRightA -10);
       }
       if(v == 10){
-        ctx.fillText(_labels[i],x , sizeHeight - 60);
+        ctx.fillText(_labels[i],x , sizeHeight - 70);
       }else if(v == 7){
-        ctx.fillText(_labels[i],x , sizeHeight - 50 );
+        ctx.fillText(_labels[i],x , sizeHeight - 60 );
       }else{
-        ctx.fillText(_labels[i],x , sizeHeight - 40 );
+        ctx.fillText(_labels[i],x , sizeHeight - 50 );
 
       }
     }else{
@@ -535,23 +535,31 @@ function addLeyend(){
 
   marginRight = 0;
   ctx.setLineDash([0]);
-  ctx.moveTo(sizeWidth - marginRight - _ln,100);
-  ctx.lineTo(sizeWidth - marginRight ,100);
+  if(sizeWidth <  620){
+    ctx.moveTo(25 + sizeWidth - sizeWidth /2 + _ln,340);
+    ctx.lineTo(25 + sizeWidth - sizeWidth /2 ,340);
+  }else{
+    ctx.moveTo(sizeWidth - marginRight - _ln,100);
+    ctx.lineTo(sizeWidth - marginRight ,100);
+  }
+
+
+
   ctx.stroke();
   ctx.closePath();
 //
 if(sizeWidth <  620){
   ctx.beginPath();
-  ctx.font = "bold 16px Arial";
+  ctx.font = "bold 12px Arial";
   ctx.fillStyle = '#293b47'; //black
-  ctx.fillText("Community",0,0);
+  ctx.fillText("Community", sizeWidth - sizeWidth /2 + _ln/2,320);
   ctx.font = "13px Arial";
   ctx.closePath();
 
   ctx.beginPath();
-  ctx.font = "bold 16px Arial";
+  ctx.font = "bold 12px Arial";
   ctx.fillStyle = '#293b47'; //black
-  ctx.fillText("Personal",sizeHeight - marginRight - 70 ,70);
+  ctx.fillText("Personal",sizeWidth - sizeWidth /2 - _ln  ,320);
   ctx.font = "13px Arial";
   ctx.closePath();
 
@@ -588,8 +596,16 @@ if(sizeWidth <  620){
 
 
   ctx.strokeStyle = '#84561a'; //brown
-  ctx.moveTo(sizeWidth - marginRight - _ln,50);
-  ctx.lineTo(sizeWidth - marginRight ,50);
+
+
+  if(sizeWidth <  620){
+    ctx.moveTo(sizeWidth - sizeWidth /2 - _ln -25 ,340);
+    ctx.lineTo(sizeWidth - sizeWidth /2 - 25 ,340);
+  }else{
+    ctx.moveTo(sizeWidth - marginRight - _ln,50);
+    ctx.lineTo(sizeWidth - marginRight ,50);
+  }
+
   ctx.closePath();
   ctx.stroke();
   _labelColors = ["#1786e0", "#e23d3d","#2dc463"]
@@ -599,7 +615,12 @@ if(sizeWidth <  620){
     ctx.setLineDash([0]);
     ctx.beginPath();
     ctx.fillStyle = l;
-    ctx.arc(sizeWidth - marginRight  -  _ln * (i / 3) - (_ln /6),100,5,0,2*Math.PI)
+    if(sizeWidth <  620){
+      ctx.arc(_ln + 25 + sizeWidth - sizeWidth/2  -  _ln * (i / 3) - (_ln /6),340,5,0,2*Math.PI)
+    }else{
+      ctx.arc(sizeWidth - marginRight  -  _ln * (i / 3) - (_ln /6),100,5,0,2*Math.PI)
+    }
+
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
@@ -609,7 +630,12 @@ if(sizeWidth <  620){
     ctx.setLineDash([3]);
     ctx.beginPath();
     ctx.fillStyle = l;
-    ctx.arc(sizeWidth - marginRight  -  _ln * (i / 3) - (_ln /6),50,5,0,2*Math.PI)
+    if(sizeWidth <  620){
+      ctx.arc( sizeWidth - sizeWidth/2  -  _ln * (i / 3) - (_ln /6) - 25,340,5,0,2*Math.PI)
+    }else{
+      ctx.arc(sizeWidth - marginRight  -  _ln * (i / 3) - (_ln /6),50,5,0,2*Math.PI)
+    }
+
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
