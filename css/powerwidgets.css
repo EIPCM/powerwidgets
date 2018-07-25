@@ -10,7 +10,7 @@
 }
 .indicator{
   width: 100%;
-  float:left;
+  display: block;
   height: 400px;
 }
 .indicatora{
@@ -21,6 +21,7 @@
 .indicatorc{
 }
 .indicatord{
+  height: 500px;
 }
 .powerContent{
   width: 80%;
@@ -139,23 +140,6 @@
   width: 68px;
   border-radius: 10px;
   border: 2px solid #88b7b2;
-
-
-}
-.badge img{
-  height: 50px;
-  width: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-top:8px;
-
-}
-.earned{
-  background-color:#318c84 ;
-  border: 2px solid #0a5149;
-
-
 }
 #warden_bar_1{
   background-color: white;
@@ -175,6 +159,58 @@
   overflow: hidden;
   margin-top: 10px;
 }
+@media only screen and (max-width: 600px) {
+  .powerMessage{
+    font-size: 1em !important;
+  }
+  .badge{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    border: 2px solid #88b7b2;
+  }
+  #warden_bar_1{
+    background-color: white;
+    flex:1;
+    height: 15px;
+    border-top: 2px solid #0a5149;
+    border-bottom: 2px solid #0a5149;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  #warden_bar_2{
+    background-color: white;
+    flex:1;
+    height: 15px;
+    border-top: 2px solid #0a5149;
+    border-bottom: 2px solid #0a5149;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .level_lbl{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top:13px;
+    font-size: .8em;
+
+  }
+}
+.badge img{
+  height: 80%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top:8px;
+
+}
+.earned{
+  background-color:#318c84 ;
+  border: 2px solid #0a5149;
+
+
+}
+
 #warden_bar1_fill{
   height: 100%;
   width: 100%;
@@ -189,6 +225,7 @@
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   margin-top:13px;
+  font-size: 1em;
 
 }
 /*--------------POWER WARDENLEVEL ENDS---------------------------------------------*/
@@ -231,15 +268,54 @@ border: 1px solid #808D1E;
   transform-origin: 50% 50%;
 }
 
-input {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  width: 80px;
-}
+
 /*--------------POWER SPIDER START--------------------------------------------*/
 #spider{
 margin-left: auto;margin-right: auto;display: block;
 }
 
 /*--------------POWER SPIDER ENDS---------------------------------------------*/
+.onoffswitch {
+    position: relative; width: 60px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 36px; padding: 0; line-height: 36px;
+    border: 2px solid #E3E3E3; border-radius: 36px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 36px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 22px;
+    border: 2px solid #E3E3E3; border-radius: 36px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #468EEB;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #468EEB;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
+}
+.powerMessage{
+  background-color: #09244c;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2em;
+  line-height: 30px;
+
+
+}

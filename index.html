@@ -3,13 +3,17 @@
    <link rel="stylesheet" type="text/css" href="css/powerwidgets.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/abpetkov/switchery/master/dist/switchery.css" />
   </head>
-  <body  onresize="initSpider(event);initPoligons()">
+  <script src="https://raw.githubusercontent.com/abpetkov/switchery/master/dist/switchery.js"></script>
+
+  <body  onresize="toggleSpider()">
   <div class="indicators">
 
     <div class="indicator indicatora">
 
-      <div class="powerTitle">My  preparedness</div>
+      <div class="powerTitle">Total Preparedness</div>
       <div  style="display: flex;flex-direction: row;justify-content: space-around;">
 
       <svg
@@ -118,36 +122,8 @@
     </div>
 
     </div>
-      <!-- <input
-        value="35"
-        type="number"
-        step="5"
-        min="0"
-        max="100"
-        placeholder="progress"
-        style="margin-left:150px"
-        id="input1"
-      >
-      <input
-        value="35"
-        type="number"
-        step="5"
-        min="0"
-        max="100"
-        placeholder="progress"
-        style="margin-left:300px"
-        id="input2"
-      >
-      <input
-        value="35"
-        type="number"
-        step="5"
-        min="0"
-        max="100"
-        placeholder="progress"
-        style="margin-left:450px"
-        id="input3"
-      > -->
+    <div class="powerMessage">Yoou are well aware about flood issues, but try to improve your Know-How next time!</div>
+
       <div class="indicator indicatorb">
         <div class="powerTitle">My Impact</div>
 
@@ -188,6 +164,8 @@
         </div>
       </div>
     </div>
+    <div class="powerMessage">Great individual work, but try to improve your political impact</div>
+
     <div class="indicator indicatorc">
       <div class="powerTitle">My Flood Warden Level (based on preparedness)</div>
       <div class="powerContent">
@@ -215,13 +193,26 @@
       </div>
 
     </div>
+    <div class="powerMessage">You are a Beginner Flood Warden and your boost factor is 1.5. Way to go!</div>
+
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness</div>
+      <div class="toggleWrapper">
+        <div class="onoffswitch" onclick="toggleSpider()">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+            <label class="onoffswitch-label" for="myonoffswitch"></label>
+        </div>
+        <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Personal</div>
+      </div>
+
+
+
       <div style="margin-left:auto;margin-right:auto;">
-        <canvas id="spider" height="450" width="750"></canvas>
+        <canvas id="spider" height="350" width="750" style="z-index:1"></canvas>
       </div>
 
     </div>
+    <div class="powerMessage">Help the community to get 10% more prepared for flooding!</div>
 
   </div>
 </div>
@@ -333,15 +324,20 @@ function setWardenProgress(p){
 function initSpider(){
   var canvas = document.getElementById("spider");
   var ctx = canvas.getContext("2d");
-  c = 200;
+  c = canvas.height * .50;
+  console.log(c);
+  canvas.width = canvas.parentElement.offsetWidth;
+  canvas.height = canvas.parentElement.offsetHeight;
   var sizeWidth = ctx.canvas.clientWidth;
   var sizeHeight = ctx.canvas.clientHeight;
   var scaleWidth = sizeWidth/100;
   var scaleHeight = sizeHeight/100;
   centerX = sizeWidth/2;
   centerY = sizeHeight/2;
-  r = sizeWidth/2 - c;
-
+  r = sizeWidth *.30;
+  if(sizeWidth >= sizeHeight){
+    r = sizeHeight *.30;
+  }
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
   // console.log(sizeWidth/2);
@@ -360,7 +356,7 @@ function initSpider(){
       ctx.strokeStyle = '#d7dadd';
     }
     ctx.beginPath();
-    ctx.arc(sizeWidth/2,sizeHeight/2, r - ( i *  r / 10 ) ,0,2*Math.PI)
+    ctx.arc(centerX,centerY, r - ( i *  r / 10 ) ,0,2*Math.PI)
     ctx.stroke();
 
 
@@ -368,10 +364,13 @@ function initSpider(){
 
   _degrees = [0,40,80,120,160,200,240,280,320];
   _labels  = [" Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","   Know-how",]
+  _categories = ["Social","Political","Individual"]
+  _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
   _extraRadius = 20;
   ctx.lineWidth   = 1;
-  _labelColors = ["#1786e0", "#e23d3d","#2dc463"]
+  _labelColors = ["#2dc463","#e23d3d","#1786e0"]
+
   _degrees.forEach(function(d,i){
     ctx.beginPath();
     ctx.moveTo(centerX ,centerY);
@@ -381,7 +380,13 @@ function initSpider(){
     x = centerX + (r * 1.1) * Math.cos(rx);
     y = centerY + (r * 1.1) * Math.sin(ry);
     ctx.lineTo(x,y);
-    ctx.font = "13px Arial";
+    if(sizeWidth <  620){
+      ctx.font = "10px Arial";
+
+    }else{
+      ctx.font = "13px Arial";
+
+    }
     rx = (d + _offset)  * (Math.PI /180);
     ry = (d + _offset) * (Math.PI /180);
     x = centerX + r*1.17  * Math.cos(rx);
@@ -400,10 +405,38 @@ function initSpider(){
     }else if(i >= _degrees.length -1){
       ctx.fillStyle = _labelColors[0];
     }
-
     ctx.fillText(_labels[i],x-textOffset,y);
-
     ctx.stroke();
+    ctx.closePath();
+
+    if(_categoriesIndexes.includes(i) && sizeWidth > 620  ){
+
+      rx = (d+20)  * (Math.PI /180);
+      ry = (d+20) * (Math.PI /180);
+      x = centerX + r*1.15  * Math.cos(rx);
+      y = centerY + r*1.15 * Math.sin(ry);
+      ctx.font = "20px Arial";
+      ctx.beginPath();
+      textoffset = 50;
+      switch (i) {
+        case 1:
+        textoffset = 0;
+        break;
+        case 4:
+        textoffset = 40;
+        break;
+        case 7:
+        textoffset = 0;
+        break;
+        default:
+
+      }
+      ctx.fillText(_categories[0],x-textoffset,y);
+      ctx.stroke();
+      ctx.closePath();
+    }
+    ctx.font = "13px Arial";
+
 
   });
 
@@ -422,7 +455,23 @@ function addGoals(){
   var scaleWidth = sizeWidth/100;
   var scaleHeight = sizeHeight/100;
   values = [4,7,10]
-  _labels = ["(2% more prepared)", "(5% more prepared)","(10% more prepared)"]
+  if(sizeWidth <  620){
+    _labels = ["+2%", "+5%","+10%"]
+    _marginRightA = 30;
+    _marginRightB = 30;
+    _marginRightC = 25;
+    ctx.font = "11px Arial";
+
+  }else{
+    _labels = ["(2% more prepared)", "(5% more prepared)","(10% more prepared)"]
+
+    _marginRightA = 45;
+    _marginRightB = 122;
+    _marginRightC = 115;
+    ctx.font = "13px Arial";
+
+  }
+
   values.forEach(function(v,i){
     vi = Math.abs(v - _degrees.length);
     _rd  = r - ( vi  *  r / 10 ) //radius distance
@@ -436,23 +485,138 @@ function addGoals(){
     ctx.lineWidth   = 2;
     ctx.strokeStyle = '#848177';
     ctx.moveTo(x,y);
-    ctx.lineTo(sizeWidth,y);
     ctx.fillStyle   = "#848177";
-    if( v == 4){
-      ctx.font = "bold 16px Arial";
-      ctx.fillText("Goals",sizeWidth - 45,y-15);
-    }
-    ctx.font = "13px Arial";
 
-    if(v == 10){
-      ctx.fillText(_labels[i],sizeWidth - 122,y+15);
+    if(sizeWidth <  620){
+      ctx.lineTo(x,sizeHeight - (10 * i) - 50);
+      if( v == 4){
+        ctx.fillText("Goals",x -20,sizeHeight - _marginRightA);
+      }
+      if(v == 10){
+        ctx.fillText(_labels[i],x , sizeHeight - 60);
+      }else if(v == 7){
+        ctx.fillText(_labels[i],x , sizeHeight - 50 );
+      }else{
+        ctx.fillText(_labels[i],x , sizeHeight - 40 );
+
+      }
     }else{
-      ctx.fillText(_labels[i],sizeWidth - 115,y+15);
+      ctx.lineTo(sizeWidth,y)
+      if( v == 4){
+        ctx.fillText("Goals",sizeWidth - _marginRightA,y-15);
+      }
+      if(v == 10){
+        ctx.fillText(_labels[i],sizeWidth - _marginRightB,y+15);
+      }else{
+        ctx.fillText(_labels[i],sizeWidth - _marginRightC,y+15);
+      }
     }
+
     ctx.stroke();
   });
 }
+function addLeyend(){
+  var canvas = document.getElementById("spider");
+  var ctx = canvas.getContext("2d");
+  var sizeWidth = ctx.canvas.clientWidth;
+  var sizeHeight = ctx.canvas.clientHeight;
+  var scaleWidth = sizeWidth/100;
+  var scaleHeight = sizeHeight/100;
+  ctx.strokeStyle = '#293b47'; //black
+  ctx.lineWidth   = 2;
+  ctx.beginPath();
+  if(sizeWidth <  620){
+    _ln  = sizeWidth * .3;
 
+  }else{
+    _ln  = sizeWidth * .1;
+
+  }
+
+  marginRight = 0;
+  ctx.setLineDash([0]);
+  ctx.moveTo(sizeWidth - marginRight - _ln,100);
+  ctx.lineTo(sizeWidth - marginRight ,100);
+  ctx.stroke();
+  ctx.closePath();
+//
+if(sizeWidth <  620){
+  ctx.beginPath();
+  ctx.font = "bold 16px Arial";
+  ctx.fillStyle = '#293b47'; //black
+  ctx.fillText("Community",0,0);
+  ctx.font = "13px Arial";
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.font = "bold 16px Arial";
+  ctx.fillStyle = '#293b47'; //black
+  ctx.fillText("Personal",sizeHeight - marginRight - 70 ,70);
+  ctx.font = "13px Arial";
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.setLineDash([3]);
+
+
+
+  ctx.stroke();
+}else{
+  ctx.beginPath();
+  ctx.font = "bold 16px Arial";
+  ctx.fillStyle = '#293b47'; //black
+  ctx.fillText("Community",sizeWidth - marginRight - 90 ,120);
+  ctx.font = "13px Arial";
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.font = "bold 16px Arial";
+  ctx.fillStyle = '#293b47'; //black
+  ctx.fillText("Personal",sizeWidth - marginRight - 70 ,70);
+  ctx.font = "13px Arial";
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.setLineDash([3]);
+
+
+
+  ctx.stroke();
+}
+
+//
+
+
+  ctx.strokeStyle = '#84561a'; //brown
+  ctx.moveTo(sizeWidth - marginRight - _ln,50);
+  ctx.lineTo(sizeWidth - marginRight ,50);
+  ctx.closePath();
+  ctx.stroke();
+  _labelColors = ["#1786e0", "#e23d3d","#2dc463"]
+
+  _labelColors.forEach(function(l,i){
+    ctx.strokeStyle = '#293b47'; //black
+    ctx.setLineDash([0]);
+    ctx.beginPath();
+    ctx.fillStyle = l;
+    ctx.arc(sizeWidth - marginRight  -  _ln * (i / 3) - (_ln /6),100,5,0,2*Math.PI)
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+
+    ctx.strokeStyle = '#84561a'; //brown
+    ctx.setLineDash([3]);
+    ctx.beginPath();
+    ctx.fillStyle = l;
+    ctx.arc(sizeWidth - marginRight  -  _ln * (i / 3) - (_ln /6),50,5,0,2*Math.PI)
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+  });
+
+
+}
 function addPoligons(values,dashed){
   _degrees = [0,40,80,120,160,200,240,280,320,360];
   _offset = 10; //All lines will be turned with this offset.
@@ -462,14 +626,21 @@ function addPoligons(values,dashed){
   var sizeHeight = ctx.canvas.clientHeight;
   var scaleWidth = sizeWidth/100;
   var scaleHeight = sizeHeight/100;
-  c = 200;
+
+  c = canvas.height * .10;
+
+
   centerX = sizeWidth/2;
   centerY = sizeHeight/2;
-  r = sizeWidth/2 - c;
+  r = sizeWidth *.30;
+  if(sizeWidth >= sizeHeight){
+    r = sizeHeight *.30;
+  }
+
   ctx.lineWidth   = 2;
   ctx.beginPath();
   if(dashed){
-    ctx.setLineDash([100]);
+    ctx.setLineDash([3]);
     ctx.strokeStyle = '#84561a';
   }else{
     ctx.strokeStyle = '#293b47';
@@ -494,7 +665,7 @@ function addPoligons(values,dashed){
   ctx.closePath();
   ctx.stroke();
   if(dashed){
-    ctx.setLineDash([.0001]);
+    ctx.setLineDash([3]);
   }
   ctx.fillStyle="#1786e0";
   ctx.fillStyle="#e23d3d";
@@ -538,12 +709,20 @@ window.onload = function()
       initSpider();
       initPoligons();
  }
- function initPoligons(){
+ function initPoligons(toggleStatus){
+   initSpider();
    addGoals();
    addPoligons([10,10,10,10,10,10,10,10,10,10],false);
-   addPoligons([3,3,3,3,3,3,3,3,3,3],true);
-
+   if(toggleStatus){
+     addPoligons([3,3,3,3,3,3,3,3,3,3],true);
+   }
+   addLeyend();
 
  }
+ function toggleSpider(){
+   _switchS = document.getElementById("myonoffswitch");
+   initPoligons(_switchS.checked)
+ }
+
 </script>
 </html>
