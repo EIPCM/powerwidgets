@@ -7,6 +7,33 @@
   <link rel="stylesheet" href="https://raw.githubusercontent.com/abpetkov/switchery/master/dist/switchery.css" />
   </head>
   <script src="https://raw.githubusercontent.com/abpetkov/switchery/master/dist/switchery.js"></script>
+  <script src="https://city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
+  <script>
+  window.onload = function(e){
+      window.apiClient = new PowerApiClient(function(a){
+          console.log("received api object"); // code to execute after you receive the API data because it ain't synchronous
+      });
+
+      var user = apiClient.getUser(); // get the current_user
+      console.log(JSON.stringify(user));
+      user.getId(); // get user_id
+      user.getGamification(); // get gamification object for user
+      user.getAttr("name"); // get attr for user (not all attributes are available if more needed the api needs to be changed)
+
+      var challenge = apiClient.getChallenge(); // get the current challenge
+      challenge.getId(); // get challenge_id
+      challenge.getGamification(); // get gamification object for the challenge (its the community one)
+      challenge.getAttr("code"); // get the code
+      challenge.getAttr("title"); // get the title
+
+      var obj = apiClient.getEmptyObject(); // get full gamification object with points at 0
+      // obj[PowerApiClient.PERSONAL][PowerApiClient.PROBLEM_AWARENESS] = 1997; // set points to increment in PERSONAL PROBLEM AWARENESS
+      // apiClient.put(obj, function(d) {
+      //     console.log("server is updated"); // calback to execute after the gamification is saved (the gamification object is auto updated)
+      // }); // save gamification in server with the object you changed above
+      console.log(JSON.stringify(obj));
+  }
+  </script>
 
   <body  onresize="toggleSpider()">
   <div class="indicators">
