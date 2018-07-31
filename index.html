@@ -871,9 +871,9 @@ window.onload = function()
    initSpider();
    addGoals();
    _dataPersonal = window.apiData.api.user.obj.gamification;
-   _dataPersonalSocial    = _dataPersonal.gamification.social;
-   _dataPersonalPolitical = _dataPersonal.gamification.political;
-   _dataPersonalPersonal  = _dataPersonal.gamification.personal;
+   _dataPersonalSocial    = _dataPersonal.social;
+   _dataPersonalPolitical = _dataPersonal.political;
+   _dataPersonalPersonal  = _dataPersonal.personal;
    addPoligons([    _dataPersonalSocial["practical.knowledge"],
                     _dataPersonalSocial["ready.for.action"],
                     _dataPersonalSocial["problem.awareness"],
@@ -885,9 +885,9 @@ window.onload = function()
                     _dataPersonalPersonal["problem.awareness"]],false); //personal
    if(toggleStatus){
      _dataGlobal = window.apiData.api.challenge.obj.gamification;
-     _dataGlobalSocial    = _dataGlobal.gamification.social;
-     _dataGlobalPolitical = _dataGlobal.gamification.political;
-     _dataGlobalPersonal  = _dataGlobal.gamification.personal;
+     _dataGlobalSocial    = _dataGlobal.social;
+     _dataGlobalPolitical = _dataGlobal.political;
+     _dataGlobalPersonal  = _dataGlobal.personal;
 
      addPoligons([    _dataGlobalSocial["practical.knowledge"],
                       _dataGlobalSocial["ready.for.action"],
