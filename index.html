@@ -8,11 +8,7 @@
   <div id="hello"></div>
   <script>
   window.onload = function(e){
-      window.apiClient = new PowerApiClient(function(a){
-        console.log(JSON.stringify(a));
-        alert(a);
-        document.getElementById("hello").innerHTML= a.getUser().getAttr("name");
-      });
+
   }
   </script>
 
@@ -870,6 +866,11 @@ function addPoligons(values,dashed){
 }
 window.onload = function()
  {
+   window.apiClient = new PowerApiClient(function(a){
+     console.log(JSON.stringify(a));
+     alert(a);
+     document.getElementById("hello").innerHTML= a.getUser().getAttr("name");
+   });
       initSpider();
       initPoligons();
  }
