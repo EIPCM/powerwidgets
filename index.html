@@ -862,9 +862,10 @@ window.onload = function()
    window.apiClient = new PowerApiClient(function(a){
 
      window.apiData = a;
+     initSpider();
+     initPoligons();
    });
-      initSpider();
-      initPoligons();
+
  }
  function initPoligons(toggleStatus){
    initSpider();
