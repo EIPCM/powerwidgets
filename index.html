@@ -9,7 +9,9 @@
   <script>
   window.onload = function(e){
       window.apiClient = new PowerApiClient(function(a){
-        document.getElementById("hello").innerHTML= a.getUser().getAttr("name");;
+        console.log(JSON.stringify(a));
+        alert(a);
+        document.getElementById("hello").innerHTML= a.getUser().getAttr("name");
       });
   }
   </script>
