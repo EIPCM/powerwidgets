@@ -337,6 +337,32 @@ margin-left: auto;margin-right: auto;display: block;
 }
 
 /*--------------POWER SPIDER ENDS---------------------------------------------*/
+/*--------------BOOST FACTOR START--------------------------------------------*/
+.boost_factor_wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.boost_factor{
+  height: 60px;
+  width: 60px;
+  font-size: 2em;
+  background: url("../img/cert.png");
+  background-size: auto auto;
+  background-size: contain;
+  line-height: 1.5;
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  color: #09244c;
+  margin-top: 16px;
+}
+
+
+}
+/*--------------BOOST FACTOR ENDS---------------------------------------------*/
+
 .onoffswitch {
     position: relative; width: 50px; margin-left: 30px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
