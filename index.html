@@ -5,13 +5,6 @@
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
   </head>
-  <div id="hello"></div>
-  <script>
-  window.onload = function(e){
-
-  }
-  </script>
-
   <body  onresize="toggleSpider()">
   <div class="indicators">
 
@@ -867,9 +860,8 @@ function addPoligons(values,dashed){
 window.onload = function()
  {
    window.apiClient = new PowerApiClient(function(a){
-     console.log(JSON.stringify(a));
-     alert(a);
-     document.getElementById("hello").innerHTML= a.getUser().getAttr("name");
+
+     window.apiData = a;
    });
       initSpider();
       initPoligons();
@@ -877,9 +869,34 @@ window.onload = function()
  function initPoligons(toggleStatus){
    initSpider();
    addGoals();
-   addPoligons([10,10,10,10,10,10,10,10,10,10],false);
+   _dataPersonal = window.apiData.api.user.obj.gamification;
+   _dataPersonalSocial    = _dataPersonal.gamification.social;
+   _dataPersonalPolitical = _dataPersonal.gamification.political;
+   _dataPersonalPersonal  = _dataPersonal.gamification.personal;
+   addPoligons([    _dataPersonalSocial["practical.knowledge"],
+                    _dataPersonalSocial["ready.for.action"],
+                    _dataPersonalSocial["problem.awareness"],
+                    _dataPersonalPolitical["practical.knowledge"],
+                    _dataPersonalPolitical["ready.for.action"],
+                    _dataPersonalPolitical["problem.awareness"],
+                    _dataPersonalPersonal["practical.knowledge"],
+                    _dataPersonalPersonal["ready.for.action"],
+                    _dataPersonalPersonal["problem.awareness"]],false); //personal
    if(toggleStatus){
-     addPoligons([3,3,3,3,3,3,3,3,3,3],true);
+     _dataGlobal = window.apiData.api.challenge.obj.gamification;
+     _dataGlobalSocial    = _dataGlobal.gamification.social;
+     _dataGlobalPolitical = _dataGlobal.gamification.political;
+     _dataGlobalPersonal  = _dataGlobal.gamification.personal;
+
+     addPoligons([    _dataGlobalSocial["practical.knowledge"],
+                      _dataGlobalSocial["ready.for.action"],
+                      _dataGlobalSocial["problem.awareness"],
+                      _dataGlobalPolitical["practical.knowledge"],
+                      _dataGlobalPolitical["ready.for.action"],
+                      _dataGlobalPolitical["problem.awareness"],
+                      _dataGlobalPersonal["practical.knowledge"],
+                      _dataGlobalPersonal["ready.for.action"],
+                      _dataGlobalPersonal["problem.awareness"]],true); //global
    }
    addLeyend();
 
