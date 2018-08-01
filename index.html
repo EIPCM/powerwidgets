@@ -3,6 +3,9 @@
    <link rel="stylesheet" type="text/css" href="css/powerwidgets.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+   <link href="css/switchery.css" rel="stylesheet">
+   <script type="text/javascript" src="js/switchery.js"></script>
+
    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
   </head>
   <body  onresize="toggleSpider()">
@@ -145,10 +148,7 @@
 
     </div>
     <div class="toggleWrapper">
-      <div class="onoffswitch" onclick="toggleSpider()">
-          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-          <label class="onoffswitch-label" for="myonoffswitch"></label>
-      </div>
+      <input type="checkbox" class="js-switch" checked />
       <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
     </div>
 
@@ -158,10 +158,7 @@
       <div class="indicator indicatorb">
         <div class="powerTitle">Personal Impact</div>
         <div class="toggleWrapper">
-          <div class="onoffswitch" onclick="toggleSpider()">
-              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-              <label class="onoffswitch-label" for="myonoffswitch"></label>
-          </div>
+          <input type="checkbox" class="js-switch" checked />
           <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
         </div>
       <div class="powerRow">
@@ -288,7 +285,7 @@
 
     <div class="indicator indicatorc">
       <div class="powerTitle">Flood Warden Achievement</div>
-      <div class="powerContent" style="float:left;width:50%">
+      <div class="powerContent wardenContent">
         <div class="warden">
           <div class="badge earned" >
             <img src="img/badge1.png"/>
@@ -325,10 +322,7 @@
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness</div>
       <div class="toggleWrapper">
-        <div class="onoffswitch" onclick="toggleSpider()">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-            <label class="onoffswitch-label" for="myonoffswitch"></label>
-        </div>
+        <input type="checkbox" class="js-switch" checked  id="check_personal"/>
         <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Personal</div>
       </div>
 
@@ -859,6 +853,13 @@ function addPoligons(values,dashed){
 }
 window.onload = function()
  {
+
+    var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+    elems.forEach(function(html) {
+      var switchery = new Switchery(html, { size: 'small',color:"#468EEB" });
+    });
+
    window.apiClient = new PowerApiClient(function(a){
 
      window.apiData = a;
@@ -903,8 +904,9 @@ window.onload = function()
 
  }
  function toggleSpider(){
-   _switchS = document.getElementById("myonoffswitch");
-   initPoligons(_switchS.checked)
+   // _switchS = document.getElementById("myonoffswitch");
+
+   initPoligons(true)
  }
 
 </script>

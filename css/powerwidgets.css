@@ -165,6 +165,9 @@
   justify-content: space-between;
 
 }
+.wardenContent{
+  float:left;width:50%
+}
 .badge{
   height: 68px;
   width: 68px;
@@ -196,6 +199,10 @@
   .powerTitle{
     font-size: .8em !important;
 
+  }
+  .wardenContent{
+    width: 100%;
+    float:none;
   }
   .badge{
     height: 30px;
