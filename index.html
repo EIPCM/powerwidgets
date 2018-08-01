@@ -865,9 +865,14 @@ window.onload = function()
      window.apiData = a;
      initSpider();
      initPoligons();
+
    });
 
+
  }
+ document.getElementsByClassName("js-switch")[2].addEventListener("change",function(e){
+   toggleSpider();
+ })
  function initPoligons(toggleStatus){
    initSpider();
    addGoals();
@@ -905,8 +910,8 @@ window.onload = function()
  }
  function toggleSpider(){
    // _switchS = document.getElementById("myonoffswitch");
-
-   initPoligons(true)
+   _checked = document.getElementsByClassName("js-switch")[2].checked;
+   initPoligons(_checked)
  }
 
 </script>
