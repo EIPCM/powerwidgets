@@ -8,12 +8,16 @@
 
    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
   </head>
-  <body  onresize="toggleSpider()">
+  <body  onresize="resize()">
   <div class="indicators">
 
     <div class="indicator indicatora">
 
       <div class="powerTitle">Personal Preparedness</div>
+      <div class="toggleWrapper">
+        <input type="checkbox" class="js-switch" checked />
+        <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
+      </div>
       <div class="circularWrapper">
       <div class="svgWrapper">
         <div class="circularTitle">Problem<br> Awareness</div>
@@ -48,14 +52,15 @@
             r="57"
             cx="60"
             cy="60"/>
-          <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
+          <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
 
         </svg>
         <div class="circularLevelsWrapper">
-          <img src="img/circ_idea.png" class="iconsmall"/>
-          <img src="img/circ_idea_gray.png" class="iconsmall"/>
-          <img src="img/circ_idea_gray.png" class="iconsmall"/>
+          <img src="img/circ_talk.png" class="iconsmall"/>
+          <img src="img/circ_talk_gray.png" class="iconsmall"/>
+          <img src="img/circ_talk_gray.png" class="iconsmall"/>
         </div>
+
 
       </div>
       <div class="svgWrapper">
@@ -93,12 +98,12 @@
             r="57"
             cx="60"
             cy="60"/>
-          <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
+          <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
         </svg>
         <div class="circularLevelsWrapper">
-          <img src="img/circ_talk.png" class="iconsmall"/>
-          <img src="img/circ_talk_gray.png" class="iconsmall"/>
-          <img src="img/circ_talk_gray.png" class="iconsmall"/>
+          <img src="img/circ_idea.png" class="iconsmall"/>
+          <img src="img/circ_idea_gray.png" class="iconsmall"/>
+          <img src="img/circ_idea_gray.png" class="iconsmall"/>
         </div>
       </div>
 
@@ -147,10 +152,7 @@
       </div>
 
     </div>
-    <div class="toggleWrapper">
-      <input type="checkbox" class="js-switch" checked />
-      <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
-    </div>
+
 
     </div>
     <div class="powerMessage">Yoou are well aware about flood issues, but try to improve your Know-How next time!</div>
@@ -863,8 +865,7 @@ window.onload = function()
    window.apiClient = new PowerApiClient(function(a){
 
      window.apiData = a;
-     initSpider();
-     initPoligons();
+     resize();
 
    });
 
@@ -872,6 +873,12 @@ window.onload = function()
  }
  document.getElementsByClassName("js-switch")[2].addEventListener("change",function(e){
    toggleSpider();
+ })
+ document.getElementsByClassName("js-switch")[1].addEventListener("change",function(e){
+   toggleLevelsPersonalImpact();
+ })
+ document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
+   toggleLevelsPersonalPreparedness();
  })
  function initPoligons(toggleStatus){
    initSpider();
@@ -913,6 +920,26 @@ window.onload = function()
    _checked = document.getElementsByClassName("js-switch")[2].checked;
    initPoligons(_checked)
  }
+ function toggleLevelsPersonalImpact(){
+   _checked = document.getElementsByClassName("js-switch")[1].checked;
+   pList = document.getElementsByClassName("powerBarLevelsWrapper")
 
+   for (var i = 0; i < pList.length; i++) {
+      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   }
+ }
+ function toggleLevelsPersonalPreparedness(){
+   _checked = document.getElementsByClassName("js-switch")[0].checked;
+   pList = document.getElementsByClassName("circularLevelsWrapper")
+
+   for (var i = 0; i < pList.length; i++) {
+      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   }
+ }
+ function resize(){
+   initPoligons();
+   toggleLevelsPersonalImpact();
+   toggleLevelsPersonalPreparedness();
+ }
 </script>
 </html>
