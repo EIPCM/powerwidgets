@@ -192,6 +192,50 @@
   overflow: hidden;
   margin-top: 10px;
 }
+@supports (-webkit-overflow-scrolling: touch) {
+  .powerMessage{
+    font-size: 1em !important;
+  }
+  .powerTitle{
+    font-size: .8em !important;
+
+  }
+  .wardenContent{
+    width: 100%;
+    float:none;
+  }
+  .badge{
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    border: 2px solid #88b7b2;
+  }
+  #warden_bar_1{
+    background-color: white;
+    flex:1;
+    height: 15px;
+    border-top: 2px solid #0a5149;
+    border-bottom: 2px solid #0a5149;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  #warden_bar_2{
+    background-color: white;
+    flex:1;
+    height: 15px;
+    border-top: 2px solid #0a5149;
+    border-bottom: 2px solid #0a5149;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .level_lbl{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    margin-top:13px;
+    font-size: .7em !important;
+
+  }
+}
 @media only screen and (max-device-width: 800px) {
   .powerMessage{
     font-size: 1em !important;
@@ -313,6 +357,20 @@ border: 1px solid #808D1E;
   flex-direction: row;
   justify-content: space-around;
 }
+@supports (-webkit-overflow-scrolling: touch) {
+  .circularWrapper{
+    display: block;
+  }
+  .svgWrapper{
+    width: 100%;
+    text-align:center;
+  }
+  .indicatora{
+    height: 760px;
+  }
+}
+
+
 @media only screen and (max-device-width: 800px) {
   .circularWrapper{
     display: block;
