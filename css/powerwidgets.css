@@ -414,3 +414,25 @@ margin-left: auto;margin-right: auto;display: block;
 
 
 }
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #09244c;
+  float:right;
+}
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #09244c;
+    float:right;
+}
+.arrow-down:hover{
+  cursor: pointer;
+}
+.arrow-up:hover{
+  cursor: pointer;
+}

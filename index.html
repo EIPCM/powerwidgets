@@ -10,319 +10,331 @@
   </head>
   <body  onresize="resize()">
   <div class="indicators">
-
     <div class="indicator indicatora">
-
+      <div class="powerMessage">&nbsp;</div>
       <div class="powerTitle">Personal Preparedness</div>
-      <div class="toggleWrapper">
-        <input type="checkbox" class="js-switch" checked />
-        <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
-      </div>
-      <div class="circularWrapper">
-      <div class="svgWrapper">
-        <div class="circularTitle">Problem<br> Awareness</div>
-        <svg
-           class="progress-ring"
-           width="120"
-           fill="#13377f"
-           height="120"
-           shape-rendering="geometricPrecision"
-           >
-          <circle
-            id="circ_1"
-            class="progress-ring__circle"
-            transform="rotate(-90 0 0)"
-            stroke="#6d0949"
-            stroke-width="50"
-            fill="#13377f"
-            r="30"
-            cx="60"
-            cy="60"/>
-          <circle
-            stroke="white"
-            stroke-width="2"
-            fill="#6d0949"
-            r="30"
-            cx="60"
-            cy="60"/>
-          <circle
-            stroke="#6d0949"
-            stroke-width="2"
-            fill="transparent"
-            r="57"
-            cx="60"
-            cy="60"/>
-          <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
-
-        </svg>
-        <div class="circularLevelsWrapper">
-          <img src="img/circ_talk.png" class="iconsmall"/>
-          <img src="img/circ_talk_gray.png" class="iconsmall"/>
-          <img src="img/circ_talk_gray.png" class="iconsmall"/>
-        </div>
-
-
-      </div>
-      <div class="svgWrapper">
-        <div class="circularTitle">Know- <br>How</div>
-
-        <svg
-           class="progress-ring"
-           width="120"
-           fill="#13377f"
-           height="120"
-           shape-rendering="geometricPrecision"
-           >
-          <circle
-            class="progress-ring__circle"
-            transform="rotate(-90 0 0)"
-            stroke="#13377f"
-            stroke-width="50"
-            fill="#13377f"
-            r="30"
-            cx="60"
-            cy="60"
-            id="circ_2"
-            />
-          <circle
-            stroke="white"
-            stroke-width="2"
-            fill="#13377f"
-            r="30"
-            cx="60"
-            cy="60"/>
-          <circle
-            stroke="#13377f"
-            stroke-width="2"
-            fill="transparent"
-            r="57"
-            cx="60"
-            cy="60"/>
-          <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
-        </svg>
-        <div class="circularLevelsWrapper">
-          <img src="img/circ_idea.png" class="iconsmall"/>
-          <img src="img/circ_idea_gray.png" class="iconsmall"/>
-          <img src="img/circ_idea_gray.png" class="iconsmall"/>
-        </div>
-      </div>
-
-      <div class="svgWrapper">
-        <div class="circularTitle">Ready <br>to Act</div>
-
-        <svg
-           class="progress-ring"
-           width="120"
-           fill="#493f8d"
-           height="120"
-           shape-rendering="geometricPrecision"
-           >
-          <circle
-            class="progress-ring__circle"
-            transform="rotate(-90 0 0)"
-            stroke="#493f8d"
-            stroke-width="50"
-            fill="#493f8d"
-            r="30"
-            cx="60"
-            cy="60"
-            id="circ_3"
-            />
-          <circle
-            stroke="white"
-            stroke-width="2"
-            fill="#493f8d"
-            r="30"
-            cx="60"
-            cy="60"/>
-          <circle
-            stroke="#493f8d"
-            stroke-width="2"
-            fill="transparent"
-            r="57"
-            cx="60"
-            cy="60"/>
-          <image xlink:href="img/ready_act.png" height="120" width="120"  rx="15" ry="15" />
-        </svg>
-        <div class="circularLevelsWrapper">
-          <img src="img/circ_stopwatch.png" class="iconsmall"/>
-          <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-          <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-        </div>
-      </div>
-
-    </div>
-
-
-    </div>
-    <div class="powerMessage">Yoou are well aware about flood issues, but try to improve your Know-How next time!</div>
-
-      <div class="indicator indicatorb">
-        <div class="powerTitle">Personal Impact</div>
+      <div class="arrow-down" onclick="hide(this)"></div>
+      <div class="hideable-area">
         <div class="toggleWrapper">
           <input type="checkbox" class="js-switch" checked />
           <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
         </div>
-      <div class="powerRow">
-        <div class="powerBartitle">Political</div><div class="powerBarWrapper">
-          <div class="powerBarLevelsWrapper">
-            <img src="img/political.png" class="iconsmall"/>
-            <img src="img/political.png" class="iconsmall"/>
-            <img src="img/political_gray.png" class="iconsmall"/>
-          </div>
-          <div class="iconWrapper political">
-            <img src="img/political.png" class="icon political"/>
-          </div>
-          <div class="pwrapper">
-            <div class="powerBar political">
-              <div class="powerScaleWrapper" style="">
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-                <div class="powerScale political">
-                </div>
-              </div>
+        <div class="circularWrapper">
+        <div class="svgWrapper">
+          <div class="circularTitle">Problem<br> Awareness</div>
+          <svg
+             class="progress-ring"
+             width="120"
+             fill="#13377f"
+             height="120"
+             shape-rendering="geometricPrecision"
+             >
+            <circle
+              id="circ_1"
+              class="progress-ring__circle"
+              transform="rotate(-90 0 0)"
+              stroke="#6d0949"
+              stroke-width="50"
+              fill="#13377f"
+              r="30"
+              cx="60"
+              cy="60"/>
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="#6d0949"
+              r="30"
+              cx="60"
+              cy="60"/>
+            <circle
+              stroke="#6d0949"
+              stroke-width="2"
+              fill="transparent"
+              r="57"
+              cx="60"
+              cy="60"/>
+            <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
 
-              <div class="fill political" style="width: 50%;" id="powerBar1"></div>
-            </div>
+          </svg>
+          <div class="circularLevelsWrapper">
+            <img src="img/circ_talk.png" class="iconsmall"/>
+            <img src="img/circ_talk_gray.png" class="iconsmall"/>
+            <img src="img/circ_talk_gray.png" class="iconsmall"/>
+          </div>
+
+
+        </div>
+        <div class="svgWrapper">
+          <div class="circularTitle">Know- <br>How</div>
+
+          <svg
+             class="progress-ring"
+             width="120"
+             fill="#13377f"
+             height="120"
+             shape-rendering="geometricPrecision"
+             >
+            <circle
+              class="progress-ring__circle"
+              transform="rotate(-90 0 0)"
+              stroke="#13377f"
+              stroke-width="50"
+              fill="#13377f"
+              r="30"
+              cx="60"
+              cy="60"
+              id="circ_2"
+              />
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="#13377f"
+              r="30"
+              cx="60"
+              cy="60"/>
+            <circle
+              stroke="#13377f"
+              stroke-width="2"
+              fill="transparent"
+              r="57"
+              cx="60"
+              cy="60"/>
+            <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
+          </svg>
+          <div class="circularLevelsWrapper">
+            <img src="img/circ_idea.png" class="iconsmall"/>
+            <img src="img/circ_idea_gray.png" class="iconsmall"/>
+            <img src="img/circ_idea_gray.png" class="iconsmall"/>
+          </div>
+        </div>
+
+        <div class="svgWrapper">
+          <div class="circularTitle">Ready <br>to Act</div>
+
+          <svg
+             class="progress-ring"
+             width="120"
+             fill="#493f8d"
+             height="120"
+             shape-rendering="geometricPrecision"
+             >
+            <circle
+              class="progress-ring__circle"
+              transform="rotate(-90 0 0)"
+              stroke="#493f8d"
+              stroke-width="50"
+              fill="#493f8d"
+              r="30"
+              cx="60"
+              cy="60"
+              id="circ_3"
+              />
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="#493f8d"
+              r="30"
+              cx="60"
+              cy="60"/>
+            <circle
+              stroke="#493f8d"
+              stroke-width="2"
+              fill="transparent"
+              r="57"
+              cx="60"
+              cy="60"/>
+            <image xlink:href="img/ready_act.png" height="120" width="120"  rx="15" ry="15" />
+          </svg>
+          <div class="circularLevelsWrapper">
+            <img src="img/circ_stopwatch.png" class="iconsmall"/>
+            <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+            <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
           </div>
         </div>
       </div>
-      <div class="powerRow">
-        <div class="powerBartitle">Social</div><div class="powerBarWrapper">
-          <div class="powerBarLevelsWrapper">
-            <img src="img/users-group.png" class="iconsmall"/>
-            <img src="img/users-group.png" class="iconsmall"/>
-            <img src="img/users-group_gray.png" class="iconsmall"/>
+    </div>
+
+
+    </div>
+    <div class="powerMessage">You are well aware about flood issues, but try to improve your Know-How next time!</div>
+
+      <div class="indicator indicatorb">
+        <div class="powerTitle">Personal Impact</div>
+        <div class="arrow-down" onclick="hide(this)"></div>
+        <div class="hideable-area">
+          <div class="toggleWrapper">
+            <input type="checkbox" class="js-switch" checked />
+            <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
           </div>
-          <div class="iconWrapper social">
-            <img src="img/users-group.png" class="icon political"/>
-          </div>
-          <div class="pwrapper">
-            <div class="powerScaleWrapper" style="">
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
-              <div class="powerScale social">
-              </div>
+        <div class="powerRow">
+          <div class="powerBartitle">Political</div><div class="powerBarWrapper">
+            <div class="powerBarLevelsWrapper">
+              <img src="img/political.png" class="iconsmall"/>
+              <img src="img/political.png" class="iconsmall"/>
+              <img src="img/political_gray.png" class="iconsmall"/>
             </div>
-            <div class="powerBar social">
-              <div class="fill social" style="width: 50%;" id="powerBar2"></div>
+            <div class="iconWrapper political">
+              <img src="img/political.png" class="icon political"/>
+            </div>
+            <div class="pwrapper">
+              <div class="powerBar political">
+                <div class="powerScaleWrapper" style="">
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                  <div class="powerScale political">
+                  </div>
+                </div>
+
+                <div class="fill political" style="width: 50%;" id="powerBar1"></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="powerRow">
-      <div class="powerBartitle">Individual</div><div class="powerBarWrapper">
-        <div class="powerBarLevelsWrapper">
-          <img src="img/people.png" class="iconsmall"/>
-          <img src="img/people.png" class="iconsmall"/>
-          <img src="img/people_gray.png" class="iconsmall"/>
-        </div>
-          <div class="iconWrapper individual">
-            <img src="img/people.png" class="icon political"/>
-          </div>
-          <div class="pwrapper">
-            <div class="powerBar individual">
+        <div class="powerRow">
+          <div class="powerBartitle">Social</div><div class="powerBarWrapper">
+            <div class="powerBarLevelsWrapper">
+              <img src="img/users-group.png" class="iconsmall"/>
+              <img src="img/users-group.png" class="iconsmall"/>
+              <img src="img/users-group_gray.png" class="iconsmall"/>
+            </div>
+            <div class="iconWrapper social">
+              <img src="img/users-group.png" class="icon political"/>
+            </div>
+            <div class="pwrapper">
               <div class="powerScaleWrapper" style="">
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
-                <div class="powerScale individual">
+                <div class="powerScale social">
                 </div>
               </div>
-              <div class="fill individual" style="width: 100%;" id="powerBar3"></div>
+              <div class="powerBar social">
+                <div class="fill social" style="width: 50%;" id="powerBar2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="powerRow">
+        <div class="powerBartitle">Individual</div><div class="powerBarWrapper">
+          <div class="powerBarLevelsWrapper">
+            <img src="img/people.png" class="iconsmall"/>
+            <img src="img/people.png" class="iconsmall"/>
+            <img src="img/people_gray.png" class="iconsmall"/>
+          </div>
+            <div class="iconWrapper individual">
+              <img src="img/people.png" class="icon political"/>
+            </div>
+            <div class="pwrapper">
+              <div class="powerBar individual">
+                <div class="powerScaleWrapper" style="">
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                </div>
+                <div class="fill individual" style="width: 100%;" id="powerBar3"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
 
     </div>
     <div class="powerMessage">Great individual work, but try to improve your political impact</div>
 
     <div class="indicator indicatorc">
       <div class="powerTitle">Flood Warden Achievement</div>
-      <div class="powerContent wardenContent">
-        <div class="warden">
-          <div class="badge earned" >
-            <img src="img/badge1.png"/>
-            <div class="level_lbl"><b>Beginner</b> 1000</div>
+      <div class="arrow-down" onclick="hide(this)"></div>
+      <div class="hideable-area">
+        <div class="powerContent wardenContent">
+          <div class="warden">
+            <div class="badge earned" >
+              <img src="img/badge1.png"/>
+              <div class="level_lbl"><b>Beginner</b> 1000</div>
+            </div>
+            <div id="warden_bar_1">
+              <div id="warden_bar1_fill"  style="width:0%"></div>
+            </div>
+            <div class="badge " id="badge2">
+              <img src="img/badge2.png" id="badge_img2"/>
+              <div class="level_lbl"><b>Intermediate</b> 4000</div>
+            </div>
+            <div id="warden_bar_2">
+              <div id="warden_bar2_fill" style="width:0%"></div>
+            </div>
+            <div class="badge " id="badge3">
+              <img src="img/badge3.png" id="badge_img3"/>
+              <div class="level_lbl"><b>Advanced</b> 10000</div>
+            </div>
           </div>
-          <div id="warden_bar_1">
-            <div id="warden_bar1_fill"  style="width:0%"></div>
-          </div>
-          <div class="badge " id="badge2">
-            <img src="img/badge2.png" id="badge_img2"/>
-            <div class="level_lbl"><b>Intermediate</b> 4000</div>
-          </div>
-          <div id="warden_bar_2">
-            <div id="warden_bar2_fill" style="width:0%"></div>
-          </div>
-          <div class="badge " id="badge3">
-            <img src="img/badge3.png" id="badge_img3"/>
-            <div class="level_lbl"><b>Advanced</b> 10000</div>
-          </div>
+
+        </div>
+        <div class="powerContent">
+            <div class="boost_factor_wrapper">
+              <div class="boost_factor 1">1.5x</div>
+              <div class="boost_factor 2">2x</div>
+              <div class="boost_factor 3">3x</div>
+            </div>
         </div>
 
       </div>
-      <div class="powerContent">
-          <div class="boost_factor_wrapper">
-            <div class="boost_factor 1">1.5x</div>
-            <div class="boost_factor 2">2x</div>
-            <div class="boost_factor 3">3x</div>
-          </div>
-      </div>
+
 
     </div>
     <div class="powerMessage">You are a Beginner Flood Warden and your boost factor is 1.5. Way to go!</div>
 
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness</div>
+      <div class="arrow-down" onclick="hide(this)"></div>
+      <div class="hideable-area">
       <div class="toggleWrapper">
         <input type="checkbox" class="js-switch" checked  id="check_personal"/>
         <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Personal</div>
@@ -333,7 +345,7 @@
       <div style="margin-left:auto;margin-right:auto;">
         <canvas id="spider" height="350" width="750" style="z-index:1"></canvas>
       </div>
-
+      </div>
     </div>
     <div class="powerMessage">Help the community to get 10% more prepared for flooding!</div>
 
@@ -934,6 +946,21 @@ window.onload = function()
 
    for (var i = 0; i < pList.length; i++) {
       (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   }
+ }
+ function hide(el){
+   _hideable_area = el.parentElement.getElementsByClassName("hideable-area")[0];
+   if(_hideable_area.style.display != "none"){
+     _hideable_area.style.display = "none"
+     el.parentElement.style.height = "100px";
+     el.classList.remove("arrow-down");
+     el.classList.add("arrow-up");
+   }else{
+     _hideable_area.style.display = "block"
+     el.parentElement.style.height = "450px";
+     el.classList.remove("arrow-up");
+     el.classList.add("arrow-down");
+
    }
  }
  function resize(){
