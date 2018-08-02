@@ -13,7 +13,7 @@
     <div class="indicator indicatora">
       <div class="powerMessage">&nbsp;</div>
       <div class="powerTitle">Personal Preparedness</div>
-      <div class="arrow-down" onclick="hide(this)"></div>
+      <div class="arrow-down" onclick="toggleHideableArea(this)" data="1"></div>
       <div class="hideable-area">
         <div class="toggleWrapper">
           <input type="checkbox" class="js-switch" checked />
@@ -160,7 +160,7 @@
 
       <div class="indicator indicatorb">
         <div class="powerTitle">Personal Impact</div>
-        <div class="arrow-down" onclick="hide(this)"></div>
+        <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
         <div class="hideable-area">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
@@ -292,7 +292,7 @@
 
     <div class="indicator indicatorc">
       <div class="powerTitle">Flood Warden Achievement</div>
-      <div class="arrow-down" onclick="hide(this)"></div>
+      <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
       <div class="hideable-area">
         <div class="powerContent wardenContent">
           <div class="warden">
@@ -333,7 +333,7 @@
 
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness</div>
-      <div class="arrow-down" onclick="hide(this)"></div>
+      <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
       <div class="hideable-area">
       <div class="toggleWrapper">
         <input type="checkbox" class="js-switch" checked  id="check_personal"/>
@@ -948,7 +948,8 @@ window.onload = function()
       (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
  }
- function hide(el){
+ function toggleHideableArea(el){
+   var w = window.innerWidth;
    _hideable_area = el.parentElement.getElementsByClassName("hideable-area")[0];
    if(_hideable_area.style.display != "none"){
      _hideable_area.style.display = "none"
@@ -957,7 +958,12 @@ window.onload = function()
      el.classList.add("arrow-up");
    }else{
      _hideable_area.style.display = "block"
-     el.parentElement.style.height = "450px";
+     if(el.getAttribute("data") == "1" && w < 650){
+       el.parentElement.style.height = "780px";
+     }else{
+       el.parentElement.style.height = "450px";
+
+     }
      el.classList.remove("arrow-up");
      el.classList.add("arrow-down");
 
