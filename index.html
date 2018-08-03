@@ -421,12 +421,16 @@ input3.addEventListener('change', function(e) {
     setProgress3(input3.value);
   }
 })*/
-function changeProgress(){
-  setProgress(33);
-  setProgress2(66);
-  setProgress3(100);
+function changeProgress(la,lb,lc){
+  var _MAX_POINTS_LEVEL = 5000;
+  _p1 = la * 100 / _MAX_POINTS_LEVEL;
+  _p2 = lb * 100 / _MAX_POINTS_LEVEL;
+  _p3 = lc * 100 / _MAX_POINTS_LEVEL;
+  setProgress(_p1);
+  setProgress2(_p2);
+  setProgress3(_p3);
 }
-setTimeout(function(){ changeProgress() }, 1000);
+// setTimeout(function(){ changeProgress() }, 1000);
 function setProgressPowerBar(p,n){
   _pbar = document.getElementById("powerBar"+n);
   _pbar.style.width = p + "%";
@@ -876,6 +880,10 @@ window.onload = function()
 
    window.apiClient = new PowerApiClient(function(a){
      window.apiData = a;
+     _p1 = apiClient.getGlobal().gamification.personal["problem.awareness"];
+     _p2 = apiClient.getGlobal().gamification.personal["practical.knowledge"];
+     _p3 = apiClient.getGlobal().gamification.personal["ready.for.action"];
+     changeProgress(_p1,_p2,_p3);
      resize();
 
    });
@@ -908,7 +916,7 @@ window.onload = function()
                     _dataPersonalPersonal["ready.for.action"],
                     _dataPersonalPersonal["problem.awareness"]],false); //personal
    if(toggleStatus){
-     _dataGlobal = apiClient.getChallenge().obj.gamification;
+     _dataGlobal = apiClient.getGlobal().gamification;
      _dataGlobalSocial    = _dataGlobal.social;
      _dataGlobalPolitical = _dataGlobal.political;
      _dataGlobalPersonal  = _dataGlobal.personal;
