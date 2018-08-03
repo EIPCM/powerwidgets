@@ -439,6 +439,7 @@ function setProgressPowerBar(p,n){
   _pbar.style.width = p + "%";
 }
 function setWardenProgress(p){
+
   if(p < 100){
     // set only level 1, disable all the rest
     document.getElementById("warden_bar1_fill").style.width = p + "%"
@@ -912,6 +913,9 @@ window.onload = function()
      setProgressPowerBar(_l1,"1");
      setProgressPowerBar(_l2,"2");
      setProgressPowerBar(_l3,"3");
+
+     _totalProgress = _l1 + _l2 + _l3;
+
      resize();
 
    });
