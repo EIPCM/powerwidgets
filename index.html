@@ -875,7 +875,7 @@ window.onload = function()
     });
 
    window.apiClient = new PowerApiClient(function(a){
-
+     alert(JSON.stringify(apiClient.getChallenge()));
      window.apiData = a;
      resize();
 
