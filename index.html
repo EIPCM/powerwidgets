@@ -422,7 +422,7 @@ input3.addEventListener('change', function(e) {
   }
 })*/
 function changeProgress(la,lb,lc){
-  var _MAX_POINTS_LEVEL = 5000;
+  var _MAX_POINTS_LEVEL = 2000;
   _p1 = la * 100 / _MAX_POINTS_LEVEL;
   _p2 = lb * 100 / _MAX_POINTS_LEVEL;
   _p3 = lc * 100 / _MAX_POINTS_LEVEL;
@@ -432,6 +432,9 @@ function changeProgress(la,lb,lc){
 }
 // setTimeout(function(){ changeProgress() }, 1000);
 function setProgressPowerBar(p,n){
+  _MAX_POINTS_LEVEL = 2000;
+  p = p * 100 / _MAX_POINTS_LEVEL;
+
   _pbar = document.getElementById("powerBar"+n);
   _pbar.style.width = p + "%";
 }
@@ -880,10 +883,35 @@ window.onload = function()
 
    window.apiClient = new PowerApiClient(function(a){
      window.apiData = a;
-     _p1 = apiClient.getGlobal().gamification.personal["problem.awareness"];
-     _p2 = apiClient.getGlobal().gamification.personal["practical.knowledge"];
-     _p3 = apiClient.getGlobal().gamification.personal["ready.for.action"];
+     _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+     _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+     _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+
+     // ---------------------------------------------------------------------//
+     _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+     _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+     _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+
+     _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+     _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+     _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
      changeProgress(_p1,_p2,_p3);
+
+     _l1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+     _l1 += apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+     _l1 += apiClient.getUser().obj.gamification.personal["ready.for.action"];
+
+     _l2 = apiClient.getUser().obj.gamification.political["problem.awareness"];
+     _l2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+     _l2 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+
+     _l3 = apiClient.getUser().obj.gamification.social["problem.awareness"];
+     _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+     _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+
+     setProgressPowerBar(_l1,"1");
+     setProgressPowerBar(_l2,"2");
+     setProgressPowerBar(_l3,"3");
      resize();
 
    });
