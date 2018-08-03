@@ -296,8 +296,11 @@
       <div class="hideable-area">
         <div class="powerContent wardenContent">
           <div class="warden">
-            <div class="badge earned" >
-              <img src="img/badge1.png"/>
+            <div id="warden_bar_0">
+              <div id="warden_bar0_fill"  style="width:0%"></div>
+            </div>
+            <div class="badge"   id="badge1" >
+              <img src="img/badge1.png" id="badge_img1"/>
               <div class="level_lbl"><b>Beginner</b> 1000</div>
             </div>
             <div id="warden_bar_1">
@@ -438,31 +441,63 @@ function setProgressPowerBar(p,n){
   _pbar = document.getElementById("powerBar"+n);
   _pbar.style.width = p + "%";
 }
-function setWardenProgress(p){
+function setWardenProgress(n){
 
-  if(p < 100){
-    // set only level 1, disable all the rest
-    document.getElementById("warden_bar1_fill").style.width = p + "%"
-    document.getElementById("warden_bar2_fill").style.width = "0%"
-    document.getElementById("badge2").classList.remove("earned")
-    document.getElementById("badge3").classList.remove("earned")
-    document.getElementById("badge_img2").src = "img/badge2.png";
-    document.getElementById("badge_img3").src = "img/badge3.png";
+  var WARDEN_LVL_0 =  1000;
+  var WARDEN_LVL_1 =  4000;
+  var WARDEN_LVL_2 = 10000;
 
-  }else{
-    document.getElementById("warden_bar1_fill").style.width = "100%"
-    document.getElementById("warden_bar2_fill").style.width = (Math.abs(100 - p) + "%");
-    document.getElementById("badge2").classList.add("earned")
-    document.getElementById("badge_img2").src = "img/badge2_earned.png";
-    document.getElementById("badge_img3").src = "img/badge3.png";
-    document.getElementById("badge3").classList.remove("earned")
+  _w1 = n * 100 / WARDEN_LVL_0;
+  _w2 = (n - WARDEN_LVL_0) * 100 / (WARDEN_LVL_1 - WARDEN_LVL_0);
+  _w3 = (n - WARDEN_LVL_1) * 100 / (WARDEN_LVL_2 - WARDEN_LVL_1);
+  // set bar fills
+  document.getElementById("warden_bar0_fill").style.width = _w1 + "%"
+  document.getElementById("warden_bar1_fill").style.width = _w2 + "%"
+  document.getElementById("warden_bar2_fill").style.width = _w3 + "%"
 
-
-    if(p >= 200){
-      document.getElementById("badge3").classList.add("earned")
-      document.getElementById("badge_img3").src = "img/badge3_earned.png";
-    }
+  // set badges
+  document.getElementById("badge1").classList.remove("earned")
+  document.getElementById("badge2").classList.remove("earned")
+  document.getElementById("badge3").classList.remove("earned")
+  if(n >= WARDEN_LVL_0){
+    document.getElementById("badge1").classList.add("earned")
+    document.getElementById("badge_img1").src = "img/badge1_earned.png";
   }
+  if(n >= WARDEN_LVL_1){
+    document.getElementById("badge_img2").src = "img/badge2_earned.png";
+    document.getElementById("badge2").classList.add("earned")
+
+  }
+  if(n >= WARDEN_LVL_2){
+    document.getElementById("badge_img3").src = "img/badge3_earned.png";
+    document.getElementById("badge3").classList.add("earned")
+
+  }
+
+
+  // if(p < 100){
+  //   // set only level 1, disable all the rest
+  //   document.getElementById("warden_bar1_fill").style.width = p + "%"
+  //   document.getElementById("warden_bar2_fill").style.width = "0%"
+  //   document.getElementById("badge2").classList.remove("earned")
+  //   document.getElementById("badge3").classList.remove("earned")
+  //   document.getElementById("badge_img2").src = "img/badge2.png";
+  //   document.getElementById("badge_img3").src = "img/badge3.png";
+  //
+  // }else{
+  //   document.getElementById("warden_bar1_fill").style.width = "100%"
+  //   document.getElementById("warden_bar2_fill").style.width = (Math.abs(100 - p) + "%");
+  //   document.getElementById("badge2").classList.add("earned")
+  //   document.getElementById("badge_img2").src = "img/badge2_earned.png";
+  //   document.getElementById("badge_img3").src = "img/badge3.png";
+  //   document.getElementById("badge3").classList.remove("earned")
+  //
+  //
+  //   if(p >= 200){
+  //     document.getElementById("badge3").classList.add("earned")
+  //     document.getElementById("badge_img3").src = "img/badge3_earned.png";
+  //   }
+  // }
 }
 function initSpider(){
   var canvas = document.getElementById("spider");
@@ -915,7 +950,7 @@ window.onload = function()
      setProgressPowerBar(_l3,"3");
 
      _totalProgress = _l1 + _l2 + _l3;
-
+     setWardenProgress(_totalProgress);
      resize();
 
    });
