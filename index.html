@@ -56,8 +56,8 @@
             <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
 
           </svg>
-          <div class="circularLevelsWrapper">
-            <img src="img/circ_talk.png" class="iconsmall"/>
+          <div class="circularLevelsWrapper" id="circularLevels1">
+            <img src="img/circ_talk_gray.png" class="iconsmall"/>
             <img src="img/circ_talk_gray.png" class="iconsmall"/>
             <img src="img/circ_talk_gray.png" class="iconsmall"/>
           </div>
@@ -101,8 +101,8 @@
               cy="60"/>
             <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
           </svg>
-          <div class="circularLevelsWrapper">
-            <img src="img/circ_idea.png" class="iconsmall"/>
+          <div class="circularLevelsWrapper"  id="circularLevels2">
+            <img src="img/circ_idea_gray.png" class="iconsmall"/>
             <img src="img/circ_idea_gray.png" class="iconsmall"/>
             <img src="img/circ_idea_gray.png" class="iconsmall"/>
           </div>
@@ -145,8 +145,8 @@
               cy="60"/>
             <image xlink:href="img/ready_act.png" height="120" width="120"  rx="15" ry="15" />
           </svg>
-          <div class="circularLevelsWrapper">
-            <img src="img/circ_stopwatch.png" class="iconsmall"/>
+          <div class="circularLevelsWrapper" id="circularLevels3">
+            <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
             <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
             <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
           </div>
@@ -432,6 +432,54 @@ function changeProgress(la,lb,lc){
   setProgress(_p1);
   setProgress2(_p2);
   setProgress3(_p3);
+
+  addCircularLevelsPA(_p1);
+  addCircularLevelsKH(_p2);
+  addCircularLevelsRA(_p3);
+
+}
+function addCircularLevelsPA(l){
+  _earned  = '<img src="img/circ_talk.png" class="iconsmall"/>'
+  _nearned ='<img src="img/circ_talk_gray.png" class="iconsmall"/>'
+  if(l >= 6000){
+    _badges = _earned  + _earned + _earned;
+  }else if( (l <= 5999) && (l >= 4000) ){
+    _badges = _earned  + _earned + _nearned;
+  }else if( (l <= 3999) && (l >= 2000) ){
+    _badges = _earned  + _nearned + _nearned;
+  }else{
+    _badges = _nearned  + _nearned + _nearned;
+  }
+  document.getElementById("circularLevels1").innerHTML = _badges
+
+}
+function addCircularLevelsKW(l){
+  _earned  = '<img src="img/circ_idea.png" class="iconsmall"/>'
+  _nearned ='<img src="img/circ_idea_gray.png" class="iconsmall"/>'
+  if(l >= 6000){
+    _badges = _earned  + _earned + _earned;
+  }else if( (l <= 5999) && (l >= 4000) ){
+    _badges = _earned  + _earned + _nearned;
+  }else if( (l <= 3999) && (l >= 2000) ){
+    _badges = _earned  + _nearned + _nearned;
+  }else{
+    _badges = _nearned  + _nearned + _nearned;
+  }
+  document.getElementById("circularLevels2").innerHTML = _badges
+}
+function addCircularLevelsRA(l){
+  _earned  = '<img src="img/circ_stopwatch.png" class="iconsmall"/>'
+  _nearned ='<img src="img/circ_stopwatch_gray.png" class="iconsmall"/>'
+  if(l >= 6000){
+    _badges = _earned  + _earned + _earned;
+  }else if( (l <= 5999) && (l >= 4000) ){
+    _badges = _earned  + _earned + _nearned;
+  }else if( (l <= 3999) && (l >= 2000) ){
+    _badges = _earned  + _nearned + _nearned;
+  }else{
+    _badges = _nearned  + _nearned + _nearned;
+  }
+  document.getElementById("circularLevels3").innerHTML = _badges
 }
 // setTimeout(function(){ changeProgress() }, 1000);
 function setProgressPowerBar(p,n){
