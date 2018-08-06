@@ -168,7 +168,7 @@
           </div>
         <div class="powerRow">
           <div class="powerBartitle">Political</div><div class="powerBarWrapper">
-            <div class="powerBarLevelsWrapper">
+            <div class="powerBarLevelsWrapper" id="powerBarLevels1">
               <img src="img/political.png" class="iconsmall"/>
               <img src="img/political.png" class="iconsmall"/>
               <img src="img/political_gray.png" class="iconsmall"/>
@@ -208,7 +208,7 @@
         </div>
         <div class="powerRow">
           <div class="powerBartitle">Social</div><div class="powerBarWrapper">
-            <div class="powerBarLevelsWrapper">
+            <div class="powerBarLevelsWrapper"  id="powerBarLevels2">
               <img src="img/users-group.png" class="iconsmall"/>
               <img src="img/users-group.png" class="iconsmall"/>
               <img src="img/users-group_gray.png" class="iconsmall"/>
@@ -247,7 +247,7 @@
         </div>
         <div class="powerRow">
         <div class="powerBartitle">Individual</div><div class="powerBarWrapper">
-          <div class="powerBarLevelsWrapper">
+          <div class="powerBarLevelsWrapper"  id="powerBarLevels3">
             <img src="img/people.png" class="iconsmall"/>
             <img src="img/people.png" class="iconsmall"/>
             <img src="img/people_gray.png" class="iconsmall"/>
@@ -488,6 +488,48 @@ function setProgressPowerBar(p,n){
 
   _pbar = document.getElementById("powerBar"+n);
   _pbar.style.width = p + "%";
+}
+function addPowerBarLevelsPA(l){
+  _earned  = '<img src="img/political.png" class="iconsmall"/>'
+  _nearned ='<img src="img/political_gray.png" class="iconsmall"/>'
+  if(l >= 6000){
+    _badges = _earned  + _earned + _earned;
+  }else if( (l <= 5999) && (l >= 4000) ){
+    _badges = _earned  + _earned + _nearned;
+  }else if( (l <= 3999) && (l >= 2000) ){
+    _badges = _earned  + _nearned + _nearned;
+  }else{
+    _badges = _nearned  + _nearned + _nearned;
+  }
+  document.getElementById("powerBarLevels1").innerHTML = _badges
+}
+function addPowerBarLevelsSO(l){
+  _earned  = '<img src="img/users-group.png" class="iconsmall"/>'
+  _nearned ='<img src="img/users-group_gray.png" class="iconsmall"/>'
+  if(l >= 6000){
+    _badges = _earned  + _earned + _earned;
+  }else if( (l <= 5999) && (l >= 4000) ){
+    _badges = _earned  + _earned + _nearned;
+  }else if( (l <= 3999) && (l >= 2000) ){
+    _badges = _earned  + _nearned + _nearned;
+  }else{
+    _badges = _nearned  + _nearned + _nearned;
+  }
+  document.getElementById("powerBarLevels2").innerHTML = _badges
+}
+function addPowerBarLevelsIN(l){
+  _earned  = '<img src="img/people.png" class="iconsmall"/>'
+  _nearned ='<img src="img/people_gray.png" class="iconsmall"/>'
+  if(l >= 6000){
+    _badges = _earned  + _earned + _earned;
+  }else if( (l <= 5999) && (l >= 4000) ){
+    _badges = _earned  + _earned + _nearned;
+  }else if( (l <= 3999) && (l >= 2000) ){
+    _badges = _earned  + _nearned + _nearned;
+  }else{
+    _badges = _nearned  + _nearned + _nearned;
+  }
+  document.getElementById("powerBarLevels3").innerHTML = _badges
 }
 function setWardenProgress(n){
 
@@ -993,10 +1035,13 @@ window.onload = function()
      _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
      _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
 
-     setProgressPowerBar(_l1,"1");
-     setProgressPowerBar(_l2,"2");
-     setProgressPowerBar(_l3,"3");
+     setProgressPowerBar(_l1,1);
+     setProgressPowerBar(_l2,2);
+     setProgressPowerBar(_l3,3);
 
+     addPowerBarLevelsPA(_l1);
+     addPowerBarLevelsSO(_l2);
+     addPowerBarLevelsIN(_l3);
      _totalProgress = _l1 + _l2 + _l3;
      setWardenProgress(_totalProgress);
      resize();
