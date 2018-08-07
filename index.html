@@ -1084,7 +1084,9 @@ window.onload = function()
                     _dataGlobalPolitical["problem.awareness"],
                     _dataGlobalPersonal["practical.knowledge"],
                     _dataGlobalPersonal["ready.for.action"],
-                    _dataGlobalPersonal["problem.awareness"]],false); //global
+                    _dataGlobalPersonal["problem.awareness"],
+                    _dataGlobalSocial["practical.knowledge"],
+                  ],false); //global
 
    if(toggleStatus){
      _dataPersonal = apiClient.getUser().obj.gamification;
@@ -1099,7 +1101,9 @@ window.onload = function()
                       _dataPersonalPolitical["problem.awareness"],
                       _dataPersonalPersonal["practical.knowledge"],
                       _dataPersonalPersonal["ready.for.action"],
-                      _dataPersonalPersonal["problem.awareness"]],true); //personal
+                      _dataPersonalPersonal["problem.awareness"],
+                      _dataPersonalSocial["practical.knowledge"]
+                    ],true); //personal
    }
    addLeyend();
 
