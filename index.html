@@ -426,9 +426,13 @@ input3.addEventListener('change', function(e) {
 })*/
 function changeProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 2000;
-  _p1 = la * 100 / _MAX_POINTS_LEVEL;
-  _p2 = lb * 100 / _MAX_POINTS_LEVEL;
-  _p3 = lc * 100 / _MAX_POINTS_LEVEL;
+  lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+  lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+  lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+
+  _p1 = lra * 100 / _MAX_POINTS_LEVEL;
+  _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
+  _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
   setProgress(_p1);
   setProgress2(_p2);
   setProgress3(_p3);
