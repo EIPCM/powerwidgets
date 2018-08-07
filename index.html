@@ -912,6 +912,13 @@ if(sizeWidth <  620){
 
 }
 function addPoligons(values,dashed){
+  _MAX_POLIGON_VALUE = 5000;
+  _nvalues = [];
+  values.forEach(function(v){
+    _nv = v * 10 / _MAX_POLIGON_VALUE;
+    _nvalues.push(_nv);
+  })
+  values = _nvalues;
   _degrees = [0,40,80,120,160,200,240,280,320,360];
   _offset = 10; //All lines will be turned with this offset.
   var canvas = document.getElementById("spider");
