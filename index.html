@@ -11,7 +11,7 @@
   <body  onresize="resize()">
   <div class="indicators">
     <div class="indicator indicatora">
-      <div class="powerMessage">&nbsp;</div>
+      <div class="powerMessage">Total Score: <span id="total_score"></span></div>
       <div class="powerTitle">Personal Preparedness</div>
       <div class="arrow-down" onclick="toggleHideableArea(this)" data="1"></div>
       <div class="hideable-area">
@@ -1050,6 +1050,7 @@ window.onload = function()
      addPowerBarLevelsSO(_l2);
      addPowerBarLevelsIN(_l3);
      _totalProgress = _l1 + _l2 + _l3;
+     document.getElementById("total_score").innerHTML = _totalProgress;
      setWardenProgress(_totalProgress);
      resize();
 
