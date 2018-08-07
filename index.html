@@ -1083,7 +1083,8 @@ window.onload = function()
                     _dataPersonalPersonal["ready.for.action"],
                     _dataPersonalPersonal["problem.awareness"]],false); //personal
    if(toggleStatus){
-     _dataGlobal = apiClient.getGlobal().gamification;
+     // apiClient.getGlobal().obj.gamification.social
+     _dataGlobal = apiClient.getGlobal().obj.gamification;
      _dataGlobalSocial    = _dataGlobal.social;
      _dataGlobalPolitical = _dataGlobal.political;
      _dataGlobalPersonal  = _dataGlobal.personal;
