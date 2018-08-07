@@ -1070,35 +1070,36 @@ window.onload = function()
  function initPoligons(toggleStatus){
    initSpider();
    addGoals();
-   _dataPersonal = apiClient.getUser().obj.gamification;
-   _dataPersonalSocial    = _dataPersonal.social;
-   _dataPersonalPolitical = _dataPersonal.political;
-   _dataPersonalPersonal  = _dataPersonal.personal;
-   addPoligons([    _dataPersonalSocial["practical.knowledge"],
-                    _dataPersonalSocial["ready.for.action"],
-                    _dataPersonalSocial["problem.awareness"],
-                    _dataPersonalPolitical["practical.knowledge"],
-                    _dataPersonalPolitical["ready.for.action"],
-                    _dataPersonalPolitical["problem.awareness"],
-                    _dataPersonalPersonal["practical.knowledge"],
-                    _dataPersonalPersonal["ready.for.action"],
-                    _dataPersonalPersonal["problem.awareness"]],false); //personal
-   if(toggleStatus){
-     // apiClient.getGlobal().obj.gamification.social
-     _dataGlobal = apiClient.getGlobal().obj.gamification;
-     _dataGlobalSocial    = _dataGlobal.social;
-     _dataGlobalPolitical = _dataGlobal.political;
-     _dataGlobalPersonal  = _dataGlobal.personal;
+   // apiClient.getGlobal().obj.gamification.social
+   _dataGlobal = apiClient.getGlobal().obj.gamification;
+   _dataGlobalSocial    = _dataGlobal.social;
+   _dataGlobalPolitical = _dataGlobal.political;
+   _dataGlobalPersonal  = _dataGlobal.personal;
 
-     addPoligons([    _dataGlobalSocial["practical.knowledge"],
-                      _dataGlobalSocial["ready.for.action"],
-                      _dataGlobalSocial["problem.awareness"],
-                      _dataGlobalPolitical["practical.knowledge"],
-                      _dataGlobalPolitical["ready.for.action"],
-                      _dataGlobalPolitical["problem.awareness"],
-                      _dataGlobalPersonal["practical.knowledge"],
-                      _dataGlobalPersonal["ready.for.action"],
-                      _dataGlobalPersonal["problem.awareness"]],true); //global
+   addPoligons([    _dataGlobalSocial["practical.knowledge"],
+                    _dataGlobalSocial["ready.for.action"],
+                    _dataGlobalSocial["problem.awareness"],
+                    _dataGlobalPolitical["practical.knowledge"],
+                    _dataGlobalPolitical["ready.for.action"],
+                    _dataGlobalPolitical["problem.awareness"],
+                    _dataGlobalPersonal["practical.knowledge"],
+                    _dataGlobalPersonal["ready.for.action"],
+                    _dataGlobalPersonal["problem.awareness"]],true); //global
+
+   if(toggleStatus){
+     _dataPersonal = apiClient.getUser().obj.gamification;
+     _dataPersonalSocial    = _dataPersonal.social;
+     _dataPersonalPolitical = _dataPersonal.political;
+     _dataPersonalPersonal  = _dataPersonal.personal;
+     addPoligons([    _dataPersonalSocial["practical.knowledge"],
+                      _dataPersonalSocial["ready.for.action"],
+                      _dataPersonalSocial["problem.awareness"],
+                      _dataPersonalPolitical["practical.knowledge"],
+                      _dataPersonalPolitical["ready.for.action"],
+                      _dataPersonalPolitical["problem.awareness"],
+                      _dataPersonalPersonal["practical.knowledge"],
+                      _dataPersonalPersonal["ready.for.action"],
+                      _dataPersonalPersonal["problem.awareness"]],false); //personal
    }
    addLeyend();
 
@@ -1146,7 +1147,8 @@ window.onload = function()
    }
  }
  function resize(){
-   initPoligons();
+   _checked = document.getElementsByClassName("js-switch")[2].checked;
+   initPoligons(_checked);
    toggleLevelsPersonalImpact();
    toggleLevelsPersonalPreparedness();
  }
