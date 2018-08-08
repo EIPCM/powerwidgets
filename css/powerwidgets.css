@@ -248,9 +248,13 @@
 
   }
 }
+
 @media only screen and (max-device-width: 800px) {
   .powerMessage{
     font-size: 1em !important;
+  }
+  #links{
+    display: none !important;
   }
   .powerTitle{
     font-size: .8em !important;
@@ -384,6 +388,9 @@ border: 1px solid #808D1E;
   .indicatora{
     height: 760px;
   }
+  #links{
+    display: none !important;
+  }
 }
 
 
@@ -398,6 +405,7 @@ border: 1px solid #808D1E;
   .indicatora{
     height: 760px;
   }
+
 }
 /*--------------POWER CIRCULAR ENDS-------------------------------------------*/
 .progress-ring {
@@ -509,4 +517,9 @@ margin-left: auto;margin-right: auto;display: block;
 }
 .arrow-up:hover{
   cursor: pointer;
+}
+a {
+  color: white;
+  text-decoration: underline; /* no underline */
+
 }

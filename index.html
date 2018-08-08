@@ -11,8 +11,18 @@
   <body  onresize="resize()">
   <div class="indicators">
     <div class="indicator indicatora">
-      <div class="powerMessage">Total Score: <span id="total_score"></span></div>
-      <div class="powerTitle">Personal Preparedness</div>
+      <div class="powerMessage">
+        <span style="display:flex;flex-direction:row;justify-content:space-between;" >
+          <span>Total Score: <span id="total_score"></span></span>
+          <span style="display: flex;flex-direction: row;justify-content: space-between;flex: .5;" id="links">
+            <a href="#preparedness">Preparedness</a>
+            <a href="#impact">Impact</a>
+            <a href="#achievement">Achievement</a>
+            <a href="#community">Community</a>
+          </span>
+        </span>
+      </div>
+      <div class="powerTitle" id="preparedness">Personal Preparedness</div>
       <div class="arrow-down" onclick="toggleHideableArea(this)" data="1"></div>
       <div class="hideable-area">
         <div class="toggleWrapper">
@@ -156,7 +166,7 @@
 
 
     </div>
-    <div class="powerMessage">You are well aware about flood issues, but try to improve your Know-How next time!</div>
+    <div class="powerMessage" id="impact">You are well aware about flood issues, but try to improve your Know-How next time!</div>
 
       <div class="indicator indicatorb">
         <div class="powerTitle">Personal Impact</div>
@@ -288,7 +298,7 @@
 
 
     </div>
-    <div class="powerMessage">Great individual work, but try to improve your political impact</div>
+    <div class="powerMessage" id="achievement">Great individual work, but try to improve your political impact</div>
 
     <div class="indicator indicatorc">
       <div class="powerTitle">Flood Warden Achievement</div>
@@ -332,7 +342,7 @@
 
 
     </div>
-    <div class="powerMessage">You are a Beginner Flood Warden and your boost factor is 1.5. Way to go!</div>
+    <div class="powerMessage" id="community">You are a Beginner Flood Warden and your boost factor is 1.5. Way to go!</div>
 
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness</div>
