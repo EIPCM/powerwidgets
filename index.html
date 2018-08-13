@@ -1,4 +1,14 @@
 <html>
+<div class="powerPopup">
+  <div class="powerPopupContent">
+    <div  class="powerCloseButtonWrapper" onclick="hidePowerPopup();">
+      <img src="img/cancel.png" width="32" height="32"></img>
+    </div>
+    <div  id="powerPopupContent">
+    </div>
+
+  </div>
+</div>
   <head>
    <link rel="stylesheet" type="text/css" href="css/powerwidgets.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -8,173 +18,175 @@
 
    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
   </head>
+
   <body  onresize="resize()">
-  <div class="indicators">
-    <div class="indicator indicatora">
-      <div class="powerMessage">
-        <span style="display:flex;flex-direction:row;justify-content:space-between;" >
-          <span>Total Score: <span id="total_score"></span></span>
-          <span style="display: flex;flex-direction: row;justify-content: space-between;flex: .8;" id="links">
-            <a href="#preparedness">Preparedness</a>
-            <a href="#impact">Impact</a>
-            <a href="#achievement">Achievement</a>
-            <a href="#community">Community</a>
+
+    <div class="indicators">
+      <div class="indicator indicatora">
+        <div class="powerMessage">
+          <span style="display:flex;flex-direction:row;justify-content:space-between;" >
+            <span>Total Score: <span id="total_score"></span></span>
+            <span style="display: flex;flex-direction: row;justify-content: space-between;flex: .8;" id="links">
+              <a href="#preparedness">Preparedness</a>
+              <a href="#impact">Impact</a>
+              <a href="#achievement">Achievement</a>
+              <a href="#community">Community</a>
+            </span>
           </span>
-        </span>
+        </div>
+        <div class="powerTitle" id="preparedness">Personal Preparedness <img src="img/information.png" height="25" width="25" class="infoButton" onclick="m1()"></img></div>
+        <div class="arrow-down" onclick="toggleHideableArea(this)" data="1"></div>
+        <div class="hideable-area">
+          <div class="toggleWrapper">
+            <input type="checkbox" class="js-switch" checked />
+            <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels <img src="img/information.png" height="25" width="25" class="infoButton" onclick="m2()"></img></div>
+          </div>
+          <div class="circularWrapper">
+          <div class="svgWrapper">
+            <div class="circularTitle">Problem<br> Awareness</div>
+            <svg
+               class="progress-ring"
+               width="120"
+               fill="#13377f"
+               height="120"
+               shape-rendering="geometricPrecision"
+               >
+              <circle
+                id="circ_1"
+                class="progress-ring__circle"
+                transform="rotate(-90 0 0)"
+                stroke="#6d0949"
+                stroke-width="50"
+                fill="#13377f"
+                r="30"
+                cx="60"
+                cy="60"/>
+              <circle
+                stroke="white"
+                stroke-width="2"
+                fill="#6d0949"
+                r="30"
+                cx="60"
+                cy="60"/>
+              <circle
+                stroke="#6d0949"
+                stroke-width="2"
+                fill="transparent"
+                r="57"
+                cx="60"
+                cy="60"/>
+              <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
+
+            </svg>
+            <div class="circularLevelsWrapper" id="circularLevels1">
+              <img src="img/circ_talk_gray.png" class="iconsmall"/>
+              <img src="img/circ_talk_gray.png" class="iconsmall"/>
+              <img src="img/circ_talk_gray.png" class="iconsmall"/>
+            </div>
+
+
+          </div>
+          <div class="svgWrapper">
+            <div class="circularTitle">Know- <br>How</div>
+
+            <svg
+               class="progress-ring"
+               width="120"
+               fill="#13377f"
+               height="120"
+               shape-rendering="geometricPrecision"
+               >
+              <circle
+                class="progress-ring__circle"
+                transform="rotate(-90 0 0)"
+                stroke="#13377f"
+                stroke-width="50"
+                fill="#13377f"
+                r="30"
+                cx="60"
+                cy="60"
+                id="circ_2"
+                />
+              <circle
+                stroke="white"
+                stroke-width="2"
+                fill="#13377f"
+                r="30"
+                cx="60"
+                cy="60"/>
+              <circle
+                stroke="#13377f"
+                stroke-width="2"
+                fill="transparent"
+                r="57"
+                cx="60"
+                cy="60"/>
+              <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
+            </svg>
+            <div class="circularLevelsWrapper"  id="circularLevels2">
+              <img src="img/circ_idea_gray.png" class="iconsmall"/>
+              <img src="img/circ_idea_gray.png" class="iconsmall"/>
+              <img src="img/circ_idea_gray.png" class="iconsmall"/>
+            </div>
+          </div>
+
+          <div class="svgWrapper">
+            <div class="circularTitle">Ready <br>to Act</div>
+
+            <svg
+               class="progress-ring"
+               width="120"
+               fill="#493f8d"
+               height="120"
+               shape-rendering="geometricPrecision"
+               >
+              <circle
+                class="progress-ring__circle"
+                transform="rotate(-90 0 0)"
+                stroke="#493f8d"
+                stroke-width="50"
+                fill="#493f8d"
+                r="30"
+                cx="60"
+                cy="60"
+                id="circ_3"
+                />
+              <circle
+                stroke="white"
+                stroke-width="2"
+                fill="#493f8d"
+                r="30"
+                cx="60"
+                cy="60"/>
+              <circle
+                stroke="#493f8d"
+                stroke-width="2"
+                fill="transparent"
+                r="57"
+                cx="60"
+                cy="60"/>
+              <image xlink:href="img/ready_act.png" height="120" width="120"  rx="15" ry="15" />
+            </svg>
+            <div class="circularLevelsWrapper" id="circularLevels3">
+              <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+              <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+              <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="powerTitle" id="preparedness">Personal Preparedness</div>
-      <div class="arrow-down" onclick="toggleHideableArea(this)" data="1"></div>
-      <div class="hideable-area">
-        <div class="toggleWrapper">
-          <input type="checkbox" class="js-switch" checked />
-          <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
-        </div>
-        <div class="circularWrapper">
-        <div class="svgWrapper">
-          <div class="circularTitle">Problem<br> Awareness</div>
-          <svg
-             class="progress-ring"
-             width="120"
-             fill="#13377f"
-             height="120"
-             shape-rendering="geometricPrecision"
-             >
-            <circle
-              id="circ_1"
-              class="progress-ring__circle"
-              transform="rotate(-90 0 0)"
-              stroke="#6d0949"
-              stroke-width="50"
-              fill="#13377f"
-              r="30"
-              cx="60"
-              cy="60"/>
-            <circle
-              stroke="white"
-              stroke-width="2"
-              fill="#6d0949"
-              r="30"
-              cx="60"
-              cy="60"/>
-            <circle
-              stroke="#6d0949"
-              stroke-width="2"
-              fill="transparent"
-              r="57"
-              cx="60"
-              cy="60"/>
-            <image xlink:href="img/prob_awe.png" height="120" width="120"  rx="15" ry="15" />
-
-          </svg>
-          <div class="circularLevelsWrapper" id="circularLevels1">
-            <img src="img/circ_talk_gray.png" class="iconsmall"/>
-            <img src="img/circ_talk_gray.png" class="iconsmall"/>
-            <img src="img/circ_talk_gray.png" class="iconsmall"/>
-          </div>
-
-
-        </div>
-        <div class="svgWrapper">
-          <div class="circularTitle">Know- <br>How</div>
-
-          <svg
-             class="progress-ring"
-             width="120"
-             fill="#13377f"
-             height="120"
-             shape-rendering="geometricPrecision"
-             >
-            <circle
-              class="progress-ring__circle"
-              transform="rotate(-90 0 0)"
-              stroke="#13377f"
-              stroke-width="50"
-              fill="#13377f"
-              r="30"
-              cx="60"
-              cy="60"
-              id="circ_2"
-              />
-            <circle
-              stroke="white"
-              stroke-width="2"
-              fill="#13377f"
-              r="30"
-              cx="60"
-              cy="60"/>
-            <circle
-              stroke="#13377f"
-              stroke-width="2"
-              fill="transparent"
-              r="57"
-              cx="60"
-              cy="60"/>
-            <image xlink:href="img/idea.png" height="120" width="120"  rx="15" ry="15" />
-          </svg>
-          <div class="circularLevelsWrapper"  id="circularLevels2">
-            <img src="img/circ_idea_gray.png" class="iconsmall"/>
-            <img src="img/circ_idea_gray.png" class="iconsmall"/>
-            <img src="img/circ_idea_gray.png" class="iconsmall"/>
-          </div>
-        </div>
-
-        <div class="svgWrapper">
-          <div class="circularTitle">Ready <br>to Act</div>
-
-          <svg
-             class="progress-ring"
-             width="120"
-             fill="#493f8d"
-             height="120"
-             shape-rendering="geometricPrecision"
-             >
-            <circle
-              class="progress-ring__circle"
-              transform="rotate(-90 0 0)"
-              stroke="#493f8d"
-              stroke-width="50"
-              fill="#493f8d"
-              r="30"
-              cx="60"
-              cy="60"
-              id="circ_3"
-              />
-            <circle
-              stroke="white"
-              stroke-width="2"
-              fill="#493f8d"
-              r="30"
-              cx="60"
-              cy="60"/>
-            <circle
-              stroke="#493f8d"
-              stroke-width="2"
-              fill="transparent"
-              r="57"
-              cx="60"
-              cy="60"/>
-            <image xlink:href="img/ready_act.png" height="120" width="120"  rx="15" ry="15" />
-          </svg>
-          <div class="circularLevelsWrapper" id="circularLevels3">
-            <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-            <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-            <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
     </div>
     <div class="powerMessage" id="impact">You are well aware about flood issues, but try to improve your Know-How next time!</div>
 
       <div class="indicator indicatorb">
-        <div class="powerTitle">Personal Impact</div>
+        <div class="powerTitle">Personal Impact <img src="img/information.png" height="25" width="25" class="infoButton" onclick="m6()"></img></div>
         <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
         <div class="hideable-area">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
-            <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels</div>
+            <div style="font-family: 'Fredoka One', cursive;margin-top: 10px;margin-right:5px;">Show Levels <img src="img/information.png" height="25" width="25" class="infoButton" onclick="m2()"></img></div>
           </div>
         <div class="powerRow">
           <div class="powerBartitle">Political</div><div class="powerBarWrapper">
@@ -301,7 +313,7 @@
     <div class="powerMessage" id="achievement">Great individual work, but try to improve your political impact</div>
 
     <div class="indicator indicatorc">
-      <div class="powerTitle">Flood Warden Achievement</div>
+      <div class="powerTitle">Flood Warden Achievement <img src="img/information.png" height="25" width="25" class="infoButton" onclick="m5()"></img></div>
       <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
       <div class="hideable-area">
         <div class="powerContent wardenContent">
@@ -331,6 +343,7 @@
 
         </div>
         <div class="powerContent">
+          <div class="powerTitle">Boost Factor<img src="img/information.png" height="25" width="25" class="infoButton" onclick="m3()"></img></div>
             <div class="boost_factor_wrapper">
               <div class="boost_factor 1">1.5x</div>
               <div class="boost_factor 2">2x</div>
@@ -345,7 +358,7 @@
     <div class="powerMessage" id="community">You are a Beginner Flood Warden and your boost factor is 1.5. Way to go!</div>
 
     <div class="indicator indicatord">
-      <div class="powerTitle">Community Preparedness</div>
+      <div class="powerTitle">Community Preparedness <img src="img/information.png" height="25" width="25" class="infoButton" onclick="m4()"></img></div>
       <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
       <div class="hideable-area">
       <div class="toggleWrapper">
@@ -363,7 +376,7 @@
     <div class="powerMessage">Help the community to get 10% more prepared for flooding!</div>
 
   </div>
-</div>
+  </div>
   </body>
 <script>
 var circle = document.getElementById("circ_1");
@@ -1174,5 +1187,37 @@ window.onload = function()
    toggleLevelsPersonalImpact();
    toggleLevelsPersonalPreparedness();
  }
+ function powerPopup(content){
+   _content = document.getElementById("powerPopupContent")
+   _content.innerHTML = content;
+   _els = document.getElementsByClassName("powerPopup");
+   for (var i = 0; i < _els.length; i++) {
+     _els[i].style.display = "flex";
+   }
+ }
+ function hidePowerPopup(){
+   _els = document.getElementsByClassName("powerPopup");
+   for (var i = 0; i < _els.length; i++) {
+     _els[i].style.display = "none";
+   }
+ }
+function m1(){
+   powerPopup("<p>In order to be flood prepared, you need to increase your problem awareness, know-how in flood related issues and become ready to act in case of a flood occurs. Personal preparedness shows how well prepared are you for the case of flooding in these categories. For example if you read an article about flood risk - you increase your awareness, where as if you read about tips to prepare your self - you get points in readiness to act.<p><p>This visualization graphically displays the points you achieved in one of the preparedness categories summed up over the corresponding individual, social and political categories. For example, your problem awareness score is the sum of problem awareness scores of the individual, social and political impact, whereas know-how score is the sum of know how scores of individual, social and politcal.</p>")
+}
+function m2(){
+  powerPopup("<p>Once the progress bar is full, you go to the next level and you fill the bar from the start.</p><p>Show levels displays the level you have already achieved by a colored icon relating to the category where the level has been increased.</p>")
+}
+function m3(){
+  powerPopup("<p>Your boost factor relates to the Competitiobn that you can take part additionally on this platform. With this factor your vote for the idea participating in the contest will be weighted.</p>")
+}
+function m4(){
+  powerPopup("<p>Community Preparedness shows how prepared your local community is the various areas: awareness, know-how and readiness to act, on the individual, social and political levels. In the circle you can see the scores the community members obtained on average in these categories. Additionaly, you can see how many people are in your community currently.</p><p>The goal is to gain full flledged knowledge in all of the areas - therefore your goal is to reach one of the circles displayed. This means that you are equally well prepared on all 9 categories. Studies show that by increasing awareness, know-how and readiness to act, such platforms can increase the overall level of preparedness of the community up to 10%</p><p>By toggleing the option 'show personal' you can additionally display your personal scores that you obtained in each category. Thus you can see how your level of preparedness contributed in each category. Thus you can see how your level of preparedness contributed to the preparedness of the community. For example, if in one of the categories your score is higher that that of the community, it means that your actions on the platform contributed more to the overall preparedness of the community.</p>")
+}
+function m5(){
+  powerPopup("<p>Flood Warden achievment shows what you achieved in total based on your activities on the platform. It relates to the total points you receive.<p>Once you achieve a 'Beginner' level, you become aware of the need to prepare yourself. On the 'Intermediate' level, you already achieved a certain amount of preparedness. On the 'Advanced' level you can consider yourself to be fully prepared for the case of flooding.</p>")
+}
+function m6(){
+  powerPopup("<p>Flooding is an issue that does not concert only you personally. Personal impact shows how the actions you do on the platform can have impact on individual, social and political levels. For example, if you share a certain issue about flood warning, it has also a social impact. If you attend an event on flood prevention, you show your political participation.</p><p>The visualization graphically displays the points you achieved in each of the impact categories summed up over their corresponding awareness, know-how and readiness. For example, your social score is the sum of social scores of awareness, know-how and readiness to act, whereas your political score is the sum of political scores of awareness, know-how and readiness to act.</p>")
+}
 </script>
 </html>

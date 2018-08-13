@@ -2,6 +2,10 @@
   @author: Darien Miranda <d.miranda@eipcm.org>
   Copyright 2018 - EIPCM
   */
+html,body{
+  margin:0;
+  padding:0;
+}
 .indicators{
   width: 100%;
   margin-left: auto;
@@ -522,4 +526,39 @@ a {
   color: white;
   text-decoration: underline; /* no underline */
 
+}
+/* POPUP */
+.powerPopup{
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: 100%;
+  background-color: #09244c99;
+  z-index: 99;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-x: none;
+  overflow-y: auto;
+}
+.powerPopupContent{
+  width: 80%;
+  background-color: #09244c;
+  color: white;
+  padding: 1%;
+  max-height: 80%;
+  overflow-x: none;
+  overflow-y: auto;
+}
+.powerPopupContent p{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+.powerCloseButtonWrapper{
+  text-align: right;
+  width: 100%;
+  cursor: pointer;
+}
+.infoButton{
+  cursor: pointer;
 }
