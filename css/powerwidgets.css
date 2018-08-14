@@ -39,6 +39,7 @@ html,body{
   padding-left: 20px;
   padding-top: 10px;
   color:#0545a4;
+  font-size: 24px;
 
 }
 /*--------------POWER BAR STARTS----------------------------------------------*/
@@ -561,4 +562,9 @@ a {
 }
 .infoButton{
   cursor: pointer;
+}
+.toggleWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: right;
 }
