@@ -768,7 +768,16 @@ function addSize(size){
   ctx.strokeStyle = '#848177';
   ctx.moveTo(0,0);
   ctx.fillStyle   = "#848177";
+  if(size <= 20){
+    _size  = "Small";
+  }else if((size >= 20) && (size <= 50)){
+    _size = "Medium";
+  }else{
+    _size = "Large";
+  }
   ctx.fillText("Community Size",sizeWidth - 100,sizeHeight - 50);
+  ctx.fillText(_size,sizeWidth - 100,sizeHeight - 25);
+
   ctx.stroke();
 }
 function addGoals(){
@@ -1128,7 +1137,7 @@ window.onload = function()
  function initPoligons(toggleStatus){
    initSpider();
    addGoals();
-   addSize();
+   addSize(apiClient.getGlobal().obj.participants);
 
    // apiClient.getGlobal().obj.gamification.social
    _dataGlobal = apiClient.getGlobal().obj.gamification;

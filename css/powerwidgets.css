@@ -574,9 +574,9 @@ a {
 }
 .powerSeparator{
   width: 2px;
-  height: 275px;
+  height: 230px;
   background-color: #0a5149;
   margin-top: 16px;
   border-radius: 11px;
-
+  margin-bottom: 16px;
 }
