@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/pointsWidget.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <header id="title">Your Latest Achievement</header>
+      <div class="wrow">
+        <img src="img/circ_talk.png" height="44" width="44" class="wimage ">
+        <div class="titleWrapper">
+          <div class="wtitle"> Problem Awareness</div>
+          <div class="wscore" id="s1">0</div>
+        </div>
+      </div>
+      <div class="wrow">
+        <img src="img/circ_idea.png" height="44" width="44" class="wimage ">
+        <div class="titleWrapper">
+          <div class="wtitle"> Know <br>How</div>
+          <div class="wscore" id="s2">0</div>
+        </div>
+      </div>
+      <div class="wrow">
+        <img src="img/circ_stopwatch.png" height="44" width="44" class="wimage ">
+        <div class="titleWrapper">
+          <div class="wtitle"> Ready to <br>Act</div>
+          <div class="wscore" id="s3">0</div>
+        </div>
+      </div>
+      <div class="wbutton">
+        View More
+      </div>
+    </div>
+  </body>
+  <script>
+  window.onload = function()
+   {
+     window.apiClient = new PowerApiClient(function(a){
+       window.apiData = a;
+       _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+       _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+       _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+
+       // ---------------------------------------------------------------------//
+       _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+       _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+       _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+
+       _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+       _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+       _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+       document.getElementById("s1").innerHTML = _p1;
+       document.getElementById("s2").innerHTML = _p2;
+       document.getElementById("s3").innerHTML = _p3;
+     });
+
+   }
+
+  </script>
+</html>
