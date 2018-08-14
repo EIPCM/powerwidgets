@@ -10,12 +10,11 @@ html,body{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
 }
 .indicator{
   width: 100%;
   display: block;
-  height: 450px;
+  height: auto;
 }
 .indicatora{
 
@@ -156,7 +155,6 @@ html,body{
   background-color: #cce5ff;
 }
 .powerRow{
-  float: left;
   width: 100%;
 }
 /*--------------POWER BAR ENDS------------------------------------------------*/
@@ -508,6 +506,7 @@ margin-left: auto;margin-right: auto;display: block;
   border-right: 20px solid transparent;
   border-top: 20px solid #09244c;
   float:right;
+  margin-top: 10px;
 }
 .arrow-up {
   width: 0;
