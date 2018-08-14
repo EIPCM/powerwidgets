@@ -675,7 +675,7 @@ function initSpider(){
 
   _degrees = [0,40,80,120,160,200,240,280,320];
   _labels  = [" Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","   Know-how",]
-  _categories = ["Social","Political","Individual"]
+  _categories = ["Social","Social","Social","Political","Political","Political","Individual","Individual","Individual"]
   _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
   _extraRadius = 20;
@@ -742,11 +742,11 @@ function initSpider(){
         default:
 
       }
-      ctx.fillText(_categories[0],x-textoffset,y);
+      ctx.fillText(_categories[i],x-textoffset,y);
       ctx.stroke();
       ctx.closePath();
     }
-    ctx.font = "13px Arial";
+    ctx.font = "12px Arial";
 
 
   });
