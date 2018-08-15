@@ -142,7 +142,7 @@ function initSpider(){
         default:
 
       }
-      ctx.fillStyle = "#FFFFFF";
+      ctx.fillStyle = "#000000";
       if(i < 2 ){
         ctx.fillStyle = _labelColors[0];
       }else if(i > 2 && i < 5){
@@ -152,8 +152,18 @@ function initSpider(){
       }else if(i >= _degrees.length -1){
         ctx.fillStyle = _labelColors[0];
       }
-      ctx.fillText(_categories[i],x-textoffset,y);
-      ctx.fillStyle = "#FFFFFF";
+      if(_categories[i] == "Political"){
+        ctx.fillText(_categories[i] ,x  - 70 ,y - 20 );
+
+      }else if(_categories[i] == "Social"){
+        ctx.fillText(_categories[i] ,x + 25 ,y + 20);
+
+      }
+      else{
+        ctx.fillText(_categories[i],x ,y);
+      }
+
+      ctx.fillStyle = "#000000";
 
       ctx.stroke();
       ctx.closePath();
