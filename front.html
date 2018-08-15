@@ -116,13 +116,13 @@ function initSpider(){
       textOffset = 40;
     }
     if(i < 2 ){
-      ctx.fillStyle = _labelColors[0];
+      ctx.fillStyle ="#FFFFFF";
     }else if(i > 2 && i < 5){
-      ctx.fillStyle = _labelColors[1];
+      ctx.fillStyle = "#FFFFFF";
     }else if(i > 5){
-      ctx.fillStyle = _labelColors[2];
+      ctx.fillStyle = "#FFFFFF";
     }else if(i >= _degrees.length -1){
-      ctx.fillStyle = _labelColors[0];
+      ctx.fillStyle = "#FFFFFF";
     }
     ctx.fillText(_labels[i],x-textOffset,y);
     ctx.stroke();
