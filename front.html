@@ -504,7 +504,6 @@ window.onload = function()
      _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
      _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
      _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
-     changeProgress(_p1,_p2,_p3);
 
      _l1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
      _l1 += apiClient.getUser().obj.gamification.personal["practical.knowledge"];
@@ -517,17 +516,7 @@ window.onload = function()
      _l3 = apiClient.getUser().obj.gamification.social["problem.awareness"];
      _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
      _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
-
-     setProgressPowerBar(_l1,1);
-     setProgressPowerBar(_l2,2);
-     setProgressPowerBar(_l3,3);
-
-     addPowerBarLevelsPA(_l1);
-     addPowerBarLevelsSO(_l2);
-     addPowerBarLevelsIN(_l3);
      _totalProgress = _l1 + _l2 + _l3;
-     document.getElementById("total_score").innerHTML = _totalProgress;
-     setWardenProgress(_totalProgress);
      resize();
 
    });
