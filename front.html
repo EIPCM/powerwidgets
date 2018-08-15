@@ -484,8 +484,6 @@ function addPoligons(values,dashed){
 }
 window.onload = function()
  {
-   resize();
-
     var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
     elems.forEach(function(html) {
@@ -536,15 +534,6 @@ window.onload = function()
 
 
  }
- document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
-   toggleSpider();
- })
- document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
-   toggleLevelsPersonalImpact();
- })
- document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
-   toggleLevelsPersonalPreparedness();
- })
  function initPoligons(toggleStatus){
    initSpider();
 
@@ -588,50 +577,10 @@ window.onload = function()
  }
  function toggleSpider(){
    // _switchS = document.getElementById("myonoffswitch");
-   _checked = document.getElementsByClassName("js-switch")[0].checked;
-   initPoligons(_checked)
- }
- function toggleLevelsPersonalImpact(){
-   _checked = document.getElementsByClassName("js-switch")[0].checked;
-   pList = document.getElementsByClassName("powerBarLevelsWrapper")
-
-   for (var i = 0; i < pList.length; i++) {
-      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
-   }
- }
- function toggleLevelsPersonalPreparedness(){
-   _checked = document.getElementsByClassName("js-switch")[0].checked;
-   pList = document.getElementsByClassName("circularLevelsWrapper")
-
-   for (var i = 0; i < pList.length; i++) {
-      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
-   }
- }
- function toggleHideableArea(el){
-   var w = window.innerWidth;
-   _hideable_area = el.parentElement.getElementsByClassName("hideable-area")[0];
-   if(_hideable_area.style.display != "none"){
-     _hideable_area.style.display = "none"
-     el.parentElement.style.height = "100px";
-     el.classList.remove("arrow-down");
-     el.classList.add("arrow-up");
-   }else{
-     _hideable_area.style.display = "block"
-     if(el.getAttribute("data") == "1" && w < 650){
-       el.parentElement.style.height = "780px";
-     }else{
-       el.parentElement.style.height = "auto";
-
-     }
-     el.classList.remove("arrow-up");
-     el.classList.add("arrow-down");
-
-   }
+   initPoligons(true)
  }
  function resize(){
    initPoligons(true);
-   toggleLevelsPersonalImpact();
-   toggleLevelsPersonalPreparedness();
  }
  </script>
 </html>
