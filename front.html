@@ -19,7 +19,7 @@
    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
   </head>
 
-  <body  onresize="resize()">
+  <body  onresize="resize()" >
 
     <div class="indicators">
 
@@ -30,14 +30,6 @@
 
     <div class="indicator indicatord">
       <div class="hideable-area">
-      <div class="toggleWrapper">
-
-      </div>
-      <div class="toggleWrapper">
-        <input type="checkbox" class="js-switch" checked  id="check_personal"/>
-        <div style="font-family: 'Fredoka One', cursive;">Show Personal</div>
-      </div>
-
       <div style="margin-left:auto;margin-right:auto;height:400px">
         <canvas id="spider" height="350" width="750" style="z-index:1"></canvas>
       </div>
@@ -492,6 +484,7 @@ function addPoligons(values,dashed){
 }
 window.onload = function()
  {
+   resize();
 
     var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
@@ -636,8 +629,7 @@ window.onload = function()
    }
  }
  function resize(){
-   _checked = document.getElementsByClassName("js-switch")[0].checked;
-   initPoligons(_checked);
+   initPoligons(true);
    toggleLevelsPersonalImpact();
    toggleLevelsPersonalPreparedness();
  }
