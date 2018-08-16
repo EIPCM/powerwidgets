@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <style>
+      @font-face {
+        font-family: 'DOS';
+        src: url('/ttf/dos.FON');
+      }
+    </style>
+  </head>
+  <body  style="height:100%;margin:0;padding:0" onresize="clear()">
+    <canvas id="video">
+    </canvas>
+  </body>
+  <script>
+    var canvas = document.getElementById("video");
+    var ctx = canvas.getContext("2d");
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+    var sizeWidth = ctx.canvas.clientWidth;
+    var sizeHeight = ctx.canvas.clientHeight;
+    var scaleWidth = sizeWidth/100;
+    var scaleHeight = sizeHeight/100;
+    centerX = sizeWidth/2;
+    centerY = sizeHeight/2;
+    var LINE_X = 0;
+    var LINE_Y = 0;
+    var ARC_SIZE = 0;
+    function clear(){
+      ctx.beginPath();
+      ctx.rect(0, 0, sizeWidth,sizeHeight);
+      ctx.fillStyle = "black";
+      ctx.fill();
+      LINE_X = 0;
+      LINE_Y = 0;
+      NAME_TIMES = 0;
+    }
+
+    function line(){
+      ctx.beginPath()
+      ctx.moveTo(LINE_X,0);
+      ctx.lineTo(LINE_X,sizeWidth);
+      ctx.strokeStyle = '#49fb35';
+      ctx.lineWidth = 2;
+      ctx.shadowBlur=10;
+      ctx.shadowColor='#49fb35';
+      ctx.stroke();
+      LINE_X = LINE_X + 20;
+    }
+    function lineY(){
+      ctx.beginPath()
+      ctx.moveTo(0,LINE_X);
+      ctx.lineTo(sizeWidth,LINE_X);
+      ctx.strokeStyle = '#cc96ff';
+      ctx.lineWidth = 2;
+      ctx.shadowBlur=10;
+      ctx.shadowColor='#cc96ff';
+      ctx.stroke();
+      LINE_X = LINE_X + 20;
+    }
+    clear();
+    var NAME_TIMES = 0;
+    function name(){
+      ctx.font = "100px Arial";
+      ctx.strokeStyle = 'white';
+      ctx.shadowBlur=10;
+      ctx.strokeStyle = 'red';
+      ctx.shadowColor='red';
+      ctx.strokeText("MIRANDA",sizeWidth/2 - 250,sizeHeight/2 );
+      NAME_TIMES += 1;
+    }
+    function arc(){
+      ctx.beginPath();
+      ctx.arc(centerX,centerY,ARC_SIZE,0,2*Math.PI)
+      ctx.strokeStyle = 'red';
+      ctx.lineWidth   = 0.1;
+      ctx.shadowColor='#F7C14D';
+      ctx.shadowBlur=10;
+      ctx.stroke();
+      ARC_SIZE = ARC_SIZE + 20;
+
+    }
+    setInterval(function() {
+
+        line();
+        lineY();
+      if(LINE_X > sizeWidth){
+        name();
+      }
+      if(NAME_TIMES > 30){
+        clear();
+      }
+    }, 100);
+
+  </script>
+</html>
