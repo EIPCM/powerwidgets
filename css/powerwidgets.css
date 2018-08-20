@@ -273,6 +273,18 @@ html,body{
     border-radius: 10px;
     border: 2px solid #88b7b2;
   }
+  #warden_bar_0{
+    background-color: white;
+    flex: .2;
+    height: 15px;
+    border-top: 2px solid #0a5149;
+    border-bottom: 2px solid #0a5149;
+    overflow: hidden;
+    margin-top: 10px;
+    border-left: 2px solid #0a5149;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+  }
   #warden_bar_1{
     background-color: white;
     flex:1;
