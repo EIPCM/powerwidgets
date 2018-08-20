@@ -381,8 +381,8 @@
         <div style="font-family: 'Fredoka One', cursive;">Show Personal</div>
       </div>
 
-      <div style="margin-left:auto;margin-right:auto;height:350px">
-        <canvas id="spider" height="350" width="750" style="z-index:1"></canvas>
+      <div style="margin-left:auto;margin-right:auto;height:500px">
+        <canvas id="spider" height="500" width="750" style="z-index:1"></canvas>
       </div>
       </div>
     </div>
@@ -660,7 +660,11 @@ function initSpider(){
   // draw 10 lines, all with the same distance between each other
   for (var i = 0; i < 11; i++) {
     if(_goals.includes(i)){
-      ctx.lineWidth   = 2;
+      if(i == 0 ){
+        ctx.lineWidth   = 3;
+      }else if(i == 3){
+        ctx.lineWidth   = 2;
+      }
       ctx.strokeStyle = '#848177';
     }else{
       ctx.lineWidth   = 1;
@@ -762,7 +766,7 @@ function initSpider(){
         default:
 
       }
-      ctx.fillText(_categories[i],x,y);
+      // ctx.fillText(_categories[i],x,y);
       ctx.stroke();
       ctx.closePath();
     }
@@ -841,7 +845,7 @@ function addGoals(){
     ctx.beginPath();
     ctx.lineWidth   = 2;
     ctx.strokeStyle = '#848177';
-    ctx.moveTo(x,y);
+    // ctx.moveTo(x,y);
     ctx.fillStyle   = "#848177";
 
     if(sizeWidth <  620){
@@ -1007,6 +1011,9 @@ function addPolygons(values,dashed){
   _MAX_POLIGON_VALUE = 1000;
   _nvalues = [];
   values.forEach(function(v){
+    if(v > _MAX_POLIGON_VALUE){
+      v = _MAX_POLIGON_VALUE;
+    }
     _nv = v * 10 / _MAX_POLIGON_VALUE;
     _nvalues.push(_nv);
   })
@@ -1033,11 +1040,8 @@ function addPolygons(values,dashed){
   ctx.lineWidth   = 2;
   ctx.beginPath();
   if(dashed){
-    ctx.setLineDash([3]);
-    ctx.strokeStyle = '#84561a';
-  }else{
+    ctx.setLineDash([1]);
     ctx.strokeStyle = '#293b47';
-
   }
   values.forEach(function(v,i){
     vi = Math.abs(v - _degrees.length);
