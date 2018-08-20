@@ -57,6 +57,7 @@ function initSpider(){
   if(sizeWidth >= sizeHeight){
     r = sizeHeight *.30;
   }
+  ctx.fillStyle="red";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
   // console.log(sizeWidth/2);
@@ -82,7 +83,7 @@ function initSpider(){
   }
 
   _degrees = [0,40,80,120,160,200,240,280,320];
-  _labels  = [" Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","   Know-how",]
+  _labels  = ["Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how",]
   _categories = ["Social","Social","Social","Political","Political","Political","Individual","Individual","Individual"]
   _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
@@ -110,38 +111,40 @@ function initSpider(){
     ry = (d + _offset) * (Math.PI /180);
     x = centerX + r*1.17  * Math.cos(rx);
     y = centerY + r*1.17 * Math.sin(ry);
-    if(i < 4){
-      textOffset = 20;
-    }else{
-      textOffset = 40;
+    switch (i) {
+      case 0:
+      case 1:
+      case 8:
+        ctx.textAlign="left";
+      break;
+      case 2:
+      case 6:
+      case 7:
+          ctx.textAlign="center";
+      break;
+      case 3:
+      case 4:
+      case 5:
+        ctx.textAlign="right";
+      break;
+      default:
+        ctx.textAlign="center";
+
     }
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(_labels[i],x-textOffset,y);
+    ctx.fillText(_labels[i],x,y);
     ctx.stroke();
     ctx.closePath();
 
     if(_categoriesIndexes.includes(i)   ){
 
-      rx = (d+20)  * (Math.PI /180);
-      ry = (d+20) * (Math.PI /180);
-      x = centerX + r*1.15  * Math.cos(rx);
-      y = centerY + r*1.15 * Math.sin(ry);
+      rx = (d + _offset) * (Math.PI /180);
+      ry = (d + _offset) * (Math.PI /180);
+      x = centerX + r*1.6  * Math.cos(rx);
+      y = centerY + r*1.6 * Math.sin(ry);
       ctx.font = "20px Arial";
       ctx.beginPath();
-      textoffset = 50;
-      switch (i) {
-        case 1:
-        textoffset = 0;
-        break;
-        case 4:
-        textoffset = 40;
-        break;
-        case 7:
-        textoffset = 0;
-        break;
-        default:
 
-      }
       ctx.fillStyle = "#000000";
       if(i < 2 ){
         ctx.fillStyle = _labelColors[0];
@@ -152,16 +155,25 @@ function initSpider(){
       }else if(i >= _degrees.length -1){
         ctx.fillStyle = _labelColors[0];
       }
-      if(_categories[i] == "Political"){
-        ctx.fillText(_categories[i] ,x  - 70 ,y - 20 );
-
-      }else if(_categories[i] == "Social"){
-        ctx.fillText(_categories[i] ,x + 25 ,y + 20);
+      switch (i) {
+        case 1:
+        ctx.textAlign="left";
+        break;
+        case 4:
+        x = centerX +r*1.75 * Math.cos(rx);
+        y = centerY +r*1.75 * Math.sin(ry);
+        ctx.textAlign="right";
+        break;
+        case 7:
+        x = centerX +r*1.4 * Math.cos(rx);
+        y = centerY +r*1.4 * Math.sin(ry);
+        ctx.textAlign="left";
+        break;
+        default:
 
       }
-      else{
-        ctx.fillText(_categories[i],x ,y);
-      }
+      ctx.fillText(_categories[i],x ,y);
+
 
       ctx.fillStyle = "#000000";
 

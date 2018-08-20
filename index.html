@@ -702,11 +702,7 @@ function initSpider(){
     ry = (d + _offset) * (Math.PI /180);
     x = centerX + r*1.17  * Math.cos(rx);
     y = centerY + r*1.17 * Math.sin(ry);
-    if(i < 4){
-      textOffset = 20;
-    }else{
-      textOffset = 40;
-    }
+
     if(i < 2 ){
       ctx.fillStyle = _labelColors[0];
     }else if(i > 2 && i < 5){
