@@ -35,7 +35,6 @@ html,body{
   font-family: 'Fredoka One', cursive;
   height: 40px;
   line-height: 20px;
-  padding-left: 20px;
   padding-top: 10px;
   color:#0545a4;
   font-size: 24px;
@@ -175,7 +174,7 @@ html,body{
   height: 68px;
   width: 68px;
   border-radius: 10px;
-  border: 2px solid #88b7b2;
+  border: 2px solid  #0a5149;
 }
 #warden_bar_0{
   background-color: white;
@@ -391,6 +390,8 @@ border: 1px solid #808D1E;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 @supports (-webkit-overflow-scrolling: touch) {
   .circularWrapper{
@@ -450,13 +451,14 @@ margin-left: auto;margin-right: auto;display: block;
 }
 
 .boost_factor{
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 80px;
   font-size: 2em;
   background: url("../img/cert.png");
   background-size: auto auto;
+  background-size: auto auto;
   background-size: contain;
-  line-height: 1.5;
+  line-height: 6;
   text-align: center;
   font-family: 'Fredoka One', cursive;
   color: #09244c;
@@ -506,7 +508,7 @@ margin-left: auto;margin-right: auto;display: block;
   width: 100%;
   height: auto;
   font-family: 'Fredoka One', cursive;
-  font-size: 1.2em;
+  font-size: 1.0em;
   line-height: 30px;
 
 
@@ -577,7 +579,10 @@ a {
 .toggleWrapper{
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: left;
+}
+.toggleWrapper > div {
+
 }
 .flexContent{
   display: flex;

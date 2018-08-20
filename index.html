@@ -186,13 +186,13 @@
 
 
     </div>
-    <div class="powerMessage" id="impact">You are well aware about flood issues, but try to improve your Know-How next time!</div>
+    <div class="powerMessage" id="impact">&nbsp;</div>
 
       <div class="indicator indicatorb">
         <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
 
         <div class="powerTitle">Personal Impact <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img></div>
-        <div class="hideable-area">
+        <div class="hideable-area" style="padding-bottom: 20px;">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
             <div style="font-family: 'Fredoka One', cursive;">Show Levels</div>
@@ -318,7 +318,7 @@
         </div>
       </div>
 
-      <div class="powerMessage" id="achievement">Great individual work, but try to improve your political impact</div>
+      <div class="powerMessage" id="achievement">Become better prepared for flooding by increasing your impact and preparedness!</div>
     </div>
 
     <div class="indicator indicatorc">
@@ -367,8 +367,8 @@
 
 
     </div>
-    <div class="powerMessage" id="community">You are a Beginner Flood Warden and your boost factor is 1.5. Way to go!</div>
-
+    <div class="powerMessage" id="community">Try hard to become advanced flood warden!</div>
+<div class="powerMessage" id="community">&nbsp;</div>
     <div class="indicator indicatord">
       <div class="powerTitle">Community Preparedness <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m4()"></img></div>
       <div class="arrow-down" onclick="toggleHideableArea(this)"></div>
@@ -1003,7 +1003,7 @@ if(sizeWidth <  620){
 
 
 }
-function addPoligons(values,dashed){
+function addPolygons(values,dashed){
   _MAX_POLIGON_VALUE = 1000;
   _nvalues = [];
   values.forEach(function(v){
@@ -1084,10 +1084,10 @@ function addPoligons(values,dashed){
     }
     if(i <= _degrees.length -2){
       ctx.beginPath();
-      ctx.arc(x,y,5,0,2*Math.PI)
+      ctx.arc(x,y,3,0,2*Math.PI)
       ctx.closePath();
       ctx.fill();
-      ctx.arc(x,y,6,0,2*Math.PI)
+      ctx.arc(x,y,4,0,2*Math.PI)
       ctx.stroke();
     }
 
@@ -1170,7 +1170,7 @@ window.onload = function()
    _dataGlobalPolitical = _dataGlobal.political;
    _dataGlobalPersonal  = _dataGlobal.personal;
 
-   addPoligons([    _dataGlobalSocial["practical.knowledge"],
+   addPolygons([    _dataGlobalSocial["practical.knowledge"],
                     _dataGlobalSocial["ready.for.action"],
                     _dataGlobalSocial["problem.awareness"],
                     _dataGlobalPolitical["practical.knowledge"],
@@ -1187,7 +1187,7 @@ window.onload = function()
      _dataPersonalSocial    = _dataPersonal.social;
      _dataPersonalPolitical = _dataPersonal.political;
      _dataPersonalPersonal  = _dataPersonal.personal;
-     addPoligons([    _dataPersonalSocial["practical.knowledge"],
+     addPolygons([    _dataPersonalSocial["practical.knowledge"],
                       _dataPersonalSocial["ready.for.action"],
                       _dataPersonalSocial["problem.awareness"],
                       _dataPersonalPolitical["practical.knowledge"],
