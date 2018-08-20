@@ -674,7 +674,7 @@ function initSpider(){
   }
 
   _degrees = [0,40,80,120,160,200,240,280,320];
-  _labels  = [" Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","   Know-how",]
+  _labels  = ["Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how",]
   _categories = ["Social","Social","Social","Political","Political","Political","Individual","Individual","Individual"]
   _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
@@ -716,33 +716,57 @@ function initSpider(){
     }else if(i >= _degrees.length -1){
       ctx.fillStyle = _labelColors[0];
     }
-    ctx.fillText(_labels[i],x-textOffset,y);
+    switch (i) {
+      case 0:
+      case 1:
+      case 8:
+        ctx.textAlign="left";
+      break;
+      case 2:
+      case 6:
+      case 7:
+          ctx.textAlign="center";
+      break;
+      case 3:
+      case 4:
+      case 5:
+        ctx.textAlign="right";
+      break;
+      default:
+        ctx.textAlign="center";
+
+    }
+
+    ctx.fillText(_labels[i],x,y);
     ctx.stroke();
     ctx.closePath();
 
     if(_categoriesIndexes.includes(i) && sizeWidth > 620  ){
 
-      rx = (d+20)  * (Math.PI /180);
-      ry = (d+20) * (Math.PI /180);
-      x = centerX + r*1.15  * Math.cos(rx);
-      y = centerY + r*1.15 * Math.sin(ry);
+      rx = (d + _offset)  * (Math.PI /180);
+      ry = (d + _offset) * (Math.PI /180);
+      x = centerX +r*1.6 * Math.cos(rx);
+      y = centerY +r*1.6 * Math.sin(ry);
       ctx.font = "20px Arial";
       ctx.beginPath();
-      textoffset = 50;
       switch (i) {
         case 1:
-        textoffset = 0;
+        ctx.textAlign="left";
         break;
         case 4:
-        textoffset = 40;
+        x = centerX +r*1.8 * Math.cos(rx);
+        y = centerY +r*1.8 * Math.sin(ry);
+        ctx.textAlign="right";
         break;
         case 7:
-        textoffset = 0;
+        x = centerX +r*1.4 * Math.cos(rx);
+        y = centerY +r*1.4 * Math.sin(ry);
+        ctx.textAlign="left";
         break;
         default:
 
       }
-      ctx.fillText(_categories[i],x-textoffset,y);
+      ctx.fillText(_categories[i],x,y);
       ctx.stroke();
       ctx.closePath();
     }
