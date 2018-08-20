@@ -418,6 +418,9 @@ function addPoligons(values,dashed){
   _MAX_POLIGON_VALUE = 1000;
   _nvalues = [];
   values.forEach(function(v){
+    if(v > _MAX_POLIGON_VALUE){
+      v = _MAX_POLIGON_VALUE;
+    }
     _nv = v * 10 / _MAX_POLIGON_VALUE;
     _nvalues.push(_nv);
   })
