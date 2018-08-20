@@ -138,8 +138,8 @@ function initSpider(){
 
     if(_categoriesIndexes.includes(i)   ){
 
-      rx = (d + _offset) * (Math.PI /180);
-      ry = (d + _offset) * (Math.PI /180);
+      rx = (d + _offset - 20) * (Math.PI /180);
+      ry = (d + _offset - 20) * (Math.PI /180);
       x = centerX + r*1.6  * Math.cos(rx);
       y = centerY + r*1.6 * Math.sin(ry);
       ctx.font = "20px Arial";
@@ -160,8 +160,8 @@ function initSpider(){
         ctx.textAlign="left";
         break;
         case 4:
-        x = centerX +r*1.75 * Math.cos(rx);
-        y = centerY +r*1.75 * Math.sin(ry);
+        x = centerX +r*1.4 * Math.cos(rx);
+        y = centerY +r*1.4 * Math.sin(ry);
         ctx.textAlign="right";
         break;
         case 7:
