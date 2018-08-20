@@ -230,7 +230,7 @@ function addGoals(){
     ctx.font = "13px Arial";
 
   }
-
+  ctx.textAlign="right";
   values.forEach(function(v,i){
     vi = Math.abs(v - _degrees.length);
     _rd  = r - ( vi  *  r / 10 ) //radius distance
@@ -249,7 +249,7 @@ function addGoals(){
     if(sizeWidth <  620){
       ctx.lineTo(x,sizeHeight - (10 * i) - 60);
       if( v == 4){
-        ctx.fillText("Goals",x -20,sizeHeight - _marginRightA -10);
+        ctx.fillText("Goals",x,sizeHeight - _marginRightA -10);
       }
       if(v == 10){
         ctx.fillText(_labels[i],x , sizeHeight - 70);
@@ -262,12 +262,12 @@ function addGoals(){
     }else{
       ctx.lineTo(sizeWidth,y)
       if( v == 4){
-        ctx.fillText("Goals",sizeWidth - _marginRightA,y-15);
+        ctx.fillText("Goals",sizeWidth,y-15);
       }
       if(v == 10){
-        ctx.fillText(_labels[i],sizeWidth - _marginRightB,y+15);
+        ctx.fillText(_labels[i],sizeWidth,y+15);
       }else{
-        ctx.fillText(_labels[i],sizeWidth - _marginRightC,y+15);
+        ctx.fillText(_labels[i],sizeWidth,y+15);
       }
     }
 
