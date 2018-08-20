@@ -1037,8 +1037,10 @@ function addPolygons(values,dashed){
     r = sizeHeight *.30;
   }
 
-  ctx.lineWidth   = 2;
+  ctx.lineWidth   = 1.5;
+  ctx.strokeStyle = '#293b47';
   ctx.beginPath();
+
   if(dashed){
     ctx.setLineDash([1]);
     ctx.strokeStyle = '#293b47';
