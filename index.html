@@ -383,6 +383,8 @@
 
       <div style="margin-left:auto;margin-right:auto;height:500px">
         <canvas id="spider" height="500" width="750" style="z-index:1"></canvas>
+        <div class="powerMessage" id="impact">&nbsp;</div>
+        
       </div>
       </div>
     </div>
@@ -659,17 +661,8 @@ function initSpider(){
   _goals  = [0,3,6]
   // draw 10 lines, all with the same distance between each other
   for (var i = 0; i < 11; i++) {
-    if(_goals.includes(i)){
-      if(i == 0 ){
-        ctx.lineWidth   = 3;
-      }else if(i == 3){
-        ctx.lineWidth   = 2;
-      }
-      ctx.strokeStyle = '#848177';
-    }else{
-      ctx.lineWidth   = 1;
-      ctx.strokeStyle = '#d7dadd';
-    }
+    ctx.lineWidth   = 1;
+    ctx.strokeStyle = '#d7dadd';
     ctx.beginPath();
     ctx.arc(centerX,centerY, r - ( i *  r / 10 ) ,0,2*Math.PI)
     ctx.stroke();
@@ -1167,7 +1160,7 @@ window.onload = function()
  })
  function initPoligons(toggleStatus){
    initSpider();
-   addGoals();
+   // addGoals();
    addSize(apiClient.getGlobal().obj.participants);
 
    // apiClient.getGlobal().obj.gamification.social
