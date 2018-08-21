@@ -939,39 +939,11 @@ function addLeyend(){
 
   marginRight = 0;
   ctx.setLineDash([0]);
-  if(sizeWidth <  620){
-    ctx.moveTo(25 + sizeWidth - sizeWidth /2 + _ln,340);
-    ctx.lineTo(25 + sizeWidth - sizeWidth /2 ,340);
-  }else{
-    ctx.moveTo(marginLeft,100);
-    ctx.lineTo(_ln,100);
-  }
+  ctx.moveTo(marginLeft,100);
+  ctx.lineTo(_ln,100);
 
   ctx.stroke();
   ctx.closePath();
-//
-if(sizeWidth <  620){
-  ctx.beginPath();
-  ctx.font = "bold 12px Arial";
-  ctx.fillStyle = '#293b47'; //black
-  ctx.fillText("Community", sizeWidth - sizeWidth /2 + _ln/2,320);
-  ctx.font = "13px Arial";
-  ctx.closePath();
-
-  ctx.beginPath();
-  ctx.font = "bold 12px Arial";
-  ctx.fillStyle = '#293b47'; //black
-  ctx.fillText("Personal",sizeWidth - sizeWidth /2 - _ln  ,320);
-  ctx.font = "13px Arial";
-  ctx.closePath();
-
-  ctx.beginPath();
-  ctx.setLineDash([3]);
-
-
-
-  ctx.stroke();
-}else{
   ctx.beginPath();
   ctx.font = "bold 16px Arial";
   ctx.fillStyle = '#293b47'; //black
@@ -989,17 +961,11 @@ if(sizeWidth <  620){
   ctx.beginPath();
   ctx.setLineDash([3]);
   ctx.stroke();
-}
   ctx.strokeStyle = 'black'; //black
 
 
-  if(sizeWidth <  620){
-    ctx.moveTo(sizeWidth - sizeWidth /2 - _ln -25 ,340);
-    ctx.lineTo(sizeWidth - sizeWidth /2 - 25 ,340);
-  }else{
     ctx.moveTo(marginLeft,50);
     ctx.lineTo(_ln,50);
-  }
   ctx.closePath();
   ctx.stroke();
   _labelColors = ["#1786e0", "#e23d3d","#2dc463"]
@@ -1009,11 +975,7 @@ if(sizeWidth <  620){
     ctx.setLineDash([0]);
     ctx.beginPath();
     ctx.fillStyle = l;
-    if(sizeWidth <  620){
-      ctx.arc(_ln + 25 + sizeWidth - sizeWidth/2  -  _ln * (i / 3) - (_ln /6),340,5,0,2*Math.PI)
-    }else{
-      ctx.arc(marginLeft + _ln * (i / 3) + (_ln / 6) ,100,5,0,2*Math.PI)
-    }
+    ctx.arc(marginLeft + _ln * (i / 3) + (_ln / 6) ,100,5,0,2*Math.PI)
 
     ctx.closePath();
     ctx.fill();
@@ -1024,11 +986,7 @@ if(sizeWidth <  620){
     ctx.setLineDash([3]);
     ctx.beginPath();
     ctx.fillStyle = l;
-    if(sizeWidth <  620){
-      ctx.arc( sizeWidth - sizeWidth/2  -  _ln * (i / 3) - (_ln /6) - 25,340,5,0,2*Math.PI)
-    }else{
-      ctx.arc( marginLeft + _ln * (i / 3) + (_ln / 6) ,50,5,0,2*Math.PI)
-    }
+    ctx.arc( marginLeft + _ln * (i / 3) + (_ln / 6) ,50,5,0,2*Math.PI)
 
     ctx.closePath();
     ctx.fill();
