@@ -267,15 +267,15 @@ html,body{
     float:none;
   }
   .badge{
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
     border-radius: 10px;
     border: 2px solid #88b7b2;
   }
   #warden_bar_0{
     background-color: white;
     flex: .2;
-    height: 15px;
+    height: 30px;
     border-top: 2px solid #0a5149;
     border-bottom: 2px solid #0a5149;
     overflow: hidden;
@@ -287,7 +287,7 @@ html,body{
   #warden_bar_1{
     background-color: white;
     flex:1;
-    height: 15px;
+    height: 30px;
     border-top: 2px solid #0a5149;
     border-bottom: 2px solid #0a5149;
     overflow: hidden;
@@ -296,7 +296,7 @@ html,body{
   #warden_bar_2{
     background-color: white;
     flex:1;
-    height: 15px;
+    height: 30px;
     border-top: 2px solid #0a5149;
     border-bottom: 2px solid #0a5149;
     overflow: hidden;
@@ -419,7 +419,7 @@ border: 1px solid #808D1E;
     text-align:center;
   }
   .indicatora{
-    height: 760px;
+    height: 800px;
   }
 
 }
