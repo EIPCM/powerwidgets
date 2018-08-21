@@ -378,7 +378,7 @@
 
       <div style="margin-left:auto;margin-right:auto;height:500px">
         <canvas id="spider" height="500" width="750" style="z-index:1"></canvas>
-        <div class="powerMessage" id="impact">&nbsp;</div>
+        <div class="powerMessage" id="impact">Help the community become equally prepared for flooding in all the categories.</div>
 
       </div>
       </div>
@@ -633,7 +633,6 @@ function initSpider(){
   var canvas = document.getElementById("spider");
   var ctx = canvas.getContext("2d");
   c = canvas.height * .50;
-  console.log(c);
   canvas.width = canvas.parentElement.offsetWidth;
   canvas.height = canvas.parentElement.offsetHeight;
   var sizeWidth = ctx.canvas.clientWidth;
@@ -1277,7 +1276,7 @@ function m3(){
   powerPopup("<p>Your boost factor relates to the Competitiobn that you can take part additionally on this platform. With this factor your vote for the idea participating in the contest will be weighted.</p>")
 }
 function m4(){
-  powerPopup("<p>Community Preparedness shows how prepared your local community is the various areas: awareness, know-how and readiness to act, on the individual, social and political levels. In the circle you can see the scores the community members obtained on average in these categories. Additionaly, you can see how many people are in your community currently.</p><p>The goal is to gain full flledged knowledge in all of the areas - therefore your goal is to reach one of the circles displayed. This means that you are equally well prepared on all 9 categories. Studies show that by increasing awareness, know-how and readiness to act, such platforms can increase the overall level of preparedness of the community up to 10%</p><p>By toggleing the option 'show personal' you can additionally display your personal scores that you obtained in each category. Thus you can see how your level of preparedness contributed in each category. Thus you can see how your level of preparedness contributed to the preparedness of the community. For example, if in one of the categories your score is higher that that of the community, it means that your actions on the platform contributed more to the overall preparedness of the community.</p>")
+  powerPopup("<p>Community Preparedness shows how prepared your local community is in the various areas: awareness, know-how and readinesss to act, on the individual, social and political levels. You can see the scores the community members obtained on average in these categories. Additionally, you can see how many people are in your community currently.</p><p>By toggling the option 'show personal' you can additionally display your personal scores that you obtained in each category. Thus you can see how your level of preparedness contributed to the preparedness of the community. For example, if in one of the cateogires your score is higher that that of the community, it means that your actions on the platform contributed more to the overall preparedness of the community than of an average community member.</p><p>The goal both for yourself and the community is to try to gain an equal amount of points in each of the categories so that you have a full sircle (or a form which rather resembles a circle than a polygon). This means that you are equally well prepared on all 9 categories.</p>")
 }
 function m5(){
   powerPopup("<p>Flood Warden achievment shows what you achieved in total based on your activities on the platform. It relates to the total points you receive.<p>Once you achieve a 'Beginner' level, you become aware of the need to prepare yourself. On the 'Intermediate' level, you already achieved a certain amount of preparedness. On the 'Advanced' level you can consider yourself to be fully prepared for the case of flooding.</p>")
