@@ -253,13 +253,13 @@ html,body{
 
 @media only screen and (max-device-width: 800px) {
   .powerMessage{
-    font-size: 1em !important;
+    font-size: 14px !important;
   }
   #links{
     display: none !important;
   }
   .powerTitle{
-    font-size: .8em !important;
+    font-size: 16px !important;
 
   }
   .wardenContent{
@@ -576,6 +576,7 @@ a {
 }
 .infoButton{
   cursor: pointer;
+  margin-left: 5px;
 }
 .toggleWrapper{
   display: flex;

@@ -806,33 +806,39 @@ function addImpact(){
   var scaleWidth = sizeWidth/100;
   var scaleHeight = sizeHeight/100;
   _labelColors = ["#2dc463","#e23d3d","#1786e0"]
-  ctx.font = "13px Arial";
+  if(sizeWidth <  620){
+    ctx.font = "bold 13px Arial";
+  }else{
+    ctx.font = "bold 16px Arial";
+
+
+  }
+
   ctx.beginPath();
   ctx.lineWidth   = 2;
   ctx.fillStyle = 'black';
   ctx.textAlign   = "left";
-  ctx.font = "bold 16px Arial";
-  ctx.fillText("Impact",marginLeft + 20,sizeHeight - 150);
-  ctx.fillText("Individual",marginLeft + 20,sizeHeight - 125);
-  ctx.fillText("Social",marginLeft + 20,sizeHeight - 100);
-  ctx.fillText("Political",marginLeft + 20,sizeHeight - 75);
+  ctx.fillText("Impact",marginLeft + 20,sizeHeight - 125);
+  ctx.fillText("Individual",marginLeft + 20,sizeHeight - 100);
+  ctx.fillText("Social",marginLeft + 20,sizeHeight - 75);
+  ctx.fillText("Political",marginLeft + 20,sizeHeight - 50);
   ctx.closePath();
 
   ctx.beginPath();
   ctx.fillStyle   = _labelColors[0];
-  ctx.arc( marginLeft + 10,sizeHeight - 130,4,0,2*Math.PI)
-  ctx.fill();
-  ctx.closePath();
-
-  ctx.beginPath();
-  ctx.fillStyle   = _labelColors[1];
   ctx.arc( marginLeft + 10,sizeHeight - 105,4,0,2*Math.PI)
   ctx.fill();
   ctx.closePath();
 
   ctx.beginPath();
-  ctx.fillStyle   = _labelColors[2];
+  ctx.fillStyle   = _labelColors[1];
   ctx.arc( marginLeft + 10,sizeHeight - 80,4,0,2*Math.PI)
+  ctx.fill();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.fillStyle   = _labelColors[2];
+  ctx.arc( marginLeft + 10,sizeHeight - 55,4,0,2*Math.PI)
   ctx.fill();
   ctx.closePath();
 
@@ -913,7 +919,7 @@ function addGoals(){
     ctx.stroke();
   });
 }
-function addLeyend(){
+function addLeyend(show_personal){
   marginLeft = 10;
   var canvas = document.getElementById("spider");
   var ctx = canvas.getContext("2d");
@@ -947,22 +953,27 @@ function addLeyend(){
   ctx.font = "13px Arial";
   ctx.closePath();
 
-  ctx.beginPath();
-  ctx.font = "bold 16px Arial";
-  ctx.fillStyle = '#293b47'; //black
-  ctx.fillText("Personal",marginLeft ,70);
-  ctx.font = "13px Arial";
-  ctx.closePath();
-  ctx.beginPath();
-  ctx.setLineDash([3]);
-  ctx.stroke();
-  ctx.strokeStyle = 'black'; //black
+  if(show_personal){
+    ctx.beginPath();
+    ctx.font = "bold 16px Arial";
+    ctx.fillStyle = '#293b47'; //black
+    ctx.fillText("Personal",marginLeft ,70);
+    ctx.font = "13px Arial";
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.setLineDash([3]);
+    ctx.stroke();
+    ctx.strokeStyle = 'black'; //black
+  }
 
 
+  if(show_personal){
     ctx.moveTo(marginLeft,50);
     ctx.lineTo(_ln,50);
-  ctx.closePath();
-  ctx.stroke();
+    ctx.closePath();
+    ctx.stroke();
+  }
+
   _labelColors = ["#1786e0", "#e23d3d","#2dc463"]
 
   _labelColors.forEach(function(l,i){
@@ -976,16 +987,18 @@ function addLeyend(){
     ctx.fill();
     ctx.stroke();
 
+    if(show_personal){
+      ctx.strokeStyle = '#293b47'; //brown
+      ctx.setLineDash([3]);
+      ctx.beginPath();
+      ctx.fillStyle = l;
+      ctx.arc( marginLeft + _ln * (i / 3) + (_ln / 6) ,50,5,0,2*Math.PI)
 
-    ctx.strokeStyle = '#84561a'; //brown
-    ctx.setLineDash([3]);
-    ctx.beginPath();
-    ctx.fillStyle = l;
-    ctx.arc( marginLeft + _ln * (i / 3) + (_ln / 6) ,50,5,0,2*Math.PI)
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+    }
 
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
   });
 
 
@@ -1189,7 +1202,7 @@ window.onload = function()
                       _dataPersonalSocial["practical.knowledge"]
                     ],true); //personal
    }
-   addLeyend();
+   addLeyend(toggleStatus);
 
  }
  function toggleSpider(){
