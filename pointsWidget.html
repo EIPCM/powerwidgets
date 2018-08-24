@@ -12,21 +12,21 @@
       <div class="wrow">
         <img src="img/circ_talk.png" height="35" width="35" class="wimage ">
         <div class="titleWrapper">
-          <div class="wtitle"> Problem Awareness</div>
+          <div class="wtitle" id="wtitle_1"> Problem Awareness</div>
           <div class="wscore" id="s1">0</div>
         </div>
       </div>
       <div class="wrow">
         <img src="img/circ_idea.png" height="35" width="35" class="wimage ">
         <div class="titleWrapper">
-          <div class="wtitle"> Know <br>How</div>
+          <div class="wtitle" id="wtitle_2"> Know <br>How</div>
           <div class="wscore" id="s2">0</div>
         </div>
       </div>
       <div class="wrow">
         <img src="img/circ_stopwatch.png" height="35" width="35" class="wimage ">
         <div class="titleWrapper">
-          <div class="wtitle"> Ready to <br>Act</div>
+          <div class="wtitle" id="wtitle_3"> Ready to <br>Act</div>
           <div class="wscore" id="s3">0</div>
         </div>
       </div>
@@ -36,6 +36,22 @@
     </div>
   </body>
   <script>
+  _loc = {
+    "es":{
+      "title":"Tus logros",
+      "wtitle_1": "Conciencia de <br>problemas",
+      "wtitle_2": "Saber <br>como",
+      "wtitle_3": "Listo para actuar"
+    }
+  }
+  function setLan(){
+    u    = new URL(window.location);
+    _lan = u.searchParams.get("lan");
+    for (k in _loc[_lan]){
+      document.getElementById(k).innerHTML = _loc[_lan][k];
+    }
+  }
+  setLan();
   window.onload = function()
    {
      window.apiClient = new PowerApiClient(function(a){
