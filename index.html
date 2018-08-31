@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <div class="powerPopup">
   <div class="powerPopupContent">
@@ -10,6 +11,7 @@
   </div>
 </div>
   <head>
+   <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="css/powerwidgets.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
@@ -25,7 +27,7 @@
       <div class="indicator indicatora">
         <div class="powerMessage">
           <span style="display:flex;flex-direction:row;" >
-            <span style="font-size:1.5em !important;padding-left: 10px;">Total Points: <span id="total_score"></span></span>
+            <span style="font-size:1.5em !important;padding-left: 10px;"><span class="lan_total_points"> Total Points: </span><span id="total_score"></span></span>
             <span style="display: flex;flex-direction: row;justify-content: space-between;flex: .8;" id="links">
 
             </span>
@@ -36,12 +38,12 @@
         <div class="hideable-area">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
-            <div style="font-family: 'Fredoka One', cursive;">Show Levels</div>
+            <div style="font-family: 'Fredoka One', cursive;" class="lan_show_levels">Show Levels</div>
             <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m2()"></img>
           </div>
           <div class="circularWrapper">
             <div class="svgWrapper">
-              <div class="circularTitle">Problem<br> Awareness</div>
+              <div class="circularTitle" id="problem_awareness">Problem<br> Awareness</div>
               <svg
                  class="progress-ring"
                  width="140"
@@ -88,7 +90,7 @@
 
             </div>
             <div class="svgWrapper">
-              <div class="circularTitle">Know- <br>How</div>
+              <div class="circularTitle" id="know_how">Know- <br>How</div>
 
               <svg
                  class="progress-ring"
@@ -134,7 +136,7 @@
             </div>
 
             <div class="svgWrapper">
-              <div class="circularTitle">Ready <br>to Act</div>
+              <div class="circularTitle" id="ready_to_act">Ready <br>to Act</div>
 
               <svg
                  class="progress-ring"
@@ -188,15 +190,15 @@
       <div class="indicator indicatorb">
         <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
 
-        <div class="powerTitle">Personal Impact <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img></div>
+        <div class="powerTitle" id="title_personal_impact">Personal Impact <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img></div>
         <div class="hideable-area" style="padding-bottom: 20px;">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
-            <div style="font-family: 'Fredoka One', cursive;">Show Levels</div>
+            <div style="font-family: 'Fredoka One', cursive;" class="lan_show_levels">Show Levels</div>
             <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m2()"></img>
           </div>
         <div class="powerRow">
-          <div class="powerBartitle">Political</div><div class="powerBarWrapper">
+          <div class="powerBartitle lan_political">Political</div><div class="powerBarWrapper">
             <div class="powerBarLevelsWrapper" id="powerBarLevels1">
               <img src="img/political.png" class="iconsmall"/>
               <img src="img/political.png" class="iconsmall"/>
@@ -236,7 +238,7 @@
           </div>
         </div>
         <div class="powerRow">
-          <div class="powerBartitle">Social</div><div class="powerBarWrapper">
+          <div class="powerBartitle lan_social">Social</div><div class="powerBarWrapper">
             <div class="powerBarLevelsWrapper"  id="powerBarLevels2">
               <img src="img/users-group.png" class="iconsmall"/>
               <img src="img/users-group.png" class="iconsmall"/>
@@ -275,7 +277,7 @@
           </div>
         </div>
         <div class="powerRow">
-        <div class="powerBartitle">Individual</div><div class="powerBarWrapper">
+        <div class="powerBartitle lan_individual">Individual</div><div class="powerBarWrapper">
           <div class="powerBarLevelsWrapper"  id="powerBarLevels3">
             <img src="img/people.png" class="iconsmall"/>
             <img src="img/people.png" class="iconsmall"/>
@@ -320,7 +322,7 @@
 
     <div class="indicator indicatorc">
       <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
-      <div class="powerTitle">Flood Warden Achievement <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m5()"></img></div>
+      <div class="powerTitle" id="title_flood_warden">Flood Warden Achievement <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m5()"></img></div>
       <div class="hideable-area">
           <div class="powerContent" style="width:100%">
             <div class="warden">
@@ -329,21 +331,21 @@
             </div>
             <div class="badge"   id="badge1" >
               <img src="img/badge1.png" id="badge_img1"/>
-              <div class="level_lbl"><b>Beginner</b> 1000</div>
+              <div class="level_lbl"><b class="lan_beginner">Beginner</b> 1000</div>
             </div>
             <div id="warden_bar_1">
               <div id="warden_bar1_fill"  style="width:0%"></div>
             </div>
             <div class="badge " id="badge2">
               <img src="img/badge2.png" id="badge_img2"/>
-              <div class="level_lbl"><b>Intermediate</b> 4000</div>
+              <div class="level_lbl"><b class="lan_itermidiate">Intermediate</b> 4000</div>
             </div>
             <div id="warden_bar_2">
               <div id="warden_bar2_fill" style="width:0%"></div>
             </div>
             <div class="badge " id="badge3">
               <img src="img/badge3.png" id="badge_img3"/>
-              <div class="level_lbl"><b>Advanced</b> 10000</div>
+              <div class="level_lbl"><b class="lan_advanced">Advanced</b> 10000</div>
             </div>
           </div>
           </div>
@@ -352,7 +354,7 @@
     <div class="powerMessage" id="community">Try hard to become advanced flood warden!</div>
     <div class="indicator indicatorc">
       <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
-      <div class="powerTitle">Boost Factor<img src="img/information.png" height="22" width="22" class="infoButton" onclick="m3()"></img></div>
+      <div class="powerTitle" ><span class="lan_boost_factor">Boost Factor</span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m3()"></img></div>
       <div class="hideable-area">
         <div class="powerContent" style="width:100%">
             <div class="boost_factor_wrapper">
@@ -365,7 +367,7 @@
     </div>
     <div class="powerMessage" id="community">&nbsp;</div>
     <div class="indicator indicatord">
-      <div class="powerTitle">Community Preparedness <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m4()"></img></div>
+      <div class="powerTitle"><span class="lan_community_preparedness">Community Preparedness</span> <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m4()"></img></div>
       <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
       <div class="hideable-area">
       <div class="toggleWrapper">
@@ -373,7 +375,7 @@
       </div>
       <div class="toggleWrapper">
         <input type="checkbox" class="js-switch" checked  id="check_personal"/>
-        <div style="font-family: 'Fredoka One', cursive;">Show Personal</div>
+        <div style="font-family: 'Fredoka One', cursive;" class="lan_show_personal">Show Personal</div>
       </div>
 
       <div style="margin-left:auto;margin-right:auto;height:500px">
@@ -388,6 +390,74 @@
   </div>
   </body>
 <script>
+_loc = {
+  "es":{
+    "preparedness":"Preparación Personal",
+    "title_personal_impact": "Impacto Personal",
+    "problem_awareness": "Conciencia del <br>problema",
+    "know_how": "Saber como",
+    "ready_to_act": "Listo para <br>actuar",
+    "lan_show_levels":"Mostrar niveles",
+    "lan_social":"Social",
+    "lan_political":"Político",
+    "lan_individual":"Individual",
+    "title_flood_warden":"Logro: Guardián del Agua",
+    "lan_beginner":"Principiante",
+    "lan_itermidiate":"Intermedio",
+    "lan_advanced":"Avanzado",
+    "lan_boost_factor":"Factor Multiplicador",
+    "lan_community_preparedness":"Preparación Comunitaria",
+    "lan_show_personal":"Mostrar personal",
+    "lan_total_points":"Puntos Totales:",
+    "lan_impact":"Impacto",
+    "lan_spider_ready_to_act": "Listo para actuar",
+    "lan_spider_know_how": "Saber como",
+    "lan_spider_awareness": "Conciencia",
+    "lan_community":"Comunidad",
+    "lan_personal": "Personal",
+    "lan_community_size": "Tamaño de la comunidad",
+    "lan_community_small": "Pequeña",
+    "lan_community_medium": "Media",
+    "lan_community_big": "Grande",
+
+
+  },
+  "en":{
+    "lan_impact":"Impact",
+    "lan_social":"Social",
+    "lan_political":"Political",
+    "lan_individual":"Individual",
+    "lan_spider_ready_to_act": "Ready to act",
+    "lan_spider_know_how": "Awareness",
+    "lan_spider_awareness": "Know-how",
+    "lan_community":"Community",
+    "lan_personal": "Personal",
+    "lan_community_size": "Community size",
+    "lan_community_small": "Small",
+    "lan_community_medium": "Medium",
+    "lan_community_big": "Big",
+  }
+}
+var CURRENT_LAN = "en";
+function setLan(){
+  u    = new URL(window.location);
+  _lan = u.searchParams.get("lan");
+  if(_lan != null){
+    CURRENT_LAN = _lan;
+    for (k in _loc[CURRENT_LAN]){
+      _element = document.getElementById(k);
+      if(_element !=null){
+          _element.innerHTML = _loc[CURRENT_LAN][k];
+      }
+      lan_classes = document.getElementsByClassName(k);
+      for (var i = 0; i < lan_classes.length; i++) {
+        lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
+      }
+    }
+  }
+
+}
+setLan();
 var circle = document.getElementById("circ_1");
 var radius = circle.r.baseVal.value;
 var circumference = radius * 2 * Math.PI;
@@ -665,7 +735,18 @@ function initSpider(){
   }
 
   _degrees = [0,40,80,120,160,200,240,280,320];
-  _labels  = ["Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how",]
+
+  _labels  = [
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_know_how,
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_know_how,
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_know_how,
+              ];
   _categories = ["Social","Social","Social","Political","Political","Political","Individual","Individual","Individual"]
   _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
@@ -782,17 +863,18 @@ function addSize(size){
   ctx.moveTo(0,0);
   ctx.fillStyle   = "#848177";
   if(size <= 20){
-    _size  = "Small";
+    _size  = _loc[CURRENT_LAN].lan_community_small;
   }else if((size >= 20) && (size <= 50)){
-    _size = "Medium";
+    _size  = _loc[CURRENT_LAN].lan_community_medium;
   }else{
-    _size = "Large";
+    _size  = _loc[CURRENT_LAN].lan_community_big;
   }
   ctx.strokeStyle = '#000000';
   ctx.fillStyle   = "#000000";
   ctx.textAlign   = "right";
   ctx.font = "bold 16px Arial";
-  ctx.fillText("Community Size",sizeWidth - marginRight ,50);
+
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,sizeWidth - marginRight ,50);
   ctx.fillText(_size,sizeWidth - marginRight,75);
   ctx.stroke();
 }
@@ -817,10 +899,10 @@ function addImpact(){
   ctx.lineWidth   = 2;
   ctx.fillStyle = 'black';
   ctx.textAlign   = "left";
-  ctx.fillText("Impact",marginLeft + 20,sizeHeight - 125);
-  ctx.fillText("Individual",marginLeft + 20,sizeHeight - 100);
-  ctx.fillText("Social",marginLeft + 20,sizeHeight - 75);
-  ctx.fillText("Political",marginLeft + 20,sizeHeight - 50);
+  ctx.fillText(_loc[CURRENT_LAN].lan_impact,marginLeft + 20,sizeHeight - 125);
+  ctx.fillText(_loc[CURRENT_LAN].lan_individual,marginLeft + 20,sizeHeight - 100);
+  ctx.fillText(_loc[CURRENT_LAN].lan_social,marginLeft + 20,sizeHeight - 75);
+  ctx.fillText(_loc[CURRENT_LAN].lan_political,marginLeft + 20,sizeHeight - 50);
   ctx.closePath();
 
   ctx.beginPath();
@@ -948,7 +1030,8 @@ function addLeyend(show_personal){
   ctx.font = "bold 16px Arial";
   ctx.fillStyle = '#293b47'; //black
   ctx.textAlign = "left";
-  ctx.fillText("Community",marginLeft,120);
+
+  ctx.fillText(_loc[CURRENT_LAN].lan_community,marginLeft,120);
   ctx.font = "13px Arial";
   ctx.closePath();
 
@@ -956,7 +1039,7 @@ function addLeyend(show_personal){
     ctx.beginPath();
     ctx.font = "bold 16px Arial";
     ctx.fillStyle = '#293b47'; //black
-    ctx.fillText("Personal",marginLeft ,70);
+    ctx.fillText(_loc[CURRENT_LAN].lan_personal,marginLeft ,70);
     ctx.font = "13px Arial";
     ctx.closePath();
     ctx.beginPath();
