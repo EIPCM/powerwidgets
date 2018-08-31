@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html style="overflow:hidden;">
 <div class="powerPopup">
   <div class="powerPopupContent">
@@ -10,6 +11,7 @@
   </div>
 </div>
   <head>
+   <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="css/powerwidgets.css">
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
@@ -40,6 +42,45 @@
   </div>
   </body>
 <script>
+var CURRENT_LAN = "en";
+_loc = {
+  "es":{
+    "lan_spider_ready_to_act": "Listo para actuar",
+    "lan_spider_know_how": "Saber como",
+    "lan_spider_awareness": "Conciencia",
+    "lan_spider_social": "Social",
+    "lan_spider_political": "Político",
+    "lan_spider_individual": "Individual"
+
+  },
+  "en":{
+    "lan_spider_ready_to_act": "Ready to act",
+    "lan_spider_know_how": "Know How",
+    "lan_spider_awareness": "Awareness",
+    "lan_spider_social": "Social",
+    "lan_spider_political": "Political",
+    "lan_spider_individual": "Individual"
+  }
+}
+function setLan(){
+  u    = new URL(window.location);
+  _lan = u.searchParams.get("lan");
+  if(_lan != null){
+    CURRENT_LAN = _lan;
+    for (k in _loc[CURRENT_LAN]){
+      _element = document.getElementById(k);
+      if(_element !=null){
+          _element.innerHTML = _loc[CURRENT_LAN][k];
+      }
+      lan_classes = document.getElementsByClassName(k);
+      for (var i = 0; i < lan_classes.length; i++) {
+        lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
+      }
+    }
+  }
+
+}
+setLan();
 function initSpider(){
   var canvas = document.getElementById("spider");
   var ctx = canvas.getContext("2d");
@@ -83,8 +124,28 @@ function initSpider(){
   }
 
   _degrees = [0,40,80,120,160,200,240,280,320];
-  _labels  = ["Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how","Ready to act","Awareness","Know-how",]
-  _categories = ["Social","Social","Social","Political","Political","Political","Individual","Individual","Individual"]
+  _labels  = [
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_know_how,
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_know_how,
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_know_how,
+              ];
+  _categories = [
+    _loc[CURRENT_LAN].lan_spider_social,
+    _loc[CURRENT_LAN].lan_spider_social,
+    _loc[CURRENT_LAN].lan_spider_social,
+    _loc[CURRENT_LAN].lan_spider_political,
+    _loc[CURRENT_LAN].lan_spider_political,
+    _loc[CURRENT_LAN].lan_spider_political,
+    _loc[CURRENT_LAN].lan_spider_individual,
+    _loc[CURRENT_LAN].lan_spider_individual,
+    _loc[CURRENT_LAN].lan_spider_individual,
+  ]
   _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
   _extraRadius = 20;

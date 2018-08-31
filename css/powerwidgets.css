@@ -135,13 +135,13 @@ html,body{
   background-color: #168af2;
 }
 
-.powerbar.political{
+.powerBar.political{
   border-color: #f90606;
 }
-.powerbar.social{
+.powerBar.social{
   border-color: #1aba1a;
 }
-.powerbar.individual{
+.powerBar.individual{
   border-color: #168af2;
 }
 .fill.political{
