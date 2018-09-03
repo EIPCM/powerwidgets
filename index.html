@@ -34,7 +34,7 @@
           </span>
         </div>
         <!-- <div class="arrow-down" onclick="toggleHideableArea(this)" data="1"></div> -->
-        <div class="powerTitle" id="preparedness">Personal Preparedness <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m1()"></img></div>
+        <div class="powerTitle" id="preparedness"> <span class="lan_title_personal_preparedness"> Personal Preparedness </span> <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m1()"></img></div>
         <div class="hideable-area">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
@@ -190,7 +190,7 @@
       <div class="indicator indicatorb">
         <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
 
-        <div class="powerTitle" id="title_personal_impact">Personal Impact <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img></div>
+        <div class="powerTitle" > <span class="lan_title_personal_impact"> Personal Impact </span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m2()"></img></div>
         <div class="hideable-area" style="padding-bottom: 20px;">
           <div class="toggleWrapper">
             <input type="checkbox" class="js-switch" checked />
@@ -322,7 +322,7 @@
 
     <div class="indicator indicatorc">
       <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
-      <div class="powerTitle" id="title_flood_warden">Flood Warden Achievement <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m5()"></img></div>
+      <div class="powerTitle" ><span id="title_flood_warden"> Flood Warden Achievement </span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m5()"></img></div>
       <div class="hideable-area">
           <div class="powerContent" style="width:100%">
             <div class="warden">
@@ -392,8 +392,8 @@
 <script>
 _loc = {
   "es":{
-    "preparedness":"Preparación Personal",
-    "title_personal_impact": "Impacto Personal",
+    "lan_title_personal_preparedness":"Preparación Personal",
+    "lan_title_personal_impact": "Impacto Personal",
     "problem_awareness": "Conciencia del <br>problema",
     "know_how": "Saber cómo",
     "ready_to_act": "Listo para <br>actuar",
@@ -419,7 +419,18 @@ _loc = {
     "lan_community_small": "Pequeña",
     "lan_community_medium": "Media",
     "lan_community_big": "Grande",
-
+    "lan_help_m1_title": "Preparación Personal",
+    "lan_help_m1_content": "<p>Para estar preparado en la reutilización del agua, primero necesitas incrementar tu Conciencia del problema y Saber cómo en los problemas relacionados con el agua y prepararte para incrementar el uso de agua no potable.</p><p>Por ejemplo, si lees un artículo acerca de la calidad del agua en la ciudad – incrementas tu conciencia, mientras que si lees acerca de como reutilizar el agua no potable – obtienes puntos en Listo para actuar. </p>",
+    "lan_help_m2_title": "",
+    "lan_help_m2_content": "<p>La reutilización del agua es un problema que no solo te preocupa a ti personalmente. El impacto personal muestra como tus acciones en la plataforma pueden tener un impacto en los niveles individuales, sociales y políticos.</p><p>Por ejemplo, si compartes un artículo sobre la reutilización del agua, también tiene un impacto social. Si atiendes un evento sobre la calidad del agua, tus muestras tu participación política.</p>",
+    "lan_help_m3_title": "",
+    "lan_help_m3_content":"",
+    "lan_help_m4_title": "",
+    "lan_help_m4_content":"<p>La preparación comunitaria y el impacto muestra que tan bien está preparada tu comunidad local en promedio para incrementar el uso de agua no potable en la ciudad en varias áreas que exploramos en relación con que tan bien estás preparado para reutilizar el agua. </p><p>Por ejemplo, si en una de las categorías tu puntuación es mas alta que la de la comunidad, significa que estás mejor preparado para reutilizar el agua que el miembro promedio de la comunidad. </p><p>La meta para ti y la comunidad es intentar ganar una cantidad igual de puntos en cada una de las categorías de tal forma que tengan un circulo completo (o una forma que aparente mas un círculo que un polígono). Esto significa que están igual de preparados en todas las 9 categorías. </p>",
+    "lan_help_m5_title": "",
+    "lan_help_m5_content":"<p>El logro de Guardián del Agua muestra que lo que has logrado en total basado en tus actividades en la plataforma. La meta final es acumular suficientes puntos para lograr el nivel de preparación de un “Guardián Avanzado del Agua”. </p><p>Sin embargo, ya en el nivel de “Principiante” ya te vuelves consciente de la necesidad de prepararte para reutilizar el agua. En el nivel “Intermedio”, ya lograste cierta cantidad de preparación. </p>",
+    "lan_help_m6_title": "",
+    "lan_help_m6_content":"",
 
   },
   "en":{
@@ -436,6 +447,18 @@ _loc = {
     "lan_community_small": "Small",
     "lan_community_medium": "Medium",
     "lan_community_big": "Big",
+    "lan_help_m1_title": "",
+    "lan_help_m1_content": "<p>In order to be flood prepared, you need to increase your problem awareness, know-how in flood related issues and become ready to act in case of a flood occurs. Personal preparedness shows how well prepared are you for the case of flooding in these categories. For example if you read an article about flood risk - you increase your awareness, where as if you read about tips to prepare your self - you get points in readiness to act.<p><p>This visualization graphically displays the points you achieved in one of the preparedness categories summed up over the corresponding individual, social and political categories. For example, your problem awareness score is the sum of problem awareness scores of the individual, social and political impact, whereas know-how score is the sum of know how scores of individual, social and politcal.</p>",
+    "lan_help_m2_title": "",
+    "lan_help_m2_content": "<p>Once the progress bar is full, you go to the next level and you fill the bar from the start.</p><p>Show levels displays the level you have already achieved by a colored icon relating to the category where the level has been increased.</p>",
+    "lan_help_m3_title": "",
+    "lan_help_m3_content":"",
+    "lan_help_m4_title": "",
+    "lan_help_m4_content":"<p>Community Preparedness shows how prepared your local community is in the various areas: awareness, know-how and readinesss to act, on the individual, social and political levels. You can see the scores the community members obtained on average in these categories. Additionally, you can see how many people are in your community currently.</p><p>By toggling the option 'show personal' you can additionally display your personal scores that you obtained in each category. Thus you can see how your level of preparedness contributed to the preparedness of the community. For example, if in one of the cateogires your score is higher that that of the community, it means that your actions on the platform contributed more to the overall preparedness of the community than of an average community member.</p><p>The goal both for yourself and the community is to try to gain an equal amount of points in each of the categories so that you have a full sircle (or a form which rather resembles a circle than a polygon). This means that you are equally well prepared on all 9 categories.</p>",
+    "lan_help_m5_title": "",
+    "lan_help_m5_content":"<p>Flood Warden achievment shows what you achieved in total based on your activities on the platform. It relates to the total points you receive.<p>Once you achieve a 'Beginner' level, you become aware of the need to prepare yourself. On the 'Intermediate' level, you already achieved a certain amount of preparedness. On the 'Advanced' level you can consider yourself to be fully prepared for the case of flooding.</p>",
+    "lan_help_m6_title": "",
+    "lan_help_m6_content":"",
   }
 }
 var CURRENT_LAN = "en";
@@ -1350,19 +1373,20 @@ window.onload = function()
    }
  }
 function m1(){
-   powerPopup("<p>In order to be flood prepared, you need to increase your problem awareness, know-how in flood related issues and become ready to act in case of a flood occurs. Personal preparedness shows how well prepared are you for the case of flooding in these categories. For example if you read an article about flood risk - you increase your awareness, where as if you read about tips to prepare your self - you get points in readiness to act.<p><p>This visualization graphically displays the points you achieved in one of the preparedness categories summed up over the corresponding individual, social and political categories. For example, your problem awareness score is the sum of problem awareness scores of the individual, social and political impact, whereas know-how score is the sum of know how scores of individual, social and politcal.</p>")
+   powerPopup(_loc[CURRENT_LAN].lan_help_m1_content)
 }
 function m2(){
-  powerPopup("<p>Once the progress bar is full, you go to the next level and you fill the bar from the start.</p><p>Show levels displays the level you have already achieved by a colored icon relating to the category where the level has been increased.</p>")
+  powerPopup(_loc[CURRENT_LAN].lan_help_m2_content)
 }
 function m3(){
   powerPopup("<p>Your boost factor relates to the Competitiobn that you can take part additionally on this platform. With this factor your vote for the idea participating in the contest will be weighted.</p>")
 }
 function m4(){
-  powerPopup("<p>Community Preparedness shows how prepared your local community is in the various areas: awareness, know-how and readinesss to act, on the individual, social and political levels. You can see the scores the community members obtained on average in these categories. Additionally, you can see how many people are in your community currently.</p><p>By toggling the option 'show personal' you can additionally display your personal scores that you obtained in each category. Thus you can see how your level of preparedness contributed to the preparedness of the community. For example, if in one of the cateogires your score is higher that that of the community, it means that your actions on the platform contributed more to the overall preparedness of the community than of an average community member.</p><p>The goal both for yourself and the community is to try to gain an equal amount of points in each of the categories so that you have a full sircle (or a form which rather resembles a circle than a polygon). This means that you are equally well prepared on all 9 categories.</p>")
+  powerPopup(_loc[CURRENT_LAN].lan_help_m4_content)
+
 }
 function m5(){
-  powerPopup("<p>Flood Warden achievment shows what you achieved in total based on your activities on the platform. It relates to the total points you receive.<p>Once you achieve a 'Beginner' level, you become aware of the need to prepare yourself. On the 'Intermediate' level, you already achieved a certain amount of preparedness. On the 'Advanced' level you can consider yourself to be fully prepared for the case of flooding.</p>")
+  powerPopup(_loc[CURRENT_LAN].lan_help_m5_content)
 }
 function m6(){
   powerPopup("<p>Flooding is an issue that does not concert only you personally. Personal impact shows how the actions you do on the platform can have impact on individual, social and political levels. For example, if you share a certain issue about flood warning, it has also a social impact. If you attend an event on flood prevention, you show your political participation.</p><p>The visualization graphically displays the points you achieved in each of the impact categories summed up over their corresponding awareness, know-how and readiness. For example, your social score is the sum of social scores of awareness, know-how and readiness to act, whereas your political score is the sum of political scores of awareness, know-how and readiness to act.</p>")
