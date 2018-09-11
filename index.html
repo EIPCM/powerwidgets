@@ -800,18 +800,31 @@ function setWardenProgress(n){
   if(n >= WARDEN_LVL_0){
     document.getElementById("badge1").classList.add("earned")
     document.getElementById("badge_img1").src = "img/badge1_earned.png";
-    document.getElementsByClassName("boost_factor 1")[0].style.backgroundImage = "url('img/cert_earned.png')";
+    document.getElementsByClassName("boost_factor 1")[0].classList.remove("boost_factor_earned");
+    document.getElementsByClassName("boost_factor 2")[0].classList.remove("boost_factor_earned");
+    document.getElementsByClassName("boost_factor 3")[0].classList.remove("boost_factor_earned");
+
+    document.getElementsByClassName("boost_factor 1")[0].classList.add("boost_factor_earned");
+
   }
   if(n >= WARDEN_LVL_1){
     document.getElementById("badge_img2").src = "img/badge2_earned.png";
     document.getElementById("badge2").classList.add("earned")
-    document.getElementsByClassName("boost_factor 2")[0].style.backgroundImage = "url('img/cert_earned.png')";
+    document.getElementsByClassName("boost_factor 1")[0].classList.remove("boost_factor_earned");
+    document.getElementsByClassName("boost_factor 2")[0].classList.remove("boost_factor_earned");
+    document.getElementsByClassName("boost_factor 3")[0].classList.remove("boost_factor_earned");
+
+    document.getElementsByClassName("boost_factor 2")[0].classList.add("boost_factor_earned");
 
   }
   if(n >= WARDEN_LVL_2){
     document.getElementById("badge_img3").src = "img/badge3_earned.png";
     document.getElementById("badge3").classList.add("earned")
-    document.getElementsByClassName("boost_factor 3")[0].style.backgroundImage = "url('img/cert_earned.png')";
+    document.getElementsByClassName("boost_factor 1")[0].classList.remove("boost_factor_earned");
+    document.getElementsByClassName("boost_factor 2")[0].classList.remove("boost_factor_earned");
+    document.getElementsByClassName("boost_factor 3")[0].classList.remove("boost_factor_earned");
+
+    document.getElementsByClassName("boost_factor 3")[0].classList.add("boost_factor_earned");
 
   }
 

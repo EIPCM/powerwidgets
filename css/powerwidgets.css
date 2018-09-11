@@ -484,19 +484,27 @@ margin-left: auto;margin-right: auto;display: block;
   height: 80px;
   width: 80px;
   font-size: 2em;
-  background: url("../img/cert.png");
-  background-size: auto auto;
-  background-size: auto auto;
-  background-size: contain;
-  line-height: 6;
+  line-height: 3;
   text-align: center;
   font-family: 'Fredoka One', cursive;
-  color: #09244c;
+  color: gray;
   margin-top: 16px;
 }
-
-
+.boost_factor_earned {
+  height: 74px;
+  width: 99px;
+  font-size: 2em;
+  line-height: 2.5;
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  color: #11514b;
+  margin-top: 16px;
+  background-color: #318c84;
+  border-radius: 59%;
+  border-color: #20726a;
+  border: 5px solid #20726a;
 }
+
 /*--------------BOOST FACTOR ENDS---------------------------------------------*/
 
 .onoffswitch {
