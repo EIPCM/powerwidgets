@@ -879,8 +879,16 @@ function initSpider(){
   _goals  = [0,3,6]
   // draw 10 lines, all with the same distance between each other
   for (var i = 0; i < 11; i++) {
+    if(i == 0){
+      ctx.setLineDash([5, 15]);
+      ctx.strokeStyle = 'black';
+
+    }else{
+      ctx.setLineDash([]);
+      ctx.strokeStyle = '#d7dadd';
+
+    }
     ctx.lineWidth   = 1;
-    ctx.strokeStyle = '#d7dadd';
     ctx.beginPath();
     ctx.arc(centerX,centerY, r - ( i *  r / 10 ) ,0,2*Math.PI)
     ctx.stroke();
@@ -1029,15 +1037,15 @@ function addSize(size){
   ctx.font = "bold 16px Arial";
 
   _barSize = sizeWidth  - (sizeWidth / 3);
-  _barY1   = 400;
+  _barY1   = 420;
   _barY2   = _barY1 + 20;
   _l1      = sizeWidth - (_barSize / 3 );
   _l2      = sizeWidth - (_barSize / 6 );
 
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,_barSize ,390);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_small,_barSize ,440);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,440);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,440);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,_barSize ,410);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_small,_barSize ,460);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,460);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,460);
 
   ctx.stroke();
 
@@ -1098,7 +1106,7 @@ function addImpact(){
   var sizeHeight = ctx.canvas.clientHeight;
   var scaleWidth = sizeWidth/100;
   var scaleHeight = sizeHeight/100;
-  _labelColors = ["#2dc463","#e23d3d","#1786e0"]
+  _labelColors = ["#1786e0","#2dc463","#e23d3d",]
   if(sizeWidth <  620){
     ctx.font = "bold 13px Arial";
   }else{
