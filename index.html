@@ -493,10 +493,10 @@ _loc = {
     "lan_spider_awareness": "Know-how",
     "lan_community":"Community",
     "lan_personal": "Personal",
-    "lan_community_size": "Community size",
+    "lan_community_size": "Community size:",
     "lan_community_small": "Small",
     "lan_community_medium": "Medium",
-    "lan_community_big": "Big",
+    "lan_community_big": "Large",
     "lan_help_m1_title": "",
     "lan_help_m1_content": "<p>In order to be prepared to reuse water, you need to increase your problem awareness, know-how in water issues and become ready to increase the use of non-potable water. For example, if you read an article about water quality in the city - you increase your awareness, whereas if you read about how to reuse non-potable water - you get points in readiness to act.</p>",
     "lan_help_m2_title": "",
@@ -1023,14 +1023,72 @@ function addSize(size){
   }else{
     _size  = _loc[CURRENT_LAN].lan_community_big;
   }
-  ctx.strokeStyle = '#000000';
-  ctx.fillStyle   = "#000000";
-  ctx.textAlign   = "right";
+  ctx.strokeStyle = '#265380';
+  ctx.fillStyle   = "#09244c";
+  ctx.textAlign   = "left";
   ctx.font = "bold 16px Arial";
 
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,sizeWidth - marginRight ,50);
-  ctx.fillText(_size,sizeWidth - marginRight,75);
+  _barSize = sizeWidth  - (sizeWidth / 3);
+  _barY1   = 400;
+  _barY2   = _barY1 + 20;
+  _l1      = sizeWidth - (_barSize / 3 );
+  _l2      = sizeWidth - (_barSize / 6 );
+
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,_barSize ,390);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_small,_barSize ,440);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,440);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,440);
+
   ctx.stroke();
+
+
+  _fillBarcolor = "#4382b5";
+  ctx.fillStyle   = _fillBarcolor;
+
+  _barWidth = sizeWidth - _barSize - marginRight;
+  // fill
+  ctx.beginPath();
+  ctx.fillRect(_barSize,_barY1,_barWidth / 2,20);
+  ctx.closePath();
+  ctx.fillStyle   = "#09244c";
+
+  //left
+  ctx.beginPath();
+  ctx.moveTo(_barSize,_barY1);
+  ctx.lineTo(_barSize,_barY2);
+  ctx.closePath();
+  ctx.stroke();
+  //top
+  ctx.beginPath();
+  ctx.moveTo(_barSize,_barY1);
+  ctx.lineTo(sizeWidth - marginRight,_barY1);
+  ctx.closePath();
+  ctx.stroke();
+  //bottom
+  ctx.beginPath();
+  ctx.moveTo(_barSize,_barY2);
+  ctx.lineTo(sizeWidth - marginRight,_barY2);
+  ctx.closePath();
+  ctx.stroke();
+  //right
+  ctx.beginPath();
+  ctx.moveTo(sizeWidth - marginRight,_barY1);
+  ctx.lineTo(sizeWidth - marginRight,_barY2);
+  ctx.closePath();
+  ctx.stroke();
+  //l1
+  ctx.beginPath();
+  ctx.moveTo(_l1,_barY1 + 15);
+  ctx.lineTo(_l1,_barY1 + 25);
+  ctx.closePath();
+  ctx.stroke();
+  //l2
+  ctx.beginPath();
+  ctx.moveTo(_l2,_barY1 + 15);
+  ctx.lineTo(_l2,_barY1 + 25);
+  ctx.closePath();
+  ctx.stroke();
+
 }
 function addImpact(){
   marginLeft = 10;
