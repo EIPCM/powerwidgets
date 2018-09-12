@@ -25,7 +25,7 @@
 
     <div class="indicators">
       <div class="indicator indicatora">
-        <div class="powerMessage">
+        <div class="powerMessage" style="height: 30px !important;color: white;">
           <span style="display:flex;flex-direction:row;" >
             <span style="font-size:1.5em !important;padding-left: 10px;"><span class="lan_total_points"> Total Points:&nbsp; </span><span id="total_score"></span></span>
             <span style="display: flex;flex-direction: row;justify-content: space-between;flex: .8;" id="links">
@@ -318,7 +318,7 @@
       </div>
 
       <div class="powerMessageText lan_power_message_1" id="achievement">Become better prepared to reuse water by increasing your impact and preparedness!</div>
-      <div class="powerMessage lan_power_message_1" id="achievement">&nbsp;</div>
+      <div class="powerMessage" id="achievement">&nbsp;</div>
     </div>
 
     <div class="indicator indicatorc">
@@ -353,7 +353,7 @@
       </div>
     </div>
     <div class="powerMessageText lan_power_message_2" id="community">Try hard to become Advanced Water Guardian!</div>
-    <div class="powerMessage lan_power_message_2" >&nbsp;</div>
+    <div class="powerMessage" >&nbsp;</div>
     <div class="indicator indicatorc">
       <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
       <div class="powerTitle" ><span class="lan_boost_factor">Boost Factor</span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m3()"></img></div>
@@ -572,6 +572,56 @@ function updateCity(){
   document.getElementById("badge_img1").src = "img/badge1_"+_CURRENT_CITY+".png"
   document.getElementById("badge_img2").src = "img/badge2_"+_CURRENT_CITY+".png"
   document.getElementById("badge_img3").src = "img/badge3_"+_CURRENT_CITY+".png"
+  if(CURRENT_LAN == "en"){
+    switch (_CURRENT_CITY ) {
+      case "LE":
+        _m1 = "Become better prepared for flooding by increasing your impact and preparedness!";
+        _m2 = "Try hard to become Advanced Flood Warden!";
+        _m3 = "Help the community become prepared for flooding!";
+        _loc["en"]["lan_power_message_1"] = _m1;
+        _loc["en"]["lan_power_message_2"] = _m2;
+        _loc["en"]["lan_power_message_3"] = _m3;
+        break;
+      case "MI":
+        _m1 = "Become better prepared to save water by increasing your impact and preparedness!";
+        _m2 = "Try hard to become Advanced Water Guardian!";
+        _m3 = "Help the community become prepared to save water!";
+        _loc["en"]["lan_power_message_1"] = _m1;
+        _loc["en"]["lan_power_message_2"] = _m2;
+        _loc["en"]["lan_power_message_3"] = _m3;
+        document.getElementById("title_flood_warden").innerHTML = "Water Guardian Achievement";
+        break;
+      case "SA":
+        _m1 = "Become better prepared to reuse water by increasing your impact and preparedness!";
+        _m2 = "Try hard to become Advanced Water Guardian!";
+        _m3 = "Help the community increase the use of non-potable water!";
+        _loc["en"]["lan_power_message_1"] = _m1;
+        _loc["en"]["lan_power_message_2"] = _m2;
+        _loc["en"]["lan_power_message_3"] = _m3;
+        document.getElementById("title_flood_warden").innerHTML = "Water Guardian Achievement";
+        break;
+      case "JE":
+        _m1 = "Become better prepared to conserve water by increasing your impact and preparedness!";
+        _m2 = "Try hard to become Advanced Water Guardian!";
+        _m3 = "Help the community use water efficiently in the city!";
+        _loc["en"]["lan_power_message_1"] = _m1;
+        _loc["en"]["lan_power_message_2"] = _m2;
+        _loc["en"]["lan_power_message_3"] = _m3;
+        document.getElementById("title_flood_warden").innerHTML = "Water Guardian Achievement";
+        break;
+
+      default:
+
+    }
+
+
+
+    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+    document.getElementsByClassName("lan_power_message_2")[1].innerHTML = _loc["en"]["lan_power_message_2"];
+    document.getElementsByClassName("lan_power_message_3")[2].innerHTML = _loc["en"]["lan_power_message_3"];
+
+
+  }
 }
 function setLan(){
   u    = new URL(window.location);
