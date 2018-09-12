@@ -853,6 +853,40 @@ function setWardenProgress(n){
   //   }
   // }
 }
+function canvas_arrow(context, fromx, fromy, tox, toy){
+    _or = context.fillStyle;
+
+    var headlen = 10;   // length of head in pixels
+    var angle = Math.atan2(toy-fromy,tox-fromx);
+
+    context.beginPath();
+    context.strokeStyle = '#a7acaf';
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.closePath();
+    context.stroke();
+
+
+
+    context.moveTo(tox, toy);
+    _arlx = tox-headlen*Math.cos(angle-Math.PI/6);
+    _arly = toy-headlen*Math.sin(angle-Math.PI/6);
+    _arrx = tox-headlen*Math.cos(angle+Math.PI/6);
+    _arry = toy-headlen*Math.sin(angle+Math.PI/6);
+    context.lineTo(_arlx,_arly);
+    // context.moveTo(tox, toy);
+    context.lineTo(_arrx,_arry);
+    // context.moveTo(_arlx, _arly);
+    context.lineTo(_arrx,_arry);
+    context.fillStyle = '#a7acaf';
+
+    context.stroke();
+
+    context.fill();
+    context.fillStyle = _or;
+
+
+}
 function initSpider(){
   var canvas = document.getElementById("spider");
   var ctx = canvas.getContext("2d");
@@ -882,13 +916,20 @@ function initSpider(){
     if(i == 0){
       ctx.setLineDash([5, 15]);
       ctx.strokeStyle = 'black';
+      ctx.lineWidth   = 1;
 
-    }else{
+    }else if(i == 1){
       ctx.setLineDash([]);
-      ctx.strokeStyle = '#d7dadd';
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth   = 2;
 
     }
-    ctx.lineWidth   = 1;
+    else{
+      ctx.setLineDash([]);
+      ctx.strokeStyle = '#d7dadd';
+      ctx.lineWidth   = 1;
+
+    }
     ctx.beginPath();
     ctx.arc(centerX,centerY, r - ( i *  r / 10 ) ,0,2*Math.PI)
     ctx.stroke();
@@ -917,14 +958,20 @@ function initSpider(){
   _labelColors = ["#2dc463","#e23d3d","#1786e0"]
 
   _degrees.forEach(function(d,i){
-    ctx.beginPath();
-    ctx.moveTo(centerX ,centerY);
+    // ctx.beginPath();
+    // ctx.moveTo(centerX ,centerY);
     // convert angles to radians. Add offset
     rx = (d + _offset)  * (Math.PI /180);
     ry = (d + _offset) * (Math.PI /180);
     x = centerX + (r * 1.1) * Math.cos(rx);
     y = centerY + (r * 1.1) * Math.sin(ry);
-    ctx.lineTo(x,y);
+    var headlen = 10;
+    var angle = Math.atan2(y-centerX,x-centerY);
+    // ctx.lineTo(x,y);
+    canvas_arrow(ctx,centerX,centerY,x,y)
+    // ctx.lineTo(x-headlen*Math.cos(angle-Math.PI/6),y-headlen*Math.sin(angle-Math.PI/6));
+    // ctx.moveTo(x, x);
+    // ctx.lineTo(x-headlen*Math.cos(angle+Math.PI/6),u-headlen*Math.sin(angle+Math.PI/6));
     if(sizeWidth <  620){
       ctx.font = "10px Arial";
 
@@ -966,7 +1013,7 @@ function initSpider(){
         ctx.textAlign="center";
 
     }
-
+    ctx.beginPath();
     ctx.fillText(_labels[i],x,y);
     ctx.stroke();
     ctx.closePath();
