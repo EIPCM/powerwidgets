@@ -497,7 +497,7 @@ margin-left: auto;margin-right: auto;display: block;
   line-height: 2.5;
   text-align: center;
   font-family: 'Fredoka One', cursive;
-  color: #11514b;
+  color: #0a332f;
   margin-top: 16px;
   background-color: #318c84;
   border-radius: 59%;
@@ -541,16 +541,23 @@ margin-left: auto;margin-right: auto;display: block;
 }
 .powerMessage{
   background-color:#36c;
-  color: white;
   text-align: center;
   width: 100%;
-  height: auto;
+  height: 7px;
   font-family: 'Fredoka One', cursive;
   font-size: 1.0em;
   line-height: 30px;
+  text-align: right;
 
 
 }
+.powerMessageText{
+  color:#36c;
+  text-align: right;
+  font-family: 'Fredoka One', cursive;
+
+}
+
 .arrow-down {
   width: 0;
   height: 0;
