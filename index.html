@@ -1114,7 +1114,12 @@ function addSize(size){
   _barWidth = sizeWidth - _barSize - marginRight;
   // fill
   ctx.beginPath();
-  ctx.fillRect(_barSize,_barY1,_barWidth / 2,20);
+  _MAX_SIZE = 1136.34;
+  if(_size >= _MAX_SIZE){
+    size  = _MAX_SIZE
+  }
+  _sP = (size / _MAX_SIZE);
+  ctx.fillRect(_barSize,_barY1,_barWidth * _sP ,20);
   ctx.closePath();
   ctx.fillStyle   = "#09244c";
 
@@ -1204,6 +1209,29 @@ function addImpact(){
 
 
 
+}
+function addGraphGoal(){
+  var canvas = document.getElementById("spider");
+  var ctx = canvas.getContext("2d");
+  var sizeWidth = ctx.canvas.clientWidth;
+  var sizeHeight = ctx.canvas.clientHeight;
+  var scaleWidth = sizeWidth/100;
+  var scaleHeight = sizeHeight/100;
+
+  var img = new Image();   // Create new img element
+  _imgHeight = 150;
+  _imgWidth =  _imgHeight * 1.11;
+  img.addEventListener('load', function() {
+    // execute drawImage statements here
+
+    ctx.drawImage(img, sizeWidth - _imgHeight, 0,_imgWidth,_imgHeight);
+
+  }, false);
+  ctx.fillStyle = "black";
+  ctx.textAlign = "left";
+  ctx.fillText("Goal",sizeWidth - (_imgWidth / 2),_imgHeight + 20);
+
+  img.src = 'img/goals.png'; // Set source path
 }
 function addGoals(){
   _degrees = [0,20,30,60,160,200,240,280,320,360];
@@ -1525,6 +1553,7 @@ window.onload = function()
    initSpider();
    // addGoals();
    addImpact();
+   addGraphGoal();
    addSize(apiClient.getGlobal().obj.participants);
 
    // apiClient.getGlobal().obj.gamification.social
