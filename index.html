@@ -358,7 +358,7 @@
     <div class="powerMessage" >&nbsp;</div>
     <div class="indicator indicatorc">
       <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
-      <div class="powerTitle" ><span class="lan_boost_factor">Boost Factor</span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m3()"></img></div>
+      <div class="powerTitle" ><span class="lan_boost_factor">Feedback Multiplier</span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m3()"></img></div>
       <div class="hideable-area">
         <div class="powerContent" style="width:100%">
             <div class="boost_factor_wrapper">
@@ -615,12 +615,57 @@ function updateCity(){
       default:
 
     }
-
-
-
     document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
     document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
     document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_3"];
+
+
+  else if(CURRENT_LAN == "es"){
+    switch (_CURRENT_CITY ) {
+      case "LE":
+
+        _m1 = "¡Vuélvete mas preparado ante las inundaciones incrementando tu impacto y preparación!";
+        _m2 = "¡Esfuerzate para convertirte en un Guardián Avanzado de las inundaciones!";
+        _m3 = "¡Ayuda a la comunidad a preparase ante las inundaciones!";
+        _loc["es"]["lan_power_message_1"] = _m1;
+        _loc["es"]["lan_power_message_2"] = _m2;
+        _loc["es"]["lan_power_message_3"] = _m3;
+        break;
+      case "MI":
+        _m1 = "¡Vuélvete mas preparado ante las inundaciones incrementando tu impacto y preparación!";
+        _m2 = "¡Esfuerzate para convertirte en un Guardián Avanzado del agua!";
+        _m3 = "¡Ayuda a la comunidad a preparase ante las inundaciones!";
+        _loc["es"]["lan_power_message_1"] = _m1;
+        _loc["es"]["lan_power_message_2"] = _m2;
+        _loc["es"]["lan_power_message_4"] = _m3;
+        document.getElementById("title_flood_warden").innerHTML = "Logro de Guardián del Agua";
+        break;
+      case "SA":
+
+        _m1 = "¡Vuélvete mas preparado para reutilizar el agua incrementando tu impacto y preparación!";
+        _m2 = "¡Esfuerzate para convertirte en un Guardián Avanzado del agua!";
+        _m3 = "¡Ayuda a la comunidad aincrementer el uso del agua no potable!";
+        _loc["es"]["lan_power_message_1"] = _m1;
+        _loc["es"]["lan_power_message_2"] = _m2;
+        _loc["es"]["lan_power_message_4"] = _m3;
+        document.getElementById("title_flood_warden").innerHTML = "Logro de Guardián del Agua";
+        break;
+      case "JE":
+        _m1 = "¡Vuélvete mas preparado para conservar el agua incrementando tu impacto y preparación!";
+        _m2 = "¡Esfuerzate para convertirte en un Guardián Avanzado del agua!";
+        _m3 = "¡Ayuda a la comunidad a usar el agua eficientemente en la ciudad!";
+        _loc["es"]["lan_power_message_1"] = _m1;
+        _loc["eses"]["lan_power_message_2"] = _m2;
+        _loc["es"]["lan_power_message_4"] = _m3;
+        document.getElementById("title_flood_warden").innerHTML = "Logro de Guardián del Agua";
+        break;
+
+      default:
+
+    }
+    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
+    document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
+    document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
 
 
   }
