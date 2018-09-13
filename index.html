@@ -198,7 +198,7 @@
             <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img>
           </div>
         <div class="powerRow">
-          <div class="powerBartitle lan_political">Political</div><div class="powerBarWrapper">
+          <div class="powerBartitle lan_political">Political<br><span id="bar_title_score_PA"></span></div><div class="powerBarWrapper">
             <div class="powerBarLevelsWrapper" id="powerBarLevels1">
               <img src="img/political.png" class="iconsmall"/>
               <img src="img/political.png" class="iconsmall"/>
@@ -238,7 +238,7 @@
           </div>
         </div>
         <div class="powerRow">
-          <div class="powerBartitle lan_social">Social</div><div class="powerBarWrapper">
+          <div class="powerBartitle lan_social">Social<br><span id="bar_title_score_SO"></span></div><div class="powerBarWrapper">
             <div class="powerBarLevelsWrapper"  id="powerBarLevels2">
               <img src="img/users-group.png" class="iconsmall"/>
               <img src="img/users-group.png" class="iconsmall"/>
@@ -277,7 +277,7 @@
           </div>
         </div>
         <div class="powerRow">
-        <div class="powerBartitle lan_individual">Individual</div><div class="powerBarWrapper">
+        <div class="powerBartitle lan_individual">Individual<br><span id="bar_title_score_IN"></span></div><div class="powerBarWrapper">
           <div class="powerBarLevelsWrapper"  id="powerBarLevels3">
             <img src="img/people.png" class="iconsmall"/>
             <img src="img/people.png" class="iconsmall"/>
@@ -813,7 +813,8 @@ function addPowerBarLevelsPA(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("powerBarLevels1").innerHTML = _badges
+  document.getElementById("bar_title_score_PA").innerHTML = l;
+  document.getElementById("powerBarLevels1").innerHTML = _badges;
 }
 function addPowerBarLevelsSO(l){
   _earned  = '<img src="img/users-group.png" class="iconsmall"/>'
@@ -827,6 +828,7 @@ function addPowerBarLevelsSO(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
+  document.getElementById("bar_title_score_SO").innerHTML = l;
   document.getElementById("powerBarLevels2").innerHTML = _badges
 }
 function addPowerBarLevelsIN(l){
@@ -841,6 +843,7 @@ function addPowerBarLevelsIN(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
+  document.getElementById("bar_title_score_IN").innerHTML = l;
   document.getElementById("powerBarLevels3").innerHTML = _badges
 }
 function setWardenProgress(n){
