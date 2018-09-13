@@ -9,7 +9,7 @@
   </head>
   <body style="margin: 0;">
     <div id="wrapper">
-      <header id="title">Total Score <span id="points"></span></header>
+      <header id="title">Total Points: <span id="points"></span></header>
       <div class="wrow">
         <img src="img/circ_talk.png" height="35" width="35" class="wimage ">
         <div class="titleWrapper">
@@ -39,13 +39,13 @@
   <script>
   _loc = {
     "es":{
-      "title":"Tus logros",
+      "title":"Puntos totales:",
       "wtitle_1": "Conciencia de <br>problemas",
       "wtitle_2": "Saber <br>como",
       "wtitle_3": "Listo para actuar"
     },
     "cat":{
-      "title":"Teus assoliments",
+      "title":"Punts totals:",
       "wtitle_1": "Conscienciació <br>del problema",
       "wtitle_2": "Coneixements",
       "wtitle_3": "Preparat"
@@ -78,6 +78,8 @@
        document.getElementById("s1").innerHTML = _p1;
        document.getElementById("s2").innerHTML = _p2;
        document.getElementById("s3").innerHTML = _p3;
+       _totalProgress = _l1 + _l2 + _l3;
+       document.getElementById("points").innerHTML = _totalProgress;
      });
 
    }
