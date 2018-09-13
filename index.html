@@ -43,7 +43,7 @@
           </div>
           <div class="circularWrapper">
             <div class="svgWrapper">
-              <div class="circularTitle" id="problem_awareness">Problem<br> Awareness</div>
+              <div class="circularTitle" id="problem_awareness">Problem<br> Awareness <br><span id="pa_points" style="font-size: small;"></span></div>
               <svg
                  class="progress-ring"
                  width="140"
@@ -90,7 +90,7 @@
 
             </div>
             <div class="svgWrapper">
-              <div class="circularTitle" id="know_how">Know- <br>How</div>
+              <div class="circularTitle" id="know_how">Know- <br>How<br><span id="kh_points" style="font-size: small;"></span></div>
 
               <svg
                  class="progress-ring"
@@ -136,7 +136,7 @@
             </div>
 
             <div class="svgWrapper">
-              <div class="circularTitle" id="ready_to_act">Ready <br>to Act</div>
+              <div class="circularTitle" id="ready_to_act">Ready <br>to Act<br><span id="ra_points" style="font-size: small;"></span></div>
 
               <svg
                  class="progress-ring"
@@ -731,12 +731,24 @@ input3.addEventListener('change', function(e) {
     setProgress3(input3.value);
   }
 })*/
+function setPAPoints(p){
+  document.getElementById("pa_points").innerHTML = p;
+}
+function setKHPoints(p){
+  document.getElementById("kh_points").innerHTML = p;
+}
+function setRAPoints(p){
+  document.getElementById("ra_points").innerHTML = p;
+}
 function changeProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 2000;
   lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
 
+  setPAPoints(la);
+  setKHPoints(lb);
+  setRAPoints(lc);
   _p1 = lra * 100 / _MAX_POINTS_LEVEL;
   _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
   _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
@@ -813,7 +825,7 @@ function addPowerBarLevelsPA(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("bar_title_score_PA").innerHTML = l;
+  document.getElementById("bar_title_score_PA").innerHTML = numberWithCommas(l);
   document.getElementById("powerBarLevels1").innerHTML = _badges;
 }
 function addPowerBarLevelsSO(l){
@@ -828,7 +840,7 @@ function addPowerBarLevelsSO(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("bar_title_score_SO").innerHTML = l;
+  document.getElementById("bar_title_score_SO").innerHTML = numberWithCommas(l);;
   document.getElementById("powerBarLevels2").innerHTML = _badges
 }
 function addPowerBarLevelsIN(l){
@@ -843,8 +855,11 @@ function addPowerBarLevelsIN(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("bar_title_score_IN").innerHTML = l;
+  document.getElementById("bar_title_score_IN").innerHTML = numberWithCommas(l);
   document.getElementById("powerBarLevels3").innerHTML = _badges
+}
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 function setWardenProgress(n){
 
