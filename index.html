@@ -510,7 +510,7 @@ _loc = {
     "lan_help_m2_title": "",
     "lan_help_m2_content": "<p>Water reuse is an issue that does not concern only you personally. Personal impact shows how the actions you do on the platform can have impact on individual, social and political levels. </p><p>For example, if you share an article about water reuse, it has also social impact. If you attend an event on water quality, you show your political participation.</p>",
     "lan_help_m3_title": "Your boost factor relates to the competition that you can take part additionally on this platform. With this factor your vote for the idea participating in the contest will be weighted.",
-    "lan_help_m3_content":"",
+    "lan_help_m3_content":"<p>שקלול הנקודות שלך מתיחס לתחרות בה תוכל להשתתף בפלטפורמה זו. באמצעות שימוש בכלי זה, רצונך להשתתף בתחרות ילקח בחשבון.</p>",
     "lan_help_m4_title": "",
     "lan_help_m4_content":"<p>Community Preparedness and Impact shows how well your local community is on average prepared to increase the use of non-potable water  in the city in the various areas we explored  vis-a-vis how well you are prepared to reuse water. </p><p>For example, if in one of the categories your score is higher than that of the community, it means that you are better prepared to reuse water than an average community member. </p><p>The goal both for yourself and the community is to try to gain an equal amount of points in each of the categories so that you have a full circle (or a form which rather resembles a circle than a polygon). This means that you are equally well prepared on all 9 categories. </p>",
     "lan_help_m5_title": "",
@@ -529,7 +529,7 @@ _loc = {
     "problem_awareness": "בעיה<br>מודעות",
     "know_how": "בקיאות בנושא",
     "ready_to_act":"מוכנות לפעול בנושא",
-    "lan_show_levels":"",
+    "lan_show_levels":"רמות תצוגה",
     "lan_social":"חברתי",
     "lan_political":"פוליטי",
     "lan_individual":"פרטי",
@@ -537,11 +537,11 @@ _loc = {
     "lan_beginner":"מתחיל",
     "lan_itermidiate":"אמצעי",
     "lan_advanced":"מתקדם",
-    "lan_boost_factor":"אפקט מתן תמריץ",
+    "lan_boost_factor":"שקלול נקודות",
     "lan_community_preparedness":"מוכנות קהילתית והשפעתה",
     "lan_show_personal":"הצג ניקוד אישי",
-    "lan_total_points":"ניקוד כולל:",
-    "lan_impact":"",
+    "lan_total_points":"ניקוד כולל",
+    "lan_impact":"השפעה",
     "lan_spider_ready_to_act": "מוכנות לפעול בנושא",
     "lan_spider_know_how": "בקיאות בנושא",
     "lan_spider_awareness": "בעיה"+"מודעות",
@@ -675,48 +675,48 @@ function updateCity(){
   }else if(CURRENT_LAN == "he"){
     switch (_CURRENT_CITY ) {
       case "LE":
-        _m1 = "¡Vuélvete mas preparado ante las inundaciones incrementando tu impacto y preparación!";
-        _m2 = "¡Esfuerzate para convertirte en un Guardián Avanzado de las inundaciones!";
-        _m3 = "¡Ayuda a la comunidad a preparase ante las inundaciones!";
-        _loc["es"]["lan_power_message_1"] = _m1;
-        _loc["es"]["lan_power_message_2"] = _m2;
-        _loc["es"]["lan_power_message_3"] = _m3;
+        _m1 = "";
+        _m2 = "";
+        _m3 = "";
+        _loc["he"]["lan_power_message_1"] = _m1;
+        _loc["he"]["lan_power_message_2"] = _m2;
+        _loc["he"]["lan_power_message_3"] = _m3;
         break;
       case "MI":
-        _m1 = "¡Vuélvete mas preparado ante las inundaciones incrementando tu impacto y preparación!";
+        _m1 = "";
         _m2 = "התאמץ להפוך ל״שומר מים מתקדם״!";
-        _m3 = "¡Ayuda a la comunidad a preparase ante las inundaciones!";
-        _loc["es"]["lan_power_message_1"] = _m1;
-        _loc["es"]["lan_power_message_2"] = _m2;
-        _loc["es"]["lan_power_message_4"] = _m3;
+        _m3 = "";
+        _loc["he"]["lan_power_message_1"] = _m1;
+        _loc["he"]["lan_power_message_2"] = _m2;
+        _loc["he"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "הישגי ״שומר מים״";
         break;
       case "SA":
 
-        _m1 = "¡Vuélvete mas preparado para reutilizar el agua incrementando tu impacto y preparación!";
+        _m1 = "";
         _m2 = "התאמץ להפוך ל״שומר מים מתקדם״!";
-        _m3 = "¡Ayuda a la comunidad a incrementer el uso del agua no potable!";
-        _loc["es"]["lan_power_message_1"] = _m1;
-        _loc["es"]["lan_power_message_2"] = _m2;
-        _loc["es"]["lan_power_message_4"] = _m3;
+        _m3 = "";
+        _loc["he"]["lan_power_message_1"] = _m1;
+        _loc["he"]["lan_power_message_2"] = _m2;
+        _loc["he"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "הישגי ״שומר מים״";
         break;
       case "JE":
         _m1 = "הכן עצמך לשימור מים על ידי העלאת ההשפעה שלך ורמת המוכנות שלך!";
         _m2 = "התאמץ להפוך ל״שומר מים מתקדם״!";
         _m3 = "עזור לקהילה להשתמש במים באופן יעיל בעיר!";
-        _loc["es"]["lan_power_message_1"] = _m1;
-        _loc["es"]["lan_power_message_2"] = _m2;
-        _loc["es"]["lan_power_message_4"] = _m3;
+        _loc["he"]["lan_power_message_1"] = _m1;
+        _loc["he"]["lan_power_message_2"] = _m2;
+        _loc["he"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "הישגי ״שומר מים״";
         break;
 
       default:
 
     }
-    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
-    document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
-    document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
+    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["he"]["lan_power_message_1"];
+    document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["he"]["lan_power_message_2"];
+    document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["he"]["lan_power_message_3"];
 
 
   }
