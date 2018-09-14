@@ -418,6 +418,7 @@ _loc = {
     "lan_spider_ready_to_act": "Listo para actuar",
     "lan_spider_know_how": "Saber cómo",
     "lan_spider_awareness": "Conciencia",
+    "lan_spider_goal":"Meta",
     "lan_community":"Comunidad",
     "lan_personal": "Personal",
     "lan_community_size": "Tamaño de la comunidad",
@@ -440,7 +441,7 @@ _loc = {
     "lan_power_message_1":"Preparate mejor en la reutilización del agua incrementando tu impacto y preparación",
     "lan_power_message_2":"Intenta volverte un Guardián Avanzado del Agua!",
     "lan_power_message_3":"",
-    "lan_power_message_4":"Ayuda a la comunidad volverse igual de preparados ante las inundaciones en todas las categorías."
+    "lan_power_message_4":"Ayuda a la comunidad volverse igual de preparados ante las inundaciones en todas las categorías.",
   },
   "cat":{
     "lan_title_personal_preparedness":"Preparació Personal",
@@ -464,6 +465,7 @@ _loc = {
     "lan_spider_ready_to_act": "Preparat",
     "lan_spider_know_how": "Coneixements",
     "lan_spider_awareness": "Conscienciació",
+    "lan_spider_goal":"Objectiu",
     "lan_community":"comunitat",
     "lan_personal": "Personal",
     "lan_community_size": "Mida de la comunitat",
@@ -496,6 +498,7 @@ _loc = {
     "lan_spider_ready_to_act": "Ready to act",
     "lan_spider_know_how": "Awareness",
     "lan_spider_awareness": "Know-how",
+    "lan_spider_goal": "Goal",
     "lan_community":"Community",
     "lan_personal": "Personal",
     "lan_community_size": "Community size:",
@@ -542,6 +545,7 @@ _loc = {
     "lan_spider_ready_to_act": "שבמחלוקת",
     "lan_spider_know_how": "שבמחלוקת",
     "lan_spider_awareness": "שבמחלוקת",
+    "lan_spider_goal": "מטרה",
     "lan_community":"שבמחלוקת",
     "lan_personal": "שבמחלוקת",
     "lan_community_size": "שבמחלוקת",
@@ -1348,7 +1352,7 @@ function addGraphGoal(){
   }, false);
   ctx.fillStyle = "black";
   ctx.textAlign = "left";
-  ctx.fillText("Goal",sizeWidth - (_imgWidth / 2),_imgHeight + 20);
+  ctx.fillText(_loc[CURRENT_LAN].lan_spider_goal,sizeWidth - (_imgWidth / 2),_imgHeight + 20);
 
   img.src = 'img/goals.png'; // Set source path
 }
