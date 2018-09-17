@@ -69,6 +69,10 @@
     for (k in _loc[_lan]){
       document.getElementById(k).innerHTML = _loc[_lan][k];
     }
+    if(_lan == "ar" || _lan == "he"){
+      document.getElementById("wrapper").setAttribute( "dir","rtl");
+
+    }
   }
   setLan();
   window.onload = function()
