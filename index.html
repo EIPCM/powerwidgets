@@ -185,7 +185,7 @@
 
 
     </div>
-    <div class="powerMessage" id="impact">&nbsp;</div>
+    <div class="powerMessage">&nbsp;</div>
 
       <div class="indicator indicatorb">
         <!-- <div class="arrow-down" onclick="toggleHideableArea(this)"></div> -->
@@ -384,7 +384,7 @@
 
       <div style="margin-left:auto;margin-right:auto;height:500px">
         <canvas id="spider" height="500" width="750" style="z-index:1"></canvas>
-        <div class="powerMessageText lan_power_message_4" id="impact" >Help the community become equally prepared for flooding in all the categories.</div>
+        <div class="powerMessageText lan_power_message_4" >Help the community become equally prepared for flooding in all the categories.</div>
         <div class="powerMessage">&nbsp;</div>
 
       </div>
@@ -626,6 +626,7 @@ function updateCity(){
   document.getElementById("badge_img2").src = "img/badge2_"+_CURRENT_CITY+".png"
   document.getElementById("badge_img3").src = "img/badge3_"+_CURRENT_CITY+".png"
   if(CURRENT_LAN == "en"){
+
     switch (_CURRENT_CITY ) {
       case "LE":
         _m1 = "Become better prepared for flooding by increasing your impact and preparedness!";
@@ -634,6 +635,9 @@ function updateCity(){
         _loc["en"]["lan_power_message_1"] = _m1;
         _loc["en"]["lan_power_message_2"] = _m2;
         _loc["en"]["lan_power_message_3"] = _m3;
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_3"];
         break;
       case "MI":
         _m1 = "Become better prepared to save water by increasing your impact and preparedness!";
@@ -643,6 +647,9 @@ function updateCity(){
         _loc["en"]["lan_power_message_2"] = _m2;
         _loc["en"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "Water Guardian Achievement";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_3"];
         break;
       case "SA":
         _m1 = "Become better prepared to reuse water by increasing your impact and preparedness!";
@@ -652,6 +659,9 @@ function updateCity(){
         _loc["en"]["lan_power_message_2"] = _m2;
         _loc["en"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "Water Guardian Achievement";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_3"];
         break;
       case "JE":
         _m1 = "Become better prepared to conserve water by increasing your impact and preparedness!";
@@ -661,14 +671,15 @@ function updateCity(){
         _loc["en"]["lan_power_message_2"] = _m2;
         _loc["en"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "Water Guardian Achievement";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_3"];
         break;
 
       default:
 
     }
-    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
-    document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
-    document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_3"];
+
 
 
   }else if(CURRENT_LAN == "es"){
@@ -681,6 +692,9 @@ function updateCity(){
         _loc["es"]["lan_power_message_1"] = _m1;
         _loc["es"]["lan_power_message_2"] = _m2;
         _loc["es"]["lan_power_message_3"] = _m3;
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
         break;
       case "MI":
         _m1 = "¡Vuélvete mas preparado ante las inundaciones incrementando tu impacto y preparación!";
@@ -690,6 +704,9 @@ function updateCity(){
         _loc["es"]["lan_power_message_2"] = _m2;
         _loc["es"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "Logro de Guardián del Agua";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
         break;
       case "SA":
 
@@ -700,6 +717,9 @@ function updateCity(){
         _loc["es"]["lan_power_message_2"] = _m2;
         _loc["es"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "Logro de Guardián del Agua";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
         break;
       case "JE":
         _m1 = "¡Vuélvete mas preparado para conservar el agua incrementando tu impacto y preparación!";
@@ -709,14 +729,15 @@ function updateCity(){
         _loc["es"]["lan_power_message_2"] = _m2;
         _loc["es"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "Logro de Guardián del Agua";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
         break;
 
       default:
 
     }
-    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["es"]["lan_power_message_1"];
-    document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["es"]["lan_power_message_2"];
-    document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["es"]["lan_power_message_3"];
+
 
 
   }else if(CURRENT_LAN == "he"){
@@ -728,6 +749,9 @@ function updateCity(){
         _loc["he"]["lan_power_message_1"] = _m1;
         _loc["he"]["lan_power_message_2"] = _m2;
         _loc["he"]["lan_power_message_3"] = _m3;
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["he"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["he"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["he"]["lan_power_message_3"];
         break;
       case "MI":
         _m1 = "";
@@ -737,6 +761,9 @@ function updateCity(){
         _loc["he"]["lan_power_message_2"] = _m2;
         _loc["he"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "הישגי ״שומר מים״";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["he"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["he"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["he"]["lan_power_message_3"];
         break;
       case "SA":
 
@@ -747,6 +774,9 @@ function updateCity(){
         _loc["he"]["lan_power_message_2"] = _m2;
         _loc["he"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "הישגי ״שומר מים״";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["he"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["he"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["he"]["lan_power_message_3"];
         break;
       case "JE":
         _m1 = "הכן עצמך לשימור מים על ידי העלאת ההשפעה שלך ורמת המוכנות שלך!";
@@ -756,6 +786,9 @@ function updateCity(){
         _loc["he"]["lan_power_message_2"] = _m2;
         _loc["he"]["lan_power_message_4"] = _m3;
         document.getElementById("title_flood_warden").innerHTML = "הישגי ״שומר מים״";
+        document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["he"]["lan_power_message_1"];
+        document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["he"]["lan_power_message_2"];
+        document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["he"]["lan_power_message_3"];
         break;
 
       default:
@@ -769,6 +802,9 @@ function updateCity(){
           _loc["he"]["lan_power_message_1"] = _m1;
           _loc["he"]["lan_power_message_2"] = _m2;
           _loc["he"]["lan_power_message_3"] = _m3;
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["ar"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["ar"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["ar"]["lan_power_message_3"];
           break;
         case "MI":
           _m1 = "";
@@ -778,6 +814,9 @@ function updateCity(){
           _loc["he"]["lan_power_message_2"] = _m2;
           _loc["he"]["lan_power_message_4"] = _m3;
           document.getElementById("title_flood_warden").innerHTML = "";
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["ar"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["ar"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["ar"]["lan_power_message_3"];
           break;
         case "SA":
 
@@ -788,6 +827,9 @@ function updateCity(){
           _loc["he"]["lan_power_message_2"] = _m2;
           _loc["he"]["lan_power_message_4"] = _m3;
           document.getElementById("title_flood_warden").innerHTML = "";
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["ar"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["ar"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["ar"]["lan_power_message_3"];
           break;
         case "JE":
           _m1 = "جهز نفسك للحفاظ على المياه بواسطة رفع مدى تأثيرك ومستوى جاهزيتك!";
@@ -796,15 +838,16 @@ function updateCity(){
           _loc["he"]["lan_power_message_1"] = _m1;
           _loc["he"]["lan_power_message_2"] = _m2;
           _loc["he"]["lan_power_message_4"] = _m3;
-document.getElementById("title_flood_warden").innerHTML = 'إنجازات "حارس المياه"';
+          document.getElementById("title_flood_warden").innerHTML = 'إنجازات "حارس المياه"';
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["ar"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["ar"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["ar"]["lan_power_message_3"];
           break;
 
         default:
 
       }
-    document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["he"]["lan_power_message_1"];
-    document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["he"]["lan_power_message_2"];
-    document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["he"]["lan_power_message_3"];
+
 
 
   }
