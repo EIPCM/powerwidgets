@@ -622,7 +622,6 @@ _loc = {
 var CURRENT_LAN = "en";
 var _CURRENT_CITY = "CI";
 function updateCity(){
-  alert(CURRENT_LAN)
   document.getElementById("badge_img1").src = "img/badge1_"+_CURRENT_CITY+".png"
   document.getElementById("badge_img2").src = "img/badge2_"+_CURRENT_CITY+".png"
   document.getElementById("badge_img3").src = "img/badge3_"+_CURRENT_CITY+".png"
@@ -848,7 +847,7 @@ function setLan(){
     }
   }
   updateCity();
-  
+
 
 }
 setLan();
