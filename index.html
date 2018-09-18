@@ -1924,16 +1924,17 @@ window.onload = function()
    _dataGlobalPolitical = _dataGlobal.political;
    _dataGlobalPersonal  = _dataGlobal.personal;
 
-   addPolygons([    _dataGlobalSocial["practical.knowledge"],
-                    _dataGlobalSocial["ready.for.action"],
-                    _dataGlobalSocial["problem.awareness"],
-                    _dataGlobalPolitical["practical.knowledge"],
-                    _dataGlobalPolitical["ready.for.action"],
-                    _dataGlobalPolitical["problem.awareness"],
-                    _dataGlobalPersonal["practical.knowledge"],
+   addPolygons([
                     _dataGlobalPersonal["ready.for.action"],
                     _dataGlobalPersonal["problem.awareness"],
+                    _dataGlobalPersonal["practical.knowledge"],
+                    _dataGlobalSocial["ready.for.action"],
+                    _dataGlobalSocial["problem.awareness"],
                     _dataGlobalSocial["practical.knowledge"],
+                    _dataGlobalPolitical["ready.for.action"],
+                    _dataGlobalPolitical["problem.awareness"],
+                    _dataGlobalPolitical["practical.knowledge"],
+                    _dataGlobalPersonal["ready.for.action"],
                   ],false); //global
 
    if(toggleStatus){
@@ -1941,16 +1942,18 @@ window.onload = function()
      _dataPersonalSocial    = _dataPersonal.social;
      _dataPersonalPolitical = _dataPersonal.political;
      _dataPersonalPersonal  = _dataPersonal.personal;
-     addPolygons([    _dataPersonalSocial["practical.knowledge"],
-                      _dataPersonalSocial["ready.for.action"],
-                      _dataPersonalSocial["problem.awareness"],
-                      _dataPersonalPolitical["practical.knowledge"],
-                      _dataPersonalPolitical["ready.for.action"],
-                      _dataPersonalPolitical["problem.awareness"],
-                      _dataPersonalPersonal["practical.knowledge"],
-                      _dataPersonalPersonal["ready.for.action"],
-                      _dataPersonalPersonal["problem.awareness"],
-                      _dataPersonalSocial["practical.knowledge"]
+     addPolygons([
+                    _dataPersonalPersonal["ready.for.action"],
+                    _dataPersonalPersonal["problem.awareness"],
+                    _dataPersonalPersonal["practical.knowledge"],
+                    _dataPersonalSocial["ready.for.action"],
+                    _dataPersonalSocial["problem.awareness"],
+                    _dataPersonalSocial["practical.knowledge"],
+                    _dataPersonalPolitical["ready.for.action"],
+                    _dataPersonalPolitical["problem.awareness"],
+                    _dataPersonalPolitical["practical.knowledge"],
+                    _dataPersonalPersonal["ready.for.action"],
+
                     ],true); //personal
    }
    addLeyend(toggleStatus);
