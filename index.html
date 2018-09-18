@@ -1465,11 +1465,18 @@ function addSize(size){
   _barWidth = sizeWidth - _barSize - marginRight;
   // fill
   ctx.beginPath();
-  _MAX_SIZE = 1136.34;
-  if(_size >= _MAX_SIZE){
+  _MAX_SIZE = 2000;
+  if(size >= _MAX_SIZE){
     size  = _MAX_SIZE
   }
-  _sP = (size / _MAX_SIZE);
+  if(size <= 100){
+    _sP = (size  * .33) / 100
+  }else if(size > 100 && size <=1000){
+    _sP =  (size/1000) * .66
+    console.log(_sP);
+  }else if(size >1001){
+    _sP =  (size/2000) * 1;
+  }
   ctx.fillRect(_barSize,_barY1,_barWidth * _sP ,20);
   ctx.closePath();
   ctx.fillStyle   = "#09244c";
