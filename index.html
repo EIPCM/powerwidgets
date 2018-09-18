@@ -1274,7 +1274,7 @@ function initSpider(){
   ctx.strokeStyle = '#d7dadd';
   _goals  = [0,3,6]
   // draw 10 lines, all with the same distance between each other
-  for (var i = 0; i < 11; i++) {
+  for (var i = 0; i < 12; i++) {
     if(i == 0){
       ctx.setLineDash([5, 15]);
       ctx.strokeStyle = 'black';
@@ -1293,7 +1293,7 @@ function initSpider(){
 
     }
     ctx.beginPath();
-    ctx.arc(centerX,centerY, r - ( i *  r / 10 ) ,0,2*Math.PI)
+    ctx.arc(centerX,centerY, r - ( i *  r / 11 ) ,0,2*Math.PI)
     ctx.stroke();
 
 
@@ -1744,12 +1744,18 @@ function addLeyend(show_personal){
 }
 function addPolygons(values,dashed){
   _MAX_POLIGON_VALUE = 1000;
+  _EVENT_HORIZONT    = 1000000;
+
   _nvalues = [];
   values.forEach(function(v){
     if(v > _MAX_POLIGON_VALUE){
-      v = _MAX_POLIGON_VALUE;
+      if(v > _EVENT_HORIZONT){
+        v = _EVENT_HORIZONT;
+      }
+      _nv = v / _EVENT_HORIZONT + 9;
+    }else {
+      _nv = v * 9 / _MAX_POLIGON_VALUE;
     }
-    _nv = v * 10 / _MAX_POLIGON_VALUE;
     _nvalues.push(_nv);
   })
   values = _nvalues;
