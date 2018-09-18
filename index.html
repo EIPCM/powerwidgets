@@ -446,7 +446,7 @@ _loc = {
   "cat":{
     "lan_title_personal_preparedness":"Preparació Personal",
     "lan_title_personal_impact": "Impacte Personal",
-    "problem_awareness": "Conscienciació del problema",
+    "problem_awareness": "Conscienciació <br>del problema",
     "know_how": "Coneixements",
     "ready_to_act": "Preparat",
     "lan_show_levels":"Mostrar nivells",
@@ -457,7 +457,7 @@ _loc = {
     "lan_beginner":"Principiant",
     "lan_itermidiate":"Intermedi",
     "lan_advanced":"Avançat",
-    "lan_boost_factor":"Factor de millora",
+    "lan_boost_factor":"Multiplicador per valoracions",
     "lan_community_preparedness":"Preparació de la comunitat",
     "lan_show_personal":"Mostra el personal",
     "lan_total_points":"Puntuació Total:",
@@ -682,7 +682,66 @@ function updateCity(){
 
 
 
-  }else if(CURRENT_LAN == "es"){
+  } else if(CURRENT_LAN == "cat"){
+
+      switch (_CURRENT_CITY ) {
+        case "LE":
+          _m1 = "Estigués millor preparat per a les inundacions incrementant el teu impacte i preparació!";
+          _m2 = "Esforça’t per a convertir en Vigilant d’Inundacions Avançat!";
+          _m3 = "Ajuda a la comunitat a estar preparada per a les inundacions!";
+          _loc["en"]["lan_power_message_1"] = _m1;
+          _loc["en"]["lan_power_message_2"] = _m2;
+          _loc["en"]["lan_power_message_4"] = _m3;
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_4"];
+          break;
+        case "MI":
+          _m1 = "Estigués millor preparat per a estalviar aigua incrementant el teu impacte i preparació!";
+          _m2 = "Esforça’t per a convertir en Guardià d’Aigua Avançat!";
+          _m3 = "Ajuda a la comunitat a estar preparada per estalviar aigua!";
+          _loc["en"]["lan_power_message_1"] = _m1;
+          _loc["en"]["lan_power_message_2"] = _m2;
+          _loc["en"]["lan_power_message_4"] = _m3;
+          document.getElementById("title_flood_warden").innerHTML = "Guardià d’Aigua Avançat";
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_4"];
+          break;
+        case "SA":
+          _m1 = "Estigués millor preparat per a reutilitzar aigua incrementant el teu impacte i preparació!";
+          _m2 = "Esforça’t per a convertir en Guardià d’Aigua Avançat!";
+          _m3 = "Ajuda a la comunitat a incrementar l’ús d’aigua no potable!";
+          _loc["en"]["lan_power_message_1"] = _m1;
+          _loc["en"]["lan_power_message_2"] = _m2;
+          _loc["en"]["lan_power_message_4"] = _m3;
+          document.getElementById("title_flood_warden").innerHTML = "Guardià d’Aigua Avançat";
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_4"];
+          break;
+        case "JE":
+          _m1 = "Estigués millor preparat per a conservar aigua incrementant el teu impacte i preparació!";
+          _m2 = "Esforça’t per a convertir en Guardià d’Aigua Avançat!";
+          _m3 = "Ajuda a la comunitat a incrementar l’ús d’aigua no potable!";
+          _loc["en"]["lan_power_message_1"] = _m1;
+          _loc["en"]["lan_power_message_2"] = _m2;
+          _loc["en"]["lan_power_message_4"] = _m3;
+          document.getElementById("title_flood_warden").innerHTML = "Guardià d’Aigua Avançat";
+          document.getElementsByClassName("lan_power_message_1")[0].innerHTML = _loc["en"]["lan_power_message_1"];
+          document.getElementsByClassName("lan_power_message_2")[0].innerHTML = _loc["en"]["lan_power_message_2"];
+          document.getElementsByClassName("lan_power_message_4")[0].innerHTML = _loc["en"]["lan_power_message_4"];
+          break;
+
+        default:
+
+      }
+
+
+
+    }
+
+  else if(CURRENT_LAN == "es"){
     switch (_CURRENT_CITY ) {
       case "LE":
 
