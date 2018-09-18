@@ -334,21 +334,21 @@
             </div>
             <div class="badge"   id="badge1" >
               <img src="img/badge1.png" id="badge_img1"/>
-              <div class="level_lbl"><b class="lan_beginner">Beginner</b> 1000</div>
+              <div class="level_lbl"><b class="lan_beginner">Beginner</b> 500</div>
             </div>
             <div id="warden_bar_1">
               <div id="warden_bar1_fill"  style="width:0%"></div>
             </div>
             <div class="badge " id="badge2">
               <img src="img/badge2.png" id="badge_img2"/>
-              <div class="level_lbl"><b class="lan_itermidiate">Intermediate</b> 4000</div>
+              <div class="level_lbl"><b class="lan_itermidiate">Intermediate</b> 5000</div>
             </div>
             <div id="warden_bar_2">
               <div id="warden_bar2_fill" style="width:0%"></div>
             </div>
             <div class="badge " id="badge3">
               <img src="img/badge3.png" id="badge_img3"/>
-              <div class="level_lbl"><b class="lan_advanced">Advanced</b> 10000</div>
+              <div class="level_lbl"><b class="lan_advanced">Advanced</b> 9000</div>
             </div>
           </div>
           </div>
@@ -1019,7 +1019,7 @@ function setRAPoints(p){
   document.getElementById("ra_points").innerHTML = p;
 }
 function changeProgress(la,lb,lc){
-  var _MAX_POINTS_LEVEL = 2000;
+  var _MAX_POINTS_LEVEL = 1000;
   lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
@@ -1027,6 +1027,7 @@ function changeProgress(la,lb,lc){
   setPAPoints(la);
   setKHPoints(lb);
   setRAPoints(lc);
+
   _p1 = lra * 100 / _MAX_POINTS_LEVEL;
   _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
   _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
@@ -1042,11 +1043,11 @@ function changeProgress(la,lb,lc){
 function addCircularLevelsPA(l){
   _earned  = '<img src="img/circ_talk.png" class="iconsmall"/>'
   _nearned ='<img src="img/circ_talk_gray.png" class="iconsmall"/>'
-  if(l >= 6000){
+  if(l >= 3000){
     _badges = _earned  + _earned + _earned;
-  }else if( (l <= 5999) && (l >= 4000) ){
+  }else if( (l <= 2999) && (l >= 2000) ){
     _badges = _earned  + _earned + _nearned;
-  }else if( (l <= 3999) && (l >= 2000) ){
+  }else if( (l <= 2999) && (l >= 1000) ){
     _badges = _earned  + _nearned + _nearned;
   }else{
     _badges = _nearned  + _nearned + _nearned;
@@ -1057,11 +1058,11 @@ function addCircularLevelsPA(l){
 function addCircularLevelsKH(l){
   _earned  = '<img src="img/circ_idea.png" class="iconsmall"/>'
   _nearned ='<img src="img/circ_idea_gray.png" class="iconsmall"/>'
-  if(l >= 6000){
+  if(l >= 3000){
     _badges = _earned  + _earned + _earned;
-  }else if( (l <= 5999) && (l >= 4000) ){
+  }else if( (l <= 2999) && (l >= 2000) ){
     _badges = _earned  + _earned + _nearned;
-  }else if( (l <= 3999) && (l >= 2000) ){
+  }else if( (l <= 2999) && (l >= 1000) ){
     _badges = _earned  + _nearned + _nearned;
   }else{
     _badges = _nearned  + _nearned + _nearned;
@@ -1071,11 +1072,11 @@ function addCircularLevelsKH(l){
 function addCircularLevelsRA(l){
   _earned  = '<img src="img/circ_stopwatch.png" class="iconsmall"/>'
   _nearned ='<img src="img/circ_stopwatch_gray.png" class="iconsmall"/>'
-  if(l >= 6000){
+  if(l >= 3000){
     _badges = _earned  + _earned + _earned;
-  }else if( (l <= 5999) && (l >= 4000) ){
+  }else if( (l <= 2999) && (l >= 2000) ){
     _badges = _earned  + _earned + _nearned;
-  }else if( (l <= 3999) && (l >= 2000) ){
+  }else if( (l <= 2999) && (l >= 1000) ){
     _badges = _earned  + _nearned + _nearned;
   }else{
     _badges = _nearned  + _nearned + _nearned;
@@ -1084,7 +1085,7 @@ function addCircularLevelsRA(l){
 }
 // setTimeout(function(){ changeProgress() }, 1000);
 function setProgressPowerBar(p,n){
-  _MAX_POINTS_LEVEL = 2000;
+  _MAX_POINTS_LEVEL = 1000;
   lrp = p - (Math.floor( p / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   p = lrp * 100 / _MAX_POINTS_LEVEL;
 
@@ -1094,11 +1095,11 @@ function setProgressPowerBar(p,n){
 function addPowerBarLevelsPA(l){
   _earned  = '<img src="img/political.png" class="iconsmall"/>'
   _nearned ='<img src="img/political_gray.png" class="iconsmall"/>'
-  if(l >= 6000){
+  if(l >= 3000){
     _badges = _earned  + _earned + _earned;
-  }else if( (l <= 5999) && (l >= 4000) ){
+  }else if( (l <= 2999) && (l >= 2000) ){
     _badges = _earned  + _earned + _nearned;
-  }else if( (l <= 3999) && (l >= 2000) ){
+  }else if( (l <= 2999) && (l >= 1000) ){
     _badges = _earned  + _nearned + _nearned;
   }else{
     _badges = _nearned  + _nearned + _nearned;
@@ -1109,11 +1110,11 @@ function addPowerBarLevelsPA(l){
 function addPowerBarLevelsSO(l){
   _earned  = '<img src="img/users-group.png" class="iconsmall"/>'
   _nearned ='<img src="img/users-group_gray.png" class="iconsmall"/>'
-  if(l >= 6000){
+  if(l >= 3000){
     _badges = _earned  + _earned + _earned;
-  }else if( (l <= 5999) && (l >= 4000) ){
+  }else if( (l <= 2999) && (l >= 2000) ){
     _badges = _earned  + _earned + _nearned;
-  }else if( (l <= 3999) && (l >= 2000) ){
+  }else if( (l <= 2999) && (l >= 1000) ){
     _badges = _earned  + _nearned + _nearned;
   }else{
     _badges = _nearned  + _nearned + _nearned;
@@ -1124,11 +1125,11 @@ function addPowerBarLevelsSO(l){
 function addPowerBarLevelsIN(l){
   _earned  = '<img src="img/people.png" class="iconsmall"/>'
   _nearned ='<img src="img/people_gray.png" class="iconsmall"/>'
-  if(l >= 6000){
+  if(l >= 3000){
     _badges = _earned  + _earned + _earned;
-  }else if( (l <= 5999) && (l >= 4000) ){
+  }else if( (l <= 2999) && (l >= 2000) ){
     _badges = _earned  + _earned + _nearned;
-  }else if( (l <= 3999) && (l >= 2000) ){
+  }else if( (l <= 2999) && (l >= 1000) ){
     _badges = _earned  + _nearned + _nearned;
   }else{
     _badges = _nearned  + _nearned + _nearned;
@@ -1141,9 +1142,9 @@ const numberWithCommas = (x) => {
 }
 function setWardenProgress(n){
 
-  var WARDEN_LVL_0 =  1000;
-  var WARDEN_LVL_1 =  4000;
-  var WARDEN_LVL_2 = 10000;
+  var WARDEN_LVL_0 =  500;
+  var WARDEN_LVL_1 =  5000;
+  var WARDEN_LVL_2 = 9000;
 
   _w1 = n * 100 / WARDEN_LVL_0;
   _w2 = (n - WARDEN_LVL_0) * 100 / (WARDEN_LVL_1 - WARDEN_LVL_0);
