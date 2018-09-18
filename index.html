@@ -1886,12 +1886,12 @@ window.onload = function()
      _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
      _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
 
-     setProgressPowerBar(_l3,1);
-     setProgressPowerBar(_l2,2);
+     setProgressPowerBar(_l2,1);
+     setProgressPowerBar(_l3,2);
      setProgressPowerBar(_l1,3);
 
-     addPowerBarLevelsPA(_l3);
-     addPowerBarLevelsSO(_l2);
+     addPowerBarLevelsPA(_l2);
+     addPowerBarLevelsSO(_l3);
      addPowerBarLevelsIN(_l1);
      _totalProgress = _l1 + _l2 + _l3;
      document.getElementById("total_score").innerHTML = _totalProgress;
