@@ -33,7 +33,7 @@ header{
   font-weight: bold;
 }
 .wimage{
-  flex:.1;
+  width:35px;
 }
 .wbutton{
   color:white;
