@@ -97,6 +97,27 @@
        _totalProgress = _p1 + _p2 + _p3;
        document.getElementById("points").innerHTML = _totalProgress;
      });
+     apiClient.setObjectChangedCallback(function(){
+       window.apiData = a;
+       _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+       _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+       _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+
+       // ---------------------------------------------------------------------//
+       _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+       _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+       _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+
+       _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+       _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+       _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+       document.getElementById("s1").innerHTML = _p1;
+       document.getElementById("s2").innerHTML = _p2;
+       document.getElementById("s3").innerHTML = _p3;
+       _totalProgress = _p1 + _p2 + _p3;
+       document.getElementById("points").innerHTML = _totalProgress;
+       console.log("just received the updated api object!");
+    });
 
    }
 
