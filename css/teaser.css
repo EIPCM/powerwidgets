@@ -58,6 +58,8 @@ header{
 }
 .tbyellow{
   background-color: #f39200;
+  font-weight: bold;
+  
 }
 .tbyellow:hover{
   background-color: #ffb23e;
@@ -71,7 +73,8 @@ header{
 }
 .tbgreen{
   background-color: #318c84;
-  color:white;
+  color:black;
+  font-weight: bold;
 }
 .tbgreen:hover{
   background-color: #41aea4;
