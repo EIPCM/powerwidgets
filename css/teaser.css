@@ -7,6 +7,7 @@ header{
 .teaser_container{
   display: flex;
   justify-content:space-around;
+  flex-wrap: wrap;
 }
 .teaser_column{
   text-align: center;
@@ -37,7 +38,7 @@ header{
 }
 .teaser_button_link{
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
 }
 .teaser_button{
   width: 200px;
