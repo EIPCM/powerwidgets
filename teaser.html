@@ -21,7 +21,7 @@
           <div class="teaser_text">
             <p>Win the chance to implement your idea and help develop solutions for sustainability issues</p>
           </div>
-          <a href="https://www.google.com" class="teaser_button_link">
+          <a href="" class="teaser_button_link"  id="link1">
             <div class="teaser_button tbyellow">
               SUBMIT HERE
             </div>
@@ -37,7 +37,7 @@
           <div class="teaser_text tt2">
             <p>Give feedback to others and help them develop ideas</p>
           </div>
-          <a href="https://www.google.com" class="teaser_button_link">
+          <a href="" class="teaser_button_link" id="link2">
             <div class="teaser_button tbblue">
               COMMENT HERE
             </div>
@@ -94,26 +94,43 @@
         CURRENT_CITY = _city;
       }
       function updateLinks(){
-        _link3 = "https://{city}.power-h2020.eu/?location=home&login_pub"
+//         Leicester: https://leicester.power-h2020.eu/?location=challenge&loadP=1160
+//
+// MK: https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200
+//
+// Sabadell: https://sabadell.power-h2020.eu/?location=challenge&loadP=1220
+//
+// Jerusalem: https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240
+        _link1 = "https://{city}.power-h2020.eu/?location=challenge&loadP=1160";
+        _link3 = "https://{city}.power-h2020.eu/?location=home&login_pub";
         switch (CURRENT_CITY) {
           case "CI":
+            _link1 = _link1.replace("{city}","city")
             _link3 = _link3.replace("{city}","city")
             break;
           case "LE":
+            _link1 =  "https://leicester.power-h2020.eu/?location=challenge&loadP=1160"
             _link3 = _link3.replace("{city}","leicester")
             break;
           case "MI":
+            _link1 = "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
             _link3 = _link3.replace("{city}","milton-keynes")
             break;
           case "SA":
+            _link1 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
             _link3 = _link3.replace("{city}","sabadell")
             break;
           case "JE":
+            _link1 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
             _link3 = _link3.replace("{city}","jerusalem")
             break;
           default:
 
         }
+        _l1 = document.getElementById("link1")
+        _l1.setAttribute("href",_link1)
+        _l2 = document.getElementById("link2")
+        _l2.setAttribute("href",_link1)
         _l3 = document.getElementById("link3")
         _l3.setAttribute("href",_link3)
       }
