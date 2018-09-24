@@ -2,7 +2,7 @@ header{
   font-family: 'Fredoka One', cursive;
   font-size: 30px;
   color:#2c5bc5;
-  height: 60px;
+  height: 70px;
 }
 .teaser_container{
   display: flex;
@@ -14,19 +14,19 @@ header{
   flex:1;
 }
 .teaser_column_image{
-  width: 40%;
+  width: 50%;
 }
 .teaser_subtitle{
   width: 100%;
-  font-size:18px;
-  height: 40px;
+  font-size:20px;
+  height: 60px;
   color:black;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 .teaser_text{
   color:#4c2c06;
-  font-size:16px;
+  font-size:18px;
   font-family: 'Montserrat', sans-serif;
 
 }
@@ -42,7 +42,6 @@ header{
 }
 .teaser_button{
   width: 200px;
-  border-radius: 10px;
   text-align: center;
   text-transform: uppercase;
   height: 30px;
@@ -50,8 +49,6 @@ header{
   margin-right: auto;
   font-family: 'Montserrat', sans-serif;
   font-size:16px;
-  font-weight: bold;
-  border: 3px solid black;
   line-height: 30px;
 
 }
