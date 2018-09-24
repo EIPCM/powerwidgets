@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
   </head>
   <body>
-      <header class="lan_title">My header</header>
+      <header class="lan_title">What can I do to help my community?</header>
       <div class="teaser_container">
         <div class="teaser_column">
           <div class="teaser_subtitle">
@@ -58,11 +58,55 @@
             <div class="teaser_button tbgreen">
               REGISTER HERE
             </div>
-          </a> 
+          </a>
 
 
         </div>
     </div>
+    <script>
+    var CURRENT_LAN = "en";
+    var CURRENT_CITY = "CI";
+      _loc = {
+        "en":{
+          "CI":{
+            "lan_title":"What can I do to help my community?"
+          },
+          "LE":{
+            "lan_title":"What can I do to help Leicester community?"
+          },
+          "MI":{
+            "lan_title":"What can I do to help Milton Keynes community?"
+          },
+          "SA":{
+            "lan_title":"What can I do to help Sabadell community?"
+
+          },
+          "JE":{
+            "lan_title":"What can I do to help Jerusalem community?"
+          }
+        }
+      }
+      u    = new URL(window.location);
+      _lan = u.searchParams.get("lan");
+      _city = u.searchParams.get("city");
+      if(_city != null){
+        CURRENT_CITY = _city;
+      }
+
+      function updateCity(){
+        if(_lan != null){
+          CURRENT_LAN = _lan;
+        }
+        for (k in _loc[CURRENT_LAN][CURRENT_CITY]){
+            lan_classes = document.getElementsByClassName(k);
+            for (var i = 0; i < lan_classes.length; i++) {
+              lan_classes[i].innerHTML = _loc[CURRENT_LAN][CURRENT_CITY][k];
+            }
+
+        }
+      }
+      updateCity();
+    </script>
 
   </body>
 </html>
