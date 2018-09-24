@@ -1,0 +1,82 @@
+header{
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  color:#2c5bc5;
+  height: 60px;
+}
+.teaser_container{
+  display: flex;
+  justify-content:space-around;
+}
+.teaser_column{
+  text-align: center;
+  flex:1;
+}
+.teaser_column_image{
+  width: 40%;
+}
+.teaser_subtitle{
+  width: 100%;
+  font-size:18px;
+  height: 40px;
+  color:black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.teaser_text{
+  color:#4c2c06;
+  font-size:16px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.tt2{
+  color:#0c244f;
+}
+.tt3{
+  color:#0a5149;
+}
+.teaser_button_link{
+  text-decoration: none;
+  color: inherit; 
+}
+.teaser_button{
+  width: 200px;
+  border-radius: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size:16px;
+  font-weight: bold;
+  border: 3px solid black;
+  line-height: 30px;
+
+}
+.teaser_button{
+  cursor: pointer;
+}
+.tbyellow{
+  background-color: #f39200;
+}
+.tbyellow:hover{
+  background-color: #ffb23e;
+}
+.tbblue{
+  background-color: #2c5bc5;
+  color:white;
+}
+.tbblue:hover{
+  background-color: #3974f8;
+}
+.tbgreen{
+  background-color: #318c84;
+  color:white;
+}
+.tbgreen:hover{
+  background-color: #41aea4;
+}
+.teaser_text{
+  height: 100px;
+}
