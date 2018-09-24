@@ -55,7 +55,7 @@
           <div class="teaser_text tt3">
             <p>See how your knowledge increases and help your community get prepared</p>
           </div>
-          <a href="https://www.google.com" class="teaser_button_link">
+          <a href="" class="teaser_button_link" id="link3">
             <div class="teaser_button tbgreen">
               REGISTER HERE
             </div>
@@ -93,7 +93,29 @@
       if(_city != null){
         CURRENT_CITY = _city;
       }
+      function updateLinks(){
+        _link3 = "https://{city}.power-h2020.eu/?location=home&login_pub"
+        switch (CURRENT_CITY) {
+          case "CI":
+            _link3 = _link3.replace("{city}","city")
+            break;
+          case "LE":
+            _link3 = _link3.replace("{city}","leicester")
+            break;
+          case "MI":
+            _link3 = _link3.replace("{city}","milton-keynes")
+            break;
+          case "SA":
+            _link3 = _link3.replace("{city}","sabadell")
+            break;
+          case "JE":
+            _link3 = _link3.replace("{city}","jerusalem")
+            break;
+          default:
 
+        }
+        _l.setAttribute("href",_link3)
+      }
       function updateCity(){
         if(_lan != null){
           CURRENT_LAN = _lan;
@@ -107,6 +129,7 @@
         }
       }
       updateCity();
+      updateLinks();
     </script>
 
   </body>
