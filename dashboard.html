@@ -40,7 +40,7 @@
                 Problem Awareness
               </div>
               <img src="img/dashboard/pa.png" class="widget_guage_img"/>
-              <div class="widget_score_small">2000</div>
+              <div class="widget_score_small" id="value_pa">0</div>
 
             </div>
             <div class="widget_gauge">
@@ -48,7 +48,7 @@
                 Know-<br>How
               </div>
               <img src="img/dashboard/kh.png" class="widget_guage_img"/>
-              <div class="widget_score_small">2000</div>
+              <div class="widget_score_small" id="value_kh">0</div>
 
             </div>
             <div class="widget_gauge">
@@ -56,7 +56,7 @@
                 Ready<br>to Act
               </div>
               <img src="img/dashboard/ra.png" class="widget_guage_img"/>
-              <div class="widget_score_small">2000</div>
+              <div class="widget_score_small" id="value_ra">0</div>
 
             </div>
           </div>
@@ -69,7 +69,7 @@
                 Individual
               </div>
               <img src="img/dashboard/in.png" class="widget_guage_img"/>
-              <div class="widget_score_small">2000</div>
+              <div class="widget_score_small" id="value_in">0</div>
 
             </div>
             <div class="widget_gauge">
@@ -77,7 +77,7 @@
                 Social
               </div>
               <img src="img/dashboard/so.png" class="widget_guage_img"/>
-              <div class="widget_score_small">2000</div>
+              <div class="widget_score_small" id="value_so">0</div>
 
             </div>
             <div class="widget_gauge">
@@ -85,7 +85,7 @@
                 Political
               </div>
               <img src="img/dashboard/po.png" class="widget_guage_img"/>
-              <div class="widget_score_small">2000</div>
+              <div class="widget_score_small" id="value_po">0</div>
 
             </div>
           </div>
@@ -93,6 +93,15 @@
       </div>
     </div>
     <script>
+    function changeValues(pa,kh,ra,_in,so,po){
+      document.getElementById("value_pa").innerHTML = pa;
+      document.getElementById("value_kh").innerHTML = kh;
+      document.getElementById("value_ra").innerHTML = ra;
+
+      document.getElementById("value_in").innerHTML = _in;
+      document.getElementById("value_so").innerHTML = so;
+      document.getElementById("value_po").innerHTML = po;
+    }
     function setWardenProgress(n){
 
       var WARDEN_LVL_0 =  500;
@@ -128,7 +137,19 @@
          _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
          _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
          _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+         // ---------------------------------------------------------------------//
+          _l1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+          _l1 += apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+          _l1 += apiClient.getUser().obj.gamification.personal["ready.for.action"];
 
+          _l2 = apiClient.getUser().obj.gamification.political["problem.awareness"];
+          _l2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+          _l2 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+
+          _l3 = apiClient.getUser().obj.gamification.social["problem.awareness"];
+          _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+          _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+         changeValues(_p1,_p2,_p3,_l1,_l2,_l3);
          _totalProgress = _p1 + _p2 + _p3;
          document.getElementById("total_score").innerHTML = _totalProgress;
          setWardenProgress(_totalProgress);
