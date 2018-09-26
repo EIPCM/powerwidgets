@@ -89,7 +89,7 @@
             </div>
 
           </div>
-          <div class="widget_more"> <a href="/?location=area" class="lan_see_more">See more...</a></div>
+          <div class="widget_more"> <a href="" class="lan_see_more" id="link"></a></div>
         </div>
       </div>
     </div>
@@ -287,6 +287,30 @@
         }
     }
     setLan();
+    function updateLink(){
+      _link = "https://{city}.power-h2020.eu/?location=area";
+      switch (CURRENT_CITY) {
+        case "CI":
+          _link = _link.replace("{city}","city")
+          break;
+        case "LE":
+          _link = _link.replace("{city}","leicester")
+          break;
+        case "MI":
+          _link = _link.replace("{city}","milton-keynes")
+          break;
+        case "SA":
+          _link = _link.replace("{city}","sabadell")
+          break;
+        case "JE":
+          _link = _link.replace("{city}","jerusalem")
+          break;
+        default:
+      }
+
+      document.getElementById("link").setAttribute("href",_link);
+    }
+    updateLink();
     window.onload = function()
      {
        window.apiClient = new PowerApiClient(function(a){
