@@ -12,48 +12,48 @@
   </head>
 
   <body>
-    <header class="lan_header">Your Progress Summary</header>
+    <header class="lan_header lan_title_summary"></header>
     <div class="dashboard">
       <div class="panel_left">
         <div class="widget_top">
-          <div class="widget_title_left lan_title">Total score:</div>
+          <div class="widget_title_left lan_total_score"></div>
           <div class="widget_score_big" id="total_score">0</div>
         </div>
         <div class="widget">
-          <div class="widget_title_left lan_title">Your Achievement:</div>
+          <div class="widget_title_left lan_your_achievement"></div>
           <img src="img/dashboard/badge_CI_a.png" class="widget_guage_img" id="achievement_img"/>
-          <div class="widget_subsubtitle">Intermediate Flood warden</div>
+          <div class="widget_subsubtitle achievement_title"></div>
 
         </div>
         <div class="widget">
-          <div class="widget_title_left lan_title">Your feedback multiplier</div>
+          <div class="widget_title_left lan_your_feedback_multiplier"></div>
           <div class="widget_score_big" id="multiplier_value">0x</div>
 
         </div>
       </div>
       <div class="panel_right">
         <div class="widget_top">
-          <div class="widget_title lan_title">Personal Preparedness</div>
+          <div class="widget_title lan_title_personal_impact"></div>
           <div class="widget_gauges_container">
             <div class="widget_gauge">
-              <div class="widget_subtitle">
-                Problem Awareness
+              <div class="widget_subtitle problem_awareness">
+
               </div>
               <img src="img/dashboard/pa.png" class="widget_guage_img"/>
               <div class="widget_score_small" id="value_pa">0</div>
 
             </div>
             <div class="widget_gauge">
-              <div class="widget_subtitle">
-                Know-<br>How
+              <div class="widget_subtitle know_how">
+
               </div>
               <img src="img/dashboard/kh.png" class="widget_guage_img"/>
               <div class="widget_score_small" id="value_kh">0</div>
 
             </div>
             <div class="widget_gauge">
-              <div class="widget_subtitle">
-                Ready<br>to Act
+              <div class="widget_subtitle ready_to_act">
+
               </div>
               <img src="img/dashboard/ra.png" class="widget_guage_img"/>
               <div class="widget_score_small" id="value_ra">0</div>
@@ -62,27 +62,27 @@
           </div>
         </div>
         <div class="widget">
-          <div class="widget_title lan_title">Personal Impact</div>
+          <div class="widget_title lan_personal_impact"></div>
           <div class="widget_gauges_container">
             <div class="widget_gauge">
-              <div class="widget_subtitle">
-                Individual
+              <div class="widget_subtitle individual">
+
               </div>
               <img src="img/dashboard/in.png" class="widget_guage_img"/>
               <div class="widget_score_small" id="value_in">0</div>
 
             </div>
             <div class="widget_gauge">
-              <div class="widget_subtitle">
-                Social
+              <div class="widget_subtitle social">
+
               </div>
               <img src="img/dashboard/so.png" class="widget_guage_img"/>
               <div class="widget_score_small" id="value_so">0</div>
 
             </div>
             <div class="widget_gauge">
-              <div class="widget_subtitle">
-                Political
+              <div class="widget_subtitle political">
+
               </div>
               <img src="img/dashboard/po.png" class="widget_guage_img"/>
               <div class="widget_score_small" id="value_po">0</div>
@@ -103,42 +103,101 @@
       document.getElementById("value_po").innerHTML = po;
     }
     function setWardenProgress(n){
-
       var WARDEN_LVL_0 =  500;
       var WARDEN_LVL_1 =  5000;
       var WARDEN_LVL_2 = 9000;
+
+      switch (CURRENT_CITY) {
+        case "SA":
+        case "JE":
+        case "CI":
+            _achievement_title = "lan_achievement_flood_warden_{level}"
+        case "LE":
+            _achievement_title = "lan_achievement_water_guardian_{level}"
+          break;
+        default:
+
+      }
       _w = "0x";
       _img = "badge_{CI}_{l}.png"
       if(n < WARDEN_LVL_0){
         _level = "a";
+        _achievement_title = _achievement_title.replace("{level}","beginner")
       }
       if(n >= WARDEN_LVL_0){
         _w = "1x";
         _level = "a";
+        _achievement_title = _achievement_title.replace("{level}","beginner")
       }
 
       if(n >= WARDEN_LVL_1){
         _w = "1.5x";
         _level = "b";
+        _achievement_title = _achievement_title.replace("{level}","intermediate")
       }
 
       if(n >= WARDEN_LVL_2){
         _w = "2x";
         _level = "c";
+        _achievement_title = _achievement_title.replace("{level}","advanced")
+
       }
       _img = _img.replace("{CI}",CURRENT_CITY);
       _img = _img.replace("{l}",_level);
       _link = "img/dashboard/"+ _img;
       console.log(_link);
+      document.getElementsByClassName("achievement_title")[0].innerHTML = _loc[CURRENT_LAN][_achievement_title];
       document.getElementById("achievement_img").setAttribute("src",_link)
       document.getElementById("multiplier_value").innerHTML = _w;
     }
+    CURRENT_LAN = "en";
+    CURRENT_CITY = "CI";
     u    = new URL(window.location);
     _lan = u.searchParams.get("lan");
     _city = u.searchParams.get("city");
     if(_city != null){
       CURRENT_CITY = _city;
     }
+    if(_lan != null){
+      CURRENT_LAN = _lan;
+    }
+    _loc = {
+      "en":{
+        "lan_title_summary":"Your Progress Summary",
+        "lan_total_score":"Total Score:",
+        "lan_title_personal_impact":"Personal Preparedness",
+        "lan_your_achievement":"Your achievement",
+        "lan_your_feedback_multiplier":"Your feedback multiplier",
+        "lan_personal_impact":"Personal Impact",
+        "problem_awareness":"Personal Awareness",
+        "know_how":"Know-<br>how",
+        "ready_to_act":"Ready<br>to Act",
+        "individual":"Individual",
+        "social":"Social",
+        "political":"Political",
+        "lan_achievement_flood_warden_beginner":"Begginer Flood Warden",
+        "lan_achievement_flood_warden_intermediate":"Intermediate Flood Warden",
+        "lan_achievement_flood_warden_advanced":"Advanced Flood Warden",
+        "lan_achievement_water_guardian_beginner":"Begginer Flood Warden",
+        "lan_achievement_water_guardian_intermediate":"Intermediate Flood Warden",
+        "lan_achievement_water_guardian_advanced":"Advanced Flood Warden",
+      }
+    }
+    function setLan(){
+
+        for (k in _loc[CURRENT_LAN]){
+          // _element = document.getElementById(k);
+          // if(_element !=null){
+          //     _element.innerHTML = _loc[CURRENT_LAN][k];
+          // }
+          lan_classes = document.getElementsByClassName(k);
+          for (var i = 0; i < lan_classes.length; i++) {
+            console.log(k);
+            lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
+          }
+        }
+    }
+    setLan();
     window.onload = function()
      {
        window.apiClient = new PowerApiClient(function(a){

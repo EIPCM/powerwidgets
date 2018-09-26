@@ -17,7 +17,7 @@ header{
   text-align:center
 }
 .dashboard{
-  /* background-color: #214c91; */
+  background-color: #214c91;
   flex:1;
   display: flex;
   flex-direction: row;
