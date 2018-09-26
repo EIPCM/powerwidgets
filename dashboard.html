@@ -27,7 +27,7 @@
         </div>
         <div class="widget">
           <div class="widget_title_left lan_title">Your feedback multiplier</div>
-          <div class="widget_score_big">2X</div>
+          <div class="widget_score_big" id="multiplier_value">0X</div>
 
         </div>
       </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="widget_gauge">
               <div class="widget_subtitle">
-                Problem Awareness
+                Know-<br>How
               </div>
               <img src="img/dashboard/kh.png" class="widget_guage_img"/>
               <div class="widget_score_small">2000</div>
@@ -53,7 +53,7 @@
             </div>
             <div class="widget_gauge">
               <div class="widget_subtitle">
-                Problem Awareness
+                Ready<br>to Act
               </div>
               <img src="img/dashboard/ra.png" class="widget_guage_img"/>
               <div class="widget_score_small">2000</div>
@@ -93,6 +93,25 @@
       </div>
     </div>
     <script>
+    function setWardenProgress(n){
+
+      var WARDEN_LVL_0 =  500;
+      var WARDEN_LVL_1 =  5000;
+      var WARDEN_LVL_2 = 9000;
+      _w = "0x";
+      if(n >= WARDEN_LVL_0){
+        _w = "1x";
+      }
+
+      if(n >= WARDEN_LVL_1){
+        _w = "1.5x";
+      }
+
+      if(n >= WARDEN_LVL_2){
+        _w = "2x";
+      }
+      document.getElementById("multiplier_value").innerHTML = _w;
+    }
     window.onload = function()
      {
        window.apiClient = new PowerApiClient(function(a){
@@ -112,6 +131,7 @@
 
          _totalProgress = _p1 + _p2 + _p3;
          document.getElementById("total_score").innerHTML = _totalProgress;
+         setWardenProgress(_totalProgress);
        });
        apiClient.setObjectChangedCallback(function(){
          _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
@@ -128,7 +148,7 @@
          _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
          _totalProgress = _p1 + _p2 + _p3;
          document.getElementById("total_score").innerHTML = _totalProgress;
-
+         setWardenProgress(_totalProgress);
       });
 
      }
