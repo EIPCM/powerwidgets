@@ -101,11 +101,12 @@ header{
   margin-top: 10px;
 }
 .widget_more{
-  font-size: 30px;
+  font-size: 20px;
   font-family: 'Montserrat', sans-serif;
-  color:white;
-  text-align: center;
+  color: white;
+  text-align: right;
   margin-top: 10px;
+  margin-right: 20px;
 }
 .widget_more a{
   color: #9bcdfd;
