@@ -166,7 +166,7 @@
         "lan_title_summary":"Your Progress Summary",
         "lan_total_score":"Total Score:",
         "lan_title_personal_impact":"Personal Preparedness",
-        "lan_your_achievement":"Your achievement",
+        "lan_your_achievement":"Achievement",
         "lan_your_feedback_multiplier":"Your feedback multiplier",
         "lan_personal_impact":"Personal Impact",
         "problem_awareness":"Personal Awareness",
@@ -181,6 +181,26 @@
         "lan_achievement_water_guardian_beginner":"Begginer Flood Warden",
         "lan_achievement_water_guardian_intermediate":"Intermediate Flood Warden",
         "lan_achievement_water_guardian_advanced":"Advanced Flood Warden",
+      },
+      "es":{
+        "lan_title_summary":"Tu Resumen",
+        "lan_total_score":"Puntuación Total",
+        "lan_title_personal_impact":"Preparación Personal",
+        "lan_your_achievement":"Logro:",
+        "lan_your_feedback_multiplier":"Multiplicador de Realimentación",
+        "lan_personal_impact":"Impacto",
+        "problem_awareness":"Conciencia del <br>problema",
+        "know_how":"Saber cómo",
+        "ready_to_act":"Listo para <br>actuar",
+        "individual":"Individual",
+        "social":"Social",
+        "political":"Politico",
+        "lan_achievement_flood_warden_beginner":"Guardián de Inundaciones Principiante",
+        "lan_achievement_flood_warden_intermediate":"Guardián de Inundaciones Intermedio",
+        "lan_achievement_flood_warden_advanced":"Guardián de Inundaciones Avanzado",
+        "lan_achievement_water_guardian_beginner":"Guardián del agua Principiante",
+        "lan_achievement_water_guardian_intermediate":"Guardián del agua Intermedio",
+        "lan_achievement_water_guardian_advanced":"Guardián del agua Avanzado",
       }
     }
     function setLan(){
@@ -192,7 +212,6 @@
           // }
           lan_classes = document.getElementsByClassName(k);
           for (var i = 0; i < lan_classes.length; i++) {
-            console.log(k);
             lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
           }
         }
