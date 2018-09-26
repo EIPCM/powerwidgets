@@ -21,13 +21,13 @@
         </div>
         <div class="widget">
           <div class="widget_title_left lan_title">Your Achievement:</div>
-          <img src="img/dashboard/ach.png" class="widget_guage_img"/>
+          <img src="img/dashboard/badge_CI_a.png" class="widget_guage_img" id="achievement_img"/>
           <div class="widget_subsubtitle">Intermediate Flood warden</div>
 
         </div>
         <div class="widget">
           <div class="widget_title_left lan_title">Your feedback multiplier</div>
-          <div class="widget_score_big" id="multiplier_value">0X</div>
+          <div class="widget_score_big" id="multiplier_value">0x</div>
 
         </div>
       </div>
@@ -108,18 +108,36 @@
       var WARDEN_LVL_1 =  5000;
       var WARDEN_LVL_2 = 9000;
       _w = "0x";
+      _img = "badge_{CI}_{l}.png"
+      if(n < WARDEN_LVL_0){
+        _level = "a";
+      }
       if(n >= WARDEN_LVL_0){
         _w = "1x";
+        _level = "a";
       }
 
       if(n >= WARDEN_LVL_1){
         _w = "1.5x";
+        _level = "b";
       }
 
       if(n >= WARDEN_LVL_2){
         _w = "2x";
+        _level = "c";
       }
+      _img = _img.replace("{CI}",CURRENT_CITY);
+      _img = _img.replace("{l}",_level);
+      _link = "img/dashboard/"+ _img;
+      console.log(_link);
+      document.getElementById("achievement_img").setAttribute("src",_link)
       document.getElementById("multiplier_value").innerHTML = _w;
+    }
+    u    = new URL(window.location);
+    _lan = u.searchParams.get("lan");
+    _city = u.searchParams.get("city");
+    if(_city != null){
+      CURRENT_CITY = _city;
     }
     window.onload = function()
      {
