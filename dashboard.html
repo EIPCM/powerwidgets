@@ -17,7 +17,7 @@
       <div class="panel_left">
         <div class="widget_top">
           <div class="widget_title_left lan_title">Total score:</div>
-          <div class="widget_score_big">0</div>
+          <div class="widget_score_big" id="total_score">0</div>
         </div>
         <div class="widget">
           <div class="widget_title_left lan_title">Your Achievement:</div>
@@ -66,7 +66,7 @@
           <div class="widget_gauges_container">
             <div class="widget_gauge">
               <div class="widget_subtitle">
-                Problem Awareness
+                Individual
               </div>
               <img src="img/dashboard/in.png" class="widget_guage_img"/>
               <div class="widget_score_small">2000</div>
@@ -74,7 +74,7 @@
             </div>
             <div class="widget_gauge">
               <div class="widget_subtitle">
-                Problem Awareness
+                Social
               </div>
               <img src="img/dashboard/so.png" class="widget_guage_img"/>
               <div class="widget_score_small">2000</div>
@@ -82,7 +82,7 @@
             </div>
             <div class="widget_gauge">
               <div class="widget_subtitle">
-                Problem Awareness
+                Political
               </div>
               <img src="img/dashboard/po.png" class="widget_guage_img"/>
               <div class="widget_score_small">2000</div>
@@ -92,5 +92,46 @@
         </div>
       </div>
     </div>
+    <script>
+    window.onload = function()
+     {
+       window.apiClient = new PowerApiClient(function(a){
+         window.apiData = a;
+         _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+         _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+         _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+
+         // ---------------------------------------------------------------------//
+         _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+         _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+         _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+
+         _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+         _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+         _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+
+         _totalProgress = _p1 + _p2 + _p3;
+         document.getElementById("total_score").innerHTML = _totalProgress;
+       });
+       apiClient.setObjectChangedCallback(function(){
+         _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+         _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+         _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+
+         // ---------------------------------------------------------------------//
+         _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+         _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+         _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+
+         _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+         _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+         _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+         _totalProgress = _p1 + _p2 + _p3;
+         document.getElementById("total_score").innerHTML = _totalProgress;
+
+      });
+
+     }
+    </script>
   </body>
 </html>
