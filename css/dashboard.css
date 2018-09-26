@@ -7,7 +7,7 @@ html,body{
 }
 header{
   height: 50px;
-  font-size: 40px;
+  font-size: 30px;
   font-family: 'Montserrat', sans-serif;
   display: block;
   margin-left: auto;
@@ -42,16 +42,26 @@ header{
 }
 .widget_title{
   color:#9bcdfd;
-  font-size: 20px;
+  font-size: 17px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-align: center;
+}
+.widget_title_left{
+  color:#9bcdfd;
+  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  
 }
 .widget_score_big{
   font-family: 'Montserrat', sans-serif;
   font-size: 30px;
   color:white;
   text-align: center;
+  margin-top: 10px;
 }
 .widget_gauges_container{
   display: flex;
@@ -62,26 +72,32 @@ header{
   flex:1;
 }
 .widget_subtitle{
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Montserrat', sans-serif;
   color:white;
   text-align: center;
+  margin-top: 7px;
 }
 .widget_subsubtitle{
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
   color:white;
   text-align: center;
+  margin-top: 10px;
 }
 .widget_score_small{
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
   color:white;
   text-align: center;
+  margin-top: 10px;
 }
 .widget_guage_img{
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
 }
