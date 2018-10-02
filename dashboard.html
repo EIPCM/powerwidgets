@@ -141,8 +141,8 @@
       <div class="points_area">
         <div class="points_wrapper">
           <div class="points_row">
-            <div class="points_personal">
-              2800
+            <div class="points_personal" id="total_personal_score">
+              0
             </div>
             <div class="points_subtitle">
               Personal
@@ -154,7 +154,7 @@
 
           <div class="points_row">
             <div class="points_community">
-              3600
+              0
             </div>
             <div class="points_subtitle">
               Community
@@ -413,7 +413,7 @@
            _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
           changeValues(_p1,_p2,_p3,_l1,_l2,_l3);
           _totalProgress = _p1 + _p2 + _p3;
-          document.getElementById("total_score").innerHTML = _totalProgress;
+          document.getElementById("total_personal_score").innerHTML = _totalProgress;
           setWardenProgress(_totalProgress);
         });
         apiClient.setObjectChangedCallback(function(){
@@ -430,8 +430,8 @@
           _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
           _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
           _totalProgress = _p1 + _p2 + _p3;
-          document.getElementById("total_score").innerHTML = _totalProgress;
-          setWardenProgress(_totalProgress);
+          changeProgress(_p1,_p2,_p3);
+          document.getElementById("total_personal_score").innerHTML = _totalProgress;
         });
       } catch (e) {
 
