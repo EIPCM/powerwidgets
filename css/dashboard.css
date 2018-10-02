@@ -41,8 +41,8 @@ header{
 
 .dashboard{
   /* background-color: #214c91; */
-  width: 495px;
-  height: 452px;
+  /* width: 495px;
+  height: 452px; */
 }
 .panel_left{
   flex:.3;
