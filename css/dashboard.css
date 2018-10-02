@@ -28,7 +28,7 @@ header{
   text-align:center
 }
 .highlight_title{
-  height: 35px;
+  height: 18px;
   font-size: 27px;
   font-family: 'Montserrat', sans-serif;
   display: block;
@@ -37,11 +37,10 @@ header{
   font-weight: bolder;
   color:white;
   text-align:center;
-  line-height: 73px;
 }
 
 .dashboard{
-  background-color: #214c91;
+  /* background-color: #214c91; */
   width: 495px;
   height: 452px;
 }
@@ -169,4 +168,59 @@ header{
   height: 20px;
   width: 20px;
   margin-left: 2px;
+}
+.points_area{
+  display: flex;
+  justify-content: space-between;
+}
+.points_wrapper{
+  flex: .85;
+  margin-left: 44%;
+  display: flex;
+  justify-content: space-between;
+}
+.points_personal{
+  color: white;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background-color: #0f3370;
+  padding: 5px;
+  border-radius: 10px;
+}
+.points_community{
+  color: white;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  padding: 5px;
+}
+.points_row{
+  flex:1;
+  color:white;
+}
+.points_separator{
+  text-align: center;
+  font-size: 41px;
+}
+.points_subtitle{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: center;
+}
+.footer{
+  font-size: 27px;
+  font-family: 'Montserrat', sans-serif;
+  color: #88c9f8;
+  text-align: right;
+  padding-right: 10px;
+  height: 30px;
+  line-height: 39px;
+  font-weight: bold;
+}
+.footer a{
+  color: #88c9f8;
+  text-decoration: none; /* no underline */
 }
