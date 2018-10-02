@@ -13,85 +13,137 @@
   <body>
     <header class="lan_header lan_title_summary"></header>
     <div class="dashboard">
-      <div class="panel_left">
-        <div class="widget_top">
-          <div class="widget_title_left lan_total_score"></div>
-          <div class="widget_score_big" id="total_score">0</div>
+      <header>Your results highlight</header>
+      <div class="subheader">Flood Preparedness</div>
+      <div class="highlight_title">Know-How</div>
+      <div class="circularWrapper">
+        <div class="svgWrapper">
+          <div class="circularTitle" ><span id="problem_awareness">Problem<br> Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>
+          <svg
+             class="progress-ring"
+             width="140"
+             fill="#13377f"
+             height="140"
+             shape-rendering="geometricPrecision"
+             style="margin-top: 15px;"
+             >
+             <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(255,255,255);stroke-width:2"/>
+             <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(255,255,255);stroke-width:2"/>
+            <circle
+              id="circ_1"
+              class="progress-ring__circle"
+              transform="rotate(-90 0 0)"
+              stroke="#6d0949"
+              stroke-width="50"
+              fill="#13377f"
+              r="30"
+              cx="70"
+              cy="70"/>
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="#6d0949"
+              r="30"
+              cx="70"
+              cy="70"/>
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="transparent"
+              r="57"
+              cx="70"
+              cy="70"/>
+            <image xlink:href="img/prob_awe_noarrow.png" height="140" width="140"  rx="15" ry="15" />
+
+          </svg>
         </div>
-        <div class="widget">
-          <div class="widget_title_left lan_your_achievement"></div>
-          <img src="img/dashboard/badge_CI_a.png" class="widget_guage_img" id="achievement_img"/>
-          <div class="widget_subsubtitle achievement_title"></div>
+        <div class="svgWrapper">
+          <div class="circularTitle" ></div>
+          <svg
+             class="progress-ring"
+             width="200"
+             fill="#13377f"
+             height="200"
+             shape-rendering="geometricPrecision"
+             style="margin-top: 23px;"
+             >
+             <line x1="0" y1="100" x2="200" y2="100" style="stroke:rgb(255,255,255);stroke-width:2"/>
+             <line x1="100" y1="0" x2="100" y2="200" style="stroke:rgb(255,255,255);stroke-width:2"/>
+             <circle
+               stroke="white"
+               stroke-width="2"
+               fill="white"
+               r="80"
+               cx="100"
+               cy="100"/>
+            <circle
+              class="progress-ring__circle"
+              transform="rotate(-90 0 0)"
+              stroke="#13377f"
+              stroke-width="100"
+              fill="#13377f"
+              r="30"
+              cx="100"
+              cy="100"
+              id="circ_2"
+              />
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="#13377f"
+              r="50"
+              cx="100"
+              cy="100"/>
+
+
+            <image xlink:href="img/idea_noarrow.png" height="200" width="200"  rx="15" ry="15" />
+          </svg>
 
         </div>
-        <div class="widget">
-          <div class="widget_title_left lan_your_feedback_multiplier"></div>
-          <div class="widget_score_big" id="multiplier_value">0x</div>
+
+        <div class="svgWrapper">
+          <div class="circularTitle" ><span id="ready_to_act">Ready <br>to Act</span><br><span id="ra_points" style="font-size: small;"></span></div>
+          <svg
+             class="progress-ring"
+             width="140"
+             fill="#493f8d"
+             height="140"
+             shape-rendering="geometricPrecision"
+             style="margin-top: 15px;"
+             >
+             <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(255,255,255);stroke-width:2"/>
+             <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(255,255,255);stroke-width:2"/>
+            <circle
+              class="progress-ring__circle"
+              transform="rotate(-90 0 0)"
+              stroke="#493f8d"
+              stroke-width="50"
+              fill="#493f8d"
+              r="30"
+              cx="70"
+              cy="70"
+              id="circ_3"
+              />
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="#493f8d"
+              r="30"
+              cx="70"
+              cy="70"/>
+            <circle
+              stroke="white"
+              stroke-width="2"
+              fill="transparent"
+              r="57"
+              cx="70"
+              cy="70"/>
+
+            <image xlink:href="img/ready_act_noarrow.png" height="140" width="140"  rx="15" ry="15" />
+          </svg>
 
         </div>
-      </div>
-      <div class="panel_right">
-        <div class="widget_top">
-          <div class="widget_title lan_title_personal_impact"></div>
-          <div class="widget_gauges_container">
-            <div class="widget_gauge">
-              <div class="widget_subtitle problem_awareness">
-
-              </div>
-              <img src="img/dashboard/pa.png" class="widget_guage_img"/>
-              <div class="widget_score_small" id="value_pa">0</div>
-
-            </div>
-            <div class="widget_gauge">
-              <div class="widget_subtitle know_how">
-
-              </div>
-              <img src="img/dashboard/kh.png" class="widget_guage_img"/>
-              <div class="widget_score_small" id="value_kh">0</div>
-
-            </div>
-            <div class="widget_gauge">
-              <div class="widget_subtitle ready_to_act">
-
-              </div>
-              <img src="img/dashboard/ra.png" class="widget_guage_img"/>
-              <div class="widget_score_small" id="value_ra">0</div>
-
-            </div>
-          </div>
-        </div>
-        <div class="widget">
-          <div class="widget_title lan_personal_impact"></div>
-          <div class="widget_gauges_container">
-            <div class="widget_gauge">
-              <div class="widget_subtitle individual">
-
-              </div>
-              <img src="img/dashboard/in.png" class="widget_guage_img"/>
-              <div class="widget_score_small" id="value_in">0</div>
-
-            </div>
-            <div class="widget_gauge">
-              <div class="widget_subtitle social">
-
-              </div>
-              <img src="img/dashboard/so.png" class="widget_guage_img"/>
-              <div class="widget_score_small" id="value_so">0</div>
-
-            </div>
-            <div class="widget_gauge">
-              <div class="widget_subtitle political">
-
-              </div>
-              <img src="img/dashboard/po.png" class="widget_guage_img"/>
-              <div class="widget_score_small" id="value_po">0</div>
-
-            </div>
-
-          </div>
-        </div>
-        <div class="widget_more"> <a href="" class="lan_see_more" id="link"></a></div>
-      </div>
+    </div>
     </div>
     <script>
     function changeValues(pa,kh,ra,_in,so,po){
@@ -308,61 +360,117 @@
         default:
       }
 
-      document.getElementById("link").setAttribute("href",_link);
+      // document.getElementById("link").setAttribute("href",_link);
     }
     updateLink();
     window.onload = function()
      {
-       window.apiClient = new PowerApiClient(function(a){
-         window.apiData = a;
-         _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
-         _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
-         _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+      try {
+        window.apiClient = new PowerApiClient(function(a){
+          window.apiData = a;
+          _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+          _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+          _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
 
-         // ---------------------------------------------------------------------//
-         _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
-         _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
-         _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+          // ---------------------------------------------------------------------//
+          _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+          _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+          _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
 
-         _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
-         _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
-         _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
-         // ---------------------------------------------------------------------//
-          _l1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
-          _l1 += apiClient.getUser().obj.gamification.personal["practical.knowledge"];
-          _l1 += apiClient.getUser().obj.gamification.personal["ready.for.action"];
+          _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+          _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+          _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+          // ---------------------------------------------------------------------//
+           _l1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+           _l1 += apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+           _l1 += apiClient.getUser().obj.gamification.personal["ready.for.action"];
 
-          _l2 = apiClient.getUser().obj.gamification.political["problem.awareness"];
-          _l2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
-          _l2 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+           _l2 = apiClient.getUser().obj.gamification.political["problem.awareness"];
+           _l2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+           _l2 += apiClient.getUser().obj.gamification.political["ready.for.action"];
 
-          _l3 = apiClient.getUser().obj.gamification.social["problem.awareness"];
-          _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
-          _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
-         changeValues(_p1,_p2,_p3,_l1,_l2,_l3);
-         _totalProgress = _p1 + _p2 + _p3;
-         document.getElementById("total_score").innerHTML = _totalProgress;
-         setWardenProgress(_totalProgress);
-       });
-       apiClient.setObjectChangedCallback(function(){
-         _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
-         _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
-         _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
+           _l3 = apiClient.getUser().obj.gamification.social["problem.awareness"];
+           _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+           _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+          changeValues(_p1,_p2,_p3,_l1,_l2,_l3);
+          _totalProgress = _p1 + _p2 + _p3;
+          document.getElementById("total_score").innerHTML = _totalProgress;
+          setWardenProgress(_totalProgress);
+        });
+        apiClient.setObjectChangedCallback(function(){
+          _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
+          _p1 += apiClient.getUser().obj.gamification.political["problem.awareness"];
+          _p1 += apiClient.getUser().obj.gamification.social["problem.awareness"];
 
-         // ---------------------------------------------------------------------//
-         _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
-         _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
-         _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
+          // ---------------------------------------------------------------------//
+          _p2 = apiClient.getUser().obj.gamification.personal["practical.knowledge"];
+          _p2 += apiClient.getUser().obj.gamification.political["practical.knowledge"];
+          _p2 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
 
-         _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
-         _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
-         _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
-         _totalProgress = _p1 + _p2 + _p3;
-         document.getElementById("total_score").innerHTML = _totalProgress;
-         setWardenProgress(_totalProgress);
-      });
+          _p3 = apiClient.getUser().obj.gamification.personal["ready.for.action"];
+          _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
+          _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
+          _totalProgress = _p1 + _p2 + _p3;
+          document.getElementById("total_score").innerHTML = _totalProgress;
+          setWardenProgress(_totalProgress);
+        });
+      } catch (e) {
+
+      } finally {
+
+      }
+
 
      }
+     var circle = document.getElementById("circ_1");
+     var radius = circle.r.baseVal.value;
+     var circumference = radius * 2 * Math.PI;
+
+     var circle2 = document.getElementById("circ_2");
+     var radius2 = circle.r.baseVal.value;
+     var circumference2 = radius2 * 2 * Math.PI;
+
+     var circle3 = document.getElementById("circ_3");
+     var radius3 = circle.r.baseVal.value;
+     var circumference3 = radius3 * 2 * Math.PI;
+
+     circle.style.strokeDasharray = `${circumference} ${circumference}`;
+     circle.style.strokeDashoffset = `${circumference}`;
+     circle2.style.strokeDasharray = `${circumference} ${circumference}`;
+     circle2.style.strokeDashoffset = `${circumference}`;
+     circle3.style.strokeDasharray = `${circumference} ${circumference}`;
+     circle3.style.strokeDashoffset = `${circumference}`;
+     function changeProgress(la,lb,lc){
+       var _MAX_POINTS_LEVEL = 1000;
+       lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+       lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+       lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+
+
+       _p1 = lra * 100 / _MAX_POINTS_LEVEL;
+       _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
+       _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
+       setProgress(_p1);
+       setProgress2(_p2);
+       setProgress3(_p3);
+     }
+     function setProgress(percent) {
+       const offset = circumference - percent / 100 * circumference;
+       circle.style.strokeDashoffset = offset;
+     }
+
+
+     function setProgress2(percent) {
+       const offset2 = circumference2 - percent / 100 * circumference2;
+       circle2.style.strokeDashoffset = offset2;
+     }
+
+
+     function setProgress3(percent) {
+       const offset3 = circumference3 - percent / 100 * circumference3;
+       circle3.style.strokeDashoffset = offset3;
+     }
+
     </script>
   </body>
 </html>

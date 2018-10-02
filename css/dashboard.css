@@ -6,21 +6,43 @@ html,body{
 
 }
 header{
-  height: 50px;
+  height: 40px;
   font-size: 30px;
   font-family: 'Montserrat', sans-serif;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-weight: bold;
+  font-weight: bolder;
   color:white;
   text-align:center
 }
+.subheader{
+  height: 35px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bolder;
+  color:white;
+  text-align:center
+}
+.highlight_title{
+  height: 35px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bolder;
+  color:white;
+  text-align:center
+}
+
 .dashboard{
-  /* background-color: #214c91; */
-  flex:1;
-  display: flex;
-  flex-direction: row;
+  background-color: #214c91;
+  width: 495px;
+  height: 452px;
 }
 .panel_left{
   flex:.3;
@@ -111,4 +133,39 @@ header{
 .widget_more a{
   color: #9bcdfd;
   text-decoration: none;
+}
+
+/*  */
+
+.circularWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.svgWrapper{
+  width: 100%;
+  text-align:center;
+}
+.circularTitle{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: bold;
+}
+.progress-ring__circle {
+  transition: 0.35s stroke-dashoffset;
+  // axis compensation
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.circularLevelsWrapper{
+  text-align: center;
+  margin-top: 10px;
+}
+.iconsmall{
+  height: 20px;
+  width: 20px;
+  margin-left: 2px;
 }
