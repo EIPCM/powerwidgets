@@ -29,14 +29,15 @@ header{
 }
 .highlight_title{
   height: 35px;
-  font-size: 20px;
+  font-size: 27px;
   font-family: 'Montserrat', sans-serif;
   display: block;
   margin-left: auto;
   margin-right: auto;
   font-weight: bolder;
   color:white;
-  text-align:center
+  text-align:center;
+  line-height: 73px;
 }
 
 .dashboard{
