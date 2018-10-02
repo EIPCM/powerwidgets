@@ -411,10 +411,9 @@
            _l3 = apiClient.getUser().obj.gamification.social["problem.awareness"];
            _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
            _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
-          changeValues(_p1,_p2,_p3,_l1,_l2,_l3);
           _totalProgress = _p1 + _p2 + _p3;
+          changeProgress(_p1,_p2,_p3);
           document.getElementById("total_personal_score").innerHTML = _totalProgress;
-          setWardenProgress(_totalProgress);
         });
         apiClient.setObjectChangedCallback(function(){
           _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
