@@ -254,7 +254,8 @@
             <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img>
           </div>
         <div class="powerRow">
-          <div class="powerBartitle"><span class="lan_political"> Political</span><br><span id="bar_title_score_PA"></span></div><div class="powerBarWrapper">
+          <div class="powerBartitle"><span class="lan_political"> Political</span><br><span id="bar_title_score_PA"></span></div>
+          <div class="powerBarWrapper">
             <div class="powerBarLevelsWrapper" id="powerBarLevels1">
               <img src="img/political.png" class="iconsmall"/>
               <img src="img/political.png" class="iconsmall"/>
@@ -292,6 +293,8 @@
               </div>
             </div>
           </div>
+          <div class="powerBarCommunityScore"><span class="lan_political" id="g_pa"> / 3600</div>
+
         </div>
         <div class="powerRow">
 
@@ -332,6 +335,8 @@
               </div>
             </div>
           </div>
+          <div class="powerBarCommunityScore"><span class="lan_political" id="g_so"> / 3600</div>
+
         </div>
         <div class="powerRow">
 
@@ -372,7 +377,10 @@
               </div>
             </div>
           </div>
+          <div class="powerBarCommunityScore"><span class="lan_political" id="g_in"> / 3600</div>
+
         </div>
+
       </div>
 
       <div class="powerMessageText lan_power_message_1" id="achievement">Become better prepared for flooding by increasing your impact and preparedness!</div>
@@ -1082,6 +1090,15 @@ function setGKHPoints(p){
 }
 function setGRAPoints(p){
   document.getElementById("rag_points").innerHTML = p;
+}
+function setg_pa(p){
+  document.getElementById("g_pa").innerHTML = "/ "+p;
+}
+function setg_so(p){
+  document.getElementById("g_so").innerHTML = "/ "+p;
+}
+function setg_in(p){
+  document.getElementById("g_in").innerHTML = "/ "+p;
 }
 function changeProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 1000;
@@ -1985,6 +2002,22 @@ window.onload = function()
      addPowerBarLevelsPA(_l2);
      addPowerBarLevelsSO(_l3);
      addPowerBarLevelsIN(_l1);
+
+     _h1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
+     _h1 += apiClient.getGlobal().obj.gamification.personal["practical.knowledge"];
+     _h1 += apiClient.getGlobal().obj.gamification.personal["ready.for.action"];
+
+     _h2 = apiClient.getGlobal().obj.gamification.political["problem.awareness"];
+     _h2 += apiClient.getGlobal().obj.gamification.political["practical.knowledge"];
+     _h2 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
+
+     _h3 = apiClient.getGlobal().obj.gamification.social["problem.awareness"];
+     _h3 += apiClient.getGlobal().obj.gamification.social["practical.knowledge"];
+     _h3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
+
+     setg_pa(h1);
+     setg_so(h2);
+     setg_in(h3);
      _totalProgress = _l1 + _l2 + _l3;
      document.getElementById("total_score").innerHTML = _totalProgress;
      setWardenProgress(_totalProgress);
