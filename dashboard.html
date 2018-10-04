@@ -16,7 +16,7 @@
       <div class="subheader">Flood Preparedness</div>
       <div class="highlight_title">Know-How</div>
       <div class="circularWrapper">
-        <div class="svgWrapper" style="margin-top: 50px;">
+      <div class="svgWrapper" style="margin-top: 50px;">
           <div class="circularTitle" ><span id="problem_awareness">Problem<br> Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>
           <svg
              class="progress-ring"
@@ -412,8 +412,22 @@
            _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
            _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
           _totalProgress = _p1 + _p2 + _p3;
-          changeProgress(_p1,_p2,_p3);
           document.getElementById("total_personal_score").innerHTML = _totalProgress;
+
+          // ---------------------------------------------------------------------//
+          changeProgress(_p1,_p2,_p3);
+          _g1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
+          _g1 += apiClient.getGlobal().obj.gamification.political["problem.awareness"];
+          _g1 += apiClient.getGlobal().obj.gamification.social["problem.awareness"];
+
+          _g2 = apiClient.getGlobal().obj.gamification.personal["practical.knowledge"];
+          _g2 += apiClient.getGlobal().obj.gamification.political["practical.knowledge"];
+          _g2 += apiClient.getGlobal().obj.gamification.social["practical.knowledge"];
+
+          _g3 = apiClient.getGlobal().obj.gamification.personal["ready.for.action"];
+          _g3 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
+          _g3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
+          document.getElementsByClassName("points_community")[0].innerHTML = _g1;
         });
         apiClient.setObjectChangedCallback(function(){
           _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
@@ -488,7 +502,61 @@
        const offset3 = circumference3 - percent / 100 * circumference3;
        circle3.style.strokeDashoffset = offset3;
      }
+     function renderCircA(type,val){
+       switch (type) {
+         case "PA":
+            _fill       = "#13377f";
+            _circStroke = "#6d094966";
+            _circFill   = "#13377f66";
+           break;
+         default:
 
+       }
+       _circA = '<div class="svgWrapper" style="margin-top: 50px;">'
+         +'<div class="circularTitle" ><span id="problem_awareness">Problem<br> Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>'
+         +'<svg'
+            +'class="progress-ring"'
+            +'width="80"'
+            +'fill="{fill}"'
+            +'height="80"'
+            +'shape-rendering="geometricPrecision"'
+            +'style="margin-top: 15px;"'
+            +'>'
+            +'<line x1="0" y1="40" x2="80" y2="40" style="stroke:rgb(255,255,255,0.2);stroke-width:2"/>'
+            +'<line x1="40" y1="0" x2="40" y2="80" style="stroke:rgb(255,255,255,0.2);stroke-width:2"/>'
+           +'<circle'
+             +'id="circ_1"'
+             +'class="progress-ring__circle"'
+             +'transform="rotate(-90 0 0)"'
+             +'stroke="{circstroke}"'
+             +'stroke-width="23"'
+             +'fill="{fill}"'
+             +'r="20"'
+             +'cx="40"'
+             +'cy="40"/>'
+           +'<circle'
+             +'stroke="#FFFFFF66"'
+             +'stroke-width="2"'
+             +'fill="#6d094966"'
+             +'r="20"'
+             +'cx="40"'
+             +'cy="40"/>'
+           +'<circle'
+             +'stroke="#FFFFFF66"'
+             +'stroke-width="2"'
+             +'fill="transparent"'
+             +'r="33"'
+             +'cx="40"'
+             +'cy="40"/>'
+           +'<image xlink:href="img/prob_awe_noarrow.png" height="80" width="80"  rx="15" ry="15" opacity="0.9"/>'
+         +'</svg>'
+       +'</div>';
+       _circA = _circA.replace("{fill}",_fill)
+       _circA = _circA.replace("{circstroke}",_circStroke)
+       _circA = _circA.replace("{_circfill}",_circFill)
+       console.log(_circA);
+
+     }
     </script>
   </body>
 </html>

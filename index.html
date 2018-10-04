@@ -43,7 +43,7 @@
           </div>
           <div class="circularWrapper">
             <div class="svgWrapper">
-              <div class="circularTitle" ><span id="problem_awareness">Problem<br> Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>
+              <div class="circularTitle" ><span id="problem_awareness">Problem<br> Awareness </span><br><span style="font-size: small;"></span></div>
               <svg
                  class="progress-ring"
                  width="140"
@@ -81,16 +81,33 @@
                 <image xlink:href="img/prob_awe.png" height="140" width="140"  rx="15" ry="15" />
 
               </svg>
-              <div class="circularLevelsWrapper" id="circularLevels1">
-                <img src="img/circ_talk_gray.png" class="iconsmall"/>
-                <img src="img/circ_talk_gray.png" class="iconsmall"/>
-                <img src="img/circ_talk_gray.png" class="iconsmall"/>
+              <div class="points_flex">
+                <div class="points_row">
+                  <div class="points_left" id="pa_points">
+                    0
+                  </div>
+                   <div class="circularLevelsWrapper" id="circularLevels1">
+                    <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                    <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                    <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                  </div>
+                </div>
+                <div class="points_separator">
+                  /
+                </div>
+                <div class="points_row">
+                  <div class="points_right" id="pag_points">
+                    0
+                  </div>
+                  <div class="community_label">
+                    Community
+                  </div>
+                </div>
               </div>
-
 
             </div>
             <div class="svgWrapper">
-              <div class="circularTitle" ><span id="know_how">Know- <br>How</span><br> <span id="kh_points" style="font-size: small;"></span></div>
+              <div class="circularTitle" ><span id="know_how">Know- <br>How</span><br> <span  style="font-size: small;"></span></div>
 
               <svg
                  class="progress-ring"
@@ -128,15 +145,35 @@
                   <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(19,55,127);stroke-width:2"/>
                 <image xlink:href="img/idea.png" height="140" width="140"  rx="15" ry="15" />
               </svg>
-              <div class="circularLevelsWrapper"  id="circularLevels2">
-                <img src="img/circ_idea_gray.png" class="iconsmall"/>
-                <img src="img/circ_idea_gray.png" class="iconsmall"/>
-                <img src="img/circ_idea_gray.png" class="iconsmall"/>
+              <div class="points_flex">
+                <div class="points_row">
+                  <div class="points_left kh_bg" id="kh_points">
+                    0
+                  </div>
+                  <div class="circularLevelsWrapper"  id="circularLevels2">
+                    <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                    <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                    <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                  </div>
+                </div>
+                <div class="points_separator kh_txt">
+                  /
+                </div>
+                <div class="points_row">
+                  <div class="points_right kh_txt" id="khg_points">
+                    0
+                  </div>
+                  <div class="community_label kh_txt">
+                    Community
+                  </div>
+                </div>
               </div>
+
+
             </div>
 
             <div class="svgWrapper">
-              <div class="circularTitle" ><span id="ready_to_act">Ready <br>to Act</span><br><span id="ra_points" style="font-size: small;"></span></div>
+              <div class="circularTitle" ><span id="ready_to_act">Ready <br>to Act</span><br><span style="font-size: small;"></span></div>
 
               <svg
                  class="progress-ring"
@@ -174,11 +211,30 @@
                   <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(73,63,141);stroke-width:2"/>
                 <image xlink:href="img/ready_act.png" height="140" width="140"  rx="15" ry="15" />
               </svg>
-              <div class="circularLevelsWrapper" id="circularLevels3">
-                <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-                <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-                <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+              <div class="points_flex">
+                <div class="points_row">
+                  <div class="points_left ra_bg" id="ra_points" >
+                    0
+                  </div>
+                  <div class="circularLevelsWrapper" id="circularLevels3">
+                    <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                    <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                    <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                  </div>
+                </div>
+                <div class="points_separator ra_txt">
+                  /
+                </div>
+                <div class="points_row">
+                  <div class="points_right ra_txt" id="rag_points" >
+                    0
+                  </div>
+                  <div class="community_label ra_txt">
+                    Community
+                  </div>
+                </div>
               </div>
+
             </div>
         </div>
       </div>
@@ -1018,6 +1074,15 @@ function setKHPoints(p){
 function setRAPoints(p){
   document.getElementById("ra_points").innerHTML = p;
 }
+function setGPAPoints(p){
+  document.getElementById("pag_points").innerHTML = p;
+}
+function setGKHPoints(p){
+  document.getElementById("khg_points").innerHTML = p;
+}
+function setGRAPoints(p){
+  document.getElementById("rag_points").innerHTML = p;
+}
 function changeProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 1000;
   lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
@@ -1214,15 +1279,23 @@ function setWardenProgress(n){
   //   }
   // }
 }
-function canvas_arrow(context, fromx, fromy, tox, toy){
+function canvas_arrow(context, fromx, fromy, tox, toy,i){
     context.globalCompositeOperation = "destination-over";
     _or = context.fillStyle;
 
     var headlen = 10;   // length of head in pixels
     var angle = Math.atan2(toy-fromy,tox-fromx);
+    _strokeStyle = ""
+    if(i <=2){
+      _strokeStyle = "#13377f"
+    }else if(i <=5){
+      _strokeStyle = "#6a67ce"
+    }else{
+      _strokeStyle = "#6d0949"
 
+    }
     context.beginPath();
-    context.strokeStyle = '#a7acaf';
+    context.strokeStyle = _strokeStyle;
     context.moveTo(fromx, fromy);
     context.lineTo(tox, toy);
     context.closePath();
@@ -1240,7 +1313,7 @@ function canvas_arrow(context, fromx, fromy, tox, toy){
     context.lineTo(_arrx,_arry);
     // context.moveTo(_arlx, _arly);
     context.lineTo(_arrx,_arry);
-    context.fillStyle = '#a7acaf';
+    context.fillStyle = _strokeStyle;
 
     context.stroke();
 
@@ -1302,22 +1375,23 @@ function initSpider(){
   _degrees = [0,40,80,120,160,200,240,280,320];
 
   _labels  = [
-                _loc[CURRENT_LAN].lan_spider_ready_to_act,
-                _loc[CURRENT_LAN].lan_spider_awareness,
-                _loc[CURRENT_LAN].lan_spider_know_how,
-                _loc[CURRENT_LAN].lan_spider_ready_to_act,
-                _loc[CURRENT_LAN].lan_spider_awareness,
-                _loc[CURRENT_LAN].lan_spider_know_how,
-                _loc[CURRENT_LAN].lan_spider_ready_to_act,
-                _loc[CURRENT_LAN].lan_spider_awareness,
-                _loc[CURRENT_LAN].lan_spider_know_how,
+                _loc[CURRENT_LAN].lan_individual,
+                _loc[CURRENT_LAN].lan_social,
+                _loc[CURRENT_LAN].lan_political,
+                _loc[CURRENT_LAN].lan_individual,
+                _loc[CURRENT_LAN].lan_social,
+                _loc[CURRENT_LAN].lan_political,
+                _loc[CURRENT_LAN].lan_individual,
+                _loc[CURRENT_LAN].lan_social,
+                _loc[CURRENT_LAN].lan_political,
               ];
   _categories = ["Social","Social","Social","Political","Political","Political","Individual","Individual","Individual"]
   _categoriesIndexes = [1,4,7]
   _offset = 10; //All lines will be turned with this offset.
   _extraRadius = 20;
   ctx.lineWidth   = 1;
-  _labelColors = ["#2dc463","#e23d3d","#1786e0"]
+
+  _labelColors = ["#13377f","#6a67ce","#6d0949"]
 
   _degrees.forEach(function(d,i){
     // ctx.beginPath();
@@ -1330,7 +1404,7 @@ function initSpider(){
     var headlen = 10;
     var angle = Math.atan2(y-centerX,x-centerY);
     // ctx.lineTo(x,y);
-    canvas_arrow(ctx,centerX,centerY,x,y)
+    canvas_arrow(ctx,centerX,centerY,x,y,i)
     // ctx.lineTo(x-headlen*Math.cos(angle-Math.PI/6),y-headlen*Math.sin(angle-Math.PI/6));
     // ctx.moveTo(x, x);
     // ctx.lineTo(x-headlen*Math.cos(angle+Math.PI/6),u-headlen*Math.sin(angle+Math.PI/6));
@@ -1379,27 +1453,29 @@ function initSpider(){
     ctx.fillText(_labels[i],x,y);
     ctx.stroke();
     ctx.closePath();
-
     if(_categoriesIndexes.includes(i) && sizeWidth > 620  ){
 
       rx = (d + _offset)  * (Math.PI /180);
       ry = (d + _offset) * (Math.PI /180);
-      x = centerX +r*1.6 * Math.cos(rx);
-      y = centerY +r*1.6 * Math.sin(ry);
-      ctx.font = "20px Arial";
+      x = centerX +r*1.51 * Math.cos(rx);
+      y = centerY +r*1.51 * Math.sin(ry);
+
+      ctx.font = "bold 15px Arial";
       ctx.beginPath();
       switch (i) {
         case 1:
         ctx.textAlign="left";
+
+        ctx.fillText(_loc[CURRENT_LAN].lan_spider_know_how,x,y);
         break;
         case 4:
-        x = centerX +r*1.8 * Math.cos(rx);
-        y = centerY +r*1.8 * Math.sin(ry);
+        ctx.fillText(_loc[CURRENT_LAN].lan_spider_ready_to_act,x,y);
+
         ctx.textAlign="right";
         break;
         case 7:
-        x = centerX +r*1.4 * Math.cos(rx);
-        y = centerY +r*1.4 * Math.sin(ry);
+        ctx.fillText(_loc[CURRENT_LAN].lan_spider_awareness,x,y);
+
         ctx.textAlign="left";
         break;
         default:
@@ -1445,14 +1521,13 @@ function addSize(size){
   ctx.textAlign   = "left";
   ctx.font = "bold 16px Arial";
 
-  _barSize = sizeWidth  - (sizeWidth / 3);
+  _barSize = (sizeWidth / 3);
   _barY1   = 420;
   _barY2   = _barY1 + 20;
-  _l1      = sizeWidth - (_barSize / 3 );
-  _l2      = sizeWidth - (_barSize / 6 );
-
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,_barSize ,410);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_small,_barSize ,460);
+  _l1      = (_barSize / 3 );
+  _l2      = (_barSize / 6 );
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
+  ctx.fillText(_loc[CURRENT_LAN].lan_community_small,0 ,460);
   ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,460);
   ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,460);
 
@@ -1462,7 +1537,7 @@ function addSize(size){
   _fillBarcolor = "#4382b5";
   ctx.fillStyle   = _fillBarcolor;
 
-  _barWidth = sizeWidth - _barSize - marginRight;
+  _barWidth = _barSize ;
   // fill
   ctx.beginPath();
   _MAX_SIZE = 2000;
@@ -1477,32 +1552,32 @@ function addSize(size){
   }else if(size >1001){
     _sP =  (size/2000) * 1;
   }
-  ctx.fillRect(_barSize,_barY1,_barWidth * _sP ,20);
+  ctx.fillRect(0,_barY1,_barWidth * _sP ,20);
   ctx.closePath();
   ctx.fillStyle   = "#09244c";
 
   //left
   ctx.beginPath();
-  ctx.moveTo(_barSize,_barY1);
-  ctx.lineTo(_barSize,_barY2);
+  ctx.moveTo(0,_barY1);
+  ctx.lineTo(0,_barY2);
   ctx.closePath();
   ctx.stroke();
   //top
   ctx.beginPath();
-  ctx.moveTo(_barSize,_barY1);
-  ctx.lineTo(sizeWidth - marginRight,_barY1);
+  ctx.moveTo(0,_barY1);
+  ctx.lineTo(_barSize - marginRight,_barY1);
   ctx.closePath();
   ctx.stroke();
   //bottom
   ctx.beginPath();
-  ctx.moveTo(_barSize,_barY2);
-  ctx.lineTo(sizeWidth - marginRight,_barY2);
+  ctx.moveTo(0,_barY2);
+  ctx.lineTo(_barSize - marginRight,_barY2);
   ctx.closePath();
   ctx.stroke();
   //right
   ctx.beginPath();
-  ctx.moveTo(sizeWidth - marginRight,_barY1);
-  ctx.lineTo(sizeWidth - marginRight,_barY2);
+  ctx.moveTo(_barSize - marginRight,_barY1);
+  ctx.lineTo(_barSize - marginRight,_barY2);
   ctx.closePath();
   ctx.stroke();
   //l1
@@ -1720,7 +1795,7 @@ function addLeyend(show_personal){
     ctx.stroke();
   }
 
-  _labelColors = ["#1786e0", "#e23d3d","#2dc463"]
+  _labelColors = ["#13377f", "#6a67ce","#6d0949"]
 
   _labelColors.forEach(function(l,i){
     ctx.strokeStyle = '#293b47'; //black
@@ -1734,7 +1809,7 @@ function addLeyend(show_personal){
     ctx.stroke();
 
     if(show_personal){
-      ctx.strokeStyle = '#293b47'; //brown
+      ctx.strokeStyle = '#black'; //black
       ctx.setLineDash([3]);
       ctx.beginPath();
       ctx.fillStyle = l;
@@ -1826,22 +1901,21 @@ function addPolygons(values,dashed){
     ry = (_degrees[i] + _offset) * (Math.PI /180);
     x = centerX + _rd * Math.cos(rx);
     y = centerY + _rd * Math.sin(ry);
-
     if(i < 2 ){
-      ctx.fillStyle="#2dc463";
+      ctx.fillStyle="#13377f";
     }else if(i > 2 && i < 5){
-      ctx.fillStyle="#e23d3d";
+      ctx.fillStyle="#6a67ce";
     }else if(i > 5){
-      ctx.fillStyle="#1786e0";
+      ctx.fillStyle="#6d0949";
     }else if(i >= _degrees.length -1){
-      ctx.fillStyle="#2dc463";
+      ctx.fillStyle="#13377f";
     }
     if(i <= _degrees.length -2){
       ctx.beginPath();
-      ctx.arc(x,y,3,0,2*Math.PI)
+      ctx.arc(x,y,5,0,2*Math.PI)
       ctx.closePath();
       ctx.fill();
-      ctx.arc(x,y,4,0,2*Math.PI)
+      ctx.arc(x,y,6,0,2*Math.PI)
       ctx.stroke();
     }
 
@@ -1875,7 +1949,23 @@ window.onload = function()
      _p3 += apiClient.getUser().obj.gamification.political["ready.for.action"];
      _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
      changeProgress(_p1,_p2,_p3);
+     // ----------GLOBALS-----------------------------------------------------//
+     _g1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
+     _g1 += apiClient.getGlobal().obj.gamification.political["problem.awareness"];
+     _g1 += apiClient.getGlobal().obj.gamification.social["problem.awareness"];
 
+     _g2 = apiClient.getGlobal().obj.gamification.personal["practical.knowledge"];
+     _g2 += apiClient.getGlobal().obj.gamification.political["practical.knowledge"];
+     _g2 += apiClient.getGlobal().obj.gamification.social["practical.knowledge"];
+
+     _g3 = apiClient.getGlobal().obj.gamification.personal["ready.for.action"];
+     _g3 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
+     _g3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
+     setGPAPoints(_g1);
+     setGKHPoints(_g2);
+     setGRAPoints(_g3);
+
+     // ---------------------------------------------------------------------//
      _l1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
      _l1 += apiClient.getUser().obj.gamification.personal["practical.knowledge"];
      _l1 += apiClient.getUser().obj.gamification.personal["ready.for.action"];
@@ -1916,7 +2006,7 @@ window.onload = function()
  function initPoligons(toggleStatus){
    initSpider();
    // addGoals();
-   addImpact();
+   // addImpact();
    addGraphGoal();
    addSize(apiClient.getGlobal().obj.participants);
 

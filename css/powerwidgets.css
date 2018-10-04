@@ -115,8 +115,8 @@ html,body{
   padding-right: 85px;
 }
 .iconsmall{
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
   margin-left: 2px;
 }
 .fill{
@@ -381,6 +381,9 @@ html,body{
 }
 /*--------------POWER WARDENLEVEL ENDS---------------------------------------------*/
 /*--------------POWER CIRCULAR STARTS-----------------------------------------*/
+.svgWrapper{
+  width: 210px;
+}
 .prep{
   height: 100px;
   width: 100px;
@@ -457,7 +460,10 @@ border: 1px solid #808D1E;
 }
 /*--------------POWER CIRCULAR ENDS-------------------------------------------*/
 .progress-ring {
-
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .progress-ring__circle {
@@ -645,4 +651,65 @@ a {
   margin-top: 16px;
   border-radius: 11px;
   margin-bottom: 16px;
+}
+.points_flex{
+  display: flex;
+  flex-direction: "column";
+  height: 60px;
+  margin-top: 10px;
+}
+.points_row{
+  flex:1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.points_separator{
+  flex:.2;
+}
+.points_left{
+  background-color: #6d0949;
+  border-radius: 5px;
+  color:white;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.points_right{
+  color: #6d0949;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.points_separator{
+  color: #6d0949;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.community_label{
+  color: #6d0949;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 6px;
+}
+.kh_bg{
+  background-color: #0545a4;
+}
+.kh_txt{
+  color: #0545a4;
+}
+.ra_bg{
+  background-color: #493f8d;
+}
+.ra_txt{
+  color: #493f8d;
 }
