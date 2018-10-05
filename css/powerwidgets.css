@@ -64,13 +64,21 @@ html,body{
   color: #0545a4;
   font-size: large;
   line-height: 22px;
-  margin-right: 30px;
-  text-align: right;
   font-family: 'Montserrat', sans-serif;
-  flex: .2;
+  flex: 1;
   padding-top: 28px;
 
-
+}
+.pi_points{
+  display: flex;
+}
+.pi_separator{
+  flex: 1;
+  text-align: right;
+  padding-right: 10px;
+}
+.pi_points_amount{
+  flex: .6;
 }
 .powerBartitle_rtl{
   flex: .2;
