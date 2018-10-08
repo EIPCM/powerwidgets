@@ -1074,31 +1074,32 @@ input3.addEventListener('change', function(e) {
   }
 })*/
 function setPAPoints(p){
-  document.getElementById("pa_points").innerHTML = p;
+  document.getElementById("pa_points").innerHTML = numberWithCommas(Math.round(p));
 }
 function setKHPoints(p){
-  document.getElementById("kh_points").innerHTML = p;
+  document.getElementById("kh_points").innerHTML = numberWithCommas(Math.round(p));
 }
 function setRAPoints(p){
-  document.getElementById("ra_points").innerHTML = p;
+  document.getElementById("ra_points").innerHTML = numberWithCommas(Math.round(p));
 }
 function setGPAPoints(p){
-  document.getElementById("pag_points").innerHTML = p;
+
+  document.getElementById("pag_points").innerHTML = numberWithCommas(Math.round(p));
 }
 function setGKHPoints(p){
-  document.getElementById("khg_points").innerHTML = p;
+  document.getElementById("khg_points").innerHTML = numberWithCommas(Math.round(p));
 }
 function setGRAPoints(p){
-  document.getElementById("rag_points").innerHTML = p;
+  document.getElementById("rag_points").innerHTML = numberWithCommas(Math.round(p));
 }
 function setg_pa(p){
-  document.getElementById("g_pa").innerHTML = "/ "+p;
+  document.getElementById("g_pa").innerHTML = "/ "+numberWithCommas(Math.round(p));
 }
 function setg_so(p){
-  document.getElementById("g_so").innerHTML = "/ "+p;
+  document.getElementById("g_so").innerHTML = "/ "+numberWithCommas(Math.round(p));
 }
 function setg_in(p){
-  document.getElementById("g_in").innerHTML = "/ "+p;
+  document.getElementById("g_in").innerHTML = "/ "+numberWithCommas(Math.round(p));
 }
 function changeProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 1000;
