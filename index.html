@@ -293,7 +293,7 @@
               </div>
             </div>
           </div>
-          <div class="powerBarCommunityScore"><span class="pi_points" id="g_pa"><span class="pi_separator">/</span> <span class="pi_points_amount">3600</span></div>
+          <!-- <div class="powerBarCommunityScore"><span class="pi_points" id="g_pa"><span class="pi_separator">/</span> <span class="pi_points_amount">3600</span></div> -->
 
         </div>
         <div class="powerRow">
@@ -335,7 +335,7 @@
               </div>
             </div>
           </div>
-          <div class="powerBarCommunityScore"><span class="pi_points" id="g_so"><span class="pi_separator">/</span><span class="pi_points_amount">3600</span></div>
+          <!-- <div class="powerBarCommunityScore"><span class="pi_points" id="g_so"><span class="pi_separator">/</span><span class="pi_points_amount">3600</span></div> -->
 
         </div>
         <div class="powerRow">
@@ -377,7 +377,7 @@
               </div>
             </div>
           </div>
-          <div class="powerBarCommunityScore"><span class="pi_points" id="g_in"><span class="pi_separator">/</span><span class="pi_points_amount">3600</span></div>
+          <!-- <div class="powerBarCommunityScore"><span class="pi_points" id="g_in"><span class="pi_separator">/</span><span class="pi_points_amount">3600</span></div> -->
 
         </div>
 
@@ -1174,7 +1174,7 @@ function setProgressPowerBar(p,n){
   _pbar = document.getElementById("powerBar"+n);
   _pbar.style.width = p + "%";
 }
-function addPowerBarLevelsPA(l){
+function addPowerBarLevelsPA(l,m){
   _earned  = '<img src="img/political.png" class="iconsmall"/>'
   _nearned ='<img src="img/political_gray.png" class="iconsmall"/>'
   if(l >= 3000){
@@ -1186,10 +1186,13 @@ function addPowerBarLevelsPA(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("bar_title_score_PA").innerHTML = numberWithCommas(l);
+  ll = numberWithCommas(l);
+  mm = numberWithCommas(l);
+  lm = ll + " / " + mm + "<br><div class='community_label_bar'> (personal/community)</div>";
+  document.getElementById("bar_title_score_PA").innerHTML = lm ;
   document.getElementById("powerBarLevels1").innerHTML = _badges;
 }
-function addPowerBarLevelsSO(l){
+function addPowerBarLevelsSO(l,m){
   _earned  = '<img src="img/users-group.png" class="iconsmall"/>'
   _nearned ='<img src="img/users-group_gray.png" class="iconsmall"/>'
   if(l >= 3000){
@@ -1201,10 +1204,13 @@ function addPowerBarLevelsSO(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("bar_title_score_SO").innerHTML = numberWithCommas(l);;
+  ll = numberWithCommas(l);
+  mm = numberWithCommas(l);
+  lm = ll + " / " + mm + "<br><div class='community_label_bar'> (personal/community)</div>";
+  document.getElementById("bar_title_score_SO").innerHTML = lm ;
   document.getElementById("powerBarLevels2").innerHTML = _badges
 }
-function addPowerBarLevelsIN(l){
+function addPowerBarLevelsIN(l,m){
   _earned  = '<img src="img/people.png" class="iconsmall"/>'
   _nearned ='<img src="img/people_gray.png" class="iconsmall"/>'
   if(l >= 3000){
@@ -1216,7 +1222,10 @@ function addPowerBarLevelsIN(l){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  document.getElementById("bar_title_score_IN").innerHTML = numberWithCommas(l);
+  ll = numberWithCommas(l);
+  mm = numberWithCommas(l);
+  lm = ll + " / " + mm + "<br><div class='community_label_bar'> (personal/community)</div>";
+  document.getElementById("bar_title_score_IN").innerHTML = lm ;
   document.getElementById("powerBarLevels3").innerHTML = _badges
 }
 const numberWithCommas = (x) => {
@@ -1999,9 +2008,7 @@ window.onload = function()
      setProgressPowerBar(_l3,2);
      setProgressPowerBar(_l1,3);
 
-     addPowerBarLevelsPA(_l2);
-     addPowerBarLevelsSO(_l3);
-     addPowerBarLevelsIN(_l1);
+
 
      _h1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
      _h1 += apiClient.getGlobal().obj.gamification.personal["practical.knowledge"];
@@ -2015,9 +2022,12 @@ window.onload = function()
      _h3 += apiClient.getGlobal().obj.gamification.social["practical.knowledge"];
      _h3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
 
-     setg_pa(_h1);
-     setg_so(_h2);
-     setg_in(_h3);
+     // setg_pa(_h1);
+     // setg_so(_h2);
+     // setg_in(_h3);
+     addPowerBarLevelsPA(_l2,_h1);
+     addPowerBarLevelsSO(_l3,_h2);
+     addPowerBarLevelsIN(_l1,_h3);
      _totalProgress = _l1 + _l2 + _l3;
      document.getElementById("total_score").innerHTML = _totalProgress;
      setWardenProgress(_totalProgress);
