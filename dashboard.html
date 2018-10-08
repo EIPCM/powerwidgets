@@ -55,9 +55,9 @@
             <image xlink:href="img/prob_awe_noarrow.png" height="80" width="80"  rx="15" ry="15" opacity="0.9"/>
 
           </svg>
-        </div>
+      </div>
         <div class="svgWrapper" style="margin-top: 20px;">
-          <div class="circularTitle" ><span id="problem_awareness">Ready to <br> Act</span><br><span id="pa_points" style="font-size: small;"></span></div>
+          <div class="circularTitle" ><span id="problem_awareness">Know <br>How</span><br><span id="pa_points" style="font-size: small;"></span></div>
           <svg
              class="progress-ring"
              width="140"
@@ -162,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="footer"><a href="">Check complete results...</a></div>
+      <div class="footer"><a href="" id="link_to_progress">Check complete results...</a></div>
     </div>
     <script>
     function changeValues(pa,kh,ra,_in,so,po){
@@ -379,7 +379,7 @@
         default:
       }
 
-      // document.getElementById("link").setAttribute("href",_link);
+      document.getElementById("link_to_progress").setAttribute("href",_link);
     }
     updateLink();
     window.onload = function()
