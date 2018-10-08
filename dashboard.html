@@ -427,7 +427,8 @@
           _g3 = apiClient.getGlobal().obj.gamification.personal["ready.for.action"];
           _g3 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
           _g3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
-          document.getElementsByClassName("points_community")[0].innerHTML = _g1;
+          _gg1 = numberWithCommas(Math.round(_g1));
+          document.getElementsByClassName("points_community")[0].innerHTML = _gg1;
         });
         apiClient.setObjectChangedCallback(function(){
           _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
@@ -444,7 +445,8 @@
           _p3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
           _totalProgress = _p1 + _p2 + _p3;
           changeProgress(_p1,_p2,_p3);
-          document.getElementById("total_personal_score").innerHTML = _totalProgress;
+          _tp = numberWithCommas(Math.round(_totalProgress));
+          document.getElementById("total_personal_score").innerHTML = _tp;
         });
       } catch (e) {
 
