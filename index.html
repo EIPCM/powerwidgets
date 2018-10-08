@@ -1187,8 +1187,8 @@ function addPowerBarLevelsPA(l,m){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  ll = numberWithCommas(l);
-  mm = numberWithCommas(m);
+  ll = numberWithCommas(Math.round(l));
+  mm = numberWithCommas(Math.round(m));
   lm = ll + " / " + mm + "<br><div class='community_label_bar'> (personal/community)</div>";
   document.getElementById("bar_title_score_PA").innerHTML = lm ;
   document.getElementById("powerBarLevels1").innerHTML = _badges;
@@ -1205,8 +1205,8 @@ function addPowerBarLevelsSO(l,m){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  ll = numberWithCommas(l);
-  mm = numberWithCommas(m);
+  ll = numberWithCommas(Math.round(l));
+  mm = numberWithCommas(Math.round(m));
   lm = ll + " / " + mm + "<br><div class='community_label_bar'> (personal/community)</div>";
   document.getElementById("bar_title_score_SO").innerHTML = lm ;
   document.getElementById("powerBarLevels2").innerHTML = _badges
@@ -1223,8 +1223,8 @@ function addPowerBarLevelsIN(l,m){
   }else{
     _badges = _nearned  + _nearned + _nearned;
   }
-  ll = numberWithCommas(l);
-  mm = numberWithCommas(m);
+  ll = numberWithCommas(Math.round(l));
+  mm = numberWithCommas(Math.round(m));
   lm = ll + " / " + mm + "<br><div class='community_label_bar'> (personal/community)</div>";
   document.getElementById("bar_title_score_IN").innerHTML = lm ;
   document.getElementById("powerBarLevels3").innerHTML = _badges
