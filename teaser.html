@@ -12,33 +12,33 @@
       <header class="lan_title">What can I do to help my community?</header>
       <div class="teaser_container">
         <div class="teaser_column">
-          <div class="teaser_subtitle">
+          <div class="teaser_subtitle title_1">
             Submit an innovative idea
           </div>
           <div class="teaser_image_holder">
             <img src="img/teaser1.png" class="teaser_column_image">
           </div>
-          <div class="teaser_text">
-            <p>Win the chance to implement your idea and help develop solutions for sustainability issues</p>
+          <div class="teaser_text ">
+            <p class="description_1">Win the chance to implement your idea and help develop solutions for sustainability issues</p>
           </div>
           <a href="" class="teaser_button_link"  id="link1">
-            <div class="teaser_button tbyellow">
+            <div class="teaser_button tbyellow botton_1">
               SUBMIT HERE
             </div>
           </a>
         </div>
         <div class="teaser_column">
-          <div class="teaser_subtitle">
+          <div class="teaser_subtitle title_2">
             Comment and vote on ideas
           </div>
           <div class="teaser_image_holder">
             <img src="img/teaser2.png" class="teaser_column_image">
           </div>
           <div class="teaser_text tt2">
-            <p>Give feedback to others and help them develop ideas</p>
+            <p class="description_2">Give feedback to others and help them develop ideas</p>
           </div>
           <a href="" class="teaser_button_link" id="link2">
-            <div class="teaser_button tbblue">
+            <div class="teaser_button tbblue botton_2">
               COMMENT HERE
             </div>
           </a>
@@ -46,17 +46,17 @@
 
         </div>
         <div class="teaser_column">
-          <div class="teaser_subtitle">
+          <div class="teaser_subtitle title_3">
             Get prepared and track progress
           </div>
           <div class="teaser_image_holder">
             <img src="img/teaser3.png" class="teaser_column_image">
           </div>
           <div class="teaser_text tt3">
-            <p>See how your knowledge increases and help your community get prepared</p>
+            <p class="description_3">See how your knowledge increases and help your community get prepared</p>
           </div>
           <a href="" class="teaser_button_link" id="link3">
-            <div class="teaser_button tbgreen">
+            <div class="teaser_button tbgreen botton_3">
               REGISTER HERE
             </div>
           </a>
@@ -68,7 +68,16 @@
     var CURRENT_LAN = "en";
     var CURRENT_CITY = "CI";
       _loc = {
-        "en":{
+        "EN":{
+          "title_1":"Submit an innovative idea",
+          "title_2":"Comment and vote on ideas",
+          "title_3":"Get prepared and track progress",
+          "description_1":"Win the chance to implement your idea and help develop solutions for sustainability issues",
+          "description_2":"Give feedback to others and help them develop ideas",
+          "description_3":"See how your knowledge increases and help your community get prepared",
+          "botton_1":"SUBMIT HERE",
+          "botton_2":"COMMENT HERE",
+          "botton_3":"REGISTER HERE",
           "CI":{
             "lan_title":"What can I do to help my community?"
           },
@@ -85,7 +94,61 @@
           "JE":{
             "lan_title":"What can I do to help the Jerusalem community?"
           }
-        }
+        },
+        "ES":{
+          "title_1":"Envía una idea innovadora",
+          "title_2":"Comenta y vota en las ideas",
+          "title_3":"Prepárate y rastrea tu progreso",
+          "description_1":"Gana la oportunidad de implementar tu idea y ayuda a desarrollar soluciones a los problemas de sustentabilidad",
+          "description_2":"Da realimentación a otros y ayúdales a desarrollar ideas",
+          "description_3":"Mira como tu conocimiento incrementa y ayuda a la comunidad a prepararse",
+          "botton_1":"ENVÍA AQUÍ",
+          "botton_2":"COMENTA AQUÍ",
+          "botton_3":"REGISTRA AQUÍ",
+          "CI":{
+            "lan_title":"¿Qué puedo hacer para ayudar a mi comunidad??"
+          },
+          "LE":{
+            "lan_title":"¿Qué peudo hacer para ayudar a la comunidad de Leicester?"
+          },
+          "MI":{
+            "lan_title":"¿Qué puedo hacer para ayudar a la comunidad de Milton Keynes?"
+          },
+          "SA":{
+            "lan_title":"¿Qué puedo hacer para ayudar a la comunidad de Sabadell?"
+
+          },
+          "JE":{
+            "lan_title":"¿Qué puedo hacer para ayudaar a la comunidad de Jerusalem?"
+          }
+        },
+        "HE":{
+          "title_1":"הצע רעיון חדשני",
+          "title_2":"חווה דעתך והצבע בעד רעיונות",
+          "title_3":"הכן את עצמך ועקוב אחר התקדמותך",
+          "description_1":"זכה בהזדמנות ליישם את הרעיון שלך, וסייע בפיתוח פתרונות לנושאים ברי קימה",
+          "description_2":"תן משוב לאחרים וסייע להם בפיתוח רעיונות",
+          "description_3":"ראה כיצד הידע שלך גובר, וסייע לקהילתך להכין את עצמה",
+          "botton_1":"הגש כאן",
+          "botton_2":"שתף הערותיך כאן",
+          "botton_3":"הרשם כאן",
+          "CI":{
+            "lan_title":"What can I do to help my community?"
+          },
+          "LE":{
+            "lan_title":"What can I do to help the Leicester community?"
+          },
+          "MI":{
+            "lan_title":"What can I do to help the Milton Keynes community?"
+          },
+          "SA":{
+            "lan_title":"What can I do to help the Sabadell community?"
+
+          },
+          "JE":{
+            "lan_title":"כיצד אוכל לסייע לקהילה בירושלים?"
+          }
+        },
       }
       u    = new URL(window.location);
       _lan = u.searchParams.get("lan");
@@ -138,6 +201,7 @@
         if(_lan != null){
           CURRENT_LAN = _lan;
         }
+
         for (k in _loc[CURRENT_LAN][CURRENT_CITY]){
             lan_classes = document.getElementsByClassName(k);
             for (var i = 0; i < lan_classes.length; i++) {
@@ -146,7 +210,20 @@
 
         }
       }
+      function updateLan(){
+        if(_lan != null){
+          CURRENT_LAN = _lan;
+        }
+        for (k in _loc[CURRENT_LAN]){
+            lan_classes = document.getElementsByClassName(k);
+            for (var i = 0; i < lan_classes.length; i++) {
+              lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
+            }
+
+        }
+      }
       updateCity();
+      updateLan();
       updateLinks();
     </script>
 
