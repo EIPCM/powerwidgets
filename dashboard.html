@@ -14,10 +14,10 @@
     <div class="dashboard">
       <header>Your results highlight</header>
       <div class="subheader">Flood Preparedness</div>
-      <div class="highlight_title">Know-How</div>
+      <div class="highlight_title" id="highlight_title"></div>
       <div class="circularWrapper">
       <div class="svgWrapper" style="margin-top: 116px;">
-          <div class="circularTitle" ><span id="problem_awareness">Problem Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>
+          <div class="circularTitle" ><span id="title_a"></span><br><span id="pa_points" style="font-size: small;"></span></div>
       </div>
       <div class="arrow_wrapper">
         <img src="img/arrow_left.png" style="margin-top: 116px;"/>
@@ -67,7 +67,7 @@
           <img src="img/arrow_right.png" style="margin-top: 116px;"/>
         </div>
         <div class="svgWrapper" style="margin-top: 116px;">
-          <div class="circularTitle" ><span id="problem_awareness">Ready to Act</span><br><span id="pa_points" style="font-size: small;"></span></div>
+          <div class="circularTitle" ><span id="title_b"></span><br><span id="pa_points" style="font-size: small;"></span></div>
 
         </div>
 
@@ -365,12 +365,23 @@
           if(_p1 >= _p2){
             if(_p1 >= _p3){
               // p1 is the largest
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].ready_to_act;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
+              document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+
               changeProgress(null,_p1,null);
             }else{
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].know_how;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].ready_to_act;
+              document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+
               // p2 is the largest
               changeProgress(null,_p2,null);
             }
           }else{
+            document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+            document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
+            document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
             // p3 is the largest
             changeProgress(null,_p3,null);
           }
