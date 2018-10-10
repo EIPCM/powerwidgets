@@ -42,7 +42,7 @@ html,body{
 }
 /*--------------POWER BAR STARTS----------------------------------------------*/
 .powerBarWrapper{
-  height: 90px;
+  height: 70px;
   flex:1;
   display: inline-block;
 }
@@ -225,6 +225,7 @@ html,body{
   text-align: center;
   font-size: 18px;
   font-weight: bold;
+  min-width: 59px;
 }
 .points_separator_bar{
   font-size: 18px;

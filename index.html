@@ -1754,17 +1754,19 @@ function addGraphGoal(){
   var img = new Image();   // Create new img element
   _imgHeight = 150;
   _imgWidth =  _imgHeight * 1.11;
-  img.addEventListener('load', function() {
-    // execute drawImage statements here
+  if(sizeWidth > 500){
+    img.addEventListener('load', function() {
+      // execute drawImage statements here
+        ctx.drawImage(img, sizeWidth - _imgHeight, 0,_imgWidth,_imgHeight);
 
-    ctx.drawImage(img, sizeWidth - _imgHeight, 0,_imgWidth,_imgHeight);
+    }, false);
+    ctx.fillStyle = "black";
+    ctx.textAlign = "left";
+    ctx.fillText(_loc[CURRENT_LAN].lan_spider_goal,sizeWidth - (_imgWidth / 2),_imgHeight + 20);
 
-  }, false);
-  ctx.fillStyle = "black";
-  ctx.textAlign = "left";
-  ctx.fillText(_loc[CURRENT_LAN].lan_spider_goal,sizeWidth - (_imgWidth / 2),_imgHeight + 20);
+    img.src = 'img/goals.png'; // Set source path
+  }
 
-  img.src = 'img/goals.png'; // Set source path
 }
 function addGoals(){
   _degrees = [0,20,30,60,160,200,240,280,320,360];
@@ -1921,6 +1923,44 @@ function addLeyend(show_personal){
     }
 
   });
+
+
+}
+function addLeyendR(){
+  marginRight = 10;
+  var canvas = document.getElementById("spider");
+  var ctx = canvas.getContext("2d");
+  var sizeWidth = ctx.canvas.clientWidth;
+  var sizeHeight = ctx.canvas.clientHeight;
+  var scaleWidth = sizeWidth/100;
+  var scaleHeight = sizeHeight/100;
+  ctx.strokeStyle = '#293b47'; //black
+  ctx.lineWidth   = 2;
+  ctx.beginPath();
+  if(sizeWidth <  500){
+    _labelColors = ["#13377f", "#6a67ce","#6d0949"]
+    _labels = [
+                _loc[CURRENT_LAN].lan_spider_awareness,
+                _loc[CURRENT_LAN].lan_spider_ready_to_act,
+                _loc[CURRENT_LAN].lan_spider_know_how
+              ]
+
+     ctx.font = "bold 12px Arial";
+
+    _labelColors.forEach(function(l,i){
+      ctx.strokeStyle = '#293b47'; //black
+      ctx.beginPath();
+      ctx.fillStyle = l;
+      ctx.arc(sizeWidth - marginRight - 100 ,50 + (20*i),5,0,2*Math.PI)
+      ctx.fillText(_labels[i],sizeWidth - marginRight - 90 ,50 + (23*i));
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+    });
+
+  }else{
+  }
+
 
 
 }
@@ -2125,6 +2165,7 @@ window.onload = function()
    // addGoals();
    // addImpact();
    addGraphGoal();
+   addLeyendR();
    addSize(apiClient.getGlobal().obj.participants);
 
    // apiClient.getGlobal().obj.gamification.social
