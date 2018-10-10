@@ -17,44 +17,8 @@
       <div class="highlight_title">Know-How</div>
       <div class="circularWrapper">
       <div class="svgWrapper" style="margin-top: 50px;">
-          <div class="circularTitle" ><span id="problem_awareness">Problem<br> Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>
-          <svg
-             class="progress-ring"
-             width="80"
-             fill="#13377f"
-             height="80"
-             shape-rendering="geometricPrecision"
-             style="margin-top: 15px;"
-             >
-             <line x1="0" y1="40" x2="80" y2="40" style="stroke:rgb(255,255,255,0.2);stroke-width:2"/>
-             <line x1="40" y1="0" x2="40" y2="80" style="stroke:rgb(255,255,255,0.2);stroke-width:2"/>
-            <circle
-              id="circ_1"
-              class="progress-ring__circle"
-              transform="rotate(-90 0 0)"
-              stroke="#6d094966"
-              stroke-width="23"
-              fill="#13377f66"
-              r="20"
-              cx="40"
-              cy="40"/>
-            <circle
-              stroke="#FFFFFF66"
-              stroke-width="2"
-              fill="#6d094966"
-              r="20"
-              cx="40"
-              cy="40"/>
-            <circle
-              stroke="#FFFFFF66"
-              stroke-width="2"
-              fill="transparent"
-              r="33"
-              cx="40"
-              cy="40"/>
-            <image xlink:href="img/prob_awe_noarrow.png" height="80" width="80"  rx="15" ry="15" opacity="0.9"/>
+          <div class="circularTitle" ><span id="problem_awareness">Problem Awareness </span><br><span id="pa_points" style="font-size: small;"></span></div>
 
-          </svg>
       </div>
         <div class="svgWrapper" style="margin-top: 20px;">
           <div class="circularTitle" ><span id="problem_awareness">Know <br>How</span><br><span id="pa_points" style="font-size: small;"></span></div>
@@ -79,6 +43,7 @@
               cx="70"
               cy="70"/>
             <circle
+              id="circ_inner"
               stroke="white"
               stroke-width="2"
               fill="#13377F"
@@ -92,49 +57,13 @@
               r="55"
               cx="70"
               cy="70"/>
-            <image xlink:href="img/idea_noarrow.png" height="140" width="140"  rx="15" ry="15" />
+            <image xlink:href="img/idea_noarrow.png" height="140" width="140"  rx="15" ry="15" id="img_main" />
 
           </svg>
         </div>
         <div class="svgWrapper" style="margin-top: 50px;">
-          <div class="circularTitle" ><span id="problem_awareness">Ready to <br> Act</span><br><span id="pa_points" style="font-size: small;"></span></div>
-          <svg
-             class="progress-ring"
-             width="80"
-             fill="#13377f"
-             height="80"
-             shape-rendering="geometricPrecision"
-             style="margin-top: 15px;"
-             >
-             <line x1="0" y1="40" x2="80" y2="40" style="stroke:rgb(255,255,255,0.2);stroke-width:2"/>
-             <line x1="40" y1="0" x2="40" y2="80" style="stroke:rgb(255,255,255,0.2);stroke-width:2"/>
-            <circle
-              id="circ_3"
-              class="progress-ring__circle"
-              transform="rotate(-90 0 0)"
-              stroke="#493f8d66"
-              stroke-width="23"
-              fill="#13377f66"
-              r="20"
-              cx="40"
-              cy="40"/>
-            <circle
-              stroke="#FFFFFF66"
-              stroke-width="2"
-              fill="#493f8d66"
-              r="20"
-              cx="40"
-              cy="40"/>
-            <circle
-              stroke="#FFFFFF66"
-              stroke-width="2"
-              fill="transparent"
-              r="33"
-              cx="40"
-              cy="40"/>
-            <image xlink:href="img/ready_act_noarrow.png" height="80" width="80"  rx="15" ry="15" opacity="0.9" />
+          <div class="circularTitle" ><span id="problem_awareness">Ready to Act</span><br><span id="pa_points" style="font-size: small;"></span></div>
 
-          </svg>
         </div>
 
       </div>
@@ -385,6 +314,16 @@
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     updateLink();
+    function changeColors(i){
+      _colors = ["#6d0949","#13377F","#493f8d"]
+      _imgs   = ["img/prob_awe_noarrow.png","img/idea_noarrow.png","img/ready_act_noarrow.png"]
+      c = document.getElementById("circ_2")
+      c.setAttribute("stroke",_colors[i])
+      document.getElementById("circ_inner").setAttribute("fill",_colors[i])
+      document.getElementById("img_main").setAttribute("src",_imgs[i])
+      document.getElementById("total_personal_score").style.backgroundColor = _colors[i];
+
+    }
     window.onload = function()
      {
       try {
@@ -418,7 +357,18 @@
           document.getElementById("total_personal_score").innerHTML = _totalProgress;
 
           // ---------------------------------------------------------------------//
-          changeProgress(_p1,_p2,_p3);
+          if(_p1 >= _p2){
+            if(_p1 >= _p3){
+              // p1 is the largest
+              changeProgress(null,_p1,null);
+            }else{
+              // p2 is the largest
+              changeProgress(null,_p2,null);
+            }
+          }else{
+            // p3 is the largest
+            changeProgress(null,_p3,null);
+          }
           _g1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
           _g1 += apiClient.getGlobal().obj.gamification.political["problem.awareness"];
           _g1 += apiClient.getGlobal().obj.gamification.social["problem.awareness"];
@@ -459,24 +409,24 @@
 
 
      }
-     var circle = document.getElementById("circ_1");
-     var radius = circle.r.baseVal.value;
-     var circumference = radius * 2 * Math.PI;
+    var circle = document.getElementById("circ_2");
+    var radius = circle.r.baseVal.value;
+    var circumference = radius * 2 * Math.PI;
 
      var circle2 = document.getElementById("circ_2");
      var radius2 = circle.r.baseVal.value;
      var circumference2 = radius2 * 2 * Math.PI;
+     //
+     // var circle3 = document.getElementById("circ_3");
+     // var radius3 = circle.r.baseVal.value;
+     // var circumference3 = radius3 * 2 * Math.PI;
 
-     var circle3 = document.getElementById("circ_3");
-     var radius3 = circle.r.baseVal.value;
-     var circumference3 = radius3 * 2 * Math.PI;
-
-     circle.style.strokeDasharray = `${circumference} ${circumference}`;
-     circle.style.strokeDashoffset = `${circumference}`;
+     // circle.style.strokeDasharray = `${circumference} ${circumference}`;
+     // circle.style.strokeDashoffset = `${circumference}`;
      circle2.style.strokeDasharray = `${circumference} ${circumference}`;
      circle2.style.strokeDashoffset = `${circumference}`;
-     circle3.style.strokeDasharray = `${circumference} ${circumference}`;
-     circle3.style.strokeDashoffset = `${circumference}`;
+     // circle3.style.strokeDasharray = `${circumference} ${circumference}`;
+     // circle3.style.strokeDashoffset = `${circumference}`;
      function changeProgress(la,lb,lc){
        var _MAX_POINTS_LEVEL = 1000;
        lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
@@ -487,9 +437,9 @@
        _p1 = lra * 100 / _MAX_POINTS_LEVEL;
        _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
        _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
-       setProgress(_p1);
+       // setProgress(_p1);
        setProgress2(_p2);
-       setProgress3(_p3);
+       // setProgress3(_p3);
      }
      function setProgress(percent) {
        const offset = circumference - percent / 100 * circumference;
