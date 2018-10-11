@@ -226,6 +226,7 @@ header{
   height: 30px;
   line-height: 39px;
   font-weight: bold;
+  margin-top:20px;
 }
 .footer a{
   color: #88c9f8;
