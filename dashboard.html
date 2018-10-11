@@ -16,10 +16,12 @@
       <div class="subheader">Flood Preparedness</div>
       <div class="highlight_title" id="highlight_title">title</div>
       <div class="circularWrapper">
-      <div class="svgWrapper" style="display: flex;justify-content: center;align-items: center;">
+      <div class="svgWrapper" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
           <div class="circularTitle" ><span id="title_a"></span><br><span id="pa_points" style="font-size: small;"></span></div>
+          <img src="img/dashboard/kh.png" height="32" width="32" id="img_a" />
+
       </div>
-      <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;">
+      <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;flex-direction:column;">
         <img src="img/arrow_left.png" />
       </div>
         <div class="svgWrapper" >
@@ -62,11 +64,13 @@
 
           </svg>
         </div>
-        <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;">
+        <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;flex-direction:column;">
           <img src="img/arrow_right.png" style="display: flex;justify-content: center;align-items: center;">
         </div>
-        <div class="svgWrapper" style="display: flex;justify-content: center;align-items: center;">
+        <div class="svgWrapper" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
           <div class="circularTitle" ><span id="title_b"></span><br><span id="pa_points" style="font-size: small;"></span></div>
+          <img src="img/dashboard/kh.png" height="32" width="32" id="img_b" />
+
 
         </div>
 
@@ -369,12 +373,18 @@
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].problem_awareness;
 
               changeProgress(null,_p1,null);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/pa.png");
+
             }else{
               document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
               // p3 is the largest
               changeProgress(null,_p3,null);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
+
 
             }
           }else{
@@ -384,6 +394,9 @@
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               // p2 is the largest
               changeProgress(null,_p2,null);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/ra.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/pa.png");
+
             }else{
               document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
