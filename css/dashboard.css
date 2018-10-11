@@ -40,7 +40,7 @@ header{
 }
 
 .dashboard{
-  /* background-color: #214c91; */
+  background-color: #214c91;
   /* width: 495px;
   height: 452px; */
 }
@@ -146,8 +146,11 @@ header{
 }
 .svgWrapper{
   text-align:center;
-  height: 236px;
+  height: 147px;
   flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .circularTitle{
   text-align: center;
