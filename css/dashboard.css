@@ -147,6 +147,7 @@ header{
 .svgWrapper{
   text-align:center;
   height: 236px;
+  flex:1;
 }
 .circularTitle{
   text-align: center;
