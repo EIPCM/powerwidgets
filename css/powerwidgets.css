@@ -504,6 +504,7 @@ border: 1px solid #808D1E;
   justify-content: space-around;
   padding-bottom: 10px;
   padding-top: 10px;
+  flex-wrap: wrap;
 }
 @supports (-webkit-overflow-scrolling: touch) {
   .circularWrapper{
@@ -524,14 +525,10 @@ border: 1px solid #808D1E;
 
 @media only screen and (max-device-width: 800px) {
   .circularWrapper{
-    display: block;
   }
   .svgWrapper{
-    width: 100%;
-    text-align:center;
   }
   .indicatora{
-    height: 800px;
   }
 
 }
