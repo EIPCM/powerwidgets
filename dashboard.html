@@ -178,7 +178,7 @@
         "lan_your_achievement":"Achievement",
         "lan_your_feedback_multiplier":"Your feedback multiplier",
         "lan_personal_impact":"Personal Impact",
-        "problem_awareness":"Personal Awareness",
+        "problem_awareness":"Problem Awareness",
         "know_how":"Know-<br>how",
         "ready_to_act":"Ready<br>to Act",
         "individual":"Individual",
@@ -368,11 +368,12 @@
           if(_p1 >= _p2){
             if(_p1 >= _p3){
               // p1 is the largest
-              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].ready_to_act;
-              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].ready_to_act;
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].problem_awareness;
 
               changeProgress(null,_p1,null);
+              changeColors(0);
               document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
               document.getElementById("img_b").setAttribute("src","img/dashboard/pa.png");
 
@@ -382,6 +383,7 @@
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
               // p3 is the largest
               changeProgress(null,_p3,null);
+              changeColors(2);
               document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
               document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
 
@@ -394,6 +396,7 @@
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               // p2 is the largest
               changeProgress(null,_p2,null);
+              changeColors(1);
               document.getElementById("img_a").setAttribute("src","img/dashboard/ra.png");
               document.getElementById("img_b").setAttribute("src","img/dashboard/pa.png");
 
@@ -402,6 +405,7 @@
               document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
               // p3 is the largest
+              changeColors(2);
               changeProgress(null,_p3,null);
             }
 
