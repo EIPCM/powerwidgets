@@ -1620,18 +1620,31 @@ function addSize(size){
   ctx.fillStyle   = "#09244c";
   ctx.textAlign   = "left";
   ctx.font = "bold 16px Arial";
+  if(sizeWidth > 500){
+    _barSize = (sizeWidth / 3);
+    _barY1   = 420;
+    _barY2   = _barY1 + 20;
+    _l1      = (_barSize / 2 );
+    _l2      = (_barSize / 4 );
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_small,0 ,460);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,460);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,460);
+    ctx.stroke();
+  }else{
+    _barSize = (sizeWidth - 0);
+    _barY1   = 420;
+    _barY2   = _barY1 + 20;
+    _l1      = (_barSize / 2 );
+    _l2      = (_barSize / 4 );
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_small,0 ,460);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,460);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,460);
+    ctx.stroke();
+  }
 
-  _barSize = (sizeWidth / 3);
-  _barY1   = 420;
-  _barY2   = _barY1 + 20;
-  _l1      = (_barSize / 2 );
-  _l2      = (_barSize / 4 );
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_small,0 ,460);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l1 ,460);
-  ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l2 ,460);
 
-  ctx.stroke();
 
 
   _fillBarcolor = "#4382b5";
