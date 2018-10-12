@@ -1627,20 +1627,23 @@ function addSize(size){
     _l1      = (_barSize / 2 );
     _l2      = (_barSize / 4 );
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_small,0 ,460);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l1 ,460);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l2 ,460);
+    ctx.fillText("5%",0 ,460);
+    ctx.fillText("25%",_l1 ,460);
+    ctx.fillText("50%",_l2 ,460);
+    ctx.fillText("2000",_barSize ,435);
     ctx.stroke();
   }else{
-    _barSize = (sizeWidth - 0);
+    _barSize = (sizeWidth - 50);
     _barY1   = 420;
     _barY2   = _barY1 + 20;
     _l1      = (_barSize / 2 );
     _l2      = (_barSize / 4 );
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_small,0 ,460);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_big,_l1 ,460);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_medium,_l2 ,460);
+    ctx.fillText("5%",0 ,460);
+    ctx.fillText("25%",_l1 ,460);
+    ctx.fillText("50%",_l2 ,460);
+    ctx.fillText("2000",_barSize ,435);
+
     ctx.stroke();
   }
 
