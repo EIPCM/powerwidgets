@@ -95,7 +95,7 @@
                 <div class="points_separator">
                   /
                 </div>
-                <div class="points_row">
+                <div class="points_row r">
                   <div class="points_right" id="pag_points">
                     0
                   </div>
@@ -159,7 +159,7 @@
                 <div class="points_separator kh_txt">
                   /
                 </div>
-                <div class="points_row">
+                <div class="points_row r">
                   <div class="points_right kh_txt" id="khg_points">
                     0
                   </div>
@@ -225,7 +225,7 @@
                 <div class="points_separator ra_txt">
                   /
                 </div>
-                <div class="points_row">
+                <div class="points_row r">
                   <div class="points_right ra_txt" id="rag_points" >
                     0
                   </div>
@@ -270,7 +270,7 @@
               <div class="points_separator_bar in_txt">
                 /
               </div>
-              <div class="points_row_bar">
+              <div class="points_row_bar r">
                 <div class="points_right_bar in_txt" id="bar_title_score_IN_g">
                   0
                 </div>
@@ -313,7 +313,7 @@
             </div>
           </div>
           </div>
-            
+
         <div class="points_flex_bar">
           <div class="powerRowTitle pb_txt">Political</div>
           <div class="points_bar_wrapper">
@@ -330,7 +330,7 @@
             <div class="points_separator_bar pb_txt">
               /
             </div>
-            <div class="points_row_bar">
+            <div class="points_row_bar r">
               <div class="points_right_bar pb_txt" id="bar_title_score_PA_g">
                 0
               </div>
@@ -397,7 +397,7 @@
             <div class="points_separator_bar so_txt">
               /
             </div>
-            <div class="points_row_bar">
+            <div class="points_row_bar r">
               <div class="points_right_bar so_txt" id="bar_title_score_SO_g">
                 0
               </div>
@@ -2233,16 +2233,27 @@ window.onload = function()
  }
  function toggleLevelsPersonalImpact(){
    _checked = document.getElementsByClassName("js-switch")[1].checked;
-   pList = document.getElementsByClassName("powerBarLevelsWrapper")
+   pList = document.getElementsByClassName("points_separator_bar")
 
    for (var i = 0; i < pList.length; i++) {
       (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
+   pList = document.getElementsByClassName("points_row_bar r")
+
+   for (var i = 0; i < pList.length; i++) {
+      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   }
+
+
+
  }
  function toggleLevelsPersonalPreparedness(){
    _checked = document.getElementsByClassName("js-switch")[0].checked;
-   pList = document.getElementsByClassName("circularLevelsWrapper")
-
+   pList = document.getElementsByClassName("points_separator")
+   for (var i = 0; i < pList.length; i++) {
+      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   }
+   pList = document.getElementsByClassName("points_row r")
    for (var i = 0; i < pList.length; i++) {
       (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
