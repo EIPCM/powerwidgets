@@ -567,20 +567,23 @@
          for (var i = 0; i < _els.length; i++) {
            _els[i].style.display = "none";
          }
-         document.getElementsByTagName("header")[0].style.fontSize = "22px"
+         document.getElementsByTagName("header")[0].style.fontSize = "19px"
+         document.getElementsByTagName("subheader")[0].style.fontSize = "16px"
          document.getElementsByClassName("points_wrapper")[0].style.marginLeft = "auto";
          document.getElementsByClassName("points_wrapper")[0].style.marginRight = "auto";
          document.getElementsByClassName("footer")[0].style.fontSize = "18px"
+         document.getElementsByClassName("footer")[0].style.paddingRight = "0px"
          document.getElementsByClassName("arrow")[0].style.width = "30px";
          document.getElementsByClassName("arrow")[1].style.width = "30px";
-
        }else{
          _els = document.getElementsByClassName("mobile_gone")
          for (var i = 0; i < _els.length; i++) {
            _els[i].style.display = "flex";
          }
          document.getElementsByTagName("header")[0].style.fontSize = "30px"
+         document.getElementsByTagName("subheader")[0].style.fontSize = "20px"
          document.getElementsByClassName("footer")[0].style.fontSize = "22px"
+         document.getElementsByClassName("footer")[0].style.paddingRight = "10px"
          document.getElementsByClassName("points_wrapper")[0].style.marginLeft = "44%";
          document.getElementsByClassName("points_wrapper")[0].style.marginRight = "auto";
          document.getElementsByClassName("points_wrapper")[0].style.flex = ".85";
