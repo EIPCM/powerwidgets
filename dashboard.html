@@ -22,7 +22,7 @@
 
       </div>
       <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;flex-direction:column;">
-        <a href="" class="link_to_progress"><img src="img/arrow_left.png" /></a>
+        <a href="" class="link_to_progress"><img class="arrow" src="img/arrow_left.png" /></a>
       </div>
         <div class="svgWrapper" >
 
@@ -36,8 +36,7 @@
              <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(255,255,255);stroke-width:2"/>
              <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(255,255,255);stroke-width:2"/>
             <circle
-              id="circ_2"
-              class="progress-ring__circle"
+              id="circ_2"="progress-ring__circle"
               transform="rotate(-90 0 0)"
               stroke="#13377F"
               stroke-width="66"
@@ -65,7 +64,7 @@
           </svg>
         </div>
         <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;flex-direction:column;">
-          <a href="" class="link_to_progress"><img src="img/arrow_right.png" style="display: flex;justify-content: center;align-items: center;"></a>
+          <a href="" class="link_to_progress"><img class="arrow" src="img/arrow_right.png" style="display: flex;justify-content: center;align-items: center;"></a>
         </div>
         <div class="svgWrapper mobile_gone" class="" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
           <div class="circularTitle" ><span id="title_b"></span><br><span id="pa_points" style="font-size: small;"></span></div>
@@ -563,7 +562,7 @@
        var w = window.innerWidth;
        var h = window.innerHeight;
        console.log(w);
-       if(w < 450){
+       if(w < 380){
          _els = document.getElementsByClassName("mobile_gone")
          for (var i = 0; i < _els.length; i++) {
            _els[i].style.display = "none";
@@ -571,7 +570,9 @@
          document.getElementsByTagName("header")[0].style.fontSize = "22px"
          document.getElementsByClassName("points_wrapper")[0].style.marginLeft = "auto";
          document.getElementsByClassName("points_wrapper")[0].style.marginRight = "auto";
-         document.getElementsByTagName("footer")[0].style.fontSize = "22px"
+         document.getElementsByClassName("footer")[0].style.fontSize = "22px"
+         document.getElementsByClassName("arrow")[0].style.width = "30px";
+         document.getElementsByClassName("arrow")[1].style.width = "30px";
 
        }else{
          _els = document.getElementsByClassName("mobile_gone")
@@ -579,11 +580,15 @@
            _els[i].style.display = "flex";
          }
          document.getElementsByTagName("header")[0].style.fontSize = "40px"
-         document.getElementsByTagName("footer")[0].style.fontSize = "18px"
+         document.getElementsByClassName("footer")[0].style.fontSize = "18px"
          document.getElementsByClassName("points_wrapper")[0].style.marginLeft = "44%";
          document.getElementsByClassName("points_wrapper")[0].style.marginRight = "auto";
          document.getElementsByClassName("points_wrapper")[0].style.flex = ".85";
          document.getElementsByClassName("points_wrapper")[0].style.display = "flex";
+         document.getElementsByClassName("arrow")[0].style.width = "48px";
+         document.getElementsByClassName("arrow")[1].style.width = "48px";
+
+
        }
 
      }
