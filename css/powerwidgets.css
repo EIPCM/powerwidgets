@@ -760,6 +760,10 @@ a {
   font-size: 18px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 90px;
 }
 .points_right{
   color: #6d0949;
