@@ -132,6 +132,7 @@ html,body{
 .powerBarLevelsWrapper{
   margin-top: 7px;
   height: 15px;
+  margin-left: 17px;
 }
 .iconsmall{
   height: 15px;
@@ -200,6 +201,7 @@ html,body{
   font-family: 'Montserrat', sans-serif;
   margin-top:auto;
   font-weight: bold;
+  margin-bottom:3px;
 }
 .powerRowPoints{
   display: flex;
@@ -214,7 +216,7 @@ html,body{
   display: flex;
   height: 65px;
   justify-content: space-between;
-  width: 90%;
+  width: 89%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -231,6 +233,10 @@ html,body{
   font-size: 18px;
   font-weight: bold;
   min-width: 59px;
+  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 90px;
 }
 .points_separator_bar{
   font-size: 18px;

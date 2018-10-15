@@ -1450,12 +1450,12 @@ function initSpider(){
   for (var i = 0; i < 12; i++) {
     if(i == 0){
       ctx.setLineDash([5, 15]);
-      ctx.strokeStyle = 'black';
+      ctx.strokeStyle = '#737373';
       ctx.lineWidth   = 1;
 
     }else if(i == 1){
       ctx.setLineDash([]);
-      ctx.strokeStyle = 'black';
+      ctx.strokeStyle = '#737373';
       ctx.lineWidth   = 2;
 
     }
@@ -1618,7 +1618,7 @@ function addSize(size){
   }
   ctx.strokeStyle = '#265380';
   ctx.fillStyle   = "#09244c";
-  ctx.textAlign   = "left";
+  ctx.textAlign   = "center";
   ctx.font = "bold 16px Arial";
   if(sizeWidth > 500){
     _barSize = (sizeWidth / 3);
@@ -1627,9 +1627,11 @@ function addSize(size){
     _l1      = (_barSize / 2 );
     _l2      = (_barSize / 4 );
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
-    ctx.fillText("5%",0 ,460);
-    ctx.fillText("25%",_l1 ,460);
-    ctx.fillText("50%",_l2 ,460);
+    ctx.fillText("5%",_l1/5 ,460);
+    ctx.fillText("25%",_l2 ,460);
+    ctx.fillText("50%",_l1 ,460);
+    ctx.textAlign   = "start";
+
     ctx.fillText("2000",_barSize ,435);
     ctx.stroke();
   }else{
@@ -1639,9 +1641,11 @@ function addSize(size){
     _l1      = (_barSize / 2 );
     _l2      = (_barSize / 4 );
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
-    ctx.fillText("5%",0 ,460);
-    ctx.fillText("25%",_l1 ,460);
-    ctx.fillText("50%",_l2 ,460);
+    ctx.fillText("5%",_l2/5 ,460);
+    ctx.fillText("25%",_l2 ,460);
+    ctx.fillText("50%",_l1 ,460);
+    ctx.textAlign   = "start";
+
     ctx.fillText("2000",_barSize ,435);
 
     ctx.stroke();
@@ -1694,6 +1698,12 @@ function addSize(size){
   ctx.beginPath();
   ctx.moveTo(_barSize - marginRight,_barY1);
   ctx.lineTo(_barSize - marginRight,_barY2);
+  ctx.closePath();
+  ctx.stroke();
+  //l0
+  ctx.beginPath();
+  ctx.moveTo(_l1/5,_barY1 + 15);
+  ctx.lineTo(_l1/5,_barY1 + 25);
   ctx.closePath();
   ctx.stroke();
   //l1
