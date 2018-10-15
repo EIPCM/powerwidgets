@@ -253,9 +253,94 @@
             <div style="font-family: 'Fredoka One', cursive;" class="lan_show_levels">Show Levels</div>
             <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m6()"></img>
           </div>
-        <div class="powerRowTitle pb_txt">Political</div>
+
+          <div class="points_flex_bar">
+            <div class="powerRowTitle in_txt">Individual</div>
+            <div class="points_bar_wrapper">
+              <div class="points_row_bar">
+                <div class="points_left_bar in_bg" id="bar_title_score_IN">
+                  0
+                </div>
+                 <div class="powerBarLevelsWrapper" id="powerBarLevels3" style="display: block;">
+                   <img src="img/people.png" class="iconsmall"/>
+                   <img src="img/people.png" class="iconsmall"/>
+                   <img src="img/people_gray.png" class="iconsmall"/>
+                 </div>
+              </div>
+              <div class="points_separator_bar in_txt">
+                /
+              </div>
+              <div class="points_row_bar">
+                <div class="points_right_bar in_txt" id="bar_title_score_IN_g">
+                  0
+                </div>
+                <div class="community_label_barp in_txt">
+                  Community
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="powerRow">
+            <div class="iconWrapper individual">
+              <img src="img/people.png" class="icon political"/>
+            </div>
+            <div class="pwrapper">
+              <div class="powerBar individual">
+                <div class="powerScaleWrapper" style="">
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                  <div class="powerScale individual">
+                  </div>
+                </div>
+                <div class="fill individual" style="width: 100%;" id="powerBar3"></div>
+              </div>
+            </div>
+          </div>
+          </div>
+            
+        <div class="points_flex_bar">
+          <div class="powerRowTitle pb_txt">Political</div>
+          <div class="points_bar_wrapper">
+            <div class="points_row_bar">
+              <div class="points_left_bar pb_bg" id="bar_title_score_PA">
+                0
+              </div>
+               <div class="powerBarLevelsWrapper" id="powerBarLevels1" style="display: block;">
+                 <img src="img/political_gray.png" class="iconsmall">
+                 <img src="img/political_gray.png" class="iconsmall">
+                 <img src="img/political_gray.png" class="iconsmall">
+               </div>
+            </div>
+            <div class="points_separator_bar pb_txt">
+              /
+            </div>
+            <div class="points_row_bar">
+              <div class="points_right_bar pb_txt" id="bar_title_score_PA_g">
+                0
+              </div>
+              <div class="community_label_barp pb_txt">
+                Community
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="powerRow">
-          <!-- <div class="powerBartitle"><span class="lan_political"> Political</span><br><span id="bar_title_score_PA"></span></div> -->
           <div class="powerBarWrapper">
             <!-- <div class="powerBarLevelsWrapper" id="powerBarLevels1">
               <img src="img/political.png" class="iconsmall"/>
@@ -294,36 +379,34 @@
               </div>
             </div>
           </div>
-          <!-- <div class="powerBarCommunityScore"><span class="pi_points" id="g_pa"><span class="pi_separator">/</span> <span class="pi_points_amount">3600</span></div> -->
-
         </div>
+
         <div class="points_flex_bar">
-          <div class="points_row_bar">
-            <div class="points_left_bar pb_bg" id="bar_title_score_PA">
-              0
+          <div class="powerRowTitle so_txt">Social</div>
+          <div class="points_bar_wrapper">
+            <div class="points_row_bar">
+                       <div class="points_left_bar so_bg" id="bar_title_score_SO">
+                         0
+                       </div>
+                         <div class="powerBarLevelsWrapper" id="powerBarLevels2" style="display: block;">
+                           <img src="img/users-group_gray.png" class="iconsmall">
+                           <img src="img/users-group_gray.png" class="iconsmall">
+                           <img src="img/users-group_gray.png" class="iconsmall">
+                         </div>
+           </div>
+            <div class="points_separator_bar so_txt">
+              /
             </div>
-             <div class="powerBarLevelsWrapper" id="powerBarLevels1" style="display: block;">
-               <img src="img/political_gray.png" class="iconsmall">
-               <img src="img/political_gray.png" class="iconsmall">
-               <img src="img/political_gray.png" class="iconsmall">
-             </div>
-          </div>
-          <div class="points_separator_bar pb_txt">
-            /
-          </div>
-          <div class="points_row_bar">
-            <div class="points_right_bar pb_txt" id="bar_title_score_PA_g">
-              0
-            </div>
-            <div class="community_label_barp pb_txt">
-              Community
+            <div class="points_row_bar">
+              <div class="points_right_bar so_txt" id="bar_title_score_SO_g">
+                0
+              </div>
+              <div class="community_label_barp so_txt">
+                Community
+              </div>
             </div>
           </div>
         </div>
-
-
-        <div class="powerRowTitle so_txt">Social</div>
-
         <div class="powerRow">
 
           <!-- <div class="powerBartitle"><span class="lan_social">Social</span><br><span id="bar_title_score_SO"></span></div><div class="powerBarWrapper"> -->
@@ -366,91 +449,8 @@
           <!-- <div class="powerBarCommunityScore"><span class="pi_points" id="g_so"><span class="pi_separator">/</span><span class="pi_points_amount">3600</span></div> -->
 
         </div>
-        <div class="points_flex_bar">
-          <div class="points_row_bar">
-            <div class="points_left_bar so_bg" id="bar_title_score_SO">
-              0
-            </div>
-              <div class="powerBarLevelsWrapper" id="powerBarLevels2" style="display: block;">
-                <img src="img/users-group_gray.png" class="iconsmall">
-                <img src="img/users-group_gray.png" class="iconsmall">
-                <img src="img/users-group_gray.png" class="iconsmall">
-              </div>
-          </div>
-          <div class="points_separator_bar so_txt">
-            /
-          </div>
-          <div class="points_row_bar">
-            <div class="points_right_bar so_txt" id="bar_title_score_SO_g">
-              0
-            </div>
-            <div class="community_label_barp so_txt">
-              Community
-            </div>
-          </div>
-        </div>
-        <div class="powerRowTitle in_txt">Individual</div>
-        <div class="powerRow">
 
-        <!-- <div class="powerBartitle"><span class="lan_individual">Individual</span><br><span id="bar_title_score_IN"></span></div><div class="powerBarWrapper"> -->
-          <!--  -->
-            <div class="iconWrapper individual">
-              <img src="img/people.png" class="icon political"/>
-            </div>
-            <div class="pwrapper">
-              <div class="powerBar individual">
-                <div class="powerScaleWrapper" style="">
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                  <div class="powerScale individual">
-                  </div>
-                </div>
-                <div class="fill individual" style="width: 100%;" id="powerBar3"></div>
-              </div>
-            </div>
-          </div>
-          <div class="points_flex_bar">
-            <div class="points_row_bar">
-              <div class="points_left_bar in_bg" id="bar_title_score_IN">
-                0
-              </div>
-              <div class="powerBarLevelsWrapper"  id="powerBarLevels3">
-                <img src="img/people.png" class="iconsmall"/>
-                <img src="img/people.png" class="iconsmall"/>
-                <img src="img/people_gray.png" class="iconsmall"/>
-              </div>
-            </div>
-            <div class="points_separator_bar in_txt">
-              /
-            </div>
-            <div class="points_row_bar">
-              <div class="points_right_bar in_txt" id="bar_title_score_IN_g">
-                0
-              </div>
-              <div class="community_label_barp in_txt">
-                Community
-              </div>
-            </div>
-          </div>
-          <!-- <div class="powerBarCommunityScore"><span class="pi_points" id="g_in"><span class="pi_separator">/</span><span class="pi_points_amount">3600</span></div> -->
 
-        </div>
 
       </div>
 
