@@ -1621,35 +1621,37 @@ function addSize(size){
   ctx.font = "bold 16px Arial";
   if(sizeWidth > 500){
     _barSize = (sizeWidth / 3);
-    _barY1   = 420;
+    _barY1   = 450;
     _barY2   = _barY1 + 20;
     _l1      = (_barSize / 2 );
     _l2      = (_barSize / 4 );
     ctx.textAlign   = "left";
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,440);
     ctx.textAlign   = "center";
-    ctx.fillText("5%",_l1/5 ,460);
-    ctx.fillText("25%",_l2 ,460);
-    ctx.fillText("50%",_l1 ,460);
+    ctx.fillText("5%",_l1/5 ,490);
+    ctx.fillText("25%",_l2 ,490);
+    ctx.fillText("50%",_l1 ,490);
     ctx.textAlign   = "start";
 
-    ctx.fillText("2000",_barSize ,435);
+    ctx.fillText("2000",_barSize ,455);
+    ctx.fillText("Members",_barSize ,475);
+
     ctx.stroke();
   }else{
-    _barSize = (sizeWidth - 50);
-    _barY1   = 420;
+    _barSize = (sizeWidth - 70);
+    _barY1   = 440;
     _barY2   = _barY1 + 20;
     _l1      = (_barSize / 2 );
     _l2      = (_barSize / 4 );
     ctx.textAlign   = "left";
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,410);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,435);
     ctx.textAlign   = "center";
-    ctx.fillText("5%",_l2/5 ,460);
-    ctx.fillText("25%",_l2 ,460);
-    ctx.fillText("50%",_l1 ,460);
+    ctx.fillText("5%",_l2/5 ,490);
+    ctx.fillText("25%",_l2 ,490);
+    ctx.fillText("50%",_l1 ,490);
     ctx.textAlign   = "start";
-
-    ctx.fillText("2000",_barSize ,435);
+    ctx.fillText("2000",_barSize ,455);
+    ctx.fillText("Members",_barSize ,475);
 
     ctx.stroke();
   }
