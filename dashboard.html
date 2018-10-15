@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="overflow:hidden;">
+<html style="overflow:hidden;" >
   <head>
    <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
@@ -10,13 +10,13 @@
    <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
    <base target="_parent">
   </head>
-  <body>
+  <body onresize="resize()">
     <div class="dashboard">
       <header>Your results highlight</header>
       <div class="subheader">Flood Preparedness</div>
       <div class="highlight_title" id="highlight_title">title</div>
       <div class="circularWrapper">
-      <div class="svgWrapper" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
+      <div class="svgWrapper mobile_gone" class="" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
           <div class="circularTitle" ><span id="title_a"></span><br><span id="pa_points" style="font-size: small;"></span></div>
           <img src="img/dashboard/kh.png" height="32" width="32" id="img_a" />
 
@@ -67,7 +67,7 @@
         <div class="arrow_wrapper" style="display: flex;justify-content: center;align-items: center;flex:1;flex-direction:column;">
           <a href="" class="link_to_progress"><img src="img/arrow_right.png" style="display: flex;justify-content: center;align-items: center;"></a>
         </div>
-        <div class="svgWrapper" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
+        <div class="svgWrapper mobile_gone" class="" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
           <div class="circularTitle" ><span id="title_b"></span><br><span id="pa_points" style="font-size: small;"></span></div>
           <img src="img/dashboard/kh.png" height="32" width="32" id="img_b" />
 
@@ -559,6 +559,35 @@
        console.log(_circA);
 
      }
+     function resize(){
+       var w = window.innerWidth;
+       var h = window.innerHeight;
+       console.log(w);
+       if(w < 450){
+         _els = document.getElementsByClassName("mobile_gone")
+         for (var i = 0; i < _els.length; i++) {
+           _els[i].style.display = "none";
+         }
+         document.getElementsByTagName("header")[0].style.fontSize = "22px"
+         document.getElementsByClassName("points_wrapper")[0].style.marginLeft = "auto";
+         document.getElementsByClassName("points_wrapper")[0].style.marginRight = "auto";
+         document.getElementsByTagName("footer")[0].style.fontSize = "22px"
+
+       }else{
+         _els = document.getElementsByClassName("mobile_gone")
+         for (var i = 0; i < _els.length; i++) {
+           _els[i].style.display = "flex";
+         }
+         document.getElementsByTagName("header")[0].style.fontSize = "40px"
+         document.getElementsByTagName("footer")[0].style.fontSize = "18px"
+         document.getElementsByClassName("points_wrapper")[0].style.marginLeft = "44%";
+         document.getElementsByClassName("points_wrapper")[0].style.marginRight = "auto";
+         document.getElementsByClassName("points_wrapper")[0].style.flex = ".85";
+         document.getElementsByClassName("points_wrapper")[0].style.display = "flex";
+       }
+
+     }
+     resize();
     </script>
   </body>
 </html>
