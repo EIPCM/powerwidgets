@@ -12,9 +12,9 @@
   </head>
   <body onresize="resize()">
     <div class="dashboard">
-      <header>Your results highlight</header>
-      <div class="subheader">Flood Preparedness</div>
-      <div class="highlight_title" id="highlight_title">title</div>
+      <header class="lan_title_summary">Your results highlight</header>
+      <div class="subheader lan_sub_title"></div>
+      <div class="highlight_title" id="highlight_title"></div>
       <div class="circularWrapper">
       <div class="svgWrapper mobile_gone" class="" style="display: flex;justify-content: center;align-items: center;flex-direction:column;">
           <div class="circularTitle" ><span id="title_a"></span><br><span id="pa_points" style="font-size: small;"></span></div>
@@ -80,8 +80,7 @@
             <div class="points_personal" id="total_personal_score">
               0
             </div>
-            <div class="points_subtitle">
-              Personal
+            <div class="points_subtitle lan_personal">
             </div>
           </div>
           <div class="points_row">
@@ -92,13 +91,12 @@
             <div class="points_community">
               0
             </div>
-            <div class="points_subtitle">
-              Community
+            <div class="points_subtitle lan_community">
             </div>
           </div>
         </div>
       </div>
-      <div class="footer"><a href="" id="link_to_progress" class="link_to_progress">Check complete results...</a></div>
+      <div class="footer"><a href="" id="link_to_progress" class="link_to_progress lan_check_results"></a></div>
     </div>
     <script>
     function changeValues(pa,kh,ra,_in,so,po){
@@ -171,7 +169,11 @@
     }
     _loc = {
       "en":{
-        "lan_title_summary":"My Progress Summary",
+        "lan_title_summary":"Your results highlight",
+        "lan_personal":"Personal",
+        "lan_community":"Community",
+        "lan_check_results":"Check complete results...",
+        "lan_sub_title":"Flood Preparedness",
         "lan_total_score":"Total Score",
         "lan_title_personal_impact":"Personal Preparedness",
         "lan_your_achievement":"Achievement",
@@ -194,6 +196,10 @@
       "es":{
         "lan_title_summary":"Mi Resumen",
         "lan_total_score":"Puntuación Total",
+        "lan_personal":"Personal",
+        "lan_community":"Comunidad",
+        "lan_check_results":"Revisa tus resultados...",
+        "lan_sub_title":"Preparación ante inundaciones",
         "lan_title_personal_impact":"Preparación Personal",
         "lan_your_achievement":"Logro",
         "lan_your_feedback_multiplier":"Multiplicador de Realimentación",
@@ -215,6 +221,10 @@
       "cat":{
         "lan_title_summary":"El meu resum",
         "lan_total_score":"Puntuació total",
+        "lan_personal":"Personal",
+        "lan_community":"Comunidad",
+        "lan_check_results":"Comprova els resultats complets...",
+        "lan_sub_title":"Preparació d'inundacions",
         "lan_title_personal_impact":"Impacte Personall",
         "lan_your_achievement":"Assoliment",
         "lan_your_feedback_multiplier":"Multiplicador per valoracions",
@@ -237,6 +247,10 @@
       "he":{
         "lan_title_summary":"הסיכום שלי",
         "lan_total_score":"תוצאה סופית",
+        "lan_personal":"אישי",
+        "lan_community":"קהילה",
+        "lan_check_results":"בדוק את התוצאות המלאות ...",
+        "lan_sub_title":"הכנת המבול",
         "lan_title_personal_impact":"דוגמא אישית",
         "lan_your_achievement":"ההישג שלך",
         "lan_your_feedback_multiplier":"שקלול נקודות",
@@ -259,6 +273,10 @@
       "ar":{
         "lan_title_summary": "ملخصي",
         "lan_total_score":"مجموع النقاط",
+        "lan_personal":"الشخصية",
+        "lan_community":"تواصل اجتماعي",
+        "lan_check_results":"تحقق من النتائج الكاملة ...",
+        "lan_sub_title":"التأهب للفيضانات",
         "lan_title_personal_impact":"مثال شخصي",
         "lan_your_achievement":"موهلات",
         "lan_your_feedback_multiplier":"عامل منح الحافز",
