@@ -529,6 +529,8 @@
   </div>
   </body>
 <script>
+WIDTH = -1;
+HEIGHT = -1;
 _loc = {
   "es":{
     "lan_title_personal_preparedness":"Preparación Personal",
@@ -2295,10 +2297,16 @@ window.onload = function()
    }
  }
  function resize(){
-   _checked = document.getElementsByClassName("js-switch")[2].checked;
-   initPoligons(_checked);
-   toggleLevelsPersonalImpact();
-   toggleLevelsPersonalPreparedness();
+
+   if(WIDTH != window.innerWidth){
+     _checked = document.getElementsByClassName("js-switch")[2].checked;
+     initPoligons(_checked);
+     toggleLevelsPersonalImpact();
+     toggleLevelsPersonalPreparedness();
+     HEIGHT = window.innerWidth;
+     WIDTH  = window.innerHeight;
+   }
+
  }
  function powerPopup(content){
    _content = document.getElementById("powerPopupContent")
