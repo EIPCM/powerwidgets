@@ -156,3 +156,21 @@ header{
 .lightBlue{
   color:#2c5bc5;
 }
+.start_now_button{
+  background-color: #f39200;
+  color: #4c2c06;
+  width: 200px;
+  height: 30px;
+  text-transform: capitalize;
+  font-family: 'Fredoka One';
+  line-height: 27px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:40px;
+}
+.start_now_button:hover{
+  background-color: #f8a72e;
+}
