@@ -128,6 +128,18 @@ header{
   color: #2c5bc5;
   font-size: 14px;
 }
+.hexaRow{
+  display: flex;
+  justify-content: center;
+}
+.hexagonLabelMobile{
+  width: 148px;
+  text-align: left;
+  color: blue;
+  font-family: 'Fredoka One';
+  color: #2c5bc5;
+  font-size: 14px;
+}
 
 .oliveGreen{
   color:#677f39;
