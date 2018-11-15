@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <base target="_parent">
   </head>
-  <body>
+  <body onresize="resize()">
       <header class="lan_title">What can I do to help my community?</header>
       <div class="teaser_container_mobile">
         <div class="hexaRow">
@@ -238,12 +238,12 @@
           default:
 
         }
-        _l1 = document.getElementById("link1")
-        _l1.setAttribute("href",_link1)
-        _l2 = document.getElementById("link2")
-        _l2.setAttribute("href",_link1)
-        _l3 = document.getElementById("link3")
-        _l3.setAttribute("href",_link3)
+        // _l1 = document.getElementById("link1")
+        // _l1.setAttribute("href",_link1)
+        // _l2 = document.getElementById("link2")
+        // _l2.setAttribute("href",_link1)
+        // _l3 = document.getElementById("link3")
+        // _l3.setAttribute("href",_link3)
       }
       function updateCity(){
         if(_lan != null){
@@ -273,6 +273,25 @@
       updateCity();
       updateLan();
       updateLinks();
+      resize();
+      var WIDTH = 0;
+      function resize(){
+        if(WIDTH != window.innerWidth){
+          HEIGHT = window.innerHeight;
+          WIDTH  = window.innerWidth;
+          if(WIDTH < 560){
+            document.getElementsByClassName("teaser_container_mobile")[0].style.display = "block";
+            document.getElementsByClassName("teaser_container")[0].style.display = "none";
+
+          }else{
+            document.getElementsByClassName("teaser_container_mobile")[0].style.display = "none";
+            document.getElementsByClassName("teaser_container")[0].style.display = "flex";
+
+
+          }
+        }
+
+      }
     </script>
 
   </body>
