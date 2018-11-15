@@ -1,0 +1,146 @@
+header{
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  color:#2c5bc5;
+  height: 70px;
+}
+.teaser_container{
+  display: flex;
+  justify-content: center;
+}
+.teaser_column{
+  text-align: center;
+  flex:1;
+}
+.teaser_column_image{
+  width: 50%;
+}
+.teaser_subtitle{
+  width: 100%;
+  font-size:20px;
+  height: 60px;
+  color:black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.teaser_text{
+  color:#4c2c06;
+  font-size:18px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+.tt2{
+  color:#0c244f;
+}
+.tt3{
+  color:#0a5149;
+}
+.teaser_button_link{
+  text-decoration: none;
+  color: inherit;
+}
+.teaser_button{
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size:16px;
+  line-height: 30px;
+  letter-spacing: 1px;
+
+}
+.teaser_button{
+  cursor: pointer;
+}
+.tbyellow{
+  background-color: #f39200;
+  font-weight: bold;
+
+}
+.tbyellow:hover{
+  background-color: #ffb23e;
+}
+.tbblue{
+  background-color: #2c5bc5;
+  color:white;
+}
+.tbblue:hover{
+  background-color: #3974f8;
+}
+.tbgreen{
+  background-color: #318c84;
+  color:black;
+  font-weight: bold;
+}
+.tbgreen:hover{
+  background-color: #41aea4;
+}
+.teaser_text{
+  height: 100px;
+}
+/*  */
+
+.hexagon1 {
+  background-image: url('../img/teaser/teaser1.png');
+  height: 170px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.hexagon2 {
+  background-image: url('../img/teaser/teaser2.png');
+  height: 170px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.hexagon3 {
+  background-image: url('../img/teaser/teaser3.png');
+  height: 170px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.hexagon4 {
+  background-image: url('../img/teaser/teaser4.png');
+  height: 170px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.hexagon5 {
+  background-image: url('../img/teaser/teaser5.png');
+  height: 170px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.hexagonLabel{
+  margin-left: -95px;
+  width: 148px;
+  text-align: left;
+  color: blue;
+  font-family: 'Fredoka One';
+  color: #2c5bc5;
+  font-size: 14px;
+}
+
+.oliveGreen{
+  color:#677f39;
+}
+.eggPlant{
+  color: #802859;
+}
+.pigeonBlue{
+  color: #3b5f5d;
+}
+.lightOliveGreen{
+  color: #7f7d19;
+}
+.lightBlue{
+  color:#2c5bc5;
+}
