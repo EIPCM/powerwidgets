@@ -177,3 +177,6 @@ a{
 .start_now_button:hover{
   background-color: #f8a72e;
 }
+.arrow{
+  vertical-align: middle;
+}
