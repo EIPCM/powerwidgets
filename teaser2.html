@@ -9,57 +9,63 @@
     <base target="_parent">
   </head>
   <body onresize="resize()">
-      <header class="lan_title">What can I do to help my community?</header>
+      <header class="lan_title">What you can do in the city water community:</header>
       <div class="teaser_container_mobile">
-        <div class="hexaRow">
+        <a class="hexaRow link1">
           <div class="hexagonLabelMobile lightBlue">Learn by exploring your community's challenges <img src="img/teaser/arrow1.png" height="18" class="arrow"></img></div>
           <div class="hexagon1">
           </div>
-        </div>
-        <div class="hexaRow">
+        </a>
+        <a class="hexaRow link2">
           <div class="hexagonLabelMobile oliveGreen" >Share information you like with your network<img src="img/teaser/arrow2.png" height="18" class="arrow"></img></div>
           <div class="hexagon2" >
           </div>
-        </div>
-        <div class="hexaRow">
+        </a>
+        <a class="hexaRow link3">
           <div class="hexagonLabelMobile eggPlant">Track your knowledge and preparedness<img src="img/teaser/arrow3.png" height="18" class="arrow"></img></div>
 
           <div class="hexagon3" >
           </div>
-        </div>
-        <div class="hexaRow">
+        </a>
+        <a class="hexaRow link4">
           <div class="hexagonLabelMobile pigeonBlue" >Participate in the idea contest and get support<img src="img/teaser/arrow4.png" height="18" class="arrow"></img></div>
           <div class="hexagon4" >
           </div>
-        </div>
-        <div class="hexaRow">
+        </a>
+        <a class="hexaRow link3">
           <div class="hexagonLabelMobile lightOliveGreen">Check how you helped your community<img src="img/teaser/arrow5.png" height="18" class="arrow"></img></div>
           <div class="hexagon5" >
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="teaser_container">
-        <div class="hexagon1">
-          <div class="hexagonLabel lightBlue">Learn by exploring your community's challenges <img src="img/teaser/arrow1.png" height="18" class="arrow"></img></div>
-        </div>
-        <div class="hexagon2" style="margin-top: 120px;margin-left: -65px;">
+        <a href="" class="link1">
+          <div class="hexagon1">
+            <div class="hexagonLabel lightBlue">Learn by exploring your community's challenges <img src="img/teaser/arrow1.png" height="18" class="arrow"></img></div>
+          </div>
+        </a>
+        <a class="hexagon2 link2" style="margin-top: 120px;margin-left: -65px;" >
           <div class="hexagonLabel oliveGreen" style="margin-top: 119px;" >Share information you like with your network<img src="img/teaser/arrow2.png" height="18" class="arrow"></img></div>
-        </div>
-        <div class="hexagon3" style="margin-left: -65px;">
-          <div class="hexagonLabel eggPlant">Track your knowledge and preparedness<img src="img/teaser/arrow3.png" height="18" class="arrow"></img></div>
-        </div>
-        <div class="hexagon4" style="margin-top: 120px;margin-left: -65px;">
+        </a>
+        <a href="" class="link3">
+          <div class="hexagon3" style="margin-left: -65px;">
+            <div class="hexagonLabel eggPlant">Track your knowledge and preparedness<img src="img/teaser/arrow3.png" height="18" class="arrow"></img></div>
+          </div>
+        </a>
+        <a class="hexagon4 link1" style="margin-top: 120px;margin-left: -65px;">
           <div class="hexagonLabel pigeonBlue" style="margin-top: 119px;" >Participate in the idea contest and get support<img src="img/teaser/arrow4.png" height="18" class="arrow"></img></div>
-        </div>
-        <div class="hexagon5" style="margin-left: -65px;">
-          <div class="hexagonLabel lightOliveGreen">Check how you helped your community<img src="img/teaser/arrow5.png" height="18" class="arrow"></img></div>
-        </div>
+        </a>
+        <a href="" class="link3">
+          <div class="hexagon5" style="margin-left: -65px;">
+            <div class="hexagonLabel lightOliveGreen">Check how you helped your community<img src="img/teaser/arrow5.png" height="18" class="arrow"></img></div>
+          </div>
+        </a>
 
 
       </div>
-      <div class="start_now_button">START NOW</div>
-      
+      <a class="start_now_button link6" >START NOW</a>
+
     <script>
     var CURRENT_LAN = "en";
     var CURRENT_CITY = "CI";
@@ -75,20 +81,20 @@
           "botton_2":"COMMENT HERE",
           "botton_3":"REGISTER HERE",
           "CI":{
-            "lan_title":"What can I do to help my community?"
+            "lan_title":"What you can do in the city water community:"
           },
           "LE":{
-            "lan_title":"What can I do to help the Leicester community?"
+            "lan_title":"What you can do in the Leicester water community:"
           },
           "MI":{
-            "lan_title":"What can I do to help the Milton Keynes community?"
+            "lan_title":"What you can do in the Milton Keynes water community:"
           },
           "SA":{
-            "lan_title":"What can I do to help the Sabadell community?"
+            "lan_title":"What you can do in the Sabadell water community:"
 
           },
           "JE":{
-            "lan_title":"What can I do to help the Jerusalem community?"
+            "lan_title":"What you can do in the Jerusalem water community:"
           }
         },
         "ES":{
@@ -102,7 +108,7 @@
           "botton_2":"COMENTA AQUÍ",
           "botton_3":"REGISTRA AQUÍ",
           "CI":{
-            "lan_title":"¿Qué puedo hacer para ayudar a mi comunidad?"
+            "lan_title":"Lo que puedes hacer en la Comunidad de Ciudad:"
           },
           "LE":{
             "lan_title":"¿Qué puedo hacer para ayudar a la comunidad de Leicester?"
@@ -215,37 +221,71 @@
 //
 // Jerusalem: https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240
         _link1 = "https://{city}.power-h2020.eu/?location=challenge&loadP=1160";
-        _link3 = "https://{city}.power-h2020.eu/?location=home&login_pub";
+        _link2 = "https://www.facebook.com/sharer/sharer.php?u=https%3A//{city}.power-h2020.eu/";
+        _link4 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
+        _link6 = "https://{city}.power-h2020.eu/?location=home&login_pub";
+        _link3 = "https://{city}.power-h2020.eu/?location=area"
         switch (CURRENT_CITY) {
           case "CI":
-            _link1 = _link1.replace("{city}","city")
+            _link1 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
+            _link2 = _link2.replace("{city}","city")
             _link3 = _link3.replace("{city}","city")
+            _link6 = _link6.replace("{city}","city")
             break;
           case "LE":
             _link1 =  "https://leicester.power-h2020.eu/?location=challenge&loadP=1160"
+            _link2 = _link2.replace("{city}","leicester")
             _link3 = _link3.replace("{city}","leicester")
+            _link6 = _link6.replace("{city}","leicester")
+           _link4  =  "https://leicester.power-h2020.eu/?location=challenge&loadP=1160"
             break;
           case "MI":
             _link1 = "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
+            _link2 = _link2.replace("{city}","milton-keynes")
             _link3 = _link3.replace("{city}","milton-keynes")
+            _link6 = _link6.replace("{city}","milton-keynes")
+            _link4  =  "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
+
             break;
           case "SA":
             _link1 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
+            _link2 = _link2.replace("{city}","sabadell")
             _link3 = _link3.replace("{city}","sabadell")
+            _link6 = _link6.replace("{city}","sabadell")
+            _link4 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
             break;
           case "JE":
             _link1 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
+            _link2 = _link2.replace("{city}","jerusalem")
             _link3 = _link3.replace("{city}","jerusalem")
+            _link6 = _link6.replace("{city}","jerusalem")
+            _link4 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
             break;
           default:
 
         }
-        // _l1 = document.getElementById("link1")
-        // _l1.setAttribute("href",_link1)
-        // _l2 = document.getElementById("link2")
-        // _l2.setAttribute("href",_link1)
-        // _l3 = document.getElementById("link3")
-        // _l3.setAttribute("href",_link3)
+
+          links_classes = document.getElementsByClassName("link1");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link1)
+          }
+          links_classes = document.getElementsByClassName("link2");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link2)
+          }
+          links_classes = document.getElementsByClassName("link3");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link3)
+          }
+          links_classes = document.getElementsByClassName("link4");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link3)
+          }
+          links_classes = document.getElementsByClassName("link6");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link6)
+          }
+
       }
       function updateCity(){
         if(_lan != null){
