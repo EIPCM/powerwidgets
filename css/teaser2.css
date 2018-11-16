@@ -9,7 +9,7 @@ a{
 }
 .teaser_container{
   display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 .teaser_column{
   text-align: center;
