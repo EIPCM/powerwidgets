@@ -2305,6 +2305,13 @@ window.onload = function()
      toggleLevelsPersonalPreparedness();
      HEIGHT = window.innerHeight;
      WIDTH  = window.innerWidth;
+     if(WIDTH < 560){
+       document.getElementsByClassName("indicatora")[0].style.height = "900px";
+     }else{
+       document.getElementsByClassName("indicatora")[0].style.height = "auto"
+     }
+
+
    }
 
  }
