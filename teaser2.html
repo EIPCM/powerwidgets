@@ -212,6 +212,9 @@
       if(_city != null){
         CURRENT_CITY = _city;
       }
+      function share(link){
+        window.open(link);
+      }
       function updateLinks(){
 //         Leicester: https://leicester.power-h2020.eu/?location=challenge&loadP=1160
 //
@@ -221,26 +224,26 @@
 //
 // Jerusalem: https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240
         _link1 = "https://{city}.power-h2020.eu/?location=challenge&loadP=1160";
-        _link2 = "https://www.facebook.com/sharer/sharer.php?u=https%3A//{city}.power-h2020.eu/";
+        _link2 = "javascript:share('https://www.facebook.com/sharer/sharer.php?u=https%3A//{city}.power-h2020.eu/')  ";
         _link4 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
         _link6 = "https://{city}.power-h2020.eu/?location=home&login_pub";
         _link3 = "https://{city}.power-h2020.eu/?location=area"
         switch (CURRENT_CITY) {
           case "CI":
-            _link1 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
+            _link1 = "https://city.power-h2020.eu/?location=challenges"
             _link2 = _link2.replace("{city}","city")
             _link3 = _link3.replace("{city}","city")
             _link6 = _link6.replace("{city}","city")
             break;
           case "LE":
-            _link1 =  "https://leicester.power-h2020.eu/?location=challenge&loadP=1160"
+            _link1 =  "https://leicester.power-h2020.eu/?location=challenges"
             _link2 = _link2.replace("{city}","leicester")
             _link3 = _link3.replace("{city}","leicester")
             _link6 = _link6.replace("{city}","leicester")
-           _link4  =  "https://leicester.power-h2020.eu/?location=challenge&loadP=1160"
+           _link4  =  "https://leicester.power-h2020.eu/?location=challenges"
             break;
           case "MI":
-            _link1 = "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
+            _link1 = "https://milton-keynes.power-h2020.eu/?location=challenges"
             _link2 = _link2.replace("{city}","milton-keynes")
             _link3 = _link3.replace("{city}","milton-keynes")
             _link6 = _link6.replace("{city}","milton-keynes")
@@ -248,14 +251,14 @@
 
             break;
           case "SA":
-            _link1 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
+            _link1 = "https://sabadell.power-h2020.eu/?location=challenges"
             _link2 = _link2.replace("{city}","sabadell")
             _link3 = _link3.replace("{city}","sabadell")
             _link6 = _link6.replace("{city}","sabadell")
             _link4 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
             break;
           case "JE":
-            _link1 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
+            _link1 = "https://jerusalem.power-h2020.eu/?location=challenges"
             _link2 = _link2.replace("{city}","jerusalem")
             _link3 = _link3.replace("{city}","jerusalem")
             _link6 = _link6.replace("{city}","jerusalem")
