@@ -82,7 +82,7 @@
 
               </svg>
               <div class="points_flex">
-                <div class="points_row">
+                <div class="points_row l">
                   <div class="points_left" id="pa_points">
                     0
                   </div>
@@ -146,7 +146,7 @@
                 <image xlink:href="img/idea.png" height="140" width="140"  rx="15" ry="15" />
               </svg>
               <div class="points_flex">
-                <div class="points_row">
+                <div class="points_row l">
                   <div class="points_left kh_bg" id="kh_points">
                     0
                   </div>
@@ -212,7 +212,7 @@
                 <image xlink:href="img/ready_act.png" height="140" width="140"  rx="15" ry="15" />
               </svg>
               <div class="points_flex">
-                <div class="points_row">
+                <div class="points_row l">
                   <div class="points_left ra_bg" id="ra_points" >
                     0
                   </div>
@@ -2270,10 +2270,46 @@ window.onload = function()
    for (var i = 0; i < pList.length; i++) {
       (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
-   pList = document.getElementsByClassName("points_row r")
+   pList = document.getElementsByClassName("points_row l")
    for (var i = 0; i < pList.length; i++) {
       (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
+
+   _pp1 = document.getElementById("pag_points");
+   _pp2 = document.getElementById("khg_points");
+   _pp3 = document.getElementById("rag_points");
+   if(_checked){
+     _pp1.classList.add("points_right");
+     _pp1.classList.remove("points_left");
+
+     _pp2.classList.add("points_right");
+     _pp2.classList.remove("points_left");
+     _pp2.classList.remove("kh_bg");
+     _pp2.classList.add("kh_txt");
+
+
+     _pp3.classList.add("points_right");
+     _pp3.classList.remove("points_left");
+     _pp3.classList.remove("ra_bg");
+     _pp3.classList.add("ra_txt");
+
+   }else{
+     _pp1.classList.remove("points_right");
+     _pp1.classList.add("points_left");
+
+     _pp2.classList.remove("points_right");
+     _pp2.classList.add("points_left");
+     _pp2.classList.add("kh_bg");
+     _pp2.classList.remove("kh_txt");
+
+     _pp3.classList.remove("points_right");
+     _pp3.classList.add("points_left");
+     _pp3.classList.add("ra_bg");
+     _pp3.classList.remove("ra_txt");
+
+
+   }
+
  }
  function toggleHideableArea(el){
    var w = window.innerWidth;
