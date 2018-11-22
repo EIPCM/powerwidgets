@@ -142,6 +142,7 @@ html,body{
 .fill{
   width: 50%;
   height: 100%;
+  transition: 2s;
 }
 .pwrapper{
   width: calc(100% - 79px);
