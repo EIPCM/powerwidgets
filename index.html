@@ -2292,7 +2292,9 @@ window.onload = function()
      _pp3.classList.remove("points_left");
      _pp3.classList.remove("ra_bg");
      _pp3.classList.add("ra_txt");
-
+     addCircularLevelsPA(_p1);
+     addCircularLevelsKH(_p2);
+     addCircularLevelsRA(_p3);
    }else{
      _pp1.classList.remove("points_right");
      _pp1.classList.add("points_left");
@@ -2306,6 +2308,7 @@ window.onload = function()
      _pp3.classList.add("points_left");
      _pp3.classList.add("ra_bg");
      _pp3.classList.remove("ra_txt");
+     changeProgress(_p1,_p2,_p3);
 
 
    }
