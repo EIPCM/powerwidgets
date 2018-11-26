@@ -66,25 +66,8 @@
                 <div class="points_left" id="pa_points">
                   0
                 </div>
-                 <div class="circularLevelsWrapper" id="circularLevels1">
-                  <img src="img/circ_talk_gray.png" class="iconsmall"/>
-                  <img src="img/circ_talk_gray.png" class="iconsmall"/>
-                  <img src="img/circ_talk_gray.png" class="iconsmall"/>
-                </div>
-              </div>
-              <div class="points_separator">
-                /
-              </div>
-              <div class="points_row r">
-                <div class="points_right" id="pag_points">
-                  0
-                </div>
-                <div class="community_label">
-                  Community
-                </div>
               </div>
             </div>
-
           </div>
           <div class="svgWrapper">
             <div class="circularTitle" ><span id="know_how">Know- <br>How</span><br> <span  style="font-size: small;"></span></div>
@@ -129,22 +112,6 @@
               <div class="points_row l">
                 <div class="points_left kh_bg" id="kh_points">
                   0
-                </div>
-                <div class="circularLevelsWrapper"  id="circularLevels2">
-                  <img src="img/circ_idea_gray.png" class="iconsmall"/>
-                  <img src="img/circ_idea_gray.png" class="iconsmall"/>
-                  <img src="img/circ_idea_gray.png" class="iconsmall"/>
-                </div>
-              </div>
-              <div class="points_separator kh_txt">
-                /
-              </div>
-              <div class="points_row r">
-                <div class="points_right kh_txt" id="khg_points">
-                  0
-                </div>
-                <div class="community_label kh_txt">
-                  Community
                 </div>
               </div>
             </div>
@@ -195,22 +162,6 @@
               <div class="points_row l">
                 <div class="points_left ra_bg" id="ra_points" >
                   0
-                </div>
-                <div class="circularLevelsWrapper" id="circularLevels3">
-                  <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-                  <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-                  <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
-                </div>
-              </div>
-              <div class="points_separator ra_txt">
-                /
-              </div>
-              <div class="points_row r">
-                <div class="points_right ra_txt" id="rag_points" >
-                  0
-                </div>
-                <div class="community_label ra_txt">
-                  Community
                 </div>
               </div>
             </div>
@@ -555,8 +506,19 @@
         setProgress(_p1);
         setProgress2(_p2);
         setProgress3(_p3);
+        setPAPoints(la);
+        setKHPoints(lb);
+        setRAPoints(lc);
 
-
+      }
+      function setPAPoints(p){
+        document.getElementById("pa_points").innerHTML = numberWithCommas(Math.round(p));
+      }
+      function setKHPoints(p){
+        document.getElementById("kh_points").innerHTML = numberWithCommas(Math.round(p));
+      }
+      function setRAPoints(p){
+        document.getElementById("ra_points").innerHTML = numberWithCommas(Math.round(p));
       }
     </script>
 
