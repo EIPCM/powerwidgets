@@ -9,7 +9,7 @@
     <base target="_parent">
   </head>
   <body onresize="resize()">
-      <header class="lan_title">What you can do in the city water community:</header>
+      <header class="lan_title" id="header">What you can do in the city water community:</header>
       <div class="teaser_container_mobile">
         <a class="hexaRow link1">
           <div class="hexagonLabelMobile lightBlue">Learn by exploring your community's challenges <img src="img/teaser/arrow1.png" height="18" class="arrow"></img></div>
@@ -327,10 +327,11 @@
           if(WIDTH < 560){
             document.getElementsByClassName("teaser_container_mobile")[0].style.display = "block";
             document.getElementsByClassName("teaser_container")[0].style.display = "none";
+            document.getElementById("header").style.fontSize = "18px";
           }else{
             document.getElementsByClassName("teaser_container_mobile")[0].style.display = "none";
             document.getElementsByClassName("teaser_container")[0].style.display = "flex";
-
+            document.getElementById("header").style.fontSize = "30px";
           }
         }
 
