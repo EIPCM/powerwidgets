@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <base target="_parent">
     <script type="text/javascript" src="//city.power-h2020.eu/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
-    
+
   </head>
   <body onresize="resize()">
     <div class="powerTitle">
@@ -528,6 +528,22 @@
       circle2.style.strokeDashoffset = `${circumference}`;
       circle3.style.strokeDasharray = `${circumference} ${circumference}`;
       circle3.style.strokeDashoffset = `${circumference}`;
+      function setProgress(percent) {
+        const offset = circumference - percent / 100 * circumference;
+        circle.style.strokeDashoffset = offset;
+      }
+      const input = document.getElementById('input1');
+      function setProgress2(percent) {
+        const offset2 = circumference2 - percent / 100 * circumference2;
+        circle2.style.strokeDashoffset = offset2;
+      }
+      const input2 = document.getElementById('input2');
+      function setProgress3(percent) {
+        const offset3 = circumference3 - percent / 100 * circumference3;
+        circle3.style.strokeDashoffset = offset3;
+      }
+
+      const input3 = document.getElementById('input3');
       function changeProgress(la,lb,lc){
         var _MAX_POINTS_LEVEL = 1000;
         lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
