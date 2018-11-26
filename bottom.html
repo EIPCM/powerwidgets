@@ -17,7 +17,9 @@
       Community Scores
     </div>
     <p>These scores show how all the members of the Leicester water community are on average prepared for flooding in the following categories.</p>
-    <canvas width="300" height="200" style="background-color:white"></canvas>
+    <div style="margin-left:auto;margin-right: auto;text-align: center;">
+      <canvas width="400" height="100" style="background-color:white" id="canvas"></canvas>
+    </div>
     <div class="powerTitle">Community Preparedness </div>
     <div class="indicator indicatora">
       <div class="hideable-area">
@@ -189,6 +191,10 @@
           "botton_1":"SUBMIT HERE",
           "botton_2":"COMMENT HERE",
           "botton_3":"REGISTER HERE",
+          "lan_community_size": "Community size:",
+          "lan_community_small": "Small",
+          "lan_community_medium": "Medium",
+          "lan_community_big": "Large",
           "CI":{
             "lan_title":"What you can do in the city water community:"
           },
@@ -458,6 +464,7 @@
            _g3 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
            _g3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
            changeProgress(_g1,_g2,_g3);
+           addSize(apiClient.getGlobal().obj.participants);
 
          });
       }
@@ -522,6 +529,115 @@
       }
       const numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      function addSize(size){
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var sizeWidth = ctx.canvas.clientWidth;
+        var sizeHeight = ctx.canvas.clientHeight;
+        var scaleWidth = sizeWidth/100;
+        var scaleHeight = sizeHeight/100;
+
+        marginRight = 10;
+        ctx.font = "13px Arial";
+        ctx.beginPath();
+        ctx.lineWidth   = 2;
+        ctx.strokeStyle = '#848177';
+        ctx.moveTo(0,0);
+        ctx.fillStyle   = "#848177";
+        if(size <= 20){
+          _size  = _loc[CURRENT_LAN].lan_community_small;
+        }else if((size >= 20) && (size <= 50)){
+          _size  = _loc[CURRENT_LAN].lan_community_medium;
+        }else{
+          _size  = _loc[CURRENT_LAN].lan_community_big;
+        }
+        ctx.strokeStyle = '#265380';
+        ctx.fillStyle   = "#09244c";
+        ctx.font = "bold 16px Arial";
+        if(true){
+          _barSize = (sizeWidth - 100);
+          _barY1   = 20;
+          _barY2   = _barY1 + 20;
+          _l1      = (_barSize / 2 );
+          _l2      = (_barSize / 4 );
+          ctx.textAlign   = "left";
+          ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,15);
+          ctx.textAlign   = "center";
+          ctx.fillText("5%",_l1/5 ,60);
+          ctx.fillText("25%",_l2 ,60);
+          ctx.fillText("50%",_l1 ,60);
+          ctx.textAlign   = "start";
+          ctx.fillText("2000",_barSize ,35);
+          ctx.fillText("Members",_barSize ,60);
+
+          ctx.stroke();
+        }
+        _fillBarcolor = "#4382b5";
+        ctx.fillStyle   = _fillBarcolor;
+
+        _barWidth = _barSize ;
+        // fill
+        ctx.beginPath();
+        _MAX_SIZE = 2000;
+        if(size >= _MAX_SIZE){
+          size  = _MAX_SIZE
+        }
+        if(size <= 100){
+          _sP = (size  * .33) / 100
+        }else if(size > 100 && size <=1000){
+          _sP =  (size/1000) * .66
+          console.log(_sP);
+        }else if(size >1001){
+          _sP =  (size/2000) * 1;
+        }
+        ctx.fillRect(0,_barY1,_barWidth * _sP ,20);
+        ctx.closePath();
+        ctx.fillStyle   = "#09244c";
+
+        //left
+        ctx.beginPath();
+        ctx.moveTo(0,_barY1);
+        ctx.lineTo(0,_barY2);
+        ctx.closePath();
+        ctx.stroke();
+        //top
+        ctx.beginPath();
+        ctx.moveTo(0,_barY1);
+        ctx.lineTo(_barSize - marginRight,_barY1);
+        ctx.closePath();
+        ctx.stroke();
+        //bottom
+        ctx.beginPath();
+        ctx.moveTo(0,_barY2);
+        ctx.lineTo(_barSize - marginRight,_barY2);
+        ctx.closePath();
+        ctx.stroke();
+        //right
+        ctx.beginPath();
+        ctx.moveTo(_barSize - marginRight,_barY1);
+        ctx.lineTo(_barSize - marginRight,_barY2);
+        ctx.closePath();
+        ctx.stroke();
+        //l0
+        ctx.beginPath();
+        ctx.moveTo(_l1/5,_barY1 + 15);
+        ctx.lineTo(_l1/5,_barY1 + 25);
+        ctx.closePath();
+        ctx.stroke();
+        //l1
+        ctx.beginPath();
+        ctx.moveTo(_l1,_barY1 + 15);
+        ctx.lineTo(_l1,_barY1 + 25);
+        ctx.closePath();
+        ctx.stroke();
+        //l2
+        ctx.beginPath();
+        ctx.moveTo(_l2,_barY1 + 15);
+        ctx.lineTo(_l2,_barY1 + 25);
+        ctx.closePath();
+        ctx.stroke();
+
       }
     </script>
 
