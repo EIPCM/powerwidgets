@@ -173,6 +173,7 @@ a{
   margin-left: auto;
   margin-right: auto;
   margin-top:40px;
+  text-decoration: none;
 }
 .start_now_button:hover{
   background-color: #f8a72e;
