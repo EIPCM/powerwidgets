@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html style="">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/teaser2.css">
+    <link rel="stylesheet" type="text/css" href="css/powerwidgets.css">
+    <link rel="stylesheet" type="text/css" href="css/bottom.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+    <base target="_parent">
+  </head>
+  <body onresize="resize()">
+    <div class="powerTitle">
+      Community Scores
+    </div>
+    <p>These scores show how all the members of the Leicester water community are on average prepared for flooding in the following categories.</p>
+    <canvas width="300" height="200" style="background-color:white"></canvas>
+    <div class="powerTitle">Community Preparedness </div>
+    <div class="indicator indicatora">
+      <div class="hideable-area">
+        <div class="circularWrapper">
+          <div class="svgWrapper">
+            <div class="circularTitle" ><span id="problem_awareness" style="color: #6d0949;">Problem<br> Awareness </span><br><span style="font-size: small;"></span></div>
+            <svg
+               class="progress-ring"
+               width="140"
+               fill="#13377f"
+               height="140"
+               shape-rendering="geometricPrecision"
+               >
+              <circle
+                id="circ_1"
+                class="progress-ring__circle"
+                transform="rotate(-90 0 0)"
+                stroke="#6d0949"
+                stroke-width="50"
+                fill="#13377f"
+                r="30"
+                cx="70"
+                cy="70"/>
+              <circle
+                stroke="white"
+                stroke-width="2"
+                fill="#6d0949"
+                r="30"
+                cx="70"
+                cy="70"/>
+              <circle
+                stroke="#6d0949"
+                stroke-width="2"
+                fill="transparent"
+                r="57"
+                cx="70"
+                cy="70"/>
+              <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(109,9,73);stroke-width:2"/>
+              <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(109,9,73);stroke-width:2"/>
+
+              <image xlink:href="img/prob_awe.png" height="140" width="140"  rx="15" ry="15" />
+
+            </svg>
+            <div class="points_flex">
+              <div class="points_row l">
+                <div class="points_left" id="pa_points">
+                  0
+                </div>
+                 <div class="circularLevelsWrapper" id="circularLevels1">
+                  <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                  <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                  <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                </div>
+              </div>
+              <div class="points_separator">
+                /
+              </div>
+              <div class="points_row r">
+                <div class="points_right" id="pag_points">
+                  0
+                </div>
+                <div class="community_label">
+                  Community
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="svgWrapper">
+            <div class="circularTitle" ><span id="know_how">Know- <br>How</span><br> <span  style="font-size: small;"></span></div>
+
+            <svg
+               class="progress-ring"
+               width="140"
+               fill="#13377f"
+               height="140"
+               shape-rendering="geometricPrecision"
+               >
+              <circle
+                class="progress-ring__circle"
+                transform="rotate(-90 0 0)"
+                stroke="#13377f"
+                stroke-width="50"
+                fill="#13377f"
+                r="30"
+                cx="70"
+                cy="70"
+                id="circ_2"
+                />
+              <circle
+                stroke="white"
+                stroke-width="2"
+                fill="#13377f"
+                r="30"
+                cx="70"
+                cy="70"/>
+              <circle
+                stroke="#13377f"
+                stroke-width="2"
+                fill="transparent"
+                r="57"
+                cx="70"
+                cy="70"/>
+                <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(19,55,127);stroke-width:2"/>
+                <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(19,55,127);stroke-width:2"/>
+              <image xlink:href="img/idea.png" height="140" width="140"  rx="15" ry="15" />
+            </svg>
+            <div class="points_flex">
+              <div class="points_row l">
+                <div class="points_left kh_bg" id="kh_points">
+                  0
+                </div>
+                <div class="circularLevelsWrapper"  id="circularLevels2">
+                  <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                  <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                  <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                </div>
+              </div>
+              <div class="points_separator kh_txt">
+                /
+              </div>
+              <div class="points_row r">
+                <div class="points_right kh_txt" id="khg_points">
+                  0
+                </div>
+                <div class="community_label kh_txt">
+                  Community
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="svgWrapper">
+            <div class="circularTitle" ><span id="ready_to_act" class="ra_txt">Ready <br>to Act</span><br><span style="font-size: small;"></span></div>
+
+            <svg
+               class="progress-ring"
+               width="140"
+               fill="#493f8d"
+               height="140"
+               shape-rendering="geometricPrecision"
+               >
+              <circle
+                class="progress-ring__circle"
+                transform="rotate(-90 0 0)"
+                stroke="#493f8d"
+                stroke-width="50"
+                fill="#493f8d"
+                r="30"
+                cx="70"
+                cy="70"
+                id="circ_3"
+                />
+              <circle
+                stroke="white"
+                stroke-width="2"
+                fill="#493f8d"
+                r="30"
+                cx="70"
+                cy="70"/>
+              <circle
+                stroke="#493f8d"
+                stroke-width="2"
+                fill="transparent"
+                r="57"
+                cx="70"
+                cy="70"/>
+                <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(73,63,141);stroke-width:2"/>
+                <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(73,63,141);stroke-width:2"/>
+              <image xlink:href="img/ready_act.png" height="140" width="140"  rx="15" ry="15" />
+            </svg>
+            <div class="points_flex">
+              <div class="points_row l">
+                <div class="points_left ra_bg" id="ra_points" >
+                  0
+                </div>
+                <div class="circularLevelsWrapper" id="circularLevels3">
+                  <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                  <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                  <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                </div>
+              </div>
+              <div class="points_separator ra_txt">
+                /
+              </div>
+              <div class="points_row r">
+                <div class="points_right ra_txt" id="rag_points" >
+                  0
+                </div>
+                <div class="community_label ra_txt">
+                  Community
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+
+    </div>
+    <p>Join now to get your personal scores!<p>
+      <p>... and help your community become prepared</p>
+
+    <script>
+    var CURRENT_LAN = "en";
+    var CURRENT_CITY = "CI";
+      _loc = {
+        "EN":{
+          "title_1":"Submit an innovative idea",
+          "title_2":"Comment and vote on ideas",
+          "title_3":"Get prepared and track progress",
+          "description_1":"Win the chance to implement your idea and help develop solutions for sustainability issues",
+          "description_2":"Give feedback to others and help them develop ideas",
+          "description_3":"See how your knowledge increases and help your community get prepared",
+          "botton_1":"SUBMIT HERE",
+          "botton_2":"COMMENT HERE",
+          "botton_3":"REGISTER HERE",
+          "CI":{
+            "lan_title":"What you can do in the city water community:"
+          },
+          "LE":{
+            "lan_title":"What you can do in the Leicester water community:"
+          },
+          "MI":{
+            "lan_title":"What you can do in the Milton Keynes water community:"
+          },
+          "SA":{
+            "lan_title":"What you can do in the Sabadell water community:"
+
+          },
+          "JE":{
+            "lan_title":"What you can do in the Jerusalem water community:"
+          }
+        },
+        "ES":{
+          "title_1":"Envía una idea innovadora",
+          "title_2":"Comenta y vota en las ideas",
+          "title_3":"Prepárate y rastrea tu progreso",
+          "description_1":"Gana la oportunidad de implementar tu idea y ayuda a desarrollar soluciones a los problemas de sustentabilidad",
+          "description_2":"Da realimentación a otros y ayúdales a desarrollar ideas",
+          "description_3":"Mira como tu conocimiento incrementa y ayuda a la comunidad a prepararse",
+          "botton_1":"ENVÍA AQUÍ",
+          "botton_2":"COMENTA AQUÍ",
+          "botton_3":"REGISTRA AQUÍ",
+          "CI":{
+            "lan_title":"Lo que puedes hacer en la Comunidad de Ciudad:"
+          },
+          "LE":{
+            "lan_title":"¿Qué puedo hacer para ayudar a la comunidad de Leicester?"
+          },
+          "MI":{
+            "lan_title":"¿Qué puedo hacer para ayudar a la comunidad de Milton Keynes?"
+          },
+          "SA":{
+            "lan_title":"¿Qué puedo hacer para ayudar a la comunidad de Sabadell?"
+
+          },
+          "JE":{
+            "lan_title":"¿Qué puedo hacer para ayudaar a la comunidad de Jerusalem?"
+          }
+        },
+        "CA":{
+          "title_1":"Envia una idea innovadora",
+          "title_2":"Comenta y vota en las ideas",
+          "title_3":"Comenta i vota en les idees",
+          "description_1":"Guanya l'oportunitat d'implementar la teva idea i ajuda a desenvolupar solucions als problemes de sostenibilitat",
+          "description_2":"Dóna realimentació als altres i ajuda'ls a desenvolupar idees",
+          "description_3":"Mira com el teu coneixement s'incrementa i ajuda a la comunitat a preparar",
+          "botton_1":"ENVIA AQUÍ",
+          "botton_2":"COMENTA AQUÍ",
+          "botton_3":"REGISTRA AQUÍ",
+          "CI":{
+            "lan_title":"Què puc fer per ajudar el meu comunitat?"
+          },
+          "LE":{
+            "lan_title":"Què puc fer per ajudar a la comunitat de Leicester?"
+          },
+          "MI":{
+            "lan_title":"Què puc fer per ajudar a la comunitat de Milton Keynes?"
+          },
+          "SA":{
+            "lan_title":"Què puc fer per ajudar a la comunitat de Sabadell?"
+
+          },
+          "JE":{
+            "lan_title":"Què puc fer per ajudar a la comunitat de Jerusalem?"
+          }
+        },
+        "HE":{
+          "title_1":"הצע רעיון חדשני",
+          "title_2":"חווה דעתך והצבע בעד רעיונות",
+          "title_3":"הכן את עצמך ועקוב אחר התקדמותך",
+          "description_1":"זכה בהזדמנות ליישם את הרעיון שלך, וסייע בפיתוח פתרונות לנושאים ברי קימה",
+          "description_2":"תן משוב לאחרים וסייע להם בפיתוח רעיונות",
+          "description_3":"ראה כיצד הידע שלך גובר, וסייע לקהילתך להכין את עצמה",
+          "botton_1":"הגש כאן",
+          "botton_2":"שתף הערותיך כאן",
+          "botton_3":"הרשם כאן",
+          "CI":{
+            "lan_title":"What can I do to help my community?"
+          },
+          "LE":{
+            "lan_title":"What can I do to help the Leicester community?"
+          },
+          "MI":{
+            "lan_title":"What can I do to help the Milton Keynes community?"
+          },
+          "SA":{
+            "lan_title":"What can I do to help the Sabadell community?"
+
+          },
+          "JE":{
+            "lan_title":"כיצד אוכל לסייע לקהילה בירושלים?"
+          }
+        },
+        "AR":{
+          "title_1":"تقديم فكرة مبتكرة",
+          "title_2":"التعليق والتصويت على الأفكار",
+          "title_3":"احصل على استعداد وتتبع التقدم",
+          "description_1":"كسب فرصة لتنفيذ فكرتك والمساعدة في تطوير حلول لقضايا الاستدامة",
+          "description_2":"تقديم ملاحظات للآخرين ومساعدتهم على تطوير الأفكار",
+          "description_3":"انظر كيف تزيد معرفتك وتساعد مجتمعك على الاستعداد",
+          "botton_1":"أرسل هنا",
+          "botton_2":"التعليق هنا",
+          "botton_3":"سجل هنا",
+          "CI":{
+            "lan_title":"ماذا يمكنني أن أفعل لمساعدة مجتمعي؟"
+          },
+          "LE":{
+            "lan_title":"ماذا يمكنني أن أفعل لمساعدة مجتمع ليستر؟"
+          },
+          "MI":{
+            "lan_title":"What can I do to help the Milton Keynes community?"
+          },
+          "SA":{
+            "lan_title":"ما الذي يمكنني القيام به لمساعدة مجتمع ميلتون كينز؟"
+
+          },
+          "JE":{
+            "lan_title":"ماذا يمكنني أن أفعل لمساعدة مجتمع القدس؟"
+          }
+        },
+      }
+      u    = new URL(window.location);
+      _lan = u.searchParams.get("lan");
+      _city = u.searchParams.get("city");
+      if(_city != null){
+        CURRENT_CITY = _city;
+      }
+      function share(link){
+        window.open(link);
+      }
+      function updateLinks(){
+//         Leicester: https://leicester.power-h2020.eu/?location=challenge&loadP=1160
+//
+// MK: https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200
+//
+// Sabadell: https://sabadell.power-h2020.eu/?location=challenge&loadP=1220
+//
+// Jerusalem: https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240
+        _link1 = "https://{city}.power-h2020.eu/?location=challenge&loadP=1160";
+        _link2 = "javascript:share('https://www.facebook.com/sharer/sharer.php?u=https%3A//{city}.power-h2020.eu/')  ";
+        _link4 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
+        _link6 = "https://{city}.power-h2020.eu/?location=home&login_pub";
+        _link3 = "https://{city}.power-h2020.eu/?location=area"
+        switch (CURRENT_CITY) {
+          case "CI":
+            _link1 = "https://city.power-h2020.eu/?location=challenges"
+            _link2 = _link2.replace("{city}","city")
+            _link3 = _link3.replace("{city}","city")
+            _link6 = _link6.replace("{city}","city")
+            break;
+          case "LE":
+            _link1 =  "https://leicester.power-h2020.eu/?location=challenges"
+            _link2 = _link2.replace("{city}","leicester")
+            _link3 = _link3.replace("{city}","leicester")
+            _link6 = _link6.replace("{city}","leicester")
+           _link4  =  "https://leicester.power-h2020.eu/?location=challenges"
+            break;
+          case "MI":
+            _link1 = "https://milton-keynes.power-h2020.eu/?location=challenges"
+            _link2 = _link2.replace("{city}","milton-keynes")
+            _link3 = _link3.replace("{city}","milton-keynes")
+            _link6 = _link6.replace("{city}","milton-keynes")
+            _link4  =  "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
+
+            break;
+          case "SA":
+            _link1 = "https://sabadell.power-h2020.eu/?location=challenges"
+            _link2 = _link2.replace("{city}","sabadell")
+            _link3 = _link3.replace("{city}","sabadell")
+            _link6 = _link6.replace("{city}","sabadell")
+            _link4 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
+            break;
+          case "JE":
+            _link1 = "https://jerusalem.power-h2020.eu/?location=challenges"
+            _link2 = _link2.replace("{city}","jerusalem")
+            _link3 = _link3.replace("{city}","jerusalem")
+            _link6 = _link6.replace("{city}","jerusalem")
+            _link4 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
+            break;
+          default:
+
+        }
+
+          links_classes = document.getElementsByClassName("link1");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link1)
+          }
+          links_classes = document.getElementsByClassName("link2");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link2)
+          }
+          links_classes = document.getElementsByClassName("link3");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link3)
+          }
+          links_classes = document.getElementsByClassName("link4");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link3)
+          }
+          links_classes = document.getElementsByClassName("link6");
+          for (var i = 0; i < links_classes.length; i++) {
+            links_classes[i].setAttribute("href",_link6)
+          }
+
+      }
+      function updateCity(){
+        if(_lan != null){
+          CURRENT_LAN = _lan;
+        }
+
+        for (k in _loc[CURRENT_LAN][CURRENT_CITY]){
+            lan_classes = document.getElementsByClassName(k);
+            for (var i = 0; i < lan_classes.length; i++) {
+              lan_classes[i].innerHTML = _loc[CURRENT_LAN][CURRENT_CITY][k];
+            }
+
+        }
+      }
+      function updateLan(){
+        if(_lan != null){
+          CURRENT_LAN = _lan;
+        }
+        for (k in _loc[CURRENT_LAN]){
+            lan_classes = document.getElementsByClassName(k);
+            for (var i = 0; i < lan_classes.length; i++) {
+              lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
+            }
+
+        }
+      }
+      // updateCity();
+      // updateLan();
+      // updateLinks();
+      // resize();
+      var WIDTH = 0;
+      function resize(){
+        if(WIDTH != window.innerWidth){
+          HEIGHT = window.innerHeight;
+          WIDTH  = window.innerWidth;
+          if(WIDTH < 560){
+            document.getElementsByClassName("teaser_container_mobile")[0].style.display = "block";
+            document.getElementsByClassName("teaser_container")[0].style.display = "none";
+          }else{
+            document.getElementsByClassName("teaser_container_mobile")[0].style.display = "none";
+            document.getElementsByClassName("teaser_container")[0].style.display = "flex";
+
+          }
+        }
+
+      }
+      window.onload = function()
+       {
+         window.apiClient = new PowerApiClient(function(a){
+           window.apiData = a;
+           _g1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
+           _g1 += apiClient.getGlobal().obj.gamification.political["problem.awareness"];
+           _g1 += apiClient.getGlobal().obj.gamification.social["problem.awareness"];
+           _g2 = apiClient.getGlobal().obj.gamification.personal["practical.knowledge"];
+           _g2 += apiClient.getGlobal().obj.gamification.political["practical.knowledge"];
+           _g2 += apiClient.getGlobal().obj.gamification.social["practical.knowledge"];
+           _g3 = apiClient.getGlobal().obj.gamification.personal["ready.for.action"];
+           _g3 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
+           _g3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
+           changeProgress(_g1,_g2,_g3);
+
+         });
+      }
+      var circle = document.getElementById("circ_1");
+      var radius = circle.r.baseVal.value;
+      var circumference = radius * 2 * Math.PI;
+
+      var circle2 = document.getElementById("circ_2");
+      var radius2 = circle.r.baseVal.value;
+      var circumference2 = radius2 * 2 * Math.PI;
+
+      var circle3 = document.getElementById("circ_3");
+      var radius3 = circle.r.baseVal.value;
+      var circumference3 = radius3 * 2 * Math.PI;
+
+      circle.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle.style.strokeDashoffset = `${circumference}`;
+      circle2.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle2.style.strokeDashoffset = `${circumference}`;
+      circle3.style.strokeDasharray = `${circumference} ${circumference}`;
+      circle3.style.strokeDashoffset = `${circumference}`;
+      function changeProgress(la,lb,lc){
+        var _MAX_POINTS_LEVEL = 1000;
+        lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+        lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+        lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+        _p1 = lra * 100 / _MAX_POINTS_LEVEL;
+        _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
+        _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
+        setProgress(_p1);
+        setProgress2(_p2);
+        setProgress3(_p3);
+
+
+      }
+    </script>
+
+  </body>
+</html>
