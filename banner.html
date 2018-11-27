@@ -19,4 +19,25 @@
       </ul>
       <a class="start_now_button link6" href="" style="height: 34px;line-height: 34px;">JOIN NOW</a>
   </body>
+  <script>
+    WIDTH = 0;
+    function resize(){
+
+      if(WIDTH != window.innerWidth){
+        HEIGHT = window.innerHeight;
+        WIDTH  = window.innerWidth;
+        if(WIDTH < 560){
+          document.getElementById("banner_title").style.fontSize = "23px";
+          document.getElementsByTagName("ul")[0].style.fontSize = "18px"
+
+        }else{
+          document.getElementById("banner_title").style.fontSize = "50px";
+          document.getElementsByTagName("ul")[0].style.fontSize = "30px"
+        }
+
+
+      }
+
+    }
+  </script>
 </html>
