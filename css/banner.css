@@ -15,7 +15,7 @@ body{
   background-position-x: right;
   background-position-y: bottom;
   background-size: 50% auto; */
-  /* background-color: rebeccapurple; */
+  background-color: rebeccapurple;
   overflow: hidden;
 }
 .join_now_button{

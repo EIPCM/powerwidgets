@@ -19,7 +19,7 @@
       </ul>
       <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-left: 5%;">
         <a class="join_now_button link6" href="" style="height: 34px;line-height: 34px;">JOIN NOW</a>
-        <img src="img/banner/banner.png" style="width: 300px;margin-bottom: 71px;margin-left: -2px;"/>
+        <img src="img/banner/banner.png" id="banner_img"style="width: 300px;margin-bottom: 71px;margin-left: -2px;"/>
 
       </div>
 
@@ -34,12 +34,17 @@
         if(WIDTH < 560){
           document.getElementById("banner_title").style.fontSize = "23px";
           document.getElementById("banner_title").style.marginTop = "200px";
+          document.getElementById("banner_img").setAttribute("src", "img/banner/banner_mobile.png")
+          document.getElementById("banner_img").style.width = "100px";
           document.getElementsByTagName("ul")[0].style.fontSize = "18px"
 
         }else{
           document.getElementById("banner_title").style.fontSize = "50px";
           document.getElementById("banner_title").style.marginTop = "100px";
           document.getElementsByTagName("ul")[0].style.fontSize = "30px"
+          document.getElementById("banner_img").setAttribute("src", "img/banner/banner.png")
+          document.getElementById("banner_img").style.width = "300px";
+
         }
 
 
