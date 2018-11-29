@@ -1,13 +1,14 @@
 #banner_title{
   font-size: 50px;
-  color:white;
-  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
-  margin-top: 100px;
+  color: white;
+  font-family: Montserrat;
+  margin-top: 50px;
+  text-transform: uppercase;
 }
 ul{
   font-size: 30px;
   color:white;
-  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  font-family: Montserrat;
 }
 body{
   /* background-image: url('../img/banner/banner.png');
@@ -15,7 +16,7 @@ body{
   background-position-x: right;
   background-position-y: bottom;
   background-size: 50% auto; */
-  background-color: rebeccapurple;
+  /* background-color: rebeccapurple; */
   overflow: hidden;
 }
 .join_now_button{
