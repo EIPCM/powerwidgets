@@ -26,6 +26,108 @@
   </body>
   <script>
     WIDTH = 0;
+    u    = new URL(window.location);
+    _lan = u.searchParams.get("lan");
+    _city = u.searchParams.get("city");
+    if(_city != null){
+      CURRENT_CITY = _city;
+    }else{
+      CURRENT_CITY = "CI";
+    }
+    function updateLinks(){
+      _link1 = "https://{city}.power-h2020.eu/?location=challenge&loadP=1160";
+      _link2 = "javascript:share('https://www.facebook.com/sharer/sharer.php?u=https%3A//{city}.power-h2020.eu/')  ";
+      _link4 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
+      _link6 = "https://{city}.power-h2020.eu/?location=home&login_pub";
+      _link3 = "https://{city}.power-h2020.eu/?location=area#bottom"
+      switch (CURRENT_CITY) {
+        case "CI":
+          _link1 = "https://city.power-h2020.eu/?location=challenges"
+          _link2 = _link2.replace("{city}","city")
+          _link3 = _link3.replace("{city}","city")
+          _link6 = _link6.replace("{city}","city")
+          break;
+        case "LE":
+          _link1 =  "https://leicester.power-h2020.eu/?location=challenges"
+          _link2 = _link2.replace("{city}","leicester")
+          _link3 = _link3.replace("{city}","leicester")
+          _link6 = _link6.replace("{city}","leicester")
+         _link4  =  "https://leicester.power-h2020.eu/?location=challenges"
+          break;
+        case "MI":
+          _link1 = "https://milton-keynes.power-h2020.eu/?location=challenges"
+          _link2 = _link2.replace("{city}","milton-keynes")
+          _link3 = _link3.replace("{city}","milton-keynes")
+          _link6 = _link6.replace("{city}","milton-keynes")
+          _link4  =  "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
+
+          break;
+        case "SA":
+          _link1 = "https://sabadell.power-h2020.eu/?location=challenges"
+          _link2 = _link2.replace("{city}","sabadell")
+          _link3 = _link3.replace("{city}","sabadell")
+          _link6 = _link6.replace("{city}","sabadell")
+          _link4 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
+          break;
+        case "JE":
+          _link1 = "https://jerusalem.power-h2020.eu/?location=challenges"
+          _link2 = _link2.replace("{city}","jerusalem")
+          _link3 = _link3.replace("{city}","jerusalem")
+          _link6 = _link6.replace("{city}","jerusalem")
+          _link4 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
+          break;
+        default:
+
+      }
+
+        links_classes = document.getElementsByClassName("link1");
+        for (var i = 0; i < links_classes.length; i++) {
+          links_classes[i].setAttribute("href",_link1)
+        }
+        links_classes = document.getElementsByClassName("link2");
+        for (var i = 0; i < links_classes.length; i++) {
+          links_classes[i].setAttribute("href",_link2)
+        }
+        links_classes = document.getElementsByClassName("link3");
+        for (var i = 0; i < links_classes.length; i++) {
+          links_classes[i].setAttribute("href",_link3)
+        }
+        links_classes = document.getElementsByClassName("link4");
+        for (var i = 0; i < links_classes.length; i++) {
+          links_classes[i].setAttribute("href",_link3)
+        }
+        links_classes = document.getElementsByClassName("link6");
+        for (var i = 0; i < links_classes.length; i++) {
+          links_classes[i].setAttribute("href",_link6)
+        }
+
+    }
+    function updateCity(){
+      if(_lan != null){
+        CURRENT_LAN = _lan;
+      }
+
+      for (k in _loc[CURRENT_LAN][CURRENT_CITY]){
+          lan_classes = document.getElementsByClassName(k);
+          for (var i = 0; i < lan_classes.length; i++) {
+            lan_classes[i].innerHTML = _loc[CURRENT_LAN][CURRENT_CITY][k];
+          }
+
+      }
+    }
+    function updateLan(){
+      if(_lan != null){
+        CURRENT_LAN = _lan;
+      }
+      for (k in _loc[CURRENT_LAN]){
+          lan_classes = document.getElementsByClassName(k);
+          for (var i = 0; i < lan_classes.length; i++) {
+            lan_classes[i].innerHTML = _loc[CURRENT_LAN][k];
+          }
+
+      }
+    }
+    updateLinks();
     function resize(){
 
       if(WIDTH != window.innerWidth){
