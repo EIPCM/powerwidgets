@@ -10,12 +10,12 @@
     <base target="_parent">
   </head>
   <body onresize="resize()">
-      <div id="banner_title">Why should I join the community?</div>
+      <div id="banner_title" class="title">Why should I join the community?</div>
       <ul>
-        <li>to discover your flood risk</li>
-        <li>to prepare yourself from flooding</li>
-        <li>to track how your knowledge develops</li>
-        <li>to help your community feel safer</li>
+        <li class="bullet_1">to discover your flood risk</li>
+        <li class="bullet_2">to prepare yourself from flooding</li>
+        <li class="bullet_3">to track how your knowledge develops</li>
+        <li class="bullet_4">to help your community feel safer</li>
       </ul>
       <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-left: 5%;">
         <a class="join_now_button link6" href="" style="height: 34px;line-height: 34px;">JOIN NOW</a>
@@ -33,6 +33,28 @@
       CURRENT_CITY = _city;
     }else{
       CURRENT_CITY = "CI";
+    }
+    if(_lan != null){
+      CURRENT_LAN = _lan;
+    }else{
+      CURRENT_LAN = "EN";
+    }
+    _loc = {
+      "EN":{
+        "title":"Why should I join the community?",
+        "bullet_1":"to discover your flood risk",
+        "bullet_2":"to prepare yourself from flooding",
+        "bullet_3":"to track how your knowledge develops",
+        "bullet_4":"to help your community feel safer",
+
+      },
+      "ES":{
+        "title":"¿Para qué debería de unirme a la comunidad?",
+        "bullet_1":"para descubrir tu riesgo de inundación",
+        "bullet_2":"para prepararte ante las inundaciones",
+        "bullet_3":"para monitorear como tu conocimiento mejora",
+        "bullet_4":"para ayudar a tu comunidad a sentirse mas segura",
+      }
     }
     function updateLinks(){
       _link1 = "https://{city}.power-h2020.eu/?location=challenge&loadP=1160";
@@ -128,6 +150,7 @@
       }
     }
     updateLinks();
+    updateLan();
     function resize(){
 
       if(WIDTH != window.innerWidth){
