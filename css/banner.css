@@ -10,11 +10,10 @@ ul{
   font-family: Montserrat;
 }
 body{
-  /* background-image: url('../img/banner/banner.png');
+  background-image: url('../img/banner/b2.png');
   background-repeat: no-repeat;
   background-position-x: right;
-  background-position-y: bottom;
-  background-size: 50% auto; */
+  background-position-y: 70px;
   /* background-color: rebeccapurple; */
   overflow: hidden;
 }
@@ -24,7 +23,7 @@ body{
   width: 200px;
   height: 30px;
   text-transform: capitalize;
-  font-family: 'Fredoka One';
+  font-family: Montserrat;
   line-height: 27px;
   display: flex;
   justify-content: center;
@@ -35,6 +34,7 @@ body{
   box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.75);
   border: 3px white solid;
   letter-spacing: 1px;
+  font-weight: bolder;
 }
 .join_now_button:hover {
     background-color: #f8a72e;

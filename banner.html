@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <base target="_parent">
   </head>
-  <body onresize="resize()">
+  <body onresize="resize()" id="body">
       <div id="banner_title" class="title">Why should I join the community?</div>
       <ul>
         <li class="bullet_1">to discover your flood risk</li>
@@ -19,7 +19,6 @@
       </ul>
       <div style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-left: 5%;">
         <a class="join_now_button link6" href="" style="height: 34px;line-height: 34px;">FIND OUT HOW</a>
-        <img src="img/banner/banner.png" id="banner_img"style="width: 300px;margin-bottom: 71px;margin-left: -2px;"/>
 
       </div>
 
@@ -159,16 +158,17 @@
         if(WIDTH < 560){
           document.getElementById("banner_title").style.fontSize = "23px";
           document.getElementById("banner_title").style.marginTop = "80px";
-          document.getElementById("banner_img").setAttribute("src", "img/banner/banner_mobile.png")
-          document.getElementById("banner_img").style.width = "100px";
+          document.getElementById("body").style.backgroundImage = "url('img/banner/b2m.png')";
+          document.getElementById("body").style.backgroundPositionY = "105px";
+
           document.getElementsByTagName("ul")[0].style.fontSize = "18px"
 
         }else{
           document.getElementById("banner_title").style.fontSize = "40px";
           document.getElementById("banner_title").style.marginTop = "50px";
           document.getElementsByTagName("ul")[0].style.fontSize = "25px"
-          document.getElementById("banner_img").setAttribute("src", "img/banner/banner.png")
-          document.getElementById("banner_img").style.width = "300px";
+          document.getElementById("body").style.backgroundImage = "url('img/banner/b2.png')";
+          document.getElementById("body").style.backgroundPositionY = "70px";
 
         }
 
