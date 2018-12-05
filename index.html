@@ -1184,12 +1184,12 @@ function changeProgress(la,lb,lc){
   setKHPoints(lb);
   setRAPoints(lc);
 
-  _p1 = lra * 100 / _MAX_POINTS_LEVEL;
-  _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
-  _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
-  setProgress(_p1);
-  setProgress2(_p2);
-  setProgress3(_p3);
+  _lp1 = lra * 100 / _MAX_POINTS_LEVEL;
+  _lp2 = lrb * 100 / _MAX_POINTS_LEVEL;
+  _lp3 = lrc * 100 / _MAX_POINTS_LEVEL;
+  setProgress(_lp1);
+  setProgress2(_lp2);
+  setProgress3(_lp3);
 
   addCircularLevelsPA(la);
   addCircularLevelsKH(lb);
@@ -2285,40 +2285,40 @@ window.onload = function()
    _pp1 = document.getElementById("pag_points");
    _pp2 = document.getElementById("khg_points");
    _pp3 = document.getElementById("rag_points");
-   // if(_checked){
-   //   _pp1.classList.add("points_right");
-   //   _pp1.classList.remove("points_left");
-   //
-   //   _pp2.classList.add("points_right");
-   //   _pp2.classList.remove("points_left");
-   //   _pp2.classList.remove("kh_bg");
-   //   _pp2.classList.add("kh_txt");
-   //
-   //
-   //   _pp3.classList.add("points_right");
-   //   _pp3.classList.remove("points_left");
-   //   _pp3.classList.remove("ra_bg");
-   //   _pp3.classList.add("ra_txt");
-   //   changeProgress(_p1,_p2,_p3);
-   //
-   // }else{
-   //   _pp1.classList.remove("points_right");
-   //   _pp1.classList.add("points_left");
-   //
-   //   _pp2.classList.remove("points_right");
-   //   _pp2.classList.add("points_left");
-   //   _pp2.classList.add("kh_bg");
-   //   _pp2.classList.remove("kh_txt");
-   //
-   //   _pp3.classList.remove("points_right");
-   //   _pp3.classList.add("points_left");
-   //   _pp3.classList.add("ra_bg");
-   //   _pp3.classList.remove("ra_txt");
-   //   changeProgress(_g1,_g2,_g3);
-   //
-   //
-   //
-   // }
+   if(_checked){
+     _pp1.classList.add("points_right");
+     _pp1.classList.remove("points_left");
+
+     _pp2.classList.add("points_right");
+     _pp2.classList.remove("points_left");
+     _pp2.classList.remove("kh_bg");
+     _pp2.classList.add("kh_txt");
+
+
+     _pp3.classList.add("points_right");
+     _pp3.classList.remove("points_left");
+     _pp3.classList.remove("ra_bg");
+     _pp3.classList.add("ra_txt");
+     changeProgress(_p1,_p2,_p3);
+
+   }else{
+     _pp1.classList.remove("points_right");
+     _pp1.classList.add("points_left");
+
+     _pp2.classList.remove("points_right");
+     _pp2.classList.add("points_left");
+     _pp2.classList.add("kh_bg");
+     _pp2.classList.remove("kh_txt");
+
+     _pp3.classList.remove("points_right");
+     _pp3.classList.add("points_left");
+     _pp3.classList.add("ra_bg");
+     _pp3.classList.remove("ra_txt");
+     changeProgress(_g1,_g2,_g3);
+
+
+
+   }
 
  }
  function toggleHideableArea(el){
