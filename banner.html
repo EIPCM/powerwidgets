@@ -10,6 +10,7 @@
     <base target="_parent">
   </head>
   <body onresize="resize()" id="body">
+      <img id="logo" src="img/banner/CI.png" style="width:300px">
       <div id="banner_title" class="title">Why should I join the community?</div>
       <ul>
         <li class="bullet_1">to discover your flood risk</li>
@@ -135,6 +136,7 @@
           }
 
       }
+      document.getElementById("logo").src = "img/banner/"+CURRENT_CITY+".png"
     }
     function updateLan(){
       if(_lan != null){
@@ -150,6 +152,7 @@
     }
     updateLinks();
     updateLan();
+    updateCity();
     function resize(){
 
       if(WIDTH != window.innerWidth){
