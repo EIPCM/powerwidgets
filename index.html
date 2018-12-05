@@ -534,6 +534,7 @@ HEIGHT = -1;
 _loc = {
   "es":{
     "lan_title_personal_preparedness":"Preparación Personal",
+    "lan_title_community_preparedness":"Preparación de la Comunidad",
     "lan_title_personal_impact": "Impacto Personal",
     "problem_awareness": "Conciencia del <br>problema",
     "know_how": "Saber cómo",
@@ -581,6 +582,7 @@ _loc = {
   },
   "cat":{
     "lan_title_personal_preparedness":"Preparació Personal",
+    "lan_title_community_preparedness":"Preparació de la Comunitat",
     "lan_title_personal_impact": "Impacte Personal",
     "problem_awareness": "Conscienciació <br>del problema",
     "know_how": "Coneixements",
@@ -627,6 +629,8 @@ _loc = {
     "lan_power_message_4":"Ajuda a la comunitat a estar igualment preparada per les inundacions en totes les categories"
   },
   "en":{
+    "lan_title_personal_preparedness":"Personal Preparedness",
+    "lan_title_community_preparedness":"Community Preparedness",
     "lan_impact":"Impact",
     "lan_social":"Social",
     "lan_political":"Political",
@@ -661,6 +665,7 @@ _loc = {
   },
   "he":{
     "lan_title_personal_preparedness":"מוכנות אישית",
+    "lan_title_community_preparedness":"הכנות קהילתית",
     "lan_title_personal_impact": "דוגמא אישית",
     "problem_awareness": "בעיה<br>מודעות",
     "know_how": "בקיאות בנושא",
@@ -709,6 +714,7 @@ _loc = {
 
   "ar":{
     "lan_title_personal_preparedness":"جاهزية شخصية",
+    "lan_title_community_preparedness":"التأهب المجتمعي",
     "lan_title_personal_impact": "مثال شخصي",
     "problem_awareness": "مشكلة الوعي",
     "know_how": "المعرفة في الموضوع",
@@ -2275,17 +2281,17 @@ window.onload = function()
    _checked = document.getElementsByClassName("js-switch")[0].checked;
    pList = document.getElementsByClassName("points_separator")
    for (var i = 0; i < pList.length; i++) {
-      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+      (_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
    pList = document.getElementsByClassName("points_row l")
    for (var i = 0; i < pList.length; i++) {
-      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+      (_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
 
    _pp1 = document.getElementById("pag_points");
    _pp2 = document.getElementById("khg_points");
    _pp3 = document.getElementById("rag_points");
-   if(_checked){
+   if(!_checked){
      _pp1.classList.add("points_right");
      _pp1.classList.remove("points_left");
 
@@ -2300,7 +2306,7 @@ window.onload = function()
      _pp3.classList.remove("ra_bg");
      _pp3.classList.add("ra_txt");
      changeProgress(_p1,_p2,_p3);
-
+     document.getElementsByClassName("lan_title_personal_preparedness")[0].innerHTML = _loc[CURRENT_LAN].lan_title_personal_preparedness;
    }else{
      _pp1.classList.remove("points_right");
      _pp1.classList.add("points_left");
@@ -2315,7 +2321,7 @@ window.onload = function()
      _pp3.classList.add("ra_bg");
      _pp3.classList.remove("ra_txt");
      changeProgress(_g1,_g2,_g3);
-
+     document.getElementsByClassName("lan_title_personal_preparedness")[0].innerHTML = _loc[CURRENT_LAN].lan_title_community_preparedness;
 
 
    }
