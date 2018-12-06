@@ -15,7 +15,7 @@ header{
 .wrow{
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .titleWrapper{
   flex:.6;
@@ -59,4 +59,11 @@ header{
 .wbutton:hover{
   background-color: #3366cc;
 
+}
+.see_more{
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  color: #225fda;
+  font-size: 15px;
 }
