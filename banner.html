@@ -76,6 +76,7 @@
       _link6 = "https://{city}.power-h2020.eu/?location=home&login_pub";
       _link3 = "https://{city}.power-h2020.eu/?location=area#bottom"
       _linkcso = "https://{city}.power-h2020.eu/?location=home#cso"
+
       switch (CURRENT_CITY) {
         case "CI":
           _link1 = "https://city.power-h2020.eu/?location=challenges"
@@ -91,7 +92,7 @@
           _link3 = _link3.replace("{city}","leicester")
           _link6 = _link6.replace("{city}","leicester")
          _link4  =  "https://leicester.power-h2020.eu/?location=challenges"
-         _linkcso = _linkcso.replace("{city}","city")
+         _linkcso = _linkcso.replace("{city}","leicester")
 
           break;
         case "MI":
@@ -100,7 +101,7 @@
           _link3 = _link3.replace("{city}","milton-keynes")
           _link6 = _link6.replace("{city}","milton-keynes")
           _link4  =  "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
-          _linkcso = _linkcso.replace("{city}","city")
+          _linkcso = _linkcso.replace("{city}","milton-keynes")
 
 
           break;
@@ -110,7 +111,7 @@
           _link3 = _link3.replace("{city}","sabadell")
           _link6 = _link6.replace("{city}","sabadell")
           _link4 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
-          _linkcso = _linkcso.replace("{city}","city")
+          _linkcso = _linkcso.replace("{city}","sabadell")
 
           break;
         case "JE":
@@ -119,7 +120,7 @@
           _link3 = _link3.replace("{city}","jerusalem")
           _link6 = _link6.replace("{city}","jerusalem")
           _link4 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
-          _linkcso = _linkcso.replace("{city}","city")
+          _linkcso = _linkcso.replace("{city}","jerusalem")
 
           break;
         default:
@@ -147,9 +148,7 @@
           links_classes[i].setAttribute("href",_link6)
         }
         links_classes = document.getElementsByClassName("linkcso");
-        for (var i = 0; i < links_classes.length; i++) {
-          links_classes[i].setAttribute("href",_linkcso)
-        }
+        links_classes[0].setAttribute("href",_linkcso)
 
     }
     function updateCity(){
@@ -182,9 +181,9 @@
       document.getElementById("banner_content").innerHTML =  _locCity[CURRENT_CITY].content;
 
     }
+    updateCity();
     updateLinks();
     updateLan();
-    updateCity();
     updateContent();
     function resize(){
 
