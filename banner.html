@@ -12,12 +12,9 @@
   <body onresize="resize()" id="body">
       <img id="logo" src="img/banner/CI.png" style="width:300px">
       <div id="banner_title" class="title">Why should I join the community?</div>
-      <ul>
-        <li class="bullet_1">to discover your flood risk</li>
-        <li class="bullet_2">to prepare yourself from flooding</li>
-        <li class="bullet_3">to track how your knowledge develops</li>
-        <li class="bullet_4">to help your community feel safer</li>
-      </ul>
+      <div id="banner_content">
+
+      </div>
       <div style="display: flex;flex-direction: row;align-items: center;justify-content: left;margin-left: 5%;">
         <a class="join_now_button linkcso" href="" style="height: 34px;line-height: 34px;margin-top:30px;">FIND OUT HOW</a>
       </div>
@@ -38,6 +35,21 @@
     }else{
       CURRENT_LAN = "EN";
     }
+    _locCity={
+      "CI":{
+        "content":'<ul><li class="">to discover your flood risk</li><li class="">to prepare yourself from flooding</li><li class="">to track how your knowledge develops</li><li class="">to help your community feel safer</li></ul>',
+      },
+      "JE":{
+        "content":'<ul><li>Find out about the Community Gardens of Jerusalem </li><li>Learn how to make the city greener with less water</li><li>Ensure the water quality in your house</li><li>Be part of our educational curriculum</li><li>Immediately report any urban water burst</li></ul>'
+
+      },
+      "SA":{
+        "content":"<ul><li>to find out about the quality of water in the city</li><li>to learn more about water saving and water reuse</li><li>to participate in workshops about water sustainability</li><li> to follow and share knowledge about water management issues</li><ul>",
+      },
+      "MI":{
+        "content":'<ul><li class="">to learn why we need to save water in Milton Keynes</li><li class="">to get ideas and tips for reducing water consumption</li><li class="">to participate in workshops on water sustainability </li><li class="">to help create a smarter water community</li></ul>',
+      },
+    }
     _loc = {
       "EN":{
         "title":"Why should I join the community?",
@@ -45,7 +57,6 @@
         "bullet_2":"to prepare yourself from flooding",
         "bullet_3":"to track how your knowledge develops",
         "bullet_4":"to help your community feel safer",
-
       },
       "ES":{
         "title":"¿Para qué debería de unirme a la comunidad?",
@@ -164,9 +175,14 @@
 
       }
     }
+    function updateContent(){
+      document.getElementById("banner_content").innerHTML =  _locCity[CURRENT_CITY].content;
+
+    }
     updateLinks();
     updateLan();
     updateCity();
+    updateContent();
     function resize(){
 
       if(WIDTH != window.innerWidth){
