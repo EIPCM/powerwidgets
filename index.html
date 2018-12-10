@@ -330,8 +330,8 @@
             <div class="points_separator_bar pb_txt" style="display:none">
               /
             </div>
-            <div class="points_row_bar r">
-              <div class="points_right_bar pb_txt" id="bar_title_score_PA_g">
+            <div class="points_row_bar r" style="display:none">
+              <div class="points_left_bar pb_bg" id="bar_title_score_PA_g">
                 0
               </div>
               <div class="community_label_barp pb_txt">
@@ -384,7 +384,7 @@
         <div class="points_flex_bar">
           <div class="powerRowTitle so_txt">Social</div>
           <div class="points_bar_wrapper">
-            <div class="points_row_bar">
+            <div class="points_row_bar l ">
                        <div class="points_left_bar so_bg" id="bar_title_score_SO">
                          0
                        </div>
@@ -397,8 +397,8 @@
             <div class="points_separator_bar so_txt" style="display:none;">
               /
             </div>
-            <div class="points_row_bar r">
-              <div class="points_right_bar so_txt" id="bar_title_score_SO_g">
+            <div class="points_row_bar r" style="display:none">
+              <div class="points_left_bar so_bg" id="bar_title_score_SO_g">
                 0
               </div>
               <div class="community_label_barp so_txt">
@@ -2276,13 +2276,19 @@ window.onload = function()
    if(!_checked){
       document.getElementsByClassName("points_row_bar l")[0].style.display = "none";
       document.getElementsByClassName("points_row_bar r")[0].style.display = "block";
-
+      document.getElementsByClassName("points_row_bar l")[1].style.display = "none";
+      document.getElementsByClassName("points_row_bar r")[1].style.display = "block";
+      document.getElementsByClassName("points_row_bar l")[2].style.display = "none";
+      document.getElementsByClassName("points_row_bar r")[2].style.display = "block";
      // document.getElementsByClassName("points_row_bar")[1].style.display = "none"
      // document.getElementsByClassName("points_row_bar")[2].style.display = "none"
    }else{
      document.getElementsByClassName("points_row_bar l")[0].style.display = "block";
      document.getElementsByClassName("points_row_bar r")[0].style.display = "none";
-
+     document.getElementsByClassName("points_row_bar l")[1].style.display = "block";
+     document.getElementsByClassName("points_row_bar r")[1].style.display = "none";
+     document.getElementsByClassName("points_row_bar l")[2].style.display = "block";
+     document.getElementsByClassName("points_row_bar r")[2].style.display = "none";
 
      // document.getElementsByClassName("points_row_bar")[0].style.display = "block"
      // document.getElementsByClassName("points_row_bar")[1].style.display = "block"
