@@ -2117,6 +2117,14 @@ var _p3 = 0;
 var _g1 = 0;
 var _g2 = 0;
 var _g3 = 0;
+
+var _l1 = 0;
+var _l2 = 0;
+var _l3 = 0;
+
+var _h1 = 0;
+var _h2 = 0;
+var _h3 = 0;
 window.onload = function()
  {
 
@@ -2290,6 +2298,9 @@ window.onload = function()
      // document.getElementsByClassName("points_row_bar")[2].style.display = "none"
 
 
+     setProgressPowerBar(_h2,1);
+     setProgressPowerBar(_h3,2);
+     setProgressPowerBar(_h1,3);
      document.getElementsByClassName("lan_title_personal_impact")[0].innerHTML = _loc[CURRENT_LAN].lan_title_personal_impact;
    }else{
      document.getElementsByClassName("points_row_bar l")[0].style.display = "block";
@@ -2302,6 +2313,9 @@ window.onload = function()
      // document.getElementsByClassName("points_row_bar")[0].style.display = "block"
      // document.getElementsByClassName("points_row_bar")[1].style.display = "block"
      // document.getElementsByClassName("points_row_bar")[2].style.display = "block"
+     setProgressPowerBar(_l2,1);
+     setProgressPowerBar(_l3,2);
+     setProgressPowerBar(_l1,3);
    }
 
 
