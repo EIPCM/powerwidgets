@@ -536,6 +536,7 @@ _loc = {
     "lan_title_personal_preparedness":"Preparación Personal",
     "lan_title_community_preparedness":"Preparación de la Comunidad",
     "lan_title_personal_impact": "Impacto Personal",
+    "lan_title_community_impact": "Impacto de la Comunidad",
     "problem_awareness": "Conciencia del <br>problema",
     "know_how": "Saber cómo",
     "ready_to_act": "Listo para <br>actuar",
@@ -584,6 +585,7 @@ _loc = {
     "lan_title_personal_preparedness":"Preparació Personal",
     "lan_title_community_preparedness":"Preparació de la Comunitat",
     "lan_title_personal_impact": "Impacte Personal",
+    "lan_title_community_impact": "Impacte comunitari",
     "problem_awareness": "Conscienciació <br>del problema",
     "know_how": "Coneixements",
     "ready_to_act": "Preparat",
@@ -631,6 +633,8 @@ _loc = {
   "en":{
     "lan_title_personal_preparedness":"Personal Preparedness",
     "lan_title_community_preparedness":"Community Preparedness",
+    "lan_title_personal_impact": "Personal Impact",
+    "lan_title_community_impact": "Community Impact",
     "lan_impact":"Impact",
     "lan_social":"Social",
     "lan_political":"Political",
@@ -667,6 +671,7 @@ _loc = {
     "lan_title_personal_preparedness":"מוכנות אישית",
     "lan_title_community_preparedness":"הכנות קהילתית",
     "lan_title_personal_impact": "דוגמא אישית",
+    "lan_title_community_impact": "השפעת הקהילה",
     "problem_awareness": "בעיה<br>מודעות",
     "know_how": "בקיאות בנושא",
     "ready_to_act":"מוכנות לפעול בנושא",
@@ -716,6 +721,7 @@ _loc = {
     "lan_title_personal_preparedness":"جاهزية شخصية",
     "lan_title_community_preparedness":"التأهب المجتمعي",
     "lan_title_personal_impact": "مثال شخصي",
+    "lan_title_community_impact": "تأثير المجتمع",
     "problem_awareness": "مشكلة الوعي",
     "know_how": "المعرفة في الموضوع",
     "ready_to_act":"جاهزية للعمل في المجال",
@@ -2282,6 +2288,9 @@ window.onload = function()
       document.getElementsByClassName("points_row_bar r")[2].style.display = "block";
      // document.getElementsByClassName("points_row_bar")[1].style.display = "none"
      // document.getElementsByClassName("points_row_bar")[2].style.display = "none"
+
+
+     document.getElementsByClassName("lan_title_personal_impact")[0].innerHTML = _loc[CURRENT_LAN].lan_title_personal_impact;
    }else{
      document.getElementsByClassName("points_row_bar l")[0].style.display = "block";
      document.getElementsByClassName("points_row_bar r")[0].style.display = "none";
@@ -2289,7 +2298,7 @@ window.onload = function()
      document.getElementsByClassName("points_row_bar r")[1].style.display = "none";
      document.getElementsByClassName("points_row_bar l")[2].style.display = "block";
      document.getElementsByClassName("points_row_bar r")[2].style.display = "none";
-
+     document.getElementsByClassName("lan_title_personal_impact")[0].innerHTML = _loc[CURRENT_LAN].lan_title_community_impact;
      // document.getElementsByClassName("points_row_bar")[0].style.display = "block"
      // document.getElementsByClassName("points_row_bar")[1].style.display = "block"
      // document.getElementsByClassName("points_row_bar")[2].style.display = "block"
