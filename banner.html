@@ -19,8 +19,7 @@
         <li class="bullet_4">to help your community feel safer</li>
       </ul>
       <div style="display: flex;flex-direction: row;align-items: center;justify-content: left;margin-left: 5%;">
-        <a class="join_now_button link6" href="" style="height: 34px;line-height: 34px;margin-top:30px;">FIND OUT HOW</a>
-
+        <a class="join_now_button linkcso" href="" style="height: 34px;line-height: 34px;margin-top:30px;">FIND OUT HOW</a>
       </div>
 
   </body>
@@ -62,12 +61,15 @@
       _link4 = "https://city.power-h2020.eu/?location=challenge&loadP=1121"
       _link6 = "https://{city}.power-h2020.eu/?location=home&login_pub";
       _link3 = "https://{city}.power-h2020.eu/?location=area#bottom"
+      _linkcso = "https://{city}.power-h2020.eu/?location=home#cso"
       switch (CURRENT_CITY) {
         case "CI":
           _link1 = "https://city.power-h2020.eu/?location=challenges"
           _link2 = _link2.replace("{city}","city")
           _link3 = _link3.replace("{city}","city")
           _link6 = _link6.replace("{city}","city")
+          _linkcso = _linkcso.replace("{city}","city")
+
           break;
         case "LE":
           _link1 =  "https://leicester.power-h2020.eu/?location=challenges"
@@ -75,6 +77,8 @@
           _link3 = _link3.replace("{city}","leicester")
           _link6 = _link6.replace("{city}","leicester")
          _link4  =  "https://leicester.power-h2020.eu/?location=challenges"
+         _linkcso = _linkcso.replace("{city}","city")
+
           break;
         case "MI":
           _link1 = "https://milton-keynes.power-h2020.eu/?location=challenges"
@@ -82,6 +86,8 @@
           _link3 = _link3.replace("{city}","milton-keynes")
           _link6 = _link6.replace("{city}","milton-keynes")
           _link4  =  "https://milton-keynes.power-h2020.eu/?location=challenge&loadP=1200"
+          _linkcso = _linkcso.replace("{city}","city")
+
 
           break;
         case "SA":
@@ -90,6 +96,8 @@
           _link3 = _link3.replace("{city}","sabadell")
           _link6 = _link6.replace("{city}","sabadell")
           _link4 = "https://sabadell.power-h2020.eu/?location=challenge&loadP=1220"
+          _linkcso = _linkcso.replace("{city}","city")
+
           break;
         case "JE":
           _link1 = "https://jerusalem.power-h2020.eu/?location=challenges"
@@ -97,6 +105,8 @@
           _link3 = _link3.replace("{city}","jerusalem")
           _link6 = _link6.replace("{city}","jerusalem")
           _link4 = "https://jerusalem.power-h2020.eu/?location=challenge&loadP=1240"
+          _linkcso = _linkcso.replace("{city}","city")
+
           break;
         default:
 
@@ -121,6 +131,10 @@
         links_classes = document.getElementsByClassName("link6");
         for (var i = 0; i < links_classes.length; i++) {
           links_classes[i].setAttribute("href",_link6)
+        }
+        links_classes = document.getElementsByClassName("linkcso");
+        for (var i = 0; i < links_classes.length; i++) {
+          links_classes[i].setAttribute("href",_linkcso)
         }
 
     }
