@@ -2281,7 +2281,7 @@ window.onload = function()
    _checked = document.getElementsByClassName("js-switch")[0].checked;
    pList = document.getElementsByClassName("points_separator")
    for (var i = 0; i < pList.length; i++) {
-      (_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+      (true) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
    pList = document.getElementsByClassName("points_row l")
    for (var i = 0; i < pList.length; i++) {
@@ -2307,6 +2307,13 @@ window.onload = function()
      _pp3.classList.add("ra_txt");
      changeProgress(_p1,_p2,_p3);
      document.getElementsByClassName("lan_title_personal_preparedness")[0].innerHTML = _loc[CURRENT_LAN].lan_title_personal_preparedness;
+
+     document.getElementsByClassName("points_row r")[0].style.display = "none";
+
+     document.getElementsByClassName("points_row r")[1].style.display = "none";
+
+     document.getElementsByClassName("points_row r")[2].style.display = "none";
+
    }else{
      _pp1.classList.remove("points_right");
      _pp1.classList.add("points_left");
@@ -2323,6 +2330,11 @@ window.onload = function()
      changeProgress(_g1,_g2,_g3);
      document.getElementsByClassName("lan_title_personal_preparedness")[0].innerHTML = _loc[CURRENT_LAN].lan_title_community_preparedness;
 
+     document.getElementsByClassName("points_row r")[0].style.display = "block";
+
+     document.getElementsByClassName("points_row r")[1].style.display = "block";
+
+     document.getElementsByClassName("points_row r")[2].style.display = "block";
 
    }
 
