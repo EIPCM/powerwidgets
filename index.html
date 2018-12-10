@@ -257,7 +257,7 @@
           <div class="points_flex_bar">
             <div class="powerRowTitle in_txt">Individual</div>
             <div class="points_bar_wrapper">
-              <div class="points_row_bar">
+              <div class="points_row_bar l ">
                 <div class="points_left_bar in_bg" id="bar_title_score_IN">
                   0
                 </div>
@@ -267,11 +267,11 @@
                    <img src="img/people_gray.png" class="iconsmall"/>
                  </div>
               </div>
-              <div class="points_separator_bar in_txt">
+              <div class="points_separator_bar in_txt" style="display:none">
                 /
               </div>
-              <div class="points_row_bar r">
-                <div class="points_right_bar in_txt" id="bar_title_score_IN_g">
+              <div class="points_row_bar r" style="display:none">
+                <div class="points_left_bar in_bg" id="bar_title_score_IN_g">
                   0
                 </div>
                 <div class="community_label_barp in_txt">
@@ -317,7 +317,7 @@
         <div class="points_flex_bar">
           <div class="powerRowTitle pb_txt">Political</div>
           <div class="points_bar_wrapper">
-            <div class="points_row_bar">
+            <div class="points_row_bar l">
               <div class="points_left_bar pb_bg" id="bar_title_score_PA">
                 0
               </div>
@@ -327,7 +327,7 @@
                  <img src="img/political_gray.png" class="iconsmall">
                </div>
             </div>
-            <div class="points_separator_bar pb_txt">
+            <div class="points_separator_bar pb_txt" style="display:none">
               /
             </div>
             <div class="points_row_bar r">
@@ -394,7 +394,7 @@
                            <img src="img/users-group_gray.png" class="iconsmall">
                          </div>
            </div>
-            <div class="points_separator_bar so_txt">
+            <div class="points_separator_bar so_txt" style="display:none;">
               /
             </div>
             <div class="points_row_bar r">
@@ -2266,14 +2266,28 @@ window.onload = function()
    pList = document.getElementsByClassName("points_separator_bar")
 
    for (var i = 0; i < pList.length; i++) {
-      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+      (true) ? pList[i].style.display = "none" : pList[i].style.display = "block";
    }
-   pList = document.getElementsByClassName("points_row_bar r")
+   // pList = document.getElementsByClassName("points_row_bar r")
 
-   for (var i = 0; i < pList.length; i++) {
-      (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   // for (var i = 0; i < pList.length; i++) {
+   //    (!_checked) ? pList[i].style.display = "none" : pList[i].style.display = "block";
+   // }
+   if(!_checked){
+      document.getElementsByClassName("points_row_bar l")[0].style.display = "none";
+      document.getElementsByClassName("points_row_bar r")[0].style.display = "block";
+
+     // document.getElementsByClassName("points_row_bar")[1].style.display = "none"
+     // document.getElementsByClassName("points_row_bar")[2].style.display = "none"
+   }else{
+     document.getElementsByClassName("points_row_bar l")[0].style.display = "block";
+     document.getElementsByClassName("points_row_bar r")[0].style.display = "none";
+
+
+     // document.getElementsByClassName("points_row_bar")[0].style.display = "block"
+     // document.getElementsByClassName("points_row_bar")[1].style.display = "block"
+     // document.getElementsByClassName("points_row_bar")[2].style.display = "block"
    }
-
 
 
  }
