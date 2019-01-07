@@ -1646,7 +1646,7 @@ function addSize(size){
     ctx.textAlign   = "left";
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,440);
     ctx.textAlign   = "center";
-    ctx.fillText("5%",_l1/5 ,490);
+    ctx.fillText("75%",_l1 + _l2 ,490);
     ctx.fillText("25%",_l2 ,490);
     ctx.fillText("50%",_l1 ,490);
     ctx.textAlign   = "start";
@@ -1664,7 +1664,7 @@ function addSize(size){
     ctx.textAlign   = "left";
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,435);
     ctx.textAlign   = "center";
-    ctx.fillText("5%",_l2/5 ,490);
+    ctx.fillText("75%",_l1 + _l2 ,490);
     ctx.fillText("25%",_l2 ,490);
     ctx.fillText("50%",_l1 ,490);
     ctx.textAlign   = "start";
@@ -1725,8 +1725,8 @@ function addSize(size){
   ctx.stroke();
   //l0
   ctx.beginPath();
-  ctx.moveTo(_l1/5,_barY1 + 15);
-  ctx.lineTo(_l1/5,_barY1 + 25);
+  ctx.moveTo(_l1 + _l2,_barY1 + 15);
+  ctx.lineTo(_l1 + _l2,_barY1 + 25);
   ctx.closePath();
   ctx.stroke();
   //l1
@@ -2412,8 +2412,8 @@ window.onload = function()
    if(WIDTH != window.innerWidth){
      _checked = document.getElementsByClassName("js-switch")[2].checked;
      initPoligons(_checked);
-     toggleLevelsPersonalImpact();
-     toggleLevelsPersonalPreparedness();
+     // toggleLevelsPersonalImpact();
+     // toggleLevelsPersonalPreparedness();
      HEIGHT = window.innerHeight;
      WIDTH  = window.innerWidth;
      if(WIDTH < 560){
