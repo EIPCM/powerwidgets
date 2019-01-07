@@ -37,7 +37,7 @@
         <div class="powerTitle" id="preparedness"> <span class="lan_title_personal_preparedness"> Personal Preparedness </span> <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m1()"></img></div>
         <div class="hideable-area">
           <div class="toggleWrapper">
-            <input type="checkbox" class="js-switch" checked />
+            <input type="checkbox" class="js-switch"  />
             <div style="font-family: 'Fredoka One', cursive;" class="lan_show_levels">Show Community</div>
           </div>
           <div class="circularWrapper">
@@ -248,7 +248,7 @@
         <div class="powerTitle" > <span class="lan_title_personal_impact"> Personal Impact </span><img src="img/information.png" height="22" width="22" class="infoButton" onclick="m2()"></img></div>
         <div class="hideable-area" style="padding-bottom: 20px;">
           <div class="toggleWrapper">
-            <input type="checkbox" class="js-switch" checked />
+            <input type="checkbox" class="js-switch" />
             <div style="font-family: 'Fredoka One', cursive;" class="lan_show_levels">Show Community</div>
           </div>
 
@@ -2412,8 +2412,8 @@ window.onload = function()
    if(WIDTH != window.innerWidth){
      _checked = document.getElementsByClassName("js-switch")[2].checked;
      initPoligons(_checked);
-     // toggleLevelsPersonalImpact();
-     // toggleLevelsPersonalPreparedness();
+     toggleLevelsPersonalImpact();
+     toggleLevelsPersonalPreparedness();
      HEIGHT = window.innerHeight;
      WIDTH  = window.innerWidth;
      if(WIDTH < 560){
