@@ -1656,38 +1656,40 @@ function addSize(size){
   }
   if(sizeWidth > 500){
     _barSize = (sizeWidth / 3);
-    _barY1   = 450;
+    _barY1   = 500;
     _barY2   = _barY1 + 20;
     __l1      = (_barSize / 2 );
     __l2      = (_barSize / 4 );
     ctx.textAlign   = "left";
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,440);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,480);
     ctx.textAlign   = "center";
-    ctx.fillText("75%",__l1 + __l2 ,490);
-    ctx.fillText("25%",__l2 ,490);
-    ctx.fillText("50%",__l1 ,490);
+    ctx.fillText("75%",__l1 + __l2 ,540);
+    ctx.fillText("25%",__l2 ,540);
+    ctx.fillText("50%",__l1 ,540);
     ctx.textAlign   = "start";
-    ctx.fillText(_max_pop,_barSize ,455);
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,475);
+    ctx.fillText(_max_pop,_barSize ,505);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,525);
     _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((size).toFixed(2));
-    ctx.fillText(_increaseLeyend,0,520);
+    ctx.fillText(_increaseLeyend,0,570);
 
     ctx.stroke();
   }else{
     _barSize = (sizeWidth - 70);
-    _barY1   = 440;
+    _barY1   = 500;
     _barY2   = _barY1 + 20;
     __l1      = (_barSize / 2 );
     __l2      = (_barSize / 4 );
     ctx.textAlign   = "left";
-    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,435);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,480);
     ctx.textAlign   = "center";
-    ctx.fillText("75%",__l1 + __l2 ,490);
-    ctx.fillText("25%",__l2 ,490);
-    ctx.fillText("50%",__l1 ,490);
+    ctx.fillText("75%",__l1 + __l2 ,540);
+    ctx.fillText("25%",__l2 ,540);
+    ctx.fillText("50%",__l1 ,540);
     ctx.textAlign   = "start";
-    ctx.fillText(_max_pop,_barSize ,455);
-    ctx.fillText("Members",_barSize ,475);
+    ctx.fillText(_max_pop,_barSize ,505);
+    ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,525);
+    _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((size).toFixed(2));
+    ctx.fillText(_increaseLeyend,0,570);
 
     ctx.stroke();
   }
