@@ -514,8 +514,8 @@
         <div style="font-family: 'Fredoka One', cursive;" class="lan_show_personal">Show Personal</div>
       </div>
 
-      <div style="margin-left:auto;margin-right:auto;height:500px">
-        <canvas id="spider" height="500" width="750" style="z-index:1"></canvas>
+      <div style="margin-left:auto;margin-right:auto;height:600px">
+        <canvas id="spider" height="600" width="750" style="z-index:1"></canvas>
         <div class="powerMessageText lan_power_message_4" >Help the community become equally prepared for flooding in all the categories.</div>
         <div class="powerMessage">&nbsp;</div>
 
@@ -559,6 +559,7 @@ _loc = {
     "lan_personal": "Personal",
     "lan_community_members": "Miembros",
     "lan_community_size": "Tamaño de la comunidad",
+    "lan_community_size_legend":"Incremento en miembros desde Ago 2018: %",
     "lan_community_small": "Pequeña",
     "lan_community_medium": "Media",
     "lan_community_big": "Grande",
@@ -647,6 +648,7 @@ _loc = {
     "lan_personal": "Personal",
     "lan_community_members": "Members",
     "lan_community_size": "Community size:",
+    "lan_community_size_legend":"Increase in members since Aug 2018: %",
     "lan_community_small": "Small",
     "lan_community_medium": "Medium",
     "lan_community_big": "Large",
@@ -697,6 +699,7 @@ _loc = {
     "lan_personal": "אישי",
     "lan_community_members": "חברים",
     "lan_community_size": "גודל הקהילה",
+    "lan_community_size_legend":"Increase in members since Aug 2018: %",
     "lan_community_small": "קטן",
     "lan_community_medium": "בינוני",
     "lan_community_big": "גדול",
@@ -749,6 +752,7 @@ _loc = {
     "lan_personal": "شخصي",
     "lan_community_members": "أفراد",
     "lan_community_size": "حجم المجتمع",
+    "lan_community_size_legend":"Increase in members since Aug 2018: %",
     "lan_community_small": "صغير",
     "lan_community_medium": "متوسط",
     "lan_community_big": "كبير",
@@ -1638,8 +1642,17 @@ function addSize(size){
   ctx.fillStyle   = "#09244c";
   ctx.font = "bold 16px Arial";
   _max_pop = 2000;
+  _aug = 0;
   if( _CURRENT_CITY  == "LE" ){
     _max_pop = 3000;
+    _aug = 60;
+
+  }else if (_CURRENT_CITY  == "MI"){
+    _aug = 55;
+  }else if (_CURRENT_CITY  == "SA"){
+    _aug = 39;
+  }else if (_CURRENT_CITY  == "JE"){
+    _aug = 57;
   }
   if(sizeWidth > 500){
     _barSize = (sizeWidth / 3);
@@ -1656,6 +1669,8 @@ function addSize(size){
     ctx.textAlign   = "start";
     ctx.fillText(_max_pop,_barSize ,455);
     ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,475);
+    _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((size).toFixed(2));
+    ctx.fillText(_increaseLeyend,0,520);
 
     ctx.stroke();
   }else{
