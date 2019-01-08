@@ -1637,6 +1637,10 @@ function addSize(size){
   ctx.strokeStyle = '#265380';
   ctx.fillStyle   = "#09244c";
   ctx.font = "bold 16px Arial";
+  _max_pop = 2000;
+  if( _CURRENT_CITY  == "LE" ){
+    _max_pop = 3000;
+  }
   if(sizeWidth > 500){
     _barSize = (sizeWidth / 3);
     _barY1   = 450;
@@ -1650,8 +1654,7 @@ function addSize(size){
     ctx.fillText("25%",_l2 ,490);
     ctx.fillText("50%",_l1 ,490);
     ctx.textAlign   = "start";
-
-    ctx.fillText("2000",_barSize ,455);
+    ctx.fillText(_max_pop,_barSize ,455);
     ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,475);
 
     ctx.stroke();
@@ -1668,7 +1671,7 @@ function addSize(size){
     ctx.fillText("25%",_l2 ,490);
     ctx.fillText("50%",_l1 ,490);
     ctx.textAlign   = "start";
-    ctx.fillText("2000",_barSize ,455);
+    ctx.fillText(_max_pop,_barSize ,455);
     ctx.fillText("Members",_barSize ,475);
 
     ctx.stroke();
@@ -1687,14 +1690,8 @@ function addSize(size){
   if(size >= _MAX_SIZE){
     size  = _MAX_SIZE
   }
-  if(size <= 100){
-    _sP = (size  * .33) / 100
-  }else if(size > 100 && size <=1000){
-    _sP =  (size/1000) * .66
-    console.log(_sP);
-  }else if(size >1001){
-    _sP =  (size/2000) * 1;
-  }
+  _sP =  (size/_max_pop) * 1;
+
   ctx.fillRect(0,_barY1,_barWidth * _sP ,20);
   ctx.closePath();
   ctx.fillStyle   = "#09244c";
