@@ -1645,14 +1645,14 @@ function addSize(size){
     _barSize = (sizeWidth / 3);
     _barY1   = 450;
     _barY2   = _barY1 + 20;
-    _l1      = (_barSize / 2 );
-    _l2      = (_barSize / 4 );
+    __l1      = (_barSize / 2 );
+    __l2      = (_barSize / 4 );
     ctx.textAlign   = "left";
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,440);
     ctx.textAlign   = "center";
-    ctx.fillText("75%",_l1 + _l2 ,490);
-    ctx.fillText("25%",_l2 ,490);
-    ctx.fillText("50%",_l1 ,490);
+    ctx.fillText("75%",__l1 + _l2 ,490);
+    ctx.fillText("25%",__l2 ,490);
+    ctx.fillText("50%",__l1 ,490);
     ctx.textAlign   = "start";
     ctx.fillText(_max_pop,_barSize ,455);
     ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,475);
@@ -1662,14 +1662,14 @@ function addSize(size){
     _barSize = (sizeWidth - 70);
     _barY1   = 440;
     _barY2   = _barY1 + 20;
-    _l1      = (_barSize / 2 );
-    _l2      = (_barSize / 4 );
+    __l1      = (_barSize / 2 );
+    __l2      = (_barSize / 4 );
     ctx.textAlign   = "left";
     ctx.fillText(_loc[CURRENT_LAN].lan_community_size,0 ,435);
     ctx.textAlign   = "center";
-    ctx.fillText("75%",_l1 + _l2 ,490);
-    ctx.fillText("25%",_l2 ,490);
-    ctx.fillText("50%",_l1 ,490);
+    ctx.fillText("75%",__l1 + __l2 ,490);
+    ctx.fillText("25%",__l2 ,490);
+    ctx.fillText("50%",__l1 ,490);
     ctx.textAlign   = "start";
     ctx.fillText(_max_pop,_barSize ,455);
     ctx.fillText("Members",_barSize ,475);
@@ -1722,20 +1722,20 @@ function addSize(size){
   ctx.stroke();
   //l0
   ctx.beginPath();
-  ctx.moveTo(_l1 + _l2,_barY1 + 15);
-  ctx.lineTo(_l1 + _l2,_barY1 + 25);
+  ctx.moveTo(__l1 + __l2,_barY1 + 15);
+  ctx.lineTo(__l1 + __l2,_barY1 + 25);
   ctx.closePath();
   ctx.stroke();
   //l1
   ctx.beginPath();
-  ctx.moveTo(_l1,_barY1 + 15);
-  ctx.lineTo(_l1,_barY1 + 25);
+  ctx.moveTo(__l1,_barY1 + 15);
+  ctx.lineTo(__l1,_barY1 + 25);
   ctx.closePath();
   ctx.stroke();
   //l2
   ctx.beginPath();
-  ctx.moveTo(_l2,_barY1 + 15);
-  ctx.lineTo(_l2,_barY1 + 25);
+  ctx.moveTo(__l2,_barY1 + 15);
+  ctx.lineTo(__l2,_barY1 + 25);
   ctx.closePath();
   ctx.stroke();
 
@@ -2317,6 +2317,8 @@ window.onload = function()
      setProgressPowerBar(_l2,1);
      setProgressPowerBar(_l3,2);
      setProgressPowerBar(_l1,3);
+
+
    }
 
 
