@@ -2205,14 +2205,17 @@ window.onload = function()
      _h1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
      _h1 += apiClient.getGlobal().obj.gamification.personal["practical.knowledge"];
      _h1 += apiClient.getGlobal().obj.gamification.personal["ready.for.action"];
+     _h1 = Math.floor(_h1);
 
      _h2 = apiClient.getGlobal().obj.gamification.political["problem.awareness"];
      _h2 += apiClient.getGlobal().obj.gamification.political["practical.knowledge"];
      _h2 += apiClient.getGlobal().obj.gamification.political["ready.for.action"];
+     _h2 = Math.floor(_h2);
 
      _h3 = apiClient.getGlobal().obj.gamification.social["problem.awareness"];
      _h3 += apiClient.getGlobal().obj.gamification.social["practical.knowledge"];
      _h3 += apiClient.getGlobal().obj.gamification.social["ready.for.action"];
+     _h3 = Math.floor(_h3);
 
      // setg_pa(_h1);
      // setg_so(_h2);
