@@ -559,7 +559,7 @@ _loc = {
     "lan_personal": "Personal",
     "lan_community_members": "Miembros",
     "lan_community_size": "Tamaño de la comunidad",
-    "lan_community_size_legend":"Incremento en miembros desde Ago 2018: %",
+    "lan_community_size_legend":"Incremento en miembros desde Ago 2018: ",
     "lan_community_small": "Pequeña",
     "lan_community_medium": "Media",
     "lan_community_big": "Grande",
@@ -648,7 +648,7 @@ _loc = {
     "lan_personal": "Personal",
     "lan_community_members": "Members",
     "lan_community_size": "Community size:",
-    "lan_community_size_legend":"Increase in members since Aug 2018: %",
+    "lan_community_size_legend":"Increase in members since Aug 2018: ",
     "lan_community_small": "Small",
     "lan_community_medium": "Medium",
     "lan_community_big": "Large",
@@ -699,7 +699,7 @@ _loc = {
     "lan_personal": "אישי",
     "lan_community_members": "חברים",
     "lan_community_size": "גודל הקהילה",
-    "lan_community_size_legend":"Increase in members since Aug 2018: %",
+    "lan_community_size_legend":"Increase in members since Aug 2018: ",
     "lan_community_small": "קטן",
     "lan_community_medium": "בינוני",
     "lan_community_big": "גדול",
@@ -752,7 +752,7 @@ _loc = {
     "lan_personal": "شخصي",
     "lan_community_members": "أفراد",
     "lan_community_size": "حجم المجتمع",
-    "lan_community_size_legend":"Increase in members since Aug 2018: %",
+    "lan_community_size_legend":"Increase in members since Aug 2018: ",
     "lan_community_small": "صغير",
     "lan_community_medium": "متوسط",
     "lan_community_big": "كبير",
@@ -1669,7 +1669,7 @@ function addSize(size){
     ctx.textAlign   = "start";
     ctx.fillText(_max_pop,_barSize ,505);
     ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,525);
-    _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((size).toFixed(2));
+    _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((size).toFixed(0)) + "%";
     ctx.fillText(_increaseLeyend,0,570);
 
     ctx.stroke();
