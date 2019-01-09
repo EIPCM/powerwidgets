@@ -1646,14 +1646,17 @@ function addSize(size){
   if( _CURRENT_CITY  == "LE" ){
     _max_pop = 3000;
     _aug = 60;
-
   }else if (_CURRENT_CITY  == "MI"){
     _aug = 55;
   }else if (_CURRENT_CITY  == "SA"){
     _aug = 39;
   }else if (_CURRENT_CITY  == "JE"){
     _aug = 57;
+  }else if (_CURRENT_CITY == "CI"){
+    _aug = 1;
   }
+  _inc = (size - _aug);
+  _inc = (_inc / _aug) * 100;
   if(sizeWidth > 500){
     _barSize = (sizeWidth / 3);
     _barY1   = 500;
@@ -1669,7 +1672,7 @@ function addSize(size){
     ctx.textAlign   = "start";
     ctx.fillText(_max_pop,_barSize ,505);
     ctx.fillText(_loc[CURRENT_LAN].lan_community_members,_barSize ,525);
-    _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((size).toFixed(0)) + "%";
+    _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((_inc).toFixed(0)) + "%";
     ctx.fillText(_increaseLeyend,0,570);
 
     ctx.stroke();

@@ -191,6 +191,7 @@
           "lan_community_small": "Small",
           "lan_community_medium": "Medium",
           "lan_community_big": "Large",
+          "lan_community_size_legend":"Increase in members since Aug 2018: ",
           "problem_awareness":"Problem<br> Awareness ",
           "know_how":"Know- <br>How",
           "ready_to_act":">Ready <br>to Act",
@@ -223,6 +224,7 @@
           "lan_community_small": "Pequeña",
           "lan_community_medium": "Mediana",
           "lan_community_big": "Grande",
+          "lan_community_size_legend":"Incremento en miembros desde Ago 2018: ",
           "problem_awareness": "Conciencia del <br>problema",
           "know_how": "Saber cómo<br>",
           "ready_to_act": "Listo para <br>actuar",
@@ -479,6 +481,24 @@
         ctx.strokeStyle = '#265380';
         ctx.fillStyle   = "#09244c";
         ctx.font = "bold 16px Arial";
+
+        _max_pop = 2000;
+        _aug = 0;
+        if( CURRENT_CITY  == "LE" ){
+          _max_pop = 3000;
+          _aug = 60;
+
+        }else if (CURRENT_CITY  == "MI"){
+          _aug = 55;
+        }else if (CURRENT_CITY  == "SA"){
+          _aug = 39;
+        }else if (CURRENT_CITY  == "JE"){
+          _aug = 57;
+        }else if (CURRENT_CITY == "CI"){
+          _aug = 1;
+        }
+        _inc = (size - _aug);
+        _inc = (_inc / _aug) * 100;
         if(true){
           _barSize = (sizeWidth - 100);
           _barY1   = 20;
@@ -492,8 +512,10 @@
           ctx.fillText("25%",_l2 ,60);
           ctx.fillText("50%",_l1 ,60);
           ctx.textAlign   = "start";
-          ctx.fillText("2000",_barSize ,35);
-          ctx.fillText(_loc[CURRENT_LAN].members,_barSize ,60);
+          ctx.fillText(_max_pop,_barSize ,35);
+
+          _increaseLeyend = _loc[CURRENT_LAN].lan_community_size_legend + numberWithCommas((_inc).toFixed(0)) + "%";
+          ctx.fillText(_increaseLeyend,0,80);
 
           ctx.stroke();
         }
