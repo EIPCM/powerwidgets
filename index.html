@@ -2196,9 +2196,9 @@ window.onload = function()
      _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
      _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
 
-     setProgressPowerBar(_l2,3); //1
-     setProgressPowerBar(_l3,1); //2
-     setProgressPowerBar(_l1,2); //3
+     setProgressPowerBar(_l2,1); // political
+     setProgressPowerBar(_l3,2); // social
+     setProgressPowerBar(_l1,3); // personal
 
 
 
@@ -2217,9 +2217,9 @@ window.onload = function()
      // setg_pa(_h1);
      // setg_so(_h2);
      // setg_in(_h3);
-     addPowerBarLevelsPA(_l2,_h1);
-     addPowerBarLevelsSO(_l3,_h2);
-     addPowerBarLevelsIN(_l1,_h3);
+     addPowerBarLevelsPA(_l2,_h2);
+     addPowerBarLevelsSO(_l3,_h3);
+     addPowerBarLevelsIN(_l1,_h1);
      _totalProgress = _l1 + _l2 + _l3;
      document.getElementById("total_score").innerHTML = _totalProgress;
      setWardenProgress(_totalProgress);
