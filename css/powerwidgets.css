@@ -138,6 +138,7 @@ html,body{
   height: 15px;
   width: 15px;
   margin-left: 2px;
+  display: none;
 }
 .fill{
   width: 50%;
