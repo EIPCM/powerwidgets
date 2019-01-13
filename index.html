@@ -1262,9 +1262,12 @@ function addCircularLevelsRA(l){
 // setTimeout(function(){ changeProgress() }, 1000);
 function setProgressPowerBar(p,n){
   _MAX_POINTS_LEVEL = 4000;
-  lrp = p - (Math.floor( p / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
-  p = lrp * 100 / _MAX_POINTS_LEVEL;
-
+  if(p > _MAX_POINTS_LEVEL){
+    P = _MAX_POINTS_LEVEL;
+  }
+  // lrp = p - (Math.floor( p / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
+  // p = lrp * 100 / _MAX_POINTS_LEVEL;
+  p = (p / _MAX_POINTS_LEVEL)  * 100;
   _pbar = document.getElementById("powerBar"+n);
   _pbar.style.width = p + "%";
 }
