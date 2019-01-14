@@ -1195,7 +1195,7 @@ function setg_in(p){
   document.getElementById("g_in").innerHTML = "/ "+numberWithCommas(Math.round(p));
 }
 function changeProgress(la,lb,lc){
-  var _MAX_POINTS_LEVEL = 10000;
+  var _MAX_POINTS_LEVEL = 4000;
   lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
   lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
