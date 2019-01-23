@@ -1,4 +1,4 @@
-Pathway,Energy_Prod,Natural_Omo,Rec_Agricult,Turkana_Fish,Irr_Agricult,Energy_Prod_n,Natural_Omo_n,Rec_Agricult_n,Turkana_Fish_n,Irr_Agricult_n
+Pathway,Hydropower Production,Deviation from natural condition (Omo) ,Deviation from flood pulse (recession) ,Deviation from natural fish production (Turkana),Normalised water deficit (irrigation) ,Energy_Prod_n,Natural_Omo_n,Rec_Agricult_n,Turkana_Fish_n,Irr_Agricult_n
 P0.10,200.00471966766,27.057942025858,8.20085701699734,1.15773074320697,0,0.159835479263133,0.899142624697353,0.993379736056785,0.838774485447998,0
 P0.11,208.005251056648,19.1372050150965,28.481341582564,1.4570010494639,0,0.192412929150615,0.942860903188013,0.977008012901258,0.785340584838191,0
 P0.12,204.02923356326,23.9292021014711,23.3775544335148,1.23217611073449,0,0.176222940717986,0.916411614079699,0.981128121076131,0.825482467208438,0

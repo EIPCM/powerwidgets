@@ -241,9 +241,30 @@ function render(_filter){
         .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
       .append("text")
         .style("text-anchor", "middle")
-        .attr("y", -9)
-        .text(function(d) { return d; });
+        .attr("y", -12)
+        .text(function(d,i) {
+           _x = d.split(" ");
+           if(_x.length > 3) {
+             return _x.slice(0,3).join(" ");
+           }else{
+             return d;
+           };
+         });
 
+        g.append("g")
+            .attr("class", "axis")
+            .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+          .append("text")
+            .style("text-anchor", "middle")
+            .attr("y", -2 )
+            .text(function(d,i) {
+               _x = d.split(" ");
+               if(_x.length > 3) {
+                 return _x.slice(3,_x.length).join(" ");
+               }else{
+                 return "";
+               };
+             });
     // Add and store a brush for each axis.
     g.append("g")
         .attr("class", "brush")
