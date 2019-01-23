@@ -52,7 +52,12 @@ svg {
     </svg>
     <div class="controls">
       <div class="indicators_wrapper">
-        <div class="label" id="label">Selected Pathway: - </div>
+        <div class="label" id="label" style="width:200px">Selected Pathway: - </div>
+        <div class="label" id="label_ep" style="width:140px" > Energy_prod: - </div>
+        <div class="label" id="label_no" style="width:140px">Natural_Omo: - </div>
+        <div class="label" id="label_ra" style="width:140px">Rec_Agricult: - </div>
+        <div class="label" id="label_tf" style="width:140px">Turkana_Fish: - </div>
+
       </div>
 
       <hr>
@@ -112,7 +117,7 @@ function render(_filter){
     })
     // Extract the list of dimensions and create a scale for each.
     x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
-      return d != "Pathway" && (y[d] = d3.scale.linear()
+      return d != "Pathway" && !d.includes("_n")&& (y[d] = d3.scale.linear()
           .domain(d3.extent(cars, function(p) { return +p[d]; }))
           .range([height, 0]));
     }));
@@ -184,6 +189,10 @@ function render(_filter){
     svg.selectAll("path").on("mouseover",handleMouseOver);
     function handleMouseOut(d,i){
       document.getElementById("label").innerHTML = "Selected Pathway: - ";
+      document.getElementById("label_ep").innerHTML = "Energy_prod: -";
+      document.getElementById("label_no").innerHTML = "Natural_Omo: -";
+      document.getElementById("label_ra").innerHTML = "Rec_Agricult: -";
+      document.getElementById("label_tf").innerHTML = "Turkana_Fish: -";
 
       var sel = d3.select(this);
       sel.style("stroke-width",1);
@@ -197,6 +206,16 @@ function render(_filter){
     // Create Event Handlers for mouse
     function handleMouseOver(d, i) {  // Add interactivity
       document.getElementById("label").innerHTML = "Selected Pathway: " + d.Pathway;
+      ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
+      no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
+      ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
+      tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
+
+      document.getElementById("label_ep").innerHTML = "Energy_prod: "+ep;
+      document.getElementById("label_no").innerHTML = "Natural_Omo: "+no;
+      document.getElementById("label_ra").innerHTML = "Rec_Agricult: "+ra;
+      document.getElementById("label_tf").innerHTML = "Turkana_Fish: "+tf;
+
       var sel = d3.select(this);
       sel.moveToFront();
       sel.style("stroke-width",2);
