@@ -185,8 +185,8 @@ function render(_filter){
 
           );
 
-    svg.selectAll("path").on("mouseout",handleMouseOut);
-    svg.selectAll("path").on("mouseover",handleMouseOver);
+    svg.selectAll(".foreground path").on("mouseout",handleMouseOut);
+    svg.selectAll(".foreground path").on("mouseover",handleMouseOver);
     function handleMouseOut(d,i){
       document.getElementById("label").innerHTML = "Selected Pathway: - ";
       document.getElementById("label_ep").innerHTML = "Energy_prod: -";
@@ -195,8 +195,13 @@ function render(_filter){
       document.getElementById("label_tf").innerHTML = "Turkana_Fish: -";
 
       var sel = d3.select(this);
-      sel.style("stroke-width",1);
-      sel.style("stroke","steelblue");
+      if(sel.attr("display") != "none"){
+        sel.moveToFront();
+        sel.style("stroke-width",1);
+        sel.style("stroke","steelblue");
+      }
+
+
       // paths = svg.selectAll("path");
       // paths.style("stroke","steelblue");
       // paths.style("stroke-width",1);
@@ -217,9 +222,11 @@ function render(_filter){
       document.getElementById("label_tf").innerHTML = "Turkana_Fish: "+tf;
 
       var sel = d3.select(this);
-      sel.moveToFront();
-      sel.style("stroke-width",2);
-      sel.style("stroke","red");
+      if(sel.attr("display") != "none"){
+        sel.moveToFront();
+        sel.style("stroke-width",2);
+        sel.style("stroke","red");
+      }
 
 
     }
