@@ -51,23 +51,61 @@ svg {
     <svg width="980" height="540">
     </svg>
     <div class="controls">
+      <div class="indicator_title red" id="label">Selected Pathway: -</div>
       <div class="indicators_wrapper">
-        <div class="label" id="label" style="width:200px">Selected Pathway: - </div>
-        <div class="label" id="label_ep" style="width:140px" > Energy_prod: - </div>
-        <div class="label" id="label_no" style="width:140px">Natural_Omo: - </div>
-        <div class="label" id="label_ra" style="width:140px">Rec_Agricult: - </div>
-        <div class="label" id="label_tf" style="width:140px">Turkana_Fish: - </div>
+        <div class="indicator">
+          <div class="indicator_img_wrapper">
+            <img class="indicator_img" src="img/newtool/ep.png"></img>
+          </div>
+          <div class="label title" style="width:140px" > Hydropower production</div>
+          <div class="label result" id="label_ep">-</div>
+        </div>
+        <div class="indicator">
+          <div class="indicator_img_wrapper">
+            <img class="indicator_img" src="img/newtool/no.png"></img>
+          </div>
+          <div class="label title"  style="width:140px">Deviation from natural condition (Omo)</div>
+          <div class="label result" id="label_no">-</div>
+
+        </div>
+        <div class="indicator">
+          <div class="indicator_img_wrapper">
+            <img class="indicator_img" src="img/newtool/ra.png"></img>
+          </div>
+          <div class="label title"  style="width:140px">Deviation from flood pulse (recession)</div>
+          <div class="label result" id="label_ra">-</div>
+
+        </div>
+
+        <div class="indicator">
+          <div class="indicator_img_wrapper">
+            <img class="indicator_img" src="img/newtool/tf.png"></img>
+          </div>
+          <div class="label title" style="width:140px">Deviation from natural fish production (Turkana)</div>
+          <div class="label result" id="label_tf">-</div>
+
+        </div>
+        <div class="indicator">
+          <div class="indicator_img_wrapper">
+            <img class="indicator_img" src="img/newtool/ia.png"></img>
+          </div>
+          <div class="label title" style="width:140px">Normalised water deficit (irrigation)</div>
+          <div class="label result" id="label_ia">-</div>
+
+        </div>
 
       </div>
 
       <hr>
+      <div class="indicator_title">Filters</div>
+
       <div class="label">Show Pathway: </div>
       <select onchange="filterPathway()" id="filter_pathway">
-        <option>All</option>
-        <option>P0</option>
-        <option>P1</option>
-        <option>P2</option>
-        <option>P3</option>
+        <option value="All">All</option>
+        <option value="P0">P0 - Baseline</option>
+        <option value="P1">P1 - Future with Koysha</option>
+        <option value="P2">P2 - Future with agricultural districts</option>
+        <option value="P3">P3 - Future with Koysha and agricultural districts</option>
 
       </select>
     </div>
@@ -77,7 +115,7 @@ svg {
 
 </body>
 
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="js/d3.v3.min.js"></script>
 <script>
 _LABELS ={
   "Natural_Omo":"Deviation from natural condition in the Omo Delta",
@@ -188,11 +226,12 @@ function render(_filter){
     svg.selectAll(".foreground path").on("mouseout",handleMouseOut);
     svg.selectAll(".foreground path").on("mouseover",handleMouseOver);
     function handleMouseOut(d,i){
-      document.getElementById("label").innerHTML = "Selected Pathway: - ";
-      document.getElementById("label_ep").innerHTML = "Energy_prod: -";
-      document.getElementById("label_no").innerHTML = "Natural_Omo: -";
-      document.getElementById("label_ra").innerHTML = "Rec_Agricult: -";
-      document.getElementById("label_tf").innerHTML = "Turkana_Fish: -";
+      document.getElementById("label").innerHTML = "Selected Pathway: -";
+      document.getElementById("label_ep").innerHTML = "-";
+      document.getElementById("label_no").innerHTML = "-";
+      document.getElementById("label_ra").innerHTML = "-";
+      document.getElementById("label_tf").innerHTML = "-";
+      document.getElementById("label_ia").innerHTML = "-";
 
       var sel = d3.select(this);
       if(sel.attr("display") != "none"){
@@ -210,16 +249,19 @@ function render(_filter){
     }
     // Create Event Handlers for mouse
     function handleMouseOver(d, i) {  // Add interactivity
-      document.getElementById("label").innerHTML = "Selected Pathway: " + d.Pathway;
+      document.getElementById("label").innerHTML = "Selected Pathway: " +d.Pathway;
       ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
       no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
       ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
       tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
+      ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
 
-      document.getElementById("label_ep").innerHTML = "Energy_prod: "+ep;
-      document.getElementById("label_no").innerHTML = "Natural_Omo: "+no;
-      document.getElementById("label_ra").innerHTML = "Rec_Agricult: "+ra;
-      document.getElementById("label_tf").innerHTML = "Turkana_Fish: "+tf;
+
+      document.getElementById("label_ep").innerHTML = ep;
+      document.getElementById("label_no").innerHTML = no;
+      document.getElementById("label_ra").innerHTML = ra;
+      document.getElementById("label_tf").innerHTML = tf;
+      document.getElementById("label_ia").innerHTML = ia;
 
       var sel = d3.select(this);
       if(sel.attr("display") != "none"){

@@ -22,9 +22,37 @@ header{
   margin-right:80px;
   padding:15px;
   border: 1px solid black;
+  padding-top:0px;
 }
 .label{
   font-weight: bold;
+}
+.red{
+    color: red;
+}
+.indicator{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.indicator_title{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  height: 40px;
+}
+.label.title {
+  height: 90px
+}
+.label.result{
+  font-size: 17px;
+}
+.indicator_img_wrapper{
+  height: 40px;
+}
+
+.indicator_img{
+  width: 30px;
 }
 .indicators_wrapper{
   display: flex;
