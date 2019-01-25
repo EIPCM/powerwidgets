@@ -11,10 +11,12 @@ header{
   margin-left: 5px;
 }
 #svg_wrapper{
-  height: 100%;
-  width: 980px;
-  margin-left: auto;
-  margin-right: auto;
+}
+#main_flex{
+  display: flex;
+  padding:50px;
+  height: calc( 100% - 50px);
+  justify-content: space-between;
 }
 .controls{
   text-align: left;
@@ -37,7 +39,6 @@ header{
 }
 .indicator_title{
   font-size: 18px;
-  text-align: center;
   font-weight: bold;
   height: 30px;
 }
@@ -67,10 +68,18 @@ header{
   padding:5px;
 }
 .filters_area{
+  height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
 }
 .filters_area div{
   width: 100%;
+}
+.filter{
+  min-height: 100px;
+}
+
+#controls_area{
+  border: 1px solid black;
+  padding: 10px;
 }

@@ -46,60 +46,60 @@ svg {
       <img src="img/newtool/dafne_logo.png" height="40"></img>
     </div>
   </header>
+  <div id="main_flex">
 
-  <div id="svg_wrapper">
-    <svg width="980" height="510">
-    </svg>
-    <div class="controls">
-      <div class="indicator_title red" id="label">Selected Pathway: -</div>
-      <div class="indicators_wrapper">
-        <div class="indicator">
-          <div class="indicator_img_wrapper">
-            <img class="indicator_img" src="img/newtool/ep.png"></img>
+    <div id="svg_wrapper">
+      <svg width="980" height="510">
+      </svg>
+      <div class="controls">
+        <div class="indicator_title red" id="label">Selected Pathway: -</div>
+        <div class="indicators_wrapper">
+          <div class="indicator">
+            <div class="indicator_img_wrapper">
+              <img class="indicator_img" src="img/newtool/ep.png"></img>
+            </div>
+            <div class="label result" id="label_ep">-</div>
           </div>
-          <div class="label title" style="width:140px" > Hydropower production</div>
-          <div class="label result" id="label_ep">-</div>
-        </div>
-        <div class="indicator">
-          <div class="indicator_img_wrapper">
-            <img class="indicator_img" src="img/newtool/no.png"></img>
-          </div>
-          <div class="label title"  style="width:140px">Deviation from natural condition (Omo)</div>
-          <div class="label result" id="label_no">-</div>
+          <div class="indicator">
+            <div class="indicator_img_wrapper">
+              <img class="indicator_img" src="img/newtool/no.png"></img>
+            </div>
+            <div class="label result" id="label_no">-</div>
 
-        </div>
-        <div class="indicator">
-          <div class="indicator_img_wrapper">
-            <img class="indicator_img" src="img/newtool/ra.png"></img>
           </div>
-          <div class="label title"  style="width:140px">Deviation from flood pulse (recession)</div>
-          <div class="label result" id="label_ra">-</div>
+          <div class="indicator">
+            <div class="indicator_img_wrapper">
+              <img class="indicator_img" src="img/newtool/ra.png"></img>
+            </div>
+            <div class="label result" id="label_ra">-</div>
 
-        </div>
-
-        <div class="indicator">
-          <div class="indicator_img_wrapper">
-            <img class="indicator_img" src="img/newtool/tf.png"></img>
           </div>
-          <div class="label title" style="width:140px">Deviation from natural fish production (Turkana)</div>
-          <div class="label result" id="label_tf">-</div>
 
-        </div>
-        <div class="indicator">
-          <div class="indicator_img_wrapper">
-            <img class="indicator_img" src="img/newtool/ia.png"></img>
+          <div class="indicator">
+            <div class="indicator_img_wrapper">
+              <img class="indicator_img" src="img/newtool/tf.png"></img>
+            </div>
+            <div class="label result" id="label_tf">-</div>
+
           </div>
-          <div class="label title" style="width:140px">Normalised water deficit (irrigation)</div>
-          <div class="label result" id="label_ia">-</div>
+          <div class="indicator">
+            <div class="indicator_img_wrapper">
+              <img class="indicator_img" src="img/newtool/ia.png"></img>
+            </div>
+            <div class="label result" id="label_ia">-</div>
+
+          </div>
 
         </div>
-
       </div>
+    </div>
 
-      <hr>
+    <div id="controls_area">
+
       <div class="indicator_title">Filters</div>
+
       <div class="filters_area">
-        <div>
+        <div class="filter">
           <div class="label">Show Pathway Class: </div>
           <select onchange="filterPathway()" id="filter_pathway">
             <option value="All">All</option>
@@ -110,7 +110,7 @@ svg {
 
           </select>
         </div>
-        <div>
+        <div class="filter">
           <div class="label">Show Pathway:</div>
           <div class="label">(Select 2 or more. Use Ctrl + Click / ⌘ + Click)</div>
 
@@ -118,11 +118,10 @@ svg {
           </select>
         </div>
       </div>
-
     </div>
 
-
   </div>
+
 
 </body>
 
@@ -337,6 +336,7 @@ function render(_filter,_pathwaysList){
         .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
         .append("text")
         .style("text-anchor", "middle")
+        .style("font-weight","bold")
         .attr("y", -21)
         .text(function(d,i) {
            _x = d.split(" ");
@@ -352,6 +352,7 @@ function render(_filter,_pathwaysList){
             .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
           .append("text")
             .style("text-anchor", "middle")
+            .style("font-weight","bold")
             .attr("y", -10 )
             .text(function(d,i) {
                _x = d.split(" ");
