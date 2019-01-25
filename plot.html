@@ -2,6 +2,8 @@
 <meta charset="utf-8">
 <head>
   <link rel="stylesheet" type="text/css" href="css/plot.css">
+  <link href="css/switchery.css" rel="stylesheet">
+  <script type="text/javascript" src="js/switchery.js"></script>
 </head>
 
 <style>
@@ -49,6 +51,13 @@ svg {
   <div id="main_flex">
 
     <div id="svg_wrapper">
+
+      <div class="switch">
+          <div> All pathways</div>
+          <div> <input type="checkbox" class="js-switch" /> </div>
+          <div> Saved Pathways </div>
+
+        </div>
       <svg width="980" height="510">
       </svg>
       <div class="controls">
@@ -91,6 +100,8 @@ svg {
           </div>
 
         </div>
+        <button type="button" id="mark_pathway_btn">Mark this Pathway</button>
+
       </div>
     </div>
 
@@ -117,6 +128,10 @@ svg {
           <select multiple="multiple" id="pathways_selector" style="width: 100%;" onchange="filterPathwayList()">
           </select>
         </div>
+        <div class="filter">
+          <div class="label">Save Pathway</div>
+          <div class="label">Pasdas</div>
+        </div>
       </div>
     </div>
 
@@ -127,6 +142,7 @@ svg {
 
 <script src="js/d3.v3.min.js"></script>
 <script>
+var CLICK_MODE = false;
 _LABELS ={
   "Natural_Omo":"Deviation from natural condition in the Omo Delta",
   "Turkana_Fish":"Deviation from fish natural production in the Lake Turkana",
@@ -251,20 +267,40 @@ function render(_filter,_pathwaysList){
 
     svg.selectAll(".foreground path").on("mouseout",handleMouseOut);
     svg.selectAll(".foreground path").on("mouseover",handleMouseOver);
-    function handleMouseOut(d,i){
-      document.getElementById("label").innerHTML = "Selected Pathway: -";
-      document.getElementById("label_ep").innerHTML = "-";
-      document.getElementById("label_no").innerHTML = "-";
-      document.getElementById("label_ra").innerHTML = "-";
-      document.getElementById("label_tf").innerHTML = "-";
-      document.getElementById("label_ia").innerHTML = "-";
+    svg.selectAll(".foreground path").on("click",handleMouseClick);
+    function handleMouseClick(d,i){
+      var btn =  document.getElementById("mark_pathway_btn");
 
-      var sel = d3.select(this);
-      if(sel.attr("display") != "none"){
-        sel.moveToFront();
+      if(CLICK_MODE){
+        btn.style.display = "none";
+        var sel = d3.selectAll(".foreground path");
         sel.style("stroke-width",1);
         sel.style("stroke","steelblue");
+      }else{
+        btn.style.display = "block";
+
       }
+      CLICK_MODE = !CLICK_MODE
+
+    }
+    function handleMouseOut(d,i){
+      if(!CLICK_MODE){
+        document.getElementById("label").innerHTML = "Selected Pathway: -";
+        document.getElementById("label_ep").innerHTML = "-";
+        document.getElementById("label_no").innerHTML = "-";
+        document.getElementById("label_ra").innerHTML = "-";
+        document.getElementById("label_tf").innerHTML = "-";
+        document.getElementById("label_ia").innerHTML = "-";
+
+        var sel = d3.select(this);
+        if(sel.attr("display") != "none"){
+          sel.moveToFront();
+          sel.style("stroke-width",1);
+          sel.style("stroke","steelblue");
+        }
+
+      }
+
 
 
       // paths = svg.selectAll("path");
@@ -275,26 +311,29 @@ function render(_filter,_pathwaysList){
     }
     // Create Event Handlers for mouse
     function handleMouseOver(d, i) {  // Add interactivity
-      document.getElementById("label").innerHTML = "Selected Pathway: " +d.Pathway;
-      ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
-      no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
-      ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
-      tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
-      ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
+      if(!CLICK_MODE){
+        document.getElementById("label").innerHTML = "Selected Pathway: " +d.Pathway;
+        ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
+        no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
+        ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
+        tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
+        ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
 
 
-      document.getElementById("label_ep").innerHTML = ep;
-      document.getElementById("label_no").innerHTML = no;
-      document.getElementById("label_ra").innerHTML = ra;
-      document.getElementById("label_tf").innerHTML = tf;
-      document.getElementById("label_ia").innerHTML = ia;
+        document.getElementById("label_ep").innerHTML = ep;
+        document.getElementById("label_no").innerHTML = no;
+        document.getElementById("label_ra").innerHTML = ra;
+        document.getElementById("label_tf").innerHTML = tf;
+        document.getElementById("label_ia").innerHTML = ia;
 
-      var sel = d3.select(this);
-      if(sel.attr("display") != "none"){
-        sel.moveToFront();
-        sel.style("stroke-width",2);
-        sel.style("stroke","red");
+        var sel = d3.select(this);
+        if(sel.attr("display") != "none"){
+          sel.moveToFront();
+          sel.style("stroke-width",2);
+          sel.style("stroke","red");
+        }
       }
+
 
 
     }
@@ -418,5 +457,9 @@ function filterPathwayList(){
 }
 document.getElementById("filter_pathway").selectedIndex = 0;
 render("All",[])
+var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
+elems.forEach(function(html) {
+  var switchery = new Switchery(html, { size: 'small',color:"#468EEB" });
+});
 </script>

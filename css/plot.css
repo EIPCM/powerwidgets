@@ -19,7 +19,7 @@ header{
   justify-content: space-between;
 }
 .controls{
-  text-align: left;
+  text-align: center;
   margin-left:80px;
   margin-right:80px;
   padding:15px;
@@ -82,4 +82,17 @@ header{
 #controls_area{
   border: 1px solid black;
   padding: 10px;
+}
+.switch{
+  display: flex;
+  margin-left: 50px;
+}
+.switch div{
+  margin-right: 20px;
+  font-weight: bold;
+}
+#mark_pathway_btn{
+  display: none;
+  margin-left:auto;
+  margin-right: auto;
 }
