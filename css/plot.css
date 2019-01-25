@@ -39,7 +39,7 @@ header{
   font-size: 18px;
   text-align: center;
   font-weight: bold;
-  height: 40px;
+  height: 30px;
 }
 .label.title {
   height: 90px
@@ -65,4 +65,12 @@ header{
   border: 1px solid black;
   border-radius: 3px;
   padding:5px;
+}
+.filters_area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.filters_area div{
+  width: 100%;
 }

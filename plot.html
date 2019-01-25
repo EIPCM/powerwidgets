@@ -48,7 +48,7 @@ svg {
   </header>
 
   <div id="svg_wrapper">
-    <svg width="980" height="540">
+    <svg width="980" height="510">
     </svg>
     <div class="controls">
       <div class="indicator_title red" id="label">Selected Pathway: -</div>
@@ -98,16 +98,27 @@ svg {
 
       <hr>
       <div class="indicator_title">Filters</div>
+      <div class="filters_area">
+        <div>
+          <div class="label">Show Pathway Class: </div>
+          <select onchange="filterPathway()" id="filter_pathway">
+            <option value="All">All</option>
+            <option value="P0">P0 - Baseline</option>
+            <option value="P1">P1 - Future with Koysha</option>
+            <option value="P2">P2 - Future with agricultural districts</option>
+            <option value="P3">P3 - Future with Koysha and agricultural districts</option>
 
-      <div class="label">Show Pathway: </div>
-      <select onchange="filterPathway()" id="filter_pathway">
-        <option value="All">All</option>
-        <option value="P0">P0 - Baseline</option>
-        <option value="P1">P1 - Future with Koysha</option>
-        <option value="P2">P2 - Future with agricultural districts</option>
-        <option value="P3">P3 - Future with Koysha and agricultural districts</option>
+          </select>
+        </div>
+        <div>
+          <div class="label">Show Pathway:</div>
+          <div class="label">(Select 2 or more. Use Ctrl + Click / ⌘ + Click)</div>
 
-      </select>
+          <select multiple="multiple" id="pathways_selector" style="width: 100%;" onchange="filterPathwayList()">
+          </select>
+        </div>
+      </div>
+
     </div>
 
 
@@ -124,13 +135,23 @@ _LABELS ={
   "Irr_Agricult":"Normalized water deficit in the two districts",
   "Rec_Agricult":"Deviation from artificial flood pulse for Recession Agriculture"
 }
-function render(_filter){
+function updatePathwaysList(list){
+  _option = "<option value='%s'>%s</option>";
+  _options = "";
+  _pSelector = document.getElementById("pathways_selector");
+  list.forEach(function(p){
+    _pSelector.innerHTML = "";
+    _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
+  });
+  _pSelector.innerHTML = _options;
+}
+function render(_filter,_pathwaysList){
   if(_filter == "All"){
     _filter = "P"
   }
   d3.select("svg").html("");
 
-  var margin = {top: 80, right: 10, bottom: 10, left: 10},
+  var margin = {top: 80, right: 10, bottom: 0, left: 10},
       width = 960 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
@@ -151,15 +172,21 @@ function render(_filter){
 
   d3.csv("full.csv", function(error, cars) {
     cars = cars.filter(function(row) {
-      return row['Pathway'].includes(_filter);
+      if(_pathwaysList.length == 0){
+        return row['Pathway'].includes(_filter)
+      }else{
+        return row['Pathway'].includes(_filter) && _pathwaysList.includes(row['Pathway']);
+      }
     })
     // Extract the list of dimensions and create a scale for each.
     x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
-      return d != "Pathway" && !d.includes("_n")&& (y[d] = d3.scale.linear()
+      return d != "Pathway" && !d.includes("_n") && (y[d] = d3.scale.linear()
           .domain(d3.extent(cars, function(p) { return +p[d]; }))
           .range([height, 0]));
     }));
-
+    if(_pathwaysList.length == 0){
+      updatePathwaysList(cars);
+    }
     // Add grey background lines for context.
     background = svg.append("g")
         .attr("class", "background")
@@ -377,9 +404,18 @@ function render(_filter){
 
 function filterPathway(){
   _filter = document.getElementById("filter_pathway").value;
-  render(_filter);
+  render(_filter,[]);
+}
+function filterPathwayList(){
+  _filter = document.getElementById("filter_pathway").value;
+  ps = document.getElementById("pathways_selector").selectedOptions;
+  _pathwaysList = []
+  for (var i = 0; i < ps.length; i++) {
+    _pathwaysList.push(ps[i].value);
+  }
+  render(_filter,_pathwaysList);
 }
 document.getElementById("filter_pathway").selectedIndex = 0;
-render("All")
+render("All",[])
 
 </script>
