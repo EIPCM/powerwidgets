@@ -56,7 +56,6 @@ svg {
           <div> All pathways</div>
           <div> <input type="checkbox" class="js-switch" /> </div>
           <div> Saved Pathways </div>
-
         </div>
       <svg width="980" height="510">
       </svg>
@@ -100,7 +99,7 @@ svg {
           </div>
 
         </div>
-        <button type="button" id="mark_pathway_btn">Mark this Pathway</button>
+        <button type="button" id="mark_pathway_btn" onclick="markPathway();">Mark this Pathway</button>
 
       </div>
     </div>
@@ -129,8 +128,11 @@ svg {
           </select>
         </div>
         <div class="filter">
-          <div class="label">Save Pathway</div>
-          <div class="label">Pasdas</div>
+          <div class="label">Saved Pathways</div>
+          <button onclick="clearPathways()">Clear</button>
+
+          <select multiple="multiple" id="saved_pathways_selector" style="width: 100%;">
+
         </div>
       </div>
     </div>
@@ -143,6 +145,7 @@ svg {
 <script src="js/d3.v3.min.js"></script>
 <script>
 var CLICK_MODE = false;
+var MARKED_PATHWAY = null;
 _LABELS ={
   "Natural_Omo":"Deviation from natural condition in the Omo Delta",
   "Turkana_Fish":"Deviation from fish natural production in the Lake Turkana",
@@ -161,9 +164,14 @@ function updatePathwaysList(list){
   _pSelector.innerHTML = _options;
 }
 function render(_filter,_pathwaysList){
-  if(_filter == "All"){
+  _loadSaved = false;
+  if(_filter == "Saved"){
+    _loadSaved = true;
+  }
+  if(_filter == "All" ){
     _filter = "P"
   }
+
   d3.select("svg").html("");
 
   var margin = {top: 80, right: 10, bottom: 0, left: 10},
@@ -187,7 +195,9 @@ function render(_filter,_pathwaysList){
 
   d3.csv("full.csv", function(error, cars) {
     cars = cars.filter(function(row) {
-      if(_pathwaysList.length == 0){
+      if(_loadSaved){
+        return _pathwaysList.includes(row['Pathway']);
+      }else if(_pathwaysList.length == 0){
         return row['Pathway'].includes(_filter)
       }else{
         return row['Pathway'].includes(_filter) && _pathwaysList.includes(row['Pathway']);
@@ -199,8 +209,10 @@ function render(_filter,_pathwaysList){
           .domain(d3.extent(cars, function(p) { return +p[d]; }))
           .range([height, 0]));
     }));
-    if(_pathwaysList.length == 0){
+    if(_pathwaysList.length == 0 ){
       updatePathwaysList(cars);
+      updateSavedPathwaysList();
+
     }
     // Add grey background lines for context.
     background = svg.append("g")
@@ -270,7 +282,7 @@ function render(_filter,_pathwaysList){
     svg.selectAll(".foreground path").on("click",handleMouseClick);
     function handleMouseClick(d,i){
       var btn =  document.getElementById("mark_pathway_btn");
-
+      MARKED_PATHWAY = d;
       if(CLICK_MODE){
         btn.style.display = "none";
         var sel = d3.selectAll(".foreground path");
@@ -278,6 +290,15 @@ function render(_filter,_pathwaysList){
         sel.style("stroke","steelblue");
       }else{
         btn.style.display = "block";
+        if(isPathwayMarked()){
+          var btn =  document.getElementById("mark_pathway_btn");
+          btn.innerHTML = "Unmark this pathway";
+          btn.setAttribute("onclick","unmarkPathway()")
+        }else{
+          var btn =  document.getElementById("mark_pathway_btn");
+          btn.innerHTML = "Mark this pathway";
+          btn.setAttribute("onclick","markPathway()")
+        }
 
       }
       CLICK_MODE = !CLICK_MODE
@@ -462,4 +483,124 @@ var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 elems.forEach(function(html) {
   var switchery = new Switchery(html, { size: 'small',color:"#468EEB" });
 });
+function loadMarkedPathways(){
+  saved_pathways = localStorage.getItem("saved_pathways");
+  if(saved_pathways == null){ //init db
+    localStorage.setItem("saved_pathways","[]");
+  }
+  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+  saved_pathways = JSON.parse(saved_pathways);
+
+  saved_pathways = saved_pathways.map(p => p.Pathway);
+  render("Saved",saved_pathways)
+}
+function markPathway(){
+  if(MARKED_PATHWAY !=null){
+    saved_pathways = localStorage.getItem("saved_pathways");
+    if(saved_pathways == null){ //init db
+      localStorage.setItem("saved_pathways","[]");
+    }
+    saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+    saved_pathways = JSON.parse(saved_pathways);
+    saved_pathways.push(MARKED_PATHWAY);
+    localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
+    var btn =  document.getElementById("mark_pathway_btn");
+    btn.innerHTML = "Unmark this pathway";
+    btn.setAttribute("onclick","unmarkPathway()")
+    updateSavedPathwaysList();
+
+  }
+}
+function clearPathways(){
+  localStorage.setItem("saved_pathways","[]");
+  var btn =  document.getElementById("mark_pathway_btn");
+  btn.innerHTML = "Mark this pathway";
+  btn.setAttribute("onclick","markPathway()");
+  updateSavedPathwaysList();
+  _checked = document.getElementsByClassName("js-switch")[0].checked;
+  if(_checked){
+    handleSwitch();
+  }
+
+
+}
+function isPathwayMarked(){
+  saved_pathways = localStorage.getItem("saved_pathways");
+  if(saved_pathways == null){ //init db
+    localStorage.setItem("saved_pathways","[]");
+  }
+  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+  saved_pathways = JSON.parse(saved_pathways);
+  _found = false;
+  saved_pathways.forEach(function(p,i){
+    if(p.Pathway == MARKED_PATHWAY.Pathway){
+      _found = true;
+    }
+  });
+  return _found;
+}
+function unmarkPathway(){
+  if(MARKED_PATHWAY !=null){
+    saved_pathways = localStorage.getItem("saved_pathways");
+    if(saved_pathways == null){ //init db
+      localStorage.setItem("saved_pathways","[]");
+    }
+    saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+    saved_pathways = JSON.parse(saved_pathways);
+    saved_pathways.forEach(function(p,i){
+      if(p.Pathway == MARKED_PATHWAY.Pathway){
+        saved_pathways.splice(i,1)
+      }
+    });
+    localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
+    var btn =  document.getElementById("mark_pathway_btn");
+    btn.innerHTML = "Mark this pathway";
+    btn.setAttribute("onclick","markPathway()")
+    updateSavedPathwaysList();
+
+  }
+}
+function updateSavedPathwaysList(){
+  _option = "<option value='%s'>%s</option>";
+  _options = "";
+  _pSelector = document.getElementById("saved_pathways_selector");
+
+  saved_pathways = localStorage.getItem("saved_pathways");
+  if(saved_pathways == null){ //init db
+    localStorage.setItem("saved_pathways","[]");
+  }
+  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+  saved_pathways = JSON.parse(saved_pathways);
+
+
+
+  saved_pathways.forEach(function(p){
+    _pSelector.innerHTML = "";
+    _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
+  });
+  _pSelector.innerHTML = _options;
+
+
+}
+function handleSwitch(){
+  _checked = document.getElementsByClassName("js-switch")[0].checked;
+  if(_checked){
+    document.getElementsByClassName("filter")[0].style.display = "none";
+    document.getElementsByClassName("filter")[1].style.display = "none";
+
+    loadMarkedPathways()
+  }else{
+    document.getElementsByClassName("filter")[0].style.display = "block";
+    document.getElementsByClassName("filter")[1].style.display = "block";
+    render("All",[])
+  }
+
+}
+document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
+  handleSwitch();
+})
+window.onload = function(){
+  handleSwitch();
+}
+
 </script>
