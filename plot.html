@@ -57,7 +57,7 @@ svg {
           <div> <input type="checkbox" class="js-switch" /> </div>
           <div> Saved Pathways </div>
         </div>
-      <svg width="980" height="510">
+      <svg width="980" height="510" id="canvas">
       </svg>
       <div class="controls">
         <div class="indicator_title red" id="label">Selected Pathway: -</div>
@@ -124,14 +124,33 @@ svg {
           <div class="label">Show Pathway:</div>
           <div class="label">(Select 2 or more. Use Ctrl + Click / ⌘ + Click)</div>
 
-          <select multiple="multiple" id="pathways_selector" style="width: 100%;" onchange="filterPathwayList()">
+          <select multiple="multiple" id="pathways_selector" style="width: 96%;" onchange="filterPathwayList()">
           </select>
         </div>
         <div class="filter">
           <div class="label">Saved Pathways</div>
-          <button onclick="clearPathways()">Clear</button>
 
-          <select multiple="multiple" id="saved_pathways_selector" style="width: 100%;">
+          <select multiple="multiple" id="saved_pathways_selector" onchange="showPathwayOptions()" style="width: 96%;">
+          </select>
+          <div class="options">
+              <div class="labe l">Pathway Options</div>
+              <div class="sublabel">Sector:</div>
+              <select id="pw_sector">
+                <option value=""></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+              <div class="sublabel">Name:</div>
+              <input type="text" style="width:91%" id="pw_name"></input>
+              <div class="sublabel">Choose color:</div>
+              <input type="color" id="pw_color"></input>
+              <button onclick="savePathway()">Save</button>
+
+          </div>
+          <button onclick="clearPathways()">Clear</button>
+          <button onclick="export_configuration()">Export configuration</button>
+
 
         </div>
       </div>
@@ -276,18 +295,23 @@ function render(_filter,_pathwaysList){
 
 
           );
-
     svg.selectAll(".foreground path").on("mouseout",handleMouseOut);
     svg.selectAll(".foreground path").on("mouseover",handleMouseOver);
     svg.selectAll(".foreground path").on("click",handleMouseClick);
     function handleMouseClick(d,i){
       var btn =  document.getElementById("mark_pathway_btn");
       MARKED_PATHWAY = d;
+      MARKED_PATHWAY["color"] = "#4682b4";
+      MARKED_PATHWAY["name"] = "";
+      MARKED_PATHWAY["sector"] = 0;
       if(CLICK_MODE){
         btn.style.display = "none";
         var sel = d3.selectAll(".foreground path");
         sel.style("stroke-width",1);
-        sel.style("stroke","steelblue");
+        _checked = document.getElementsByClassName("js-switch")[0].checked;
+        if(!_checked){
+          sel.style("stroke","steelblue");
+        }
       }else{
         btn.style.display = "block";
         if(isPathwayMarked()){
@@ -317,7 +341,10 @@ function render(_filter,_pathwaysList){
         if(sel.attr("display") != "none"){
           sel.moveToFront();
           sel.style("stroke-width",1);
-          sel.style("stroke","steelblue");
+          _checked = document.getElementsByClassName("js-switch")[0].checked;
+          if(!_checked){
+            sel.style("stroke","steelblue");
+          }
         }
 
       }
@@ -351,7 +378,10 @@ function render(_filter,_pathwaysList){
         if(sel.attr("display") != "none"){
           sel.moveToFront();
           sel.style("stroke-width",2);
-          sel.style("stroke","red");
+          _checked = document.getElementsByClassName("js-switch")[0].checked;
+          if(!_checked){
+            sel.style("stroke","red");
+          }
         }
       }
 
@@ -431,7 +461,14 @@ function render(_filter,_pathwaysList){
       .selectAll("rect")
         .attr("x", -8)
         .attr("width", 16);
+        _checked = document.getElementsByClassName("js-switch")[0].checked;
+        if(_checked){
+          loadColors();
+        }
+
+
   });
+
   function position(d) {
     var v = dragging[d];
     return v == null ? x(d) : v;
@@ -493,6 +530,7 @@ function loadMarkedPathways(){
 
   saved_pathways = saved_pathways.map(p => p.Pathway);
   render("Saved",saved_pathways)
+
 }
 function markPathway(){
   if(MARKED_PATHWAY !=null){
@@ -512,6 +550,7 @@ function markPathway(){
   }
 }
 function clearPathways(){
+  document.getElementsByClassName("options")[0].style.display = "none";
   localStorage.setItem("saved_pathways","[]");
   var btn =  document.getElementById("mark_pathway_btn");
   btn.innerHTML = "Mark this pathway";
@@ -588,7 +627,8 @@ function handleSwitch(){
     document.getElementsByClassName("filter")[0].style.display = "none";
     document.getElementsByClassName("filter")[1].style.display = "none";
 
-    loadMarkedPathways()
+    loadMarkedPathways();
+
   }else{
     document.getElementsByClassName("filter")[0].style.display = "block";
     document.getElementsByClassName("filter")[1].style.display = "block";
@@ -602,5 +642,76 @@ document.getElementsByClassName("js-switch")[0].addEventListener("change",functi
 window.onload = function(){
   handleSwitch();
 }
+function showPathwayOptions(){
+  _checked = document.getElementsByClassName("js-switch")[0].checked;
 
+  if(_checked){
+
+    document.getElementsByClassName("options")[0].style.display = "block";
+    sp_selector = document.getElementById("saved_pathways_selector");
+    pw_name     = document.getElementById("pw_name");
+    pw_color    = document.getElementById("pw_color");
+    pw_sector   = document.getElementById("pw_sector");
+    i           = sp_selector.selectedIndex;
+    if(i >= 0){
+      saved_pathways = localStorage.getItem("saved_pathways");
+      saved_pathways = JSON.parse(saved_pathways);
+      pw_name.value = saved_pathways[i].name;
+      pw_color.value = saved_pathways[i].color;
+      pw_sector.selectedIndex = saved_pathways[i].sector;
+    }
+  }
+
+
+}
+function savePathway(){
+
+  document.getElementsByClassName("options")[0].style.display = "none";
+  pw_name     = document.getElementById("pw_name");
+  pw_color    = document.getElementById("pw_color");
+  pw_sector   = document.getElementById("pw_sector");
+  i           = sp_selector.selectedIndex;
+  if(i >= 0){
+    saved_pathways = localStorage.getItem("saved_pathways");
+    saved_pathways = JSON.parse(saved_pathways);
+    saved_pathways[i].name = pw_name.value;
+    saved_pathways[i].color = pw_color.value;
+    saved_pathways[i].sector = pw_sector.selectedIndex;
+    localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
+    //update color in plot
+    d3.selectAll("path")[0].forEach(function(p){
+      if(p.__data__ != 0){
+        if(p.__data__.Pathway == saved_pathways[i].Pathway){
+          var sel = d3.select(p);
+          sel.style("stroke-width",2);
+          sel.style("stroke",pw_color.value);
+
+        }
+      }
+
+    });
+  }
+}
+function loadColors(){
+  saved_pathways = localStorage.getItem("saved_pathways");
+  saved_pathways = JSON.parse(saved_pathways);
+  //update color in plot
+  d3.selectAll(".foreground path")[0].forEach(function(p,i){
+      var sel = d3.select(p);
+      sel.style("stroke-width",1);
+      sel.style("stroke",saved_pathways[i].color);
+  });
+}
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+function export_configuration(){
+  download("export.json",JSON.stringify(localStorage.saved_pathways));
+}
 </script>
