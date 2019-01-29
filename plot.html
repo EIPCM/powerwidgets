@@ -58,6 +58,7 @@ svg {
           <div> All pathways</div>
           <div> <input type="checkbox" class="js-switch" /> </div>
           <div> Marked Pathways </div>
+          <button onclick="review()"> Review </button>
         </div>
       <svg width="980" height="510" id="canvas">
       </svg>
@@ -636,6 +637,12 @@ function updateSavedPathwaysList(){
 }
 function handleSwitch(){
   _checked = document.getElementsByClassName("js-switch")[0].checked;
+  MARKED_PATHWAY = null;
+  CLICK_MODE = false;
+  var btn =  document.getElementById("mark_pathway_btn");
+  btn.style.display = "none";
+  document.getElementById("label").innerHTML = "Selected Pathway: -";
+
   if(_checked){
     document.getElementsByClassName("filter")[0].style.display = "none";
     document.getElementsByClassName("filter")[1].style.display = "none";
@@ -738,5 +745,22 @@ function export_configuration(){
 }
 function print_screen(){
     window.print();
+}
+function review(){
+  _report = ["P0.1","P0.2","P0.3","P0.4","P0.219","P1.1","P1.2","P1.3","P1.4","P1.245","P2.1","P2.2","P2.3","P2.4","P2.5","P2.111","P3.1","P3.2","P3.3","P3.4","P3.5","P3.387"];
+  MARKED_PATHWAY = null;
+  CLICK_MODE = false;
+  var btn =  document.getElementById("mark_pathway_btn");
+  btn.style.display = "none";
+  document.getElementById("label").innerHTML = "Selected Pathway: -";
+
+  x = document.getElementsByClassName("js-switch")[0];
+  if(x.checked){
+    x.click();
+  }
+
+  render("All",_report)
+
+
 }
 </script>
