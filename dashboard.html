@@ -499,18 +499,27 @@
      // circle3.style.strokeDasharray = `${circumference} ${circumference}`;
      // circle3.style.strokeDashoffset = `${circumference}`;
      function changeProgress(la,lb,lc){
-       var _MAX_POINTS_LEVEL = 1000;
-       lra = la - (Math.floor( la / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
-       lrb = lb - (Math.floor( lb / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
-       lrc = lc - (Math.floor( lc / _MAX_POINTS_LEVEL) * _MAX_POINTS_LEVEL) ;
 
+       var _MAX_POINTS_LEVEL = 3000;
 
-       _p1 = lra * 100 / _MAX_POINTS_LEVEL;
-       _p2 = lrb * 100 / _MAX_POINTS_LEVEL;
-       _p3 = lrc * 100 / _MAX_POINTS_LEVEL;
-       // setProgress(_p1);
-       setProgress2(_p2);
-       // setProgress3(_p3);
+       if(la > _MAX_POINTS_LEVEL){
+         la = _MAX_POINTS_LEVEL
+       }
+       if(lb > _MAX_POINTS_LEVEL){
+         lb = _MAX_POINTS_LEVEL
+       }
+       if(lc > _MAX_POINTS_LEVEL){
+         lc = _MAX_POINTS_LEVEL
+       }
+
+       lra = ( la / _MAX_POINTS_LEVEL )*100 ;
+       lrb = ( lb / _MAX_POINTS_LEVEL )*100 ;
+       lrc = ( lc / _MAX_POINTS_LEVEL )*100 ;
+
+       // setProgress(lra);
+       setProgress2(lrb);
+       // setProgress3(lrc);
+
      }
      function setProgress(percent) {
        const offset = circumference - percent / 100 * circumference;
