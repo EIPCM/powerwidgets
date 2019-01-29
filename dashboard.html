@@ -382,57 +382,57 @@
            _l3 += apiClient.getUser().obj.gamification.social["practical.knowledge"];
            _l3 += apiClient.getUser().obj.gamification.social["ready.for.action"];
           _totalProgress = _p1 + _p2 + _p3;
-          document.getElementById("total_personal_score").innerHTML = _p3;
+          document.getElementById("total_personal_score").innerHTML = _totalProgress;
 
           // ---------------------------------------------------------------------//
-          // if(_p1 >= _p2){
-          //   if(_p1 >= _p3){
-          //     // p1 is the largest
-          //     document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].problem_awareness;
-          //     document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
-          //     document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
-          //
-          //     changeProgress(null,_p1,null);
-          //     changeColors(0);
-          //     document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
-          //     document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
-          //
-          //   }else{
-          //     document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].ready_to_act;
-          //     document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
-          //     document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].know_how;
-          //     // p3 is the largest
-          //     changeProgress(null,_p3,null);
-          //     changeColors(2);
-          //     document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
-          //     document.getElementById("img_b").setAttribute("src","img/dashboard/kh.png");
-          //
-          //
-          //   }
-          // }else{
-          //   if(_p2 >= _p3){ //p2 is the largest
-          //     document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].know_how;
-          //     document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
-          //     document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
-          //     // p2 is the largest
-          //     changeProgress(null,_p2,null);
-          //     changeColors(1);
-          //     document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
-          //     document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
-          //
-          //   }else{
-          //     document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].ready_to_act;
-          //     document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
-          //     document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].know_how;
-          //     // p3 is the largest
-          //     changeColors(2);
-          //     document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
-          //     document.getElementById("img_b").setAttribute("src","img/dashboard/kh.png");
-          //     changeProgress(null,_p3,null);
-          //   }
-          //
-          //
-          // }
+          if(_p1 >= _p2){
+            if(_p1 >= _p3){
+              // p1 is the largest
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].know_how;
+              document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
+
+              changeProgress(null,_p1,null);
+              changeColors(0);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
+
+            }else{
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].ready_to_act;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+              document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].know_how;
+              // p3 is the largest
+              changeProgress(null,_p3,null);
+              changeColors(2);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/kh.png");
+
+
+            }
+          }else{
+            if(_p2 >= _p3){ //p2 is the largest
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].know_how;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+              document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
+              // p2 is the largest
+              changeProgress(null,_p2,null);
+              changeColors(1);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
+
+            }else{
+              document.getElementById("highlight_title").innerHTML = _loc[CURRENT_LAN].ready_to_act;
+              document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
+              document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].know_how;
+              // p3 is the largest
+              changeColors(2);
+              document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
+              document.getElementById("img_b").setAttribute("src","img/dashboard/kh.png");
+              changeProgress(null,_p3,null);
+            }
+
+
+          }
           _g1 = apiClient.getGlobal().obj.gamification.personal["problem.awareness"];
           _g1 += apiClient.getGlobal().obj.gamification.political["problem.awareness"];
           _g1 += apiClient.getGlobal().obj.gamification.social["problem.awareness"];
