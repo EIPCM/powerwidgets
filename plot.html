@@ -47,6 +47,8 @@ svg {
     <div id="logo">
       <img src="img/newtool/dafne_logo.png" height="40"></img>
     </div>
+    <div class="title">Screening Tool for Solution Pathays in Omo Turkana Basin</div>
+
   </header>
   <div id="main_flex">
 
@@ -55,7 +57,7 @@ svg {
       <div class="switch">
           <div> All pathways</div>
           <div> <input type="checkbox" class="js-switch" /> </div>
-          <div> Saved Pathways </div>
+          <div> Marked Pathways </div>
         </div>
       <svg width="980" height="510" id="canvas">
       </svg>
@@ -128,7 +130,7 @@ svg {
           </select>
         </div>
         <div class="filter">
-          <div class="label">Saved Pathways</div>
+          <div class="label">Marked Pathways</div>
 
           <select multiple="multiple" id="saved_pathways_selector" onchange="showPathwayOptions()" style="width: 96%;">
           </select>
@@ -146,10 +148,11 @@ svg {
               <div class="sublabel">Choose color:</div>
               <input type="color" id="pw_color"></input>
               <button onclick="savePathway()">Save</button>
-
-          </div>
           <button onclick="clearPathways()">Clear</button>
-          <button onclick="export_configuration()">Export configuration</button>
+          <button onclick="export_configuration()">Export to CSV</button>
+          <button onclick="print_screen()">Print</button>
+
+        </div>
 
 
         </div>
@@ -632,6 +635,8 @@ function handleSwitch(){
   }else{
     document.getElementsByClassName("filter")[0].style.display = "block";
     document.getElementsByClassName("filter")[1].style.display = "block";
+    document.getElementsByClassName("options")[0].style.display = "none";
+
     render("All",[])
   }
 
@@ -704,7 +709,7 @@ function loadColors(){
 }
 function download(filename, text) {
   var element = document.createElement('a');
-  element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
   element.style.display = 'none';
   document.body.appendChild(element);
@@ -712,6 +717,16 @@ function download(filename, text) {
   document.body.removeChild(element);
 }
 function export_configuration(){
-  download("export.json",JSON.stringify(localStorage.saved_pathways));
+  const items = JSON.parse(localStorage.saved_pathways);
+  const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
+  const header = Object.keys(items[0])
+  let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','))
+  csv.unshift(header.join(','))
+  csv = csv.join('\r\n')
+
+  download("export.csv",csv);
+}
+function print_screen(){
+    window.print();
 }
 </script>
