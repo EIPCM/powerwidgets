@@ -300,7 +300,9 @@ function render(_filter,_pathwaysList){
           );
     svg.selectAll(".foreground path").on("mouseout",handleMouseOut);
     svg.selectAll(".foreground path").on("mouseover",handleMouseOver);
+
     svg.selectAll(".foreground path").on("click",handleMouseClick);
+
     function handleMouseClick(d,i){
       var btn =  document.getElementById("mark_pathway_btn");
       MARKED_PATHWAY = d;
@@ -331,6 +333,14 @@ function render(_filter,_pathwaysList){
       CLICK_MODE = !CLICK_MODE
 
     }
+    d3.select("body").on("click",function(){
+      if(MARKED_PATHWAY != null){
+        MARKED_PATHWAY = null;
+        // svg.selectAll(".foreground path").style("stroke","steelblue");
+        // svg.selectAll(".foreground path").style("stroke-width",1);
+
+      }
+    });
     function handleMouseOut(d,i){
       if(!CLICK_MODE){
         document.getElementById("label").innerHTML = "Selected Pathway: -";
