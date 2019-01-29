@@ -394,6 +394,8 @@
 
               changeProgress(null,_p1,null);
               changeColors(0);
+              document.getElementById("total_personal_score").innerHTML = _p1;
+
               document.getElementById("img_a").setAttribute("src","img/dashboard/kh.png");
               document.getElementById("img_b").setAttribute("src","img/dashboard/ra.png");
 
@@ -402,6 +404,8 @@
               document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].know_how;
               // p3 is the largest
+              document.getElementById("total_personal_score").innerHTML = _p3;
+
               changeProgress(null,_p3,null);
               changeColors(2);
               document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
@@ -415,6 +419,7 @@
               document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].ready_to_act;
               // p2 is the largest
+              document.getElementById("total_personal_score").innerHTML = _p2;
               changeProgress(null,_p2,null);
               changeColors(1);
               document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
@@ -425,6 +430,8 @@
               document.getElementById("title_a").innerHTML = _loc[CURRENT_LAN].problem_awareness;
               document.getElementById("title_b").innerHTML = _loc[CURRENT_LAN].know_how;
               // p3 is the largest
+              document.getElementById("total_personal_score").innerHTML = _p3;
+
               changeColors(2);
               document.getElementById("img_a").setAttribute("src","img/dashboard/pa.png");
               document.getElementById("img_b").setAttribute("src","img/dashboard/kh.png");
