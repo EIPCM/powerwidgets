@@ -103,6 +103,7 @@ svg {
 
         </div>
         <button type="button" id="mark_pathway_btn" onclick="markPathway();">Mark this Pathway</button>
+        <button type="button" id="mark_pathway_done" onclick="done();">Done</button>
 
       </div>
     </div>
@@ -306,12 +307,15 @@ function render(_filter,_pathwaysList){
 
     function handleMouseClick(d,i){
       var btn =  document.getElementById("mark_pathway_btn");
+      var btndone =  document.getElementById("mark_pathway_done");
+
       MARKED_PATHWAY = d;
       MARKED_PATHWAY["color"] = "#4682b4";
       MARKED_PATHWAY["name"] = "";
       MARKED_PATHWAY["sector"] = 0;
       if(CLICK_MODE){
         btn.style.display = "none";
+        btndone.style.display = "none";
         var sel = d3.selectAll(".foreground path");
         sel.style("stroke-width",1);
         _checked = document.getElementsByClassName("js-switch")[0].checked;
@@ -320,6 +324,7 @@ function render(_filter,_pathwaysList){
         }
       }else{
         btn.style.display = "block";
+        btndone.style.display = "block";
         if(isPathwayMarked()){
           var btn =  document.getElementById("mark_pathway_btn");
           btn.innerHTML = "Unmark this pathway";
@@ -641,6 +646,8 @@ function handleSwitch(){
   CLICK_MODE = false;
   var btn =  document.getElementById("mark_pathway_btn");
   btn.style.display = "none";
+  var btn =  document.getElementById("mark_pathway_done");
+  btn.style.display = "none";
   document.getElementById("label").innerHTML = "Selected Pathway: -";
 
   if(_checked){
@@ -762,5 +769,19 @@ function review(){
   render("All",_report)
 
 
+}
+function done(){
+  CLICK_MODE = false;
+  MARKED_PATHWAY = null;
+  var btn =  document.getElementById("mark_pathway_btn");
+  var btndone =  document.getElementById("mark_pathway_done");
+  btn.style.display = "none";
+  btndone.style.display = "none";
+  var sel = d3.selectAll(".foreground path");
+  sel.style("stroke-width",1);
+  _checked = document.getElementsByClassName("js-switch")[0].checked;
+  if(!_checked){
+    sel.style("stroke","steelblue");
+  }
 }
 </script>

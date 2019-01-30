@@ -101,6 +101,11 @@ header{
   margin-left:auto;
   margin-right: auto;
 }
+#mark_pathway_done{
+  display: none;
+  margin-left:auto;
+  margin-right: auto;
+}
 .sublabel{
   font-size:14px;
 }
