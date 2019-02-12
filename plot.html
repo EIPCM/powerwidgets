@@ -198,7 +198,7 @@ function render(_filter,_pathwaysList){
 
   d3.select("svg").html("");
 
-  var margin = {top: 80, right: 10, bottom: 0, left: 10},
+  var margin = {top: 110, right: 10, bottom: 0, left: 10},
       width = 960 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
@@ -424,12 +424,12 @@ function render(_filter,_pathwaysList){
         .attr("class", "axis")
         .each(function(d,i) {
           _x = -22;
-          _y = -81;
+          _y = -100;
           if(i >= 2){
               _x = -25;
           }
           if(i == 3){
-            _y = -75;
+            _y = -95;
           }
           d3.select(this).append("image")
           .attr("xlink:href","img/newtool/"+_images[i])
@@ -446,7 +446,7 @@ function render(_filter,_pathwaysList){
         .append("text")
         .style("text-anchor", "middle")
         .style("font-weight","bold")
-        .attr("y", -21)
+        .attr("y", -40)
         .text(function(d,i) {
            _x = d.split(" ");
            if(_x.length > 3) {
@@ -462,7 +462,7 @@ function render(_filter,_pathwaysList){
           .append("text")
             .style("text-anchor", "middle")
             .style("font-weight","bold")
-            .attr("y", -10 )
+            .attr("y", -25 )
             .text(function(d,i) {
                _x = d.split(" ");
                if(_x.length > 3) {
@@ -471,6 +471,17 @@ function render(_filter,_pathwaysList){
                  return "";
                };
              });
+             _units = ["Twh/y","(m3/sec)^2","(m3/sec)^2","-","%"]
+             g.append("g")
+                 .attr("class", "axis")
+                 .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+               .append("text")
+                 .style("text-anchor", "middle")
+                 .attr("y", -10 )
+                 .text(function(d,i) {
+                    _x = d.split(" ");
+                      return _units[i];
+                  });
     // Add and store a brush for each axis.
     g.append("g")
         .attr("class", "brush")
