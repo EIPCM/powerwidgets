@@ -64,6 +64,9 @@ svg {
       </svg>
       <div class="controls">
         <div class="indicator_title red" id="label">Selected Pathway: -</div>
+        <div> <input type="checkbox" class="js-switch" />
+          <span>Absolute Values</span>
+         </div>
         <div class="indicators_wrapper">
           <div class="indicator">
             <div class="indicator_img_wrapper">
@@ -380,11 +383,34 @@ function render(_filter,_pathwaysList){
     function handleMouseOver(d, i) {  // Add interactivity
       if(!CLICK_MODE){
         document.getElementById("label").innerHTML = "Selected Pathway: " +d.Pathway;
-        ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
-        no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
-        ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
-        tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
-        ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
+        // console.log(parseFloat(d["Hydropower Production"]).toFixed(2));
+        // console.log(parseFloat(d["Deviation from natural condition (Omo) "]).toFixed(2));
+        // console.log(parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2));
+        // console.log(parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2));
+        // console.log(parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2));
+
+
+
+        let _checked = document.getElementsByClassName("js-switch")[1].checked;
+        let ep;
+        let no;
+        let ra;
+        let tf;
+        let ia;
+        if(_checked){
+          ep = parseFloat(d["Hydropower Production"]).toFixed(2);
+          no = parseFloat(d["Deviation from natural condition (Omo) "]).toFixed(2);
+          ra = parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2);
+          tf = parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2);
+          ia = parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2);              
+        }else{
+          ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
+          no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
+          ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
+          tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
+          ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
+        }
+
 
 
         document.getElementById("label_ep").innerHTML = ep;
