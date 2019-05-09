@@ -169,15 +169,16 @@ svg {
           <button onclick="print_screen()">Print</button>
 
         </div>
-        <div class="filter">
+
+
+
+        </div>
+        <div class="filter" id="session_filter">
           <hr>
           <div class="label">Saved Sessions</div>
           <select multiple="multiple" id="saved_sessions_selector" style="width: 96%;" onchange="loadSession()">
           </select>
-
-        </div>
-
-
+          <button onclick="export_sessions()">Export Sessions</button>
         </div>
       </div>
     </div>
@@ -209,7 +210,15 @@ function updatePathwaysList(list){
   });
   _pSelector.innerHTML = _options;
 }
+let LAST_FILTER = "All";
+let LAST_PATHWAY_LIST = [];
+let LAST_COLOR = null;
+let LAST_MAX   = null;
 function render(_filter,_pathwaysList,color,_max){
+  LAST_FILTER       = _filter;
+  LAST_PATHWAY_LIST = _pathwaysList;
+  LAST_COLOR        = color;
+  LAST_MAX          = _max;
   _loadSaved = false;
   if(_filter == "Saved"){
     _loadSaved = true;
@@ -283,12 +292,24 @@ function render(_filter,_pathwaysList,color,_max){
         return row['Pathway'].includes(_filter) && _pathwaysList.includes(row['Pathway']);
       }
     })
-    // Extract the list of dimensions and create a scale for each.
-    x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
-      return d != "Pathway" && !d.includes("_n") && (y[d] = d3.scale.linear()
-          .domain(d3.extent(cars, function(p) { return +p[d]; }))
-          .range([height, 0]));
-    }));
+    let _absChecked = document.getElementsByClassName("js-switch")[1].checked;
+
+    if(_absChecked){
+      // Extract the list of dimensions and create a scale for each.
+      x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
+        return d != "Pathway" && !d.includes("_n") && (y[d] = d3.scale.linear()
+            .domain(d3.extent(cars, function(p) { return +p[d]; }))
+            .range([height, 0]));
+      }));
+    }else{
+      // Extract the list of dimensions and create a scale for each.
+      x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
+        return d != "Pathway" && d.includes("_n") && (y[d] = d3.scale.linear()
+            .domain(d3.extent(cars, function(p) { return +p[d]; }))
+            .range([height, 0]));
+      }));
+    }
+
     if(_pathwaysList.length == 0 ){
       updatePathwaysList(cars);
       updateSavedPathwaysList();
@@ -833,20 +854,28 @@ function handleSwitch(){
   if(_checked){
     document.getElementsByClassName("filter")[0].style.display = "none";
     document.getElementsByClassName("filter")[1].style.display = "none";
+    document.getElementById("session_filter").style.display = "block";
 
     loadMarkedPathways();
 
   }else{
     document.getElementsByClassName("filter")[0].style.display = "block";
     document.getElementsByClassName("filter")[1].style.display = "block";
+    document.getElementById("session_filter").style.display = "none";
     document.getElementsByClassName("options")[0].style.display = "none";
 
     render("All",[])
   }
 
 }
+function handleAbsoluteValuesSwitch(){
+  render(LAST_FILTER,LAST_PATHWAY_LIST,LAST_COLOR,LAST_MAX);
+}
 document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
   handleSwitch();
+})
+document.getElementsByClassName("js-switch")[1].addEventListener("change",function(e){
+  handleAbsoluteValuesSwitch();
 })
 window.onload = function(){
   handleSwitch();
@@ -950,6 +979,16 @@ function export_configuration(){
   csv = csv.join('\r\n')
 
   download("export.csv",csv);
+}
+function export_sessions(){
+  const items = JSON.parse(localStorage.saved_sessions);
+  const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
+  const header = Object.keys(items[0])
+  let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','))
+  csv.unshift(header.join(','))
+  csv = csv.join('\r\n')
+
+  download("sessions.csv",csv);
 }
 function print_screen(){
     window.print();
