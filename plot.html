@@ -109,6 +109,11 @@ svg {
         <button type="button" id="mark_pathway_btn" onclick="markPathway();">Mark this Pathway</button>
         <button type="button" id="mark_pathway_done" onclick="done();">Done</button>
 
+        <input value="Clear"  type="button" onclick="filterClear()"  id="filterClearBtn" style="visibility:hidden"></input>
+        <div>
+          <input value="Mark all pathways" type="button" id="filterThresholdBtn" style="visibility:hidden" onclick="showSessionPopup()"></input>
+        </div>
+
       </div>
     </div>
 
@@ -129,13 +134,7 @@ svg {
           </select>
         </div>
         <div class="filter">
-          <div class="label">Set a Threshold</div>
-          <input type="text" placeholder="MAX value" id="max_val"></input>
-          <input value="Set" type="button" onclick="filterMax()"></input>
-          <input value="Clear"  type="button" onclick="filterClear()"></input>
-          <div>
-            <input value="Mark all pathways" type="button" id="filterThresholdBtn" style="visibility:hidden" onclick="showSessionPopup()"></input>
-          </div>
+
 
         </div>
         <div class="filter">
@@ -631,6 +630,9 @@ function render(_filter,_pathwaysList,color,_max){
 
   // Handles a brush event, toggling the display of foreground lines.
   function brush() {
+    document.getElementById("filterThresholdBtn").style.visibility = "visible";
+    document.getElementById("filterClearBtn").style.visibility = "visible";
+
     var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
         extents = actives.map(function(p) { return y[p].brush.extent(); });
     foreground.style("display", function(d) {
@@ -638,16 +640,15 @@ function render(_filter,_pathwaysList,color,_max){
         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
       }) ? null : "none";
     });
+    foreground.attr("class", function(d) {
+      return actives.every(function(p, i) {
+        return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+      }) ? "brushed" : null;
+    });
   }
 
 }
-document.getElementById("max_val")
-    .addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-      filterMax();
-    }
-});
+
 function generateSessionHTML(){
   return '<div>'+
             '<div class="row" style="height: 40px;display:flex;justify-content: space-between;">'+
@@ -666,7 +667,6 @@ function filterMax(){
   let _max = parseFloat(document.getElementById("max_val").value);
   render("All",[],null,_max);
   THRESHOLD_ACTIVE = true;
-  document.getElementById("filterThresholdBtn").style.visibility = "visible";
 }
 function showSessionPopup(){
   Swal.fire({
@@ -714,10 +714,11 @@ function loadSession(){
   // render(_filter,_pathwaysList);
 }
 function filterClear(){
-  let _max = parseFloat(document.getElementById("max_val").value);
   render("All",[]);
   THRESHOLD_ACTIVE = false;
   document.getElementById("filterThresholdBtn").style.visibility = "hidden";
+  document.getElementById("filterClearBtn").style.visibility = "hidden";
+
 
 }
 function filterPathway(){
@@ -942,7 +943,9 @@ function saveSession(){
     saved_sessions = [];
   }
 
-  let data = d3.selectAll("path").data();
+  let data = d3.selectAll(".brushed").data();
+
+
   let session = {
     "name":pw_name,
     "color":pw_color,
