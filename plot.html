@@ -21,7 +21,6 @@ svg {
 
 .foreground path {
   fill: none;
-  stroke: steelblue;
 }
 
 .brush .extent {
@@ -325,6 +324,8 @@ function render(_filter,_pathwaysList,color,_max){
       // Add blue foreground lines for focus.
       foreground = svg.append("g")
           .attr("class", "foreground")
+          .style("fill","none")
+          .style("stroke", "steelblue")
         .selectAll("path")
           .data(cars)
         .enter().append("path")
@@ -332,6 +333,7 @@ function render(_filter,_pathwaysList,color,_max){
     }else{
       // Add custom color
       foreground = svg.append("g")
+      .attr("class", "foreground")
           .style("fill","none")
           .style("stroke", color)
         .selectAll("path")
@@ -429,9 +431,6 @@ function render(_filter,_pathwaysList,color,_max){
     }
     d3.select("body").on("click",function(){
       if(MARKED_PATHWAY != null){
-        // MARKED_PATHWAY = null;
-        // svg.selectAll(".foreground path").style("stroke","steelblue");
-        // svg.selectAll(".foreground path").style("stroke-width",1);
 
       }
     });
@@ -604,7 +603,7 @@ function render(_filter,_pathwaysList,color,_max){
         .attr("width", 16);
         _checked = document.getElementsByClassName("js-switch")[0].checked;
         if(_checked){
-          loadColors();
+          // loadColors();
         }
 
 
@@ -697,10 +696,20 @@ function loadSessions(){
 function loadSession(){
   let saved_sessions  = JSON.parse(localStorage.saved_sessions);
 
-  let i  = document.getElementById("saved_sessions_selector").selectedIndex;
-  let _data = saved_sessions[i].data;
+  // let i  = document.getElementById("saved_sessions_selector").selectedIndex;
+  let y  = document.getElementById("saved_sessions_selector");
+
+  let _indexes = Array.from(y.options).filter(options => options.selected).map(option => option.index)
+
+  // let _data = saved_sessions[i].data;
+  let _data = [];
+  for (var i = 0; i < _indexes.length; i++) {
+    _data = _data.concat(saved_sessions[_indexes[i]].data);
+  }
   let _filter = _data.map( obj => {return obj.Pathway});
-  render("All",_filter,saved_sessions[i].color);
+
+  // saved_sessions[i].color
+  render("All",_filter,"blue");
   //update color in plot
 
 
