@@ -331,15 +331,30 @@ function render(_filter,_pathwaysList,color,_max){
         .enter().append("path")
           .attr("d", path);
     }else{
-      // Add custom color
-      foreground = svg.append("g")
-      .attr("class", "foreground")
-          .style("fill","none")
-          .style("stroke", color)
-        .selectAll("path")
-          .data(cars)
-        .enter().append("path")
-          .attr("d", path);
+      if(typeof(color) == "object"){
+        // Add custom color
+        foreground = svg.append("g")
+        .attr("class", "foreground")
+            .style("fill","none")
+
+          .selectAll("path")
+            .data(cars)
+          .enter().append("path")
+            .attr("d", path)
+            .style("stroke", function(d){
+              return color[d.Pathway];
+            })
+      }else{
+        foreground = svg.append("g")
+        .attr("class", "foreground")
+            .style("fill","none")
+            .style("stroke",color)
+          .selectAll("path")
+            .data(cars)
+          .enter().append("path")
+            .attr("d", path)
+      }
+
     }
 
 
@@ -700,27 +715,26 @@ function loadSession(){
   let y  = document.getElementById("saved_sessions_selector");
 
   let _indexes = Array.from(y.options).filter(options => options.selected).map(option => option.index)
-
   // let _data = saved_sessions[i].data;
-  let _data = [];
-  for (var i = 0; i < _indexes.length; i++) {
-    _data = _data.concat(saved_sessions[_indexes[i]].data);
+   _data = [];
+  _colors = {};
+  for (var z = 0; z < _indexes.length ; z++) {
+    _carray = saved_sessions[_indexes[z]].data;
+    _data = _data.concat(_carray);
+    for (var ii = 0; ii < _carray.length; ii++) {
+      _colors[_carray[ii].Pathway] = saved_sessions[_indexes[z]].color;
+      // console.log(z,ii,_data[ii].Pathway);
+
+    }
+
   }
   let _filter = _data.map( obj => {return obj.Pathway});
 
   // saved_sessions[i].color
-  render("All",_filter,"blue");
+  render("All",_filter,_colors);
   //update color in plot
 
 
-  //
-  // _filter = document.getElementById("filter_pathway").value;
-  // ps = document.getElementById("pathways_selector").selectedOptions;
-  // _pathwaysList = []
-  // for (var i = 0; i < ps.length; i++) {
-  //   _pathwaysList.push(ps[i].value);
-  // }
-  // render(_filter,_pathwaysList);
 }
 function filterClear(){
   render("All",[]);
