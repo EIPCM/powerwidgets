@@ -462,7 +462,7 @@ function render(_filter,_pathwaysList,color,_max){
 
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
-          sel.moveToFront();
+          sel.moveToBack();
           sel.style("stroke-width",1);
           _checked = document.getElementsByClassName("js-switch")[0].checked;
           if(!_checked){
@@ -498,7 +498,7 @@ function render(_filter,_pathwaysList,color,_max){
         let ra;
         let tf;
         let ia;
-        if(_checked){
+        if(!_checked){
           ep = parseFloat(d["Hydropower Production"]).toFixed(2);
           no = parseFloat(d["Deviation from natural condition (Omo) "]).toFixed(2);
           ra = parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2);
@@ -545,6 +545,19 @@ function render(_filter,_pathwaysList,color,_max){
       return this.each(function(){
       this.parentNode.appendChild(this);
       });
+    };
+    // d3.selection.prototype.moveToBack = function() {
+    //   return this.each(function(){
+    //     this.parentNode.appendChild(this);
+    //   });
+    // };
+    d3.selection.prototype.moveToBack = function() {
+         return this.each(function() {
+            var firstChild = this.parentNode.firstChild;
+            if (firstChild) {
+               this.parentNode.insertBefore(this, firstChild); }
+              }
+          );
     };
     _images = ["ep.png","no.png","ra.png","tf.png","ia.png"]
     g.append("g")
@@ -727,7 +740,12 @@ function loadSession(){
     _carray = saved_sessions[_indexes[z]].data;
     _data = _data.concat(_carray);
     for (var ii = 0; ii < _carray.length; ii++) {
-      _colors[_carray[ii].Pathway] = saved_sessions[_indexes[z]].color;
+      if( _colors.hasOwnProperty(_carray[ii].Pathway )) {
+        _colors[_carray[ii].Pathway] = "#3b3b3b";
+      }else{
+        _colors[_carray[ii].Pathway] = saved_sessions[_indexes[z]].color;
+
+      }
       // console.log(z,ii,_data[ii].Pathway);
 
     }
