@@ -177,6 +177,8 @@ svg {
           <select multiple="multiple" id="saved_sessions_selector" style="width: 96%;" onchange="loadSession()">
           </select>
           <button onclick="export_sessions()">Export Sessions</button>
+          <button onclick="delete_sessions()">Delete All Sessions</button>
+
         </div>
       </div>
     </div>
@@ -703,9 +705,12 @@ function loadSessions(){
   let saved_sessions  = JSON.parse(localStorage.saved_sessions);
   let options = "";
   let option  = "<option value='{%val}'>{%val}</option>";
-  for (var i = 0; i < saved_sessions.length; i++) {
-    options += option.replace("{%val}",saved_sessions[i].name).replace("{%val}",saved_sessions[i].name);
+  if(saved_sessions !== null){
+    for (var i = 0; i < saved_sessions.length; i++) {
+      options += option.replace("{%val}",saved_sessions[i].name).replace("{%val}",saved_sessions[i].name);
+    }
   }
+
   document.getElementById("saved_sessions_selector").innerHTML = options;
 }
 function loadSession(){
@@ -1005,6 +1010,11 @@ function export_configuration(){
   csv = csv.join('\r\n')
 
   download("export.csv",csv);
+}
+function delete_sessions(){
+  localStorage.saved_sessions = null;
+  loadSessions();
+  filterClear();
 }
 function export_sessions(){
   const items = JSON.parse(localStorage.saved_sessions);
