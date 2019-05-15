@@ -55,18 +55,22 @@ svg {
     <div id="svg_wrapper">
 
       <div class="switch">
-          <div> All pathways</div>
-          <div> <input type="checkbox" class="js-switch" /> </div>
-          <div> Marked Pathways </div>
+          <div style="display: flex;">
+            <div > All pathways</div>
+            <input type="checkbox" class="js-switch" />
+            <div>Marked Pathways</div>
+          </div>
           <button onclick="review()"> Review </button>
+          <div style="display: flex;">
+            <div>Normalized Values</div>
+            <input type="checkbox" class="js-switch" />
+            <div>Absolute Values</div>
+         </div>
         </div>
       <svg width="980" height="510" id="canvas">
       </svg>
       <div class="controls">
         <div class="indicator_title red" id="label">Selected Pathway: -</div>
-        <div> <input type="checkbox" class="js-switch" />
-          <span>Absolute Values</span>
-         </div>
         <div class="indicators_wrapper">
           <div class="indicator">
             <div class="indicator_img_wrapper">

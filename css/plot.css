@@ -91,7 +91,10 @@ header{
 }
 .switch{
   display: flex;
-  margin-left: 50px;
+  margin-left: 70px;
+  justify-content: space-between;
+  margin-right: 70px;
+
 }
 .switch div{
   margin-right: 20px;
