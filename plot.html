@@ -5,12 +5,14 @@
   <link href="css/switchery.css" rel="stylesheet">
   <script type="text/javascript" src="js/switchery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato:700&display=swap" rel="stylesheet">
 </head>
 
 <style>
 
 svg {
-  font: 10px sans-serif;
+  font-size: 11px;
+  font-family: 'Lato', sans-serif;
 }
 
 .background path {
@@ -47,7 +49,7 @@ svg {
     <div id="logo">
       <img src="img/newtool/dafne_logo.png" height="40"></img>
     </div>
-    <div class="title">Screening Tool for Solution Pathays in Omo Turkana Basin</div>
+    <div class="title">Screening Tool for Solution Pathways in Omo Turkana Basin</div>
 
   </header>
   <div id="main_flex">
@@ -60,7 +62,7 @@ svg {
             <input type="checkbox" class="js-switch" />
             <div>Marked Pathways</div>
           </div>
-          <button onclick="review()"> Review </button>
+          <!-- <button onclick="review()"> Review </button> -->
           <div style="display: flex;">
             <div>Normalized Values</div>
             <input type="checkbox" class="js-switch" />
@@ -178,6 +180,8 @@ svg {
         <div class="filter" id="session_filter">
           <hr>
           <div class="label">Saved Sessions</div>
+          <div class="label">(To Select 2 or more: Use Ctrl + Click / ⌘ + Click)</div>
+
           <select multiple="multiple" id="saved_sessions_selector" style="width: 96%;" onchange="loadSession()">
           </select>
           <button onclick="export_sessions()">Export Sessions</button>
@@ -233,7 +237,7 @@ function render(_filter,_pathwaysList,color,_max){
 
   d3.select("svg").html("");
 
-  var margin = {top: 110, right: 10, bottom: 0, left: 10},
+  var margin = {top: 110, right: 10, bottom: 10, left: 10},
       width = 960 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
@@ -621,7 +625,7 @@ function render(_filter,_pathwaysList,color,_max){
                  .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
                .append("text")
                  .style("text-anchor", "middle")
-                 .attr("y", -10 )
+                 .attr("y", -20 )
                  .text(function(d,i) {
                     _x = d.split(" ");
                       return _units[i];
