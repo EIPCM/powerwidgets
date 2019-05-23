@@ -1043,7 +1043,11 @@ function delete_sessions(){
   filterClear();
 }
 function export_sessions(){
-  const items = JSON.parse(localStorage.saved_sessions);
+  let selected_sessions = document.getElementById("saved_sessions_selector");
+  let selected_sessions_array = Array.from(selected_sessions.options).filter(options => options.selected).map(option => option.value)
+  let items = JSON.parse(localStorage.saved_sessions);
+  items       = items.filter(i => selected_sessions_array.includes(i.name));
+
   const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
   const header = Object.keys(items[0])
   let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','))
