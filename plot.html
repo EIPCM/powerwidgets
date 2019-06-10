@@ -60,7 +60,7 @@ svg {
           <div style="display: flex;">
             <div > All pathways</div>
             <input type="checkbox" class="js-switch" />
-            <div>Marked Pathways</div>
+            <div>Saved Pathways</div>
           </div>
           <!-- <button onclick="review()"> Review </button> -->
           <div style="display: flex;">
@@ -116,10 +116,10 @@ svg {
 
           </div>
           <div>
-            <div type="button" id="mark_pathway_btn" class="button" onclick="markPathway();">Mark this Pathway</div>
+            <div type="button" id="mark_pathway_btn" class="button" onclick="markPathway();">Save this Pathway</div>
             <div class="button"  type="button" id="mark_pathway_done" onclick="done();">Done</div>
-            <div onclick="filterClear()" class="button"  id="filterClearBtn" style="visibility:hidden;margin-left:auto;margin-right:auto;">Clear</div>
-            <div id="filterThresholdBtn" class="button"  style="visibility:hidden;margin-left:auto;margin-right:auto;" onclick="showSessionPopup()">Mark all pathways</div>
+            <div onclick="filterClear()" class="button clear"  id="filterClearBtn" style="visibility:hidden;margin-left:auto;margin-right:auto;">Clear</div>
+            <div id="filterThresholdBtn" class="button"  style="visibility:hidden;margin-left:auto;margin-right:auto;" onclick="showSessionPopup()">Save all pathways</div>
           </div>
 
 
@@ -153,8 +153,8 @@ svg {
             <select multiple="multiple" id="pathways_selector" style="width: 96%;" onchange="filterPathwayList()">
             </select>
           </div>
-          <div class="filter">
-            <div class="label">Marked Pathways</div>
+          <!-- <div class="filter">
+            <div class="label">Saved Pathways</div>
 
             <select multiple="multiple" id="saved_pathways_selector" onchange="showPathwayOptions()" style="width: 96%;">
             </select>
@@ -176,7 +176,7 @@ svg {
             <button onclick="export_configuration()">Export to CSV</button>
             <button onclick="print_screen()">Print</button>
 
-          </div>
+          </div> -->
 
 
 
@@ -447,11 +447,11 @@ function render(_filter,_pathwaysList,color,_max){
         btndone.style.display = "block";
         if(isPathwayMarked()){
           var btn =  document.getElementById("mark_pathway_btn");
-          btn.innerHTML = "Unmark this pathway";
+          btn.innerHTML = "Save this pathway";
           btn.setAttribute("onclick","unmarkPathway()")
         }else{
           var btn =  document.getElementById("mark_pathway_btn");
-          btn.innerHTML = "Mark this pathway";
+          btn.innerHTML = "Save this pathway";
           btn.setAttribute("onclick","markPathway()")
         }
 
@@ -830,7 +830,7 @@ function markPathway(){
     saved_pathways.push(MARKED_PATHWAY);
     localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
     var btn =  document.getElementById("mark_pathway_btn");
-    btn.innerHTML = "Unmark this pathway";
+    btn.innerHTML = "Save this pathway";
     btn.setAttribute("onclick","unmarkPathway()")
     updateSavedPathwaysList();
 
@@ -840,7 +840,7 @@ function clearPathways(){
   document.getElementsByClassName("options")[0].style.display = "none";
   localStorage.setItem("saved_pathways","[]");
   var btn =  document.getElementById("mark_pathway_btn");
-  btn.innerHTML = "Mark this pathway";
+  btn.innerHTML = "Save this pathway";
   btn.setAttribute("onclick","markPathway()");
   updateSavedPathwaysList();
   _checked = document.getElementsByClassName("js-switch")[0].checked;
@@ -880,31 +880,31 @@ function unmarkPathway(){
     });
     localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
     var btn =  document.getElementById("mark_pathway_btn");
-    btn.innerHTML = "Mark this pathway";
+    btn.innerHTML = "Save this pathway";
     btn.setAttribute("onclick","markPathway()")
     updateSavedPathwaysList();
 
   }
 }
 function updateSavedPathwaysList(){
-  _option = "<option value='%s'>%s</option>";
-  _options = "";
-  _pSelector = document.getElementById("saved_pathways_selector");
-
-  saved_pathways = localStorage.getItem("saved_pathways");
-  if(saved_pathways == null){ //init db
-    localStorage.setItem("saved_pathways","[]");
-  }
-  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
-  saved_pathways = JSON.parse(saved_pathways);
-
-
-
-  saved_pathways.forEach(function(p){
-    _pSelector.innerHTML = "";
-    _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
-  });
-  _pSelector.innerHTML = _options;
+  // _option = "<option value='%s'>%s</option>";
+  // _options = "";
+  // _pSelector = document.getElementById("saved_pathways_selector");
+  //
+  // saved_pathways = localStorage.getItem("saved_pathways");
+  // if(saved_pathways == null){ //init db
+  //   localStorage.setItem("saved_pathways","[]");
+  // }
+  // saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+  // saved_pathways = JSON.parse(saved_pathways);
+  //
+  //
+  //
+  // saved_pathways.forEach(function(p){
+  //   _pSelector.innerHTML = "";
+  //   _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
+  // });
+  // _pSelector.innerHTML = _options;
 
 
 }
@@ -929,7 +929,7 @@ function handleSwitch(){
     document.getElementsByClassName("filter")[0].style.display = "block";
     document.getElementsByClassName("filter")[1].style.display = "block";
     document.getElementById("session_filter").style.display = "none";
-    document.getElementsByClassName("options")[0].style.display = "none";
+    // document.getElementsByClassName("options")[0].style.display = "none";
 
     render("All",[])
   }
@@ -999,7 +999,7 @@ function savePathway(){
 }
 function saveSession(){
 
-  document.getElementsByClassName("options")[0].style.display = "none";
+  // document.getElementsByClassName("options")[0].style.display = "none";
   let pw_name     = document.getElementById("session_name").value;
   let pw_color    = document.getElementById("session_color").value;
 
