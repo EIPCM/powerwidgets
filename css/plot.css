@@ -25,7 +25,6 @@ header{
   justify-content: space-between;
 }
 .controlsWrapper{
-  background-color: #d0e2ea;
   padding:10px;
   margin-left:80px;
   margin-right:120px;
@@ -39,6 +38,8 @@ header{
   border: 1px solid black;
   padding-top:0px;
   background-color: white;
+  border-radius: 5px;
+
 }
 .bottomControls{
   margin-left:80px;
@@ -98,12 +99,12 @@ header{
   min-height: 100px;
 }
 #controls_area_wrapper{
-  background-color: #d0e2ea;
   padding:10px;
   border-radius: 10px;
 }
 #controls_area{
   border: 1px solid black;
+  border-radius: 5px;
   padding: 10px;
   min-width: 353px;
   background-color: white;

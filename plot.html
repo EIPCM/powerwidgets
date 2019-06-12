@@ -117,9 +117,9 @@ svg {
           </div>
           <div>
             <div type="button" id="mark_pathway_btn" class="button" onclick="markPathway();">Save this Pathway</div>
-            <div class="button"  type="button" id="mark_pathway_done" onclick="done();">Done</div>
-            <div onclick="filterClear()" class="button clear"  id="filterClearBtn" style="visibility:hidden;margin-left:auto;margin-right:auto;">Clear</div>
+            <div class="button clear"  type="button" id="mark_pathway_done" onclick="done();">Done</div>
             <div id="filterThresholdBtn" class="button"  style="visibility:hidden;margin-left:auto;margin-right:auto;" onclick="showSessionPopup()">Save all pathways</div>
+            <div onclick="filterClear()" class="button clear"  id="filterClearBtn" style="visibility:hidden;margin-left:auto;margin-right:auto;">Clear</div>
           </div>
 
 
@@ -143,17 +143,6 @@ svg {
             </select>
           </div>
           <div class="filter">
-
-
-          </div>
-          <div class="filter">
-            <div class="label">Show Pathway:</div>
-            <div class="label">(Select 2 or more. Use Ctrl + Click / ⌘ + Click)</div>
-
-            <select multiple="multiple" id="pathways_selector" style="width: 96%;" onchange="filterPathwayList()">
-            </select>
-          </div>
-          <!-- <div class="filter">
             <div class="label">Saved Pathways</div>
 
             <select multiple="multiple" id="saved_pathways_selector" onchange="showPathwayOptions()" style="width: 96%;">
@@ -176,7 +165,7 @@ svg {
             <button onclick="export_configuration()">Export to CSV</button>
             <button onclick="print_screen()">Print</button>
 
-          </div> -->
+          </div>
 
 
 
@@ -213,20 +202,14 @@ _LABELS ={
   "Irr_Agricult":"Normalized water deficit in the two districts",
   "Rec_Agricult":"Deviation from artificial flood pulse for Recession Agriculture"
 }
-function updatePathwaysList(list){
-  _option = "<option value='%s'>%s</option>";
-  _options = "";
-  _pSelector = document.getElementById("pathways_selector");
-  list.forEach(function(p){
-    _pSelector.innerHTML = "";
-    _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
-  });
-  _pSelector.innerHTML = _options;
-}
+
 let LAST_FILTER = "All";
 let LAST_PATHWAY_LIST = [];
 let LAST_COLOR = null;
 let LAST_MAX   = null;
+let PATH_OVER_WIDTH = 1;
+let PATH_OVER_COLOR = "steelblue";
+
 function render(_filter,_pathwaysList,color,_max){
   LAST_FILTER       = _filter;
   LAST_PATHWAY_LIST = _pathwaysList;
@@ -324,9 +307,7 @@ function render(_filter,_pathwaysList,color,_max){
     }
 
     if(_pathwaysList.length == 0 ){
-      updatePathwaysList(cars);
       updateSavedPathwaysList();
-
     }
     // Add grey background lines for context.
     background = svg.append("g")
@@ -359,6 +340,15 @@ function render(_filter,_pathwaysList,color,_max){
             .style("stroke", function(d){
               return color[d.Pathway];
             })
+            .style("stroke-width",function(d){
+              console.log("d",d.Pathway);
+              if(color[d.Pathway] === "#3b3b3b"){
+                return 2;
+              }else{
+                return 1;
+              }
+            });
+
       }else{
         foreground = svg.append("g")
         .attr("class", "foreground")
@@ -426,37 +416,37 @@ function render(_filter,_pathwaysList,color,_max){
     svg.selectAll(".foreground path").on("click",handleMouseClick);
 
     function handleMouseClick(d,i){
-      var btn =  document.getElementById("mark_pathway_btn");
-      var btndone =  document.getElementById("mark_pathway_done");
-
-      MARKED_PATHWAY = d;
-      MARKED_PATHWAY["color"] = "#4682b4";
-      MARKED_PATHWAY["name"] = "";
-      MARKED_PATHWAY["sector"] = 0;
-      if(CLICK_MODE){
-        btn.style.display = "none";
-        btndone.style.display = "none";
-        var sel = d3.selectAll(".foreground path");
-        sel.style("stroke-width",1);
-        _checked = document.getElementsByClassName("js-switch")[0].checked;
-        if(!_checked){
-          sel.style("stroke","steelblue");
-        }
-      }else{
-        btn.style.display = "block";
-        btndone.style.display = "block";
-        if(isPathwayMarked()){
-          var btn =  document.getElementById("mark_pathway_btn");
-          btn.innerHTML = "Save this pathway";
-          btn.setAttribute("onclick","unmarkPathway()")
-        }else{
-          var btn =  document.getElementById("mark_pathway_btn");
-          btn.innerHTML = "Save this pathway";
-          btn.setAttribute("onclick","markPathway()")
-        }
-
-      }
-      CLICK_MODE = !CLICK_MODE
+      // var btn =  document.getElementById("mark_pathway_btn");
+      // var btndone =  document.getElementById("mark_pathway_done");
+      //
+      // MARKED_PATHWAY = d;
+      // MARKED_PATHWAY["color"] = "#4682b4";
+      // MARKED_PATHWAY["name"] = "";
+      // MARKED_PATHWAY["sector"] = 0;
+      // if(CLICK_MODE){
+      //   btn.style.display = "none";
+      //   btndone.style.display = "none";
+      //   var sel = d3.selectAll(".foreground path");
+      //   sel.style("stroke-width",1);
+      //   _checked = document.getElementsByClassName("js-switch")[0].checked;
+      //   if(!_checked){
+      //     sel.style("stroke","steelblue");
+      //   }
+      // }else{
+      //   btn.style.display = "block";
+      //   btndone.style.display = "block";
+      //   if(isPathwayMarked()){
+      //     var btn =  document.getElementById("mark_pathway_btn");
+      //     btn.innerHTML = "Delete this pathway";
+      //     btn.setAttribute("onclick","unmarkPathway()")
+      //   }else{
+      //     var btn =  document.getElementById("mark_pathway_btn");
+      //     btn.innerHTML = "Save this pathway";
+      //     btn.setAttribute("onclick","markPathway()")
+      //   }
+      //
+      // }
+      // CLICK_MODE = !CLICK_MODE
 
     }
     d3.select("body").on("click",function(){
@@ -476,11 +466,9 @@ function render(_filter,_pathwaysList,color,_max){
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
           sel.moveToBack();
-          sel.style("stroke-width",1);
+          sel.style("stroke-width",PATH_OVER_WIDTH);
           _checked = document.getElementsByClassName("js-switch")[0].checked;
-          if(!_checked){
-            sel.style("stroke","steelblue");
-          }
+          sel.style("stroke",PATH_OVER_COLOR);
         }
 
       }
@@ -535,12 +523,13 @@ function render(_filter,_pathwaysList,color,_max){
 
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
+          // console.log("style",sel.style("stroke-width"));
           sel.moveToFront();
+          PATH_OVER_WIDTH = sel.style("stroke-width");
           sel.style("stroke-width",2);
-          _checked = document.getElementsByClassName("js-switch")[0].checked;
-          if(!_checked){
-            sel.style("stroke","red");
-          }
+          // _checked = document.getElementsByClassName("js-switch")[0].checked;
+          PATH_OVER_COLOR = sel.style("stroke");
+          sel.style("stroke","red");
         }
       }
 
@@ -887,24 +876,24 @@ function unmarkPathway(){
   }
 }
 function updateSavedPathwaysList(){
-  // _option = "<option value='%s'>%s</option>";
-  // _options = "";
-  // _pSelector = document.getElementById("saved_pathways_selector");
-  //
-  // saved_pathways = localStorage.getItem("saved_pathways");
-  // if(saved_pathways == null){ //init db
-  //   localStorage.setItem("saved_pathways","[]");
-  // }
-  // saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
-  // saved_pathways = JSON.parse(saved_pathways);
-  //
-  //
-  //
-  // saved_pathways.forEach(function(p){
-  //   _pSelector.innerHTML = "";
-  //   _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
-  // });
-  // _pSelector.innerHTML = _options;
+  _option = "<option value='%s'>%s</option>";
+  _options = "";
+  _pSelector = document.getElementById("saved_pathways_selector");
+
+  saved_pathways = localStorage.getItem("saved_pathways");
+  if(saved_pathways == null){ //init db
+    localStorage.setItem("saved_pathways","[]");
+  }
+  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
+  saved_pathways = JSON.parse(saved_pathways);
+
+
+
+  saved_pathways.forEach(function(p){
+    _pSelector.innerHTML = "";
+    _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
+  });
+  _pSelector.innerHTML = _options;
 
 
 }
@@ -920,14 +909,14 @@ function handleSwitch(){
 
   if(_checked){
     document.getElementsByClassName("filter")[0].style.display = "none";
-    document.getElementsByClassName("filter")[1].style.display = "none";
+    document.getElementsByClassName("filter")[1].style.display = "block";
     document.getElementById("session_filter").style.display = "block";
 
     loadMarkedPathways();
 
   }else{
     document.getElementsByClassName("filter")[0].style.display = "block";
-    document.getElementsByClassName("filter")[1].style.display = "block";
+    document.getElementsByClassName("filter")[1].style.display = "none";
     document.getElementById("session_filter").style.display = "none";
     // document.getElementsByClassName("options")[0].style.display = "none";
 
@@ -1098,8 +1087,6 @@ function done(){
   var sel = d3.selectAll(".foreground path");
   sel.style("stroke-width",1);
   _checked = document.getElementsByClassName("js-switch")[0].checked;
-  if(!_checked){
-    sel.style("stroke","steelblue");
-  }
+  sel.style("stroke","steelblue");
 }
 </script>
