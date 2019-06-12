@@ -71,9 +71,9 @@ svg {
         </div>
       <svg width="980" height="510" id="canvas">
       </svg>
-      <!-- <div class="bottomControls">
+      <div class="bottomControls">
         <input type="checkbox" id="fixScaleCB"></input><label for="fixScaleCB">Fix the scales</label>
-      </div> -->
+      </div>
       <div class="controlsWrapper">
         <div class="controls">
           <div class="indicator_title red" id="label">Selected Pathway: -</div>
@@ -136,9 +136,9 @@ svg {
             <select onchange="filterPathway()" id="filter_pathway">
               <option value="All">All</option>
               <option value="P0">P0 - Baseline</option>
-              <option value="P1">P1 - Future with Koysha</option>
-              <option value="P2">P2 - Future with agricultural districts</option>
-              <option value="P3">P3 - Future with Koysha and agricultural districts</option>
+              <option value="P1">P1 - Koysha</option>
+              <option value="P2">P2 - Irrigation </option>
+              <option value="P3">P3 - Irrigation + Koysha</option>
 
             </select>
           </div>
@@ -209,7 +209,6 @@ let LAST_COLOR = null;
 let LAST_MAX   = null;
 let PATH_OVER_WIDTH = 1;
 let PATH_OVER_COLOR = "steelblue";
-
 function render(_filter,_pathwaysList,color,_max){
   LAST_FILTER       = _filter;
   LAST_PATHWAY_LIST = _pathwaysList;
@@ -245,6 +244,7 @@ function render(_filter,_pathwaysList,color,_max){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   d3.csv("full.csv", function(error, cars) {
+    let defaultData = cars;
     cars = cars.filter(function(row) {
       if(_loadSaved){
         return _pathwaysList.includes(row['Pathway']);
@@ -290,12 +290,20 @@ function render(_filter,_pathwaysList,color,_max){
     })
     let _absChecked = document.getElementsByClassName("js-switch")[1].checked;
 
-    if(_absChecked){
+    if(_absChecked){//DEFAULT_RANGES
+      let _fxChecked = document.getElementById("fixScaleCB").checked;
+
       // Extract the list of dimensions and create a scale for each.
-      x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
-        return d != "Pathway" && !d.includes("_n") && (y[d] = d3.scale.linear()
-            .domain(d3.extent(cars, function(p) { return +p[d]; }))
-            .range([height, 0]));
+      x.domain(dimensions = d3.keys(cars[0]).filter(function(d,i) {
+        let fData = _fxChecked ? defaultData : cars;
+        return d != "Pathway" && !d.includes("_n") &&
+                (
+                  y[d] = d3.scale.linear()
+                  .domain(d3.extent(fData, function(p) {
+                    return +p[d];
+                  }))
+                  .range([height, 0])
+                );
       }));
     }else{
       // Extract the list of dimensions and create a scale for each.
@@ -341,7 +349,6 @@ function render(_filter,_pathwaysList,color,_max){
               return color[d.Pathway];
             })
             .style("stroke-width",function(d){
-              console.log("d",d.Pathway);
               if(color[d.Pathway] === "#3b3b3b"){
                 return 2;
               }else{
@@ -631,8 +638,8 @@ function render(_filter,_pathwaysList,color,_max){
                     _x = d.split(" ");
                       return _units[i];
                   });
-    // Add and store a brush for each axis.
-    g.append("g")
+      // Add and store a brush for each axis.
+      g.append("g")
         .attr("class", "brush")
         .each(function(d) {
           d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
@@ -644,7 +651,6 @@ function render(_filter,_pathwaysList,color,_max){
         if(_checked){
           // loadColors();
         }
-
 
   });
 
@@ -927,6 +933,10 @@ function handleSwitch(){
 function handleAbsoluteValuesSwitch(){
   render(LAST_FILTER,LAST_PATHWAY_LIST,LAST_COLOR,LAST_MAX);
 }
+function handleFixScaleCBClick(){
+  render(LAST_FILTER,LAST_PATHWAY_LIST,LAST_COLOR,LAST_MAX);
+}
+document.getElementById("fixScaleCB").addEventListener("click",handleFixScaleCBClick);
 document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
   handleSwitch();
 })
