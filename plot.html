@@ -142,7 +142,7 @@ svg {
 
             </select>
           </div>
-          <div class="filter">
+          <div class="filter" style="visibility:none;">
             <div class="label">Saved Pathways</div>
 
             <select multiple="multiple" id="saved_pathways_selector" onchange="showPathwayOptions()" style="width: 96%;">
@@ -171,7 +171,6 @@ svg {
 
           </div>
           <div class="filter" id="session_filter">
-            <hr>
             <div class="label">Saved Sessions</div>
             <div class="label">(To Select 2 or more: Use Ctrl + Click / ⌘ + Click)</div>
 
@@ -915,7 +914,7 @@ function handleSwitch(){
 
   if(_checked){
     document.getElementsByClassName("filter")[0].style.display = "none";
-    document.getElementsByClassName("filter")[1].style.display = "block";
+    document.getElementsByClassName("filter")[1].style.display = "none";
     document.getElementById("session_filter").style.display = "block";
 
     loadMarkedPathways();
