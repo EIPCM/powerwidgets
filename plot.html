@@ -307,10 +307,16 @@ function render(_filter,_pathwaysList,color,_max){
     }else{
       // Extract the list of dimensions and create a scale for each.
       x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
-        return d != "Pathway" && d.includes("_n") && (y[d] = d3.scale.linear()
-            .domain([0,1])
-            .range([height, 0]));
+        y[d] = d3.scale.linear()
+        .domain([0,1])
+        .range([height, 0]);
+
+        return d != "Pathway" && d.includes("_n") &&
+          (
+            y[d]
+          );
       }));
+
     }
 
     if(_pathwaysList.length == 0 ){
@@ -422,12 +428,24 @@ function render(_filter,_pathwaysList,color,_max){
     svg.selectAll(".foreground path").on("click",handleMouseClick);
 
     function handleMouseClick(d,i){
+      document.getElementById("filterThresholdBtn").style.visibility = "visible";
+      document.getElementById("filterClearBtn").style.visibility = "visible";
+
+      d3.selectAll(".foreground path").attr("display","none");
+      SELECTED_PATHWAY = d3.select(this);
+      SELECTED_PATHWAY.attr("display","block");
+      SELECTED_PATHWAY.attr("class","brushed");
+      SELECTED_PATHWAY.attr("stroke","red");
+
+
+      // MARKED_PATHWAY = d;
+      // MARKED_PATHWAY["color"] = "yellow";
+      // MARKED_PATHWAY["name"] = "";
+
       // var btn =  document.getElementById("mark_pathway_btn");
       // var btndone =  document.getElementById("mark_pathway_done");
       //
-      // MARKED_PATHWAY = d;
-      // MARKED_PATHWAY["color"] = "#4682b4";
-      // MARKED_PATHWAY["name"] = "";
+
       // MARKED_PATHWAY["sector"] = 0;
       // if(CLICK_MODE){
       //   btn.style.display = "none";
@@ -452,7 +470,7 @@ function render(_filter,_pathwaysList,color,_max){
       //   }
       //
       // }
-      // CLICK_MODE = !CLICK_MODE
+      CLICK_MODE = !CLICK_MODE
 
     }
     d3.select("body").on("click",function(){
@@ -496,9 +514,6 @@ function render(_filter,_pathwaysList,color,_max){
         // console.log(parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2));
         // console.log(parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2));
         // console.log(parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2));
-
-
-
         let _checked = document.getElementsByClassName("js-switch")[1].checked;
         let ep;
         let no;
@@ -518,8 +533,6 @@ function render(_filter,_pathwaysList,color,_max){
           tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
           ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
         }
-
-
 
         document.getElementById("label_ep").innerHTML = ep;
         document.getElementById("label_no").innerHTML = no;
@@ -586,23 +599,45 @@ function render(_filter,_pathwaysList,color,_max){
           .attr("y", _y )
           .attr("x",_x);
         })
+    if(!_absChecked){
+      // Add an axis and ticks
+      g.append("g")
+          .attr("class", "axis")
+          .each(function(d) { d3.select(this).call(axis.scale(y[d]).ticks(20).tickFormat(function(d,i){
+            return (i % 2 == 0 ? d:"")
+          })); })
+          .append("text")
+          .style("text-anchor", "middle")
+          .style("font-weight","bold")
+          .attr("y", -40)
+          .text(function(d,i) {
+             _x = d.split(" ");
+             if(_x.length > 3) {
+               return _x.slice(0,3).join(" ");
+             }else{
+               return d;
+             };
+           });
 
-    // Add an axis and title.
-    g.append("g")
-        .attr("class", "axis")
-        .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
-        .append("text")
-        .style("text-anchor", "middle")
-        .style("font-weight","bold")
-        .attr("y", -40)
-        .text(function(d,i) {
-           _x = d.split(" ");
-           if(_x.length > 3) {
-             return _x.slice(0,3).join(" ");
-           }else{
-             return d;
-           };
-         });
+    }else{
+      // Add an axis and title.
+      g.append("g")
+          .attr("class", "axis")
+          .each(function(d) { d3.select(this).call(axis.scale(y[d]))})
+          .append("text")
+          .style("text-anchor", "middle")
+          .style("font-weight","bold")
+          .attr("y", -40)
+          .text(function(d,i) {
+             _x = d.split(" ");
+             if(_x.length > 3) {
+               return _x.slice(0,3).join(" ");
+             }else{
+               return d;
+             };
+           });
+
+    }
 
         g.append("g")
             .attr("class", "axis")
@@ -650,6 +685,28 @@ function render(_filter,_pathwaysList,color,_max){
         if(_checked){
           // loadColors();
         }
+      //add arrow
+      svg.append("defs")
+                .append("marker")
+                .attr("id","arrow")
+                .attr("markerWidth",10)
+                .attr("markerHeight",10)
+                .attr("refX",0)
+                .attr("refY",3)
+                .attr("orient","auto")
+                .attr("markerUnits","strokeWidth")
+                .append("path")
+                  .attr("d","M0,0 L0,6 L9,3 z")
+                  .attr("fill","black");
+      svg.append("line")
+        .attr("x1", 40)
+        .attr("y1",0)
+        .attr("x2",40)
+        .attr("y2",360)
+        .attr("stroke", "black")
+        .attr("stroke-width", 2.5)
+        .attr("fill", "black")
+        .attr("marker-end","url(#arrow)")
 
   });
 
