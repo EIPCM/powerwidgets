@@ -134,15 +134,20 @@ svg {
         <div class="indicator_title">Filters</div>
         <div class="filters_area">
           <div class="filter">
+            <div class="label">Dataset: </div>
+              <select onchange="changeDataSet()" id="filter_dataset">
+                <option value="0">Omo Turkana Basin</option>
+                <option value="1">Zambezi</option>
+              </select>
             <div class="label">Show Pathway Class: </div>
-            <select onchange="filterPathway()" id="filter_pathway">
-              <option value="All">All</option>
-              <option value="P0">P0 - Baseline</option>
-              <option value="P1">P1 - Koysha</option>
-              <option value="P2">P2 - Irrigation </option>
-              <option value="P3">P3 - Irrigation + Koysha</option>
+              <select onchange="filterPathway()" id="filter_pathway">
+                <option value="All">All</option>
+                <option value="P0">P0 - Baseline</option>
+                <option value="P1">P1 - Koysha</option>
+                <option value="P2">P2 - Irrigation </option>
+                <option value="P3">P3 - Irrigation + Koysha</option>
 
-            </select>
+              </select>
           </div>
           <div class="filter" style="visibility:none;">
             <div class="label">Saved Pathways</div>
@@ -243,8 +248,9 @@ function render(_filter,_pathwaysList,color,_max){
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  d3.csv("full.csv", function(error, cars) {
+  let _dataset  = document.getElementById("filter_dataset").value;
+  let _datafile = _dataset == "0" ? "full.csv" : "full_zambezi.csv";
+  d3.csv(_datafile, function(error, cars) {
     let defaultData = cars;
     cars = cars.filter(function(row) {
       if(_loadSaved){
@@ -563,8 +569,13 @@ function render(_filter,_pathwaysList,color,_max){
           if(i == 3){
             _y = -95;
           }
+          let fdVal = document.getElementById("filter_dataset").value;
+          let axisImg   = "img/newtool/"+_images[i];
+          if(fdVal === "1"){
+            axisImg = "img/newtool/zambezi/"+_images[i];
+          }
           d3.select(this).append("image")
-          .attr("xlink:href","img/newtool/"+_images[i])
+          .attr("xlink:href",axisImg)
           .attr("height",50)
           .attr("width",50)
           .attr("y", _y )
@@ -828,6 +839,9 @@ function filterClear(){
   document.getElementById("filterClearBtn").style.visibility = "hidden";
 
 
+}
+function changeDataSet(){
+  render("All",[])
 }
 function filterPathway(){
   _filter = document.getElementById("filter_pathway").value;
