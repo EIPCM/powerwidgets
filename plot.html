@@ -429,6 +429,7 @@ function render(_filter,_pathwaysList,color,_max){
 
     function handleMouseClick(d,i){
       document.getElementById("filterThresholdBtn").style.visibility = "visible";
+      document.getElementById("filterThresholdBtn").innerHTML = "Save Pathway";
       document.getElementById("filterClearBtn").style.visibility = "visible";
 
       d3.selectAll(".foreground path").attr("display","none");
@@ -603,9 +604,25 @@ function render(_filter,_pathwaysList,color,_max){
       // Add an axis and ticks
       g.append("g")
           .attr("class", "axis")
-          .each(function(d) { d3.select(this).call(axis.scale(y[d]).ticks(20).tickFormat(function(d,i){
-            return (i % 2 == 0 ? d:"")
-          })); })
+          .each(
+            function(d,x) {
+              d3.select(this)
+                .call(
+                  axis.scale(y[d])
+                  .ticks(20)
+                  .tickFormat(
+                    function(d,i){
+                      if(d === 0.95 && (x === 1 || x === 2)){
+                        return d;
+                      }else{
+                        return (i % 2 === 0 ? d:"")
+                      }
+                    }
+                  )
+                )
+
+            }
+          )
           .append("text")
           .style("text-anchor", "middle")
           .style("font-weight","bold")
@@ -618,12 +635,17 @@ function render(_filter,_pathwaysList,color,_max){
                return d;
              };
            });
-
+           d3.select(d3.selectAll(".tick")[0][4]).selectAll("text").attr("fill","red");
+           d3.select(d3.selectAll(".tick")[0][40]).selectAll("text").attr("fill","red");
+           d3.select(d3.selectAll(".tick")[0][61]).selectAll("text").attr("fill","red");
+           d3.select(d3.selectAll(".tick")[0][81]).selectAll("text").attr("fill","red");
     }else{
       // Add an axis and title.
       g.append("g")
           .attr("class", "axis")
-          .each(function(d) { d3.select(this).call(axis.scale(y[d]))})
+          .each(function(d) { d3.select(this).call(axis.scale(y[d]).ticks(20).tickFormat(function(d,i){
+            return (i % 2 == 0 ? d:"");
+          }))})
           .append("text")
           .style("text-anchor", "middle")
           .style("font-weight","bold")
@@ -641,7 +663,6 @@ function render(_filter,_pathwaysList,color,_max){
 
         g.append("g")
             .attr("class", "axis")
-            .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
           .append("text")
             .style("text-anchor", "middle")
             .style("font-weight","bold")
@@ -657,7 +678,6 @@ function render(_filter,_pathwaysList,color,_max){
              _units = ["Twh/y","(m3/sec)^2","(m3/sec)^2","-","%"]
              g.append("g")
                  .attr("class", "axis")
-                 .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
                .append("text")
                  .style("text-anchor", "middle")
                  .attr("y", function(){
@@ -700,9 +720,9 @@ function render(_filter,_pathwaysList,color,_max){
                   .attr("fill","black");
       svg.append("line")
         .attr("x1", 40)
-        .attr("y1",0)
+        .attr("y1",385)
         .attr("x2",40)
-        .attr("y2",360)
+        .attr("y2",20)
         .attr("stroke", "black")
         .attr("stroke-width", 2.5)
         .attr("fill", "black")
@@ -732,6 +752,7 @@ function render(_filter,_pathwaysList,color,_max){
   function brush() {
     document.getElementById("filterThresholdBtn").style.visibility = "visible";
     document.getElementById("filterClearBtn").style.visibility = "visible";
+    document.getElementById("filterThresholdBtn").innerHTML = "Save all Pathways";
 
     var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
         extents = actives.map(function(p) { return y[p].brush.extent(); });
