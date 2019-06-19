@@ -73,6 +73,8 @@ svg {
       </svg>
       <div class="bottomControls">
         <input type="checkbox" id="fixScaleCB"></input><label for="fixScaleCB">Fix the scales</label>
+        <input type="checkbox" id="showColorsCB"></input><label for="showColorsCB">Show Colors</label>
+        <span style="color:red">The levels marked red represent the baseline </span>
       </div>
       <div class="controlsWrapper">
         <div class="controls">
@@ -331,21 +333,38 @@ function render(_filter,_pathwaysList,color,_max){
         .attr("d", path);
     if(color == null){
       // Add blue foreground lines for focus.
+      let _showColorsCB = document.getElementById("showColorsCB").checked;
+
       foreground = svg.append("g")
           .attr("class", "foreground")
           .style("fill","none")
-          .style("stroke", "steelblue")
-        .selectAll("path")
+          .selectAll("path")
           .data(cars)
-        .enter().append("path")
-          .attr("d", path);
+          .enter().append("path")
+          .attr("d", path)
+          .style("stroke", function(d,i){
+            if(!_showColorsCB){
+              return "steelblue";
+            }
+            if(d.Pathway.includes("P0")){
+              return "#ff4646";
+            }
+            if(d.Pathway.includes("P1")){
+              return "#ffd616";
+            }
+            if(d.Pathway.includes("P2")){
+              return "#7ee279";
+            }
+            if(d.Pathway.includes("P3")){
+              return "#79a5e2";
+            }
+          })
     }else{
       if(typeof(color) == "object"){
         // Add custom color
         foreground = svg.append("g")
         .attr("class", "foreground")
             .style("fill","none")
-
           .selectAll("path")
             .data(cars)
           .enter().append("path")
@@ -374,27 +393,12 @@ function render(_filter,_pathwaysList,color,_max){
 
     }
 
-
     // Add a group element for each dimension.
     var g = svg.selectAll(".dimension")
         .data(dimensions)
       .enter().append("g")
         .attr("class", "dimension")
         .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
-
-        // .on("mouseover",function(d){
-        //   div.transition()
-        //         .duration(200)
-        //         .style("opacity", .9);
-        //   div.html(_LABELS[d])
-        //                   .style("left", (d3.event.pageX) + "px")
-        //                   .style("top", (d3.event.pageY - 28) + "px");
-        // })
-        // .on("mouseout", function(d) {
-        //   div.transition()
-        //       .duration(500)
-        //       .style("opacity", 0);
-        // })
         .call(d3.behavior.drag()
           .origin(function(d) { return {x: x(d)}; })
           .on("dragstart", function(d) {
@@ -437,40 +441,6 @@ function render(_filter,_pathwaysList,color,_max){
       SELECTED_PATHWAY.attr("display","block");
       SELECTED_PATHWAY.attr("class","brushed");
       SELECTED_PATHWAY.attr("stroke","red");
-
-
-      // MARKED_PATHWAY = d;
-      // MARKED_PATHWAY["color"] = "yellow";
-      // MARKED_PATHWAY["name"] = "";
-
-      // var btn =  document.getElementById("mark_pathway_btn");
-      // var btndone =  document.getElementById("mark_pathway_done");
-      //
-
-      // MARKED_PATHWAY["sector"] = 0;
-      // if(CLICK_MODE){
-      //   btn.style.display = "none";
-      //   btndone.style.display = "none";
-      //   var sel = d3.selectAll(".foreground path");
-      //   sel.style("stroke-width",1);
-      //   _checked = document.getElementsByClassName("js-switch")[0].checked;
-      //   if(!_checked){
-      //     sel.style("stroke","steelblue");
-      //   }
-      // }else{
-      //   btn.style.display = "block";
-      //   btndone.style.display = "block";
-      //   if(isPathwayMarked()){
-      //     var btn =  document.getElementById("mark_pathway_btn");
-      //     btn.innerHTML = "Delete this pathway";
-      //     btn.setAttribute("onclick","unmarkPathway()")
-      //   }else{
-      //     var btn =  document.getElementById("mark_pathway_btn");
-      //     btn.innerHTML = "Save this pathway";
-      //     btn.setAttribute("onclick","markPathway()")
-      //   }
-      //
-      // }
       CLICK_MODE = !CLICK_MODE
 
     }
@@ -1013,7 +983,12 @@ function handleAbsoluteValuesSwitch(){
 function handleFixScaleCBClick(){
   render(LAST_FILTER,LAST_PATHWAY_LIST,LAST_COLOR,LAST_MAX);
 }
+function handleShowColorsCBClick(){
+  render(LAST_FILTER,LAST_PATHWAY_LIST,LAST_COLOR,LAST_MAX);
+}
 document.getElementById("fixScaleCB").addEventListener("click",handleFixScaleCBClick);
+document.getElementById("showColorsCB").addEventListener("click",handleShowColorsCBClick);
+
 document.getElementsByClassName("js-switch")[0].addEventListener("change",function(e){
   handleSwitch();
 })
