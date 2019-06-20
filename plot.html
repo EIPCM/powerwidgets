@@ -74,7 +74,7 @@ svg {
       <div class="bottomControls">
         <input type="checkbox" id="fixScaleCB"></input><label for="fixScaleCB">Fix the scales</label>
         <input type="checkbox" id="showColorsCB"></input><label for="showColorsCB">Show Colors</label>
-        <div style="color:red;font-size:small">The levels marked red represent the baseline </div>
+        <div style="color:red;font-size:small;font-weight:normal">The levels marked red represent the baseline </div>
       </div>
       <div class="controlsWrapper">
         <div class="controls">
@@ -271,6 +271,23 @@ var _LABELS ={
   "j_Irr_n":"Water deficit normalized w.r.t. irrigation demand",
   "j_Cost_n":"Total discounted construction cost"
 }
+let RANGES = {
+  "zambezi":[
+    {"max":0,"min":0,"tickFormat":null,ticks:20},
+    {"max":104,"min":86,"tickFormat":null,ticks:20},
+    {"max":3600000,"min":2700000,"tickFormat":"M",ticks:20},
+    {"max":2.1,"min":1.2,"tickFormat":".1",ticks:20},
+    {"max":18000,"min":0,"tickFormat":"K",ticks:20},
+  ],
+  "omo":[
+    {"max":0,"min":0,"tickFormat":null,ticks:20},
+    {"max":4900,"min":1900,"tickFormat":null,ticks:10},
+    {"max":8000000,"min":208000000,"tickFormat":"M",ticks:10},
+    {"max":130000,"min":0,"tickFormat":"K",ticks:10},
+    {"max":6,"min":0,"tickFormat":null,ticks:12},
+    {"max":2,"min":0,"tickFormat":null,ticks:10},
+  ]
+}
 
 let LAST_FILTER = "All";
 let LAST_PATHWAY_LIST = [];
@@ -387,10 +404,7 @@ function render(_filter,_pathwaysList,color,_max){
                   (
                     y[d] = d3.scale.linear()
                     .domain(
-                      d3.extent(fData, function(p) {
-                          return +p[d];
-                        }
-                      ).reverse()
+                      [RANGES.zambezi[i].max,RANGES.zambezi[i].min]
                     )
                     .range([height, 0])
                   );
@@ -802,11 +816,34 @@ function render(_filter,_pathwaysList,color,_max){
 
     }else{
       // Add an axis and title.
+      let dataset  = document.getElementById("filter_dataset").value;
+      let sdataset = (dataset === "0") ? "omo" : "zambezi";
       g.append("g")
           .attr("class", "axis")
-          .each(function(d) { d3.select(this).call(axis.scale(y[d]).ticks(20).tickFormat(function(d,i){
-            return (i % 2 == 0 ? d:"");
-          }))})
+          .each(function(xd,xi) {
+            d3.select(this).call(
+              axis.scale(y[xd]).ticks(20).tickFormat(
+                function(d,i){
+                  if(i % 2 === 0){
+                    if(RANGES[sdataset][xi+1].tickFormat === "M"){
+                      return d/1000000  + "M";
+                    }else if(RANGES[sdataset][xi+1].tickFormat === "K"){
+                      return d/1000  + "K";
+                    }else if(RANGES[sdataset][xi+1].tickFormat === ".1"){
+                      return d.toFixed(1);
+                    }else{
+                      return d;
+                    }
+
+
+
+                  }else{
+                    return "";
+                  }
+                }
+              )
+            )
+          })
           .append("text")
           .style("text-anchor", "middle")
           .style("font-weight","bold")
