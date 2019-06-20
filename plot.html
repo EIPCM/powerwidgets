@@ -280,7 +280,7 @@ function render(_filter,_pathwaysList,color,_max){
   let _dataset  = document.getElementById("filter_dataset").value;
   let _datafile = _dataset == "0" ? "full.csv" : "full_zambezi.csv";
   d3.csv(_datafile, function(error, cars) {
-    let defaultData = cars;
+    let defaultData = cars; 
     cars = cars.filter(function(row) {
       if(_loadSaved){
         return _pathwaysList.includes(row['Pathway']);
