@@ -80,17 +80,27 @@ svg {
         <div class="controls">
           <div class="indicator_title red" id="label">Selected Pathway: -</div>
           <div class="indicators_wrapper" id="indicators_omo">
+            <div class="indicator" style="width:50px;">
+              <div class="indicator_img_wrapper">
+              </div>
+              <div class="label result" id="o_a_title">Absolute</div>
+              <div class="label resultb" id="o_b_title">Normalized</div>
+            </div>
+
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/ep.png"></img>
               </div>
               <div class="label result" id="label_ep">-</div>
+              <div class="label resultb" id="label_epb">-</div>
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/no.png"></img>
               </div>
               <div class="label result" id="label_no">-</div>
+              <div class="label resultb" id="label_nob">-</div>
+
 
             </div>
             <div class="indicator">
@@ -98,6 +108,8 @@ svg {
                 <img class="indicator_img" src="img/newtool/ra.png"></img>
               </div>
               <div class="label result" id="label_ra">-</div>
+              <div class="label resultb" id="label_rab">-</div>
+
 
             </div>
 
@@ -106,6 +118,8 @@ svg {
                 <img class="indicator_img" src="img/newtool/tf.png"></img>
               </div>
               <div class="label result" id="label_tf">-</div>
+              <div class="label resultb" id="label_tfb">-</div>
+
 
             </div>
             <div class="indicator">
@@ -113,34 +127,50 @@ svg {
                 <img class="indicator_img" src="img/newtool/ia.png"></img>
               </div>
               <div class="label result" id="label_ia">-</div>
+              <div class="label resultb" id="label_iab">-</div>
+
 
             </div>
 
           </div>
           <div class="indicators_wrapper" id="indicators_zambezi">
+            <div class="indicator" style="width:100px;">
+              <div class="indicator_img_wrapper">
+              </div>
+              <div class="label result" id="z_a_title">Absolute</div>
+              <div class="label resultb" id="z_b_title">Normalized</div>
+            </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/zambezi/ep.png"></img>
               </div>
-              <div class="label result" id="label_z_0">-</div>
+              <div class="label result" id="label_z_0a">-</div>
+              <div class="label resultb" id="label_z_0b">-</div>
+
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/zambezi/no.png"></img>
               </div>
-              <div class="label result" id="label_z_1">-</div>
+              <div class="label result" id="label_z_1a">-</div>
+              <div class="label resultb" id="label_z_1b">-</div>
+
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/zambezi/ra.png"></img>
               </div>
-              <div class="label result" id="label_z_2">-</div>
+              <div class="label result" id="label_z_2a">-</div>
+              <div class="label resultb" id="label_z_2b">-</div>
+
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/zambezi/tf.png"></img>
               </div>
-              <div class="label result" id="label_z_3">-</div>
+              <div class="label result" id="label_z_3a">-</div>
+              <div class="label resultb" id="label_z_3b">-</div>
+
             </div>
           </div>
           <div>
@@ -519,11 +549,20 @@ function render(_filter,_pathwaysList,color,_max){
         document.getElementById("label_tf").innerHTML = "-";
         document.getElementById("label_ia").innerHTML = "-";
 
-        document.getElementById("label_z_0").innerHTML = "-";
-        document.getElementById("label_z_1").innerHTML = "-";
-        document.getElementById("label_z_2").innerHTML = "-";
-        document.getElementById("label_z_3").innerHTML = "-";
+        document.getElementById("label_epb").innerHTML = "-";
+        document.getElementById("label_nob").innerHTML = "-";
+        document.getElementById("label_rab").innerHTML = "-";
+        document.getElementById("label_tfb").innerHTML = "-";
+        document.getElementById("label_iab").innerHTML = "-";
 
+        document.getElementById("label_z_0a").innerHTML = "-";
+        document.getElementById("label_z_1a").innerHTML = "-";
+        document.getElementById("label_z_2a").innerHTML = "-";
+        document.getElementById("label_z_3a").innerHTML = "-";
+        document.getElementById("label_z_0b").innerHTML = "-";
+        document.getElementById("label_z_1b").innerHTML = "-";
+        document.getElementById("label_z_2b").innerHTML = "-";
+        document.getElementById("label_z_3b").innerHTML = "-";
 
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
@@ -559,11 +598,22 @@ function render(_filter,_pathwaysList,color,_max){
         let ra;
         let tf;
         let ia;
-        let z0;
-        let z1;
-        let z2;
-        let z3;
 
+        let epb;
+        let nob;
+        let rab;
+        let tfb;
+        let iab;
+
+        let z0a;
+        let z1a;
+        let z2a;
+        let z3a;
+
+        let z0b;
+        let z1b;
+        let z2b;
+        let z3b;
         if(!_checked){
           if(_dataset == "0"){
             ep = parseFloat(d["Hydropower Production"]).toFixed(2);
@@ -571,11 +621,22 @@ function render(_filter,_pathwaysList,color,_max){
             ra = parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2);
             tf = parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2);
             ia = parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2);
+
+            epb = parseFloat(d["Energy_Prod_n"]).toFixed(2);
+            nob = parseFloat(d["Natural_Omo_n"]).toFixed(2);
+            rab = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
+            tfb = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
+            iab = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
           }else{
-            z0 = parseFloat(d["Hydropower production deficit in the ZRB system"]).toFixed(2);
-            z1 = parseFloat(d["Deviation from natural condition in the Zamebezi Delta"]).toFixed(2);
-            z2 = parseFloat(d["Water deficit normalized w.r.t. irrigation demand"]).toFixed(2);
-            z3 = parseFloat(d["Total discounted construction cost"]).toFixed(2);
+            z0a = parseFloat(d["Hydropower production deficit in the ZRB system"]).toFixed(2);
+            z1a = parseFloat(d["Deviation from natural condition in the Zamebezi Delta"]).toFixed(2);
+            z2a = parseFloat(d["Water deficit normalized w.r.t. irrigation demand"]).toFixed(2);
+            z3a = parseFloat(d["Total discounted construction cost"]).toFixed(2);
+
+            z0b = parseFloat(d["j_Hyd_n"]).toFixed(2);
+            z1b = parseFloat(d["j_Env_n"]).toFixed(2);
+            z2b = parseFloat(d["j_Irr_n"]).toFixed(2);
+            z3b = parseFloat(d["j_Cost_n"]).toFixed(2);
           }
 
         }else{
@@ -585,11 +646,23 @@ function render(_filter,_pathwaysList,color,_max){
             ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
             tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
             ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
+
+            epb = parseFloat(d["Hydropower Production"]).toFixed(2);
+            nob = parseFloat(d["Deviation from natural condition (Omo) "]).toFixed(2);
+            rab = parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2);
+            tfb = parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2);
+            iab = parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2);
+
           }else{
-            z0 = parseFloat(d["j_Hyd_n"]).toFixed(2);
-            z1 = parseFloat(d["j_Env_n"]).toFixed(2);
-            z2 = parseFloat(d["j_Irr_n"]).toFixed(2);
-            z3 = parseFloat(d["j_Cost_n"]).toFixed(2);
+            z0a = parseFloat(d["j_Hyd_n"]).toFixed(2);
+            z1a = parseFloat(d["j_Env_n"]).toFixed(2);
+            z2a = parseFloat(d["j_Irr_n"]).toFixed(2);
+            z3a = parseFloat(d["j_Cost_n"]).toFixed(2);
+
+            z0b = parseFloat(d["Hydropower production deficit in the ZRB system"]).toFixed(2);
+            z1b = parseFloat(d["Deviation from natural condition in the Zamebezi Delta"]).toFixed(2);
+            z2b = parseFloat(d["Water deficit normalized w.r.t. irrigation demand"]).toFixed(2);
+            z3b = parseFloat(d["Total discounted construction cost"]).toFixed(2);
           }
 
         }
@@ -600,12 +673,22 @@ function render(_filter,_pathwaysList,color,_max){
           document.getElementById("label_ra").innerHTML = ra;
           document.getElementById("label_tf").innerHTML = tf;
           document.getElementById("label_ia").innerHTML = ia;
-        }else{
-          document.getElementById("label_z_0").innerHTML = z0;
-          document.getElementById("label_z_1").innerHTML = z0;
-          document.getElementById("label_z_2").innerHTML = z0;
-          document.getElementById("label_z_3").innerHTML = z0;
 
+          document.getElementById("label_epb").innerHTML = epb;
+          document.getElementById("label_nob").innerHTML = nob;
+          document.getElementById("label_rab").innerHTML = rab;
+          document.getElementById("label_tfb").innerHTML = tfb;
+          document.getElementById("label_iab").innerHTML = iab;
+        }else{
+          document.getElementById("label_z_0a").innerHTML = z0a;
+          document.getElementById("label_z_1a").innerHTML = z1a;
+          document.getElementById("label_z_2a").innerHTML = z2a;
+          document.getElementById("label_z_3a").innerHTML = z3a;
+
+          document.getElementById("label_z_0b").innerHTML = z0b;
+          document.getElementById("label_z_1b").innerHTML = z1b;
+          document.getElementById("label_z_2b").innerHTML = z2b;
+          document.getElementById("label_z_3b").innerHTML = z3b;
         }
 
 
@@ -1107,6 +1190,22 @@ function handleSwitch(){
 
 }
 function handleAbsoluteValuesSwitch(){
+  let _absChecked = document.getElementsByClassName("js-switch")[1].checked;
+  if(!_absChecked){
+    document.getElementById("o_a_title").innerHTML = "Absolute";
+    document.getElementById("o_b_title").innerHTML = "Normalized";
+
+    document.getElementById("z_a_title").innerHTML = "Absolute";
+    document.getElementById("z_b_title").innerHTML = "Normalized";
+
+  }else{
+    document.getElementById("o_a_title").innerHTML = "Normalized";
+    document.getElementById("o_b_title").innerHTML = "Absolute";
+
+    document.getElementById("z_a_title").innerHTML = "Normalized";
+    document.getElementById("z_b_title").innerHTML = "Absolute";
+
+  }
   render(LAST_FILTER,LAST_PATHWAY_LIST,LAST_COLOR,LAST_MAX);
 }
 function handleFixScaleCBClick(){

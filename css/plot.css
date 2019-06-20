@@ -69,6 +69,12 @@ header{
 .label.result{
   font-size: 17px;
 }
+.label.resultb{
+  font-size: 13px;
+}
+.indicator{
+  width: 100px;
+}
 .indicator_img_wrapper{
   height: 40px;
 }
