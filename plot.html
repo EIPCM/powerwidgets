@@ -280,11 +280,11 @@ let RANGES = {
     {"max":18000,"min":0,"tickFormat":"K",ticks:20},
   ],
   "omo":[
-    {"max":0,"min":0,"tickFormat":null,ticks:20},
-    {"max":4900,"min":1900,"tickFormat":null,ticks:10},
-    {"max":8000000,"min":208000000,"tickFormat":"M",ticks:10},
-    {"max":130000,"min":0,"tickFormat":"K",ticks:10},
-    {"max":6,"min":0,"tickFormat":null,ticks:12},
+    {"max":0,"min":0,"tickFormat":null,ticks:0},
+    {"max":4900,"min":1900,"tickFormat":null,ticks:40},//18 996 0000, 9 983 400 189,960,000
+    {"max":195000000,"min":5000000,"tickFormat":"M",ticks:60},
+    {"max":1300000,"min":0,"tickFormat":"K",ticks:20}, //1 238 800
+    {"max":6,"min":0,"tickFormat":null,ticks:10},
     {"max":2,"min":0,"tickFormat":null,ticks:10},
   ]
 }
@@ -388,10 +388,7 @@ function render(_filter,_pathwaysList,color,_max){
                   (
                     y[d] = d3.scale.linear()
                     .domain(
-                      d3.extent(fData, function(p) {
-                          return +p[d];
-                        }
-                      )
+                      [RANGES.omo[i].max,RANGES.omo[i].min]
                     )
                     .range([height, 0])
                   );
@@ -734,11 +731,6 @@ function render(_filter,_pathwaysList,color,_max){
       this.parentNode.appendChild(this);
       });
     };
-    // d3.selection.prototype.moveToBack = function() {
-    //   return this.each(function(){
-    //     this.parentNode.appendChild(this);
-    //   });
-    // };
     d3.selection.prototype.moveToBack = function() {
          return this.each(function() {
             var firstChild = this.parentNode.firstChild;
@@ -816,16 +808,21 @@ function render(_filter,_pathwaysList,color,_max){
 
     }else{
       // Add an axis and title.
-      let dataset  = document.getElementById("filter_dataset").value;
-      let sdataset = (dataset === "0") ? "omo" : "zambezi";
+      let dataset    = document.getElementById("filter_dataset").value;
+      let sdataset   = (dataset === "0") ? "omo" : "zambezi";
+      let absChecked = document.getElementsByClassName("js-switch")[1].checked;
+
       g.append("g")
           .attr("class", "axis")
           .each(function(xd,xi) {
             d3.select(this).call(
-              axis.scale(y[xd]).ticks(20).tickFormat(
+              axis.scale(y[xd]).ticks(RANGES[sdataset][xi+1].ticks).tickFormat(
                 function(d,i){
+
                   if(i % 2 === 0){
-                    if(RANGES[sdataset][xi+1].tickFormat === "M"){
+                    if(!absChecked){
+                      return d;
+                    }else if(RANGES[sdataset][xi+1].tickFormat === "M"){
                       return d/1000000  + "M";
                     }else if(RANGES[sdataset][xi+1].tickFormat === "K"){
                       return d/1000  + "K";
@@ -834,9 +831,6 @@ function render(_filter,_pathwaysList,color,_max){
                     }else{
                       return d;
                     }
-
-
-
                   }else{
                     return "";
                   }
