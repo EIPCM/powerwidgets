@@ -79,7 +79,7 @@ svg {
       <div class="controlsWrapper">
         <div class="controls">
           <div class="indicator_title red" id="label">Selected Pathway: -</div>
-          <div class="indicators_wrapper">
+          <div class="indicators_wrapper" id="indicators_omo">
             <div class="indicator">
               <div class="indicator_img_wrapper">
                 <img class="indicator_img" src="img/newtool/ep.png"></img>
@@ -117,6 +117,32 @@ svg {
             </div>
 
           </div>
+          <div class="indicators_wrapper" id="indicators_zambezi">
+            <div class="indicator">
+              <div class="indicator_img_wrapper">
+                <img class="indicator_img" src="img/newtool/zambezi/ep.png"></img>
+              </div>
+              <div class="label result" id="label_z_0">-</div>
+            </div>
+            <div class="indicator">
+              <div class="indicator_img_wrapper">
+                <img class="indicator_img" src="img/newtool/zambezi/no.png"></img>
+              </div>
+              <div class="label result" id="label_z_1">-</div>
+            </div>
+            <div class="indicator">
+              <div class="indicator_img_wrapper">
+                <img class="indicator_img" src="img/newtool/zambezi/ra.png"></img>
+              </div>
+              <div class="label result" id="label_z_2">-</div>
+            </div>
+            <div class="indicator">
+              <div class="indicator_img_wrapper">
+                <img class="indicator_img" src="img/newtool/zambezi/tf.png"></img>
+              </div>
+              <div class="label result" id="label_z_3">-</div>
+            </div>
+          </div>
           <div>
             <div type="button" id="mark_pathway_btn" class="button" onclick="markPathway();">Save this Pathway</div>
             <div class="button clear"  type="button" id="mark_pathway_done" onclick="done();">Done</div>
@@ -139,15 +165,18 @@ svg {
                 <option value="0">Omo Turkana Basin</option>
                 <option value="1">Zambezi</option>
               </select>
-            <div class="label">Show Pathway Class: </div>
-              <select onchange="filterPathway()" id="filter_pathway">
-                <option value="All">All</option>
-                <option value="P0">P0 - Baseline</option>
-                <option value="P1">P1 - Koysha</option>
-                <option value="P2">P2 - Irrigation </option>
-                <option value="P3">P3 - Irrigation + Koysha</option>
+            <div id="filter_show_pathway_class">
+              <div class="label">Show Pathway Class: </div>
+                <select onchange="filterPathway()" id="filter_pathway">
+                  <option value="All">All</option>
+                  <option value="P0">P0 - Baseline</option>
+                  <option value="P1">P1 - Koysha</option>
+                  <option value="P2">P2 - Irrigation </option>
+                  <option value="P3">P3 - Irrigation + Koysha</option>
 
-              </select>
+                </select>
+            </div>
+
           </div>
           <div class="filter" style="visibility:none;">
             <div class="label">Saved Pathways</div>
@@ -299,19 +328,41 @@ function render(_filter,_pathwaysList,color,_max){
 
     if(_absChecked){//DEFAULT_RANGES
       let _fxChecked = document.getElementById("fixScaleCB").checked;
+      let _fdValue = document.getElementById("filter_dataset").value;
+      if(_fdValue == "0"){//if omo
+        // Extract the list of dimensions and create a scale for each.
+        x.domain(dimensions = d3.keys(cars[0]).filter(function(d,i) {
+          let fData = _fxChecked ? defaultData : cars;
+          return d != "Pathway" && !d.includes("_n") &&
+                  (
+                    y[d] = d3.scale.linear()
+                    .domain(
+                      d3.extent(fData, function(p) {
+                          return +p[d];
+                        }
+                      )
+                    )
+                    .range([height, 0])
+                  );
+        }));
+      }else{
+        //reverse if needed
+        x.domain(dimensions = d3.keys(cars[0]).filter(function(d,i) {
+          let fData = _fxChecked ? defaultData : cars;
+          return d != "Pathway" && !d.includes("_n") &&
+                  (
+                    y[d] = d3.scale.linear()
+                    .domain(
+                      d3.extent(fData, function(p) {
+                          return +p[d];
+                        }
+                      ).reverse()
+                    )
+                    .range([height, 0])
+                  );
+        }));
+      }
 
-      // Extract the list of dimensions and create a scale for each.
-      x.domain(dimensions = d3.keys(cars[0]).filter(function(d,i) {
-        let fData = _fxChecked ? defaultData : cars;
-        return d != "Pathway" && !d.includes("_n") &&
-                (
-                  y[d] = d3.scale.linear()
-                  .domain(d3.extent(fData, function(p) {
-                    return +p[d];
-                  }))
-                  .range([height, 0])
-                );
-      }));
     }else{
       // Extract the list of dimensions and create a scale for each.
       x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
@@ -464,6 +515,12 @@ function render(_filter,_pathwaysList,color,_max){
         document.getElementById("label_tf").innerHTML = "-";
         document.getElementById("label_ia").innerHTML = "-";
 
+        document.getElementById("label_z_0").innerHTML = "-";
+        document.getElementById("label_z_1").innerHTML = "-";
+        document.getElementById("label_z_2").innerHTML = "-";
+        document.getElementById("label_z_3").innerHTML = "-";
+
+
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
           sel.moveToBack();
@@ -492,30 +549,62 @@ function render(_filter,_pathwaysList,color,_max){
         // console.log(parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2));
         // console.log(parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2));
         let _checked = document.getElementsByClassName("js-switch")[1].checked;
+        let _dataset = document.getElementById("filter_dataset").value;
         let ep;
         let no;
         let ra;
         let tf;
         let ia;
+        let z0;
+        let z1;
+        let z2;
+        let z3;
+
         if(!_checked){
-          ep = parseFloat(d["Hydropower Production"]).toFixed(2);
-          no = parseFloat(d["Deviation from natural condition (Omo) "]).toFixed(2);
-          ra = parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2);
-          tf = parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2);
-          ia = parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2);
+          if(_dataset == "0"){
+            ep = parseFloat(d["Hydropower Production"]).toFixed(2);
+            no = parseFloat(d["Deviation from natural condition (Omo) "]).toFixed(2);
+            ra = parseFloat(d["Deviation from flood pulse (recession) "]).toFixed(2);
+            tf = parseFloat(d["Deviation from natural fish production (Turkana)"]).toFixed(2);
+            ia = parseFloat(d["Normalised water deficit (irrigation) "]).toFixed(2);
+          }else{
+            z0 = parseFloat(d["Hydropower production deficit in the ZRB system"]).toFixed(2);
+            z1 = parseFloat(d["Deviation from natural condition in the Zamebezi Delta"]).toFixed(2);
+            z2 = parseFloat(d["Water deficit normalized w.r.t. irrigation demand"]).toFixed(2);
+            z3 = parseFloat(d["Total discounted construction cost"]).toFixed(2);
+          }
+
         }else{
-          ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
-          no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
-          ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
-          tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
-          ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
+          if(_dataset == "0"){
+            ep = parseFloat(d["Energy_Prod_n"]).toFixed(2);
+            no = parseFloat(d["Natural_Omo_n"]).toFixed(2);
+            ra = parseFloat(d["Rec_Agricult_n"]).toFixed(2);
+            tf = parseFloat(d["Turkana_Fish_n"]).toFixed(2);
+            ia = parseFloat(d["Irr_Agricult_n"]).toFixed(2);
+          }else{
+            z0 = parseFloat(d["j_Hyd_n"]).toFixed(2);
+            z1 = parseFloat(d["j_Env_n"]).toFixed(2);
+            z2 = parseFloat(d["j_Irr_n"]).toFixed(2);
+            z3 = parseFloat(d["j_Cost_n"]).toFixed(2);
+          }
+
+        }
+        //set labels
+        if(_dataset == "0"){
+          document.getElementById("label_ep").innerHTML = ep;
+          document.getElementById("label_no").innerHTML = no;
+          document.getElementById("label_ra").innerHTML = ra;
+          document.getElementById("label_tf").innerHTML = tf;
+          document.getElementById("label_ia").innerHTML = ia;
+        }else{
+          document.getElementById("label_z_0").innerHTML = z0;
+          document.getElementById("label_z_1").innerHTML = z0;
+          document.getElementById("label_z_2").innerHTML = z0;
+          document.getElementById("label_z_3").innerHTML = z0;
+
         }
 
-        document.getElementById("label_ep").innerHTML = ep;
-        document.getElementById("label_no").innerHTML = no;
-        document.getElementById("label_ra").innerHTML = ra;
-        document.getElementById("label_tf").innerHTML = tf;
-        document.getElementById("label_ia").innerHTML = ia;
+
 
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
@@ -789,6 +878,12 @@ function showSessionPopup(){
 }
 function loadSessions(){
   let saved_sessions  = JSON.parse(localStorage.saved_sessions);
+  let selected_dataset = document.getElementById("filter_dataset").value;
+  let dataset = (selected_dataset == "0") ? "omo" : "zambezi";
+  if(saved_sessions){
+    saved_sessions = saved_sessions.filter(s => s.dataset === dataset);
+
+  }
   let options = "";
   let option  = "<option value='{%val}'>{%val}</option>";
   if(saved_sessions !== null){
@@ -842,6 +937,21 @@ function filterClear(){
 }
 function changeDataSet(){
   render("All",[])
+    let selected_dataset = document.getElementById("filter_dataset").value;
+  if(selected_dataset === "1"){
+    document.getElementById("indicators_omo").style.display = "none";
+    document.getElementById("indicators_zambezi").style.display = "flex"
+    document.getElementById("filter_show_pathway_class").style.display = "none";
+    document.getElementsByClassName("title")[0].innerHTML = "Screening Tool for Solution Pathways in Zambezi"
+  }else{
+    document.getElementById("indicators_omo").style.display = "flex";
+    document.getElementById("indicators_zambezi").style.display = "none"
+    document.getElementById("filter_show_pathway_class").style.display = "block";
+    document.getElementsByClassName("title")[0].innerHTML = "Screening Tool for Solution Pathways in Omo Turkana Basin"
+
+
+  }
+  loadSessions();
 }
 function filterPathway(){
   _filter = document.getElementById("filter_pathway").value;
@@ -1012,6 +1122,7 @@ document.getElementsByClassName("js-switch")[1].addEventListener("change",functi
 window.onload = function(){
   handleSwitch();
   loadSessions();
+  changeDataSet();
 }
 function showPathwayOptions(){
   _checked = document.getElementsByClassName("js-switch")[0].checked;
@@ -1076,11 +1187,13 @@ function saveSession(){
 
   let data = d3.selectAll(".brushed").data();
 
-
+  let dataset = document.getElementById("filter_dataset").value;
+  let d = dataset == "0" ? "omo": "zambezi";
   let session = {
     "name":pw_name,
     "color":pw_color,
-    "data":data
+    "data":data,
+    "dataset": d
   }
   saved_sessions.push(session);
   localStorage.setItem("saved_sessions",JSON.stringify(saved_sessions));
