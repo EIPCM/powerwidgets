@@ -230,12 +230,16 @@ svg {
 var CLICK_MODE = false;
 var MARKED_PATHWAY = null;
 var THRESHOLD_ACTIVE = false;
-_LABELS ={
-  "Natural_Omo":"Deviation from natural condition in the Omo Delta",
-  "Turkana_Fish":"Deviation from fish natural production in the Lake Turkana",
-  "Energy_Prod":"Hydropower production in the OTB system",
-  "Irr_Agricult":"Normalized water deficit in the two districts",
-  "Rec_Agricult":"Deviation from artificial flood pulse for Recession Agriculture"
+var _LABELS ={
+  "Energy_Prod_n":"Hydropower Production",
+  "Natural_Omo_n":"Deviation from natural condition (Omo) ",
+  "Rec_Agricult_n":"Deviation from flood pulse (recession) ",
+  "Turkana_Fish_n":"Deviation from natural fish production (Turkana)",
+  "Irr_Agricult_n":"Normalised water deficit (irrigation) ",
+  "j_Hyd_n":"Hydropower production deficit in the ZRB system",
+  "j_Env_n":"Deviation from natural condition in the Zamebezi Delta",
+  "j_Irr_n":"Water deficit normalized w.r.t. irrigation demand",
+  "j_Cost_n":"Total discounted construction cost"
 }
 
 let LAST_FILTER = "All";
@@ -280,7 +284,7 @@ function render(_filter,_pathwaysList,color,_max){
   let _dataset  = document.getElementById("filter_dataset").value;
   let _datafile = _dataset == "0" ? "full.csv" : "full_zambezi.csv";
   d3.csv(_datafile, function(error, cars) {
-    let defaultData = cars; 
+    let defaultData = cars;
     cars = cars.filter(function(row) {
       if(_loadSaved){
         return _pathwaysList.includes(row['Pathway']);
@@ -670,7 +674,7 @@ function render(_filter,_pathwaysList,color,_max){
           .attr("y", _y )
           .attr("x",_x);
         })
-    if(!_absChecked){
+    if(!_absChecked && document.getElementById("filter_dataset").value === "0"){
       // Add an axis and ticks
       g.append("g")
           .attr("class", "axis")
@@ -702,13 +706,17 @@ function render(_filter,_pathwaysList,color,_max){
              if(_x.length > 3) {
                return _x.slice(0,3).join(" ");
              }else{
-               return d;
+               let _label = d.includes("_n") ? _LABELS[d] : d;
+               _label = _label.split(" ");
+               return _label.slice(0,3).join(" ");
              };
            });
+
            d3.select(d3.selectAll(".tick")[0][4]).selectAll("text").attr("fill","red");
            d3.select(d3.selectAll(".tick")[0][40]).selectAll("text").attr("fill","red");
            d3.select(d3.selectAll(".tick")[0][61]).selectAll("text").attr("fill","red");
            d3.select(d3.selectAll(".tick")[0][81]).selectAll("text").attr("fill","red");
+
     }else{
       // Add an axis and title.
       g.append("g")
@@ -725,43 +733,40 @@ function render(_filter,_pathwaysList,color,_max){
              if(_x.length > 3) {
                return _x.slice(0,3).join(" ");
              }else{
-               return d;
+               let _label = d.includes("_n") ? _LABELS[d] : d;
+               _label = _label.split(" ");
+               return _label.slice(0,3).join(" ");
              };
            });
 
     }
 
-        g.append("g")
-            .attr("class", "axis")
-          .append("text")
-            .style("text-anchor", "middle")
-            .style("font-weight","bold")
-            .attr("y", -25 )
-            .text(function(d,i) {
-               _x = d.split(" ");
-               if(_x.length > 3) {
-                 return _x.slice(3,_x.length).join(" ");
-               }else{
-                 return "";
-               };
-             });
-             _units = ["Twh/y","(m3/sec)^2","(m3/sec)^2","-","%"]
-             g.append("g")
-                 .attr("class", "axis")
-               .append("text")
-                 .style("text-anchor", "middle")
-                 .attr("y", function(){
-                   if(_absChecked){
-                     return -10;
-                   }else{
-                     return -20;
-
-                   }
-                 } )
-                 .text(function(d,i) {
-                    _x = d.split(" ");
-                      return _units[i];
-                  });
+    g.append("g")
+      .attr("class", "axis")
+      .append("text")
+      .style("text-anchor", "middle")
+      .style("font-weight","bold")
+      .attr("y", -25 )
+      .text(function(d,i) {
+         let _label = d.includes("_n") ? _LABELS[d] : d;
+         _label = _label.split(" ");
+         return _label.slice(3,_label.length).join(" ");
+       });
+    let _units = null;
+    if(document.getElementById("filter_dataset").value == "0"){
+      _units = ['Twh/y','(m3/sec)^2','(m3/sec)^2','-','%'];
+    }else{
+      _units = ['Twh/y','(m3/sec)^2','-','BUSD'];
+    }
+     g.append("g")
+      .attr("class", "axis")
+      .append("text")
+      .style("text-anchor", "middle")
+      .attr("y",-10)
+      .text(function(d,i) {
+        _x = d.split(" ");
+        return _units[i];
+      });
       // Add and store a brush for each axis.
       g.append("g")
         .attr("class", "brush")
