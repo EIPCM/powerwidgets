@@ -423,9 +423,6 @@ function render(_filter,_pathwaysList,color,_max){
 
     }
 
-    if(_pathwaysList.length == 0 ){
-      updateSavedPathwaysList();
-    }
     // Add grey background lines for context.
     background = svg.append("g")
         .attr("class", "background")
@@ -992,13 +989,15 @@ function showSessionPopup(){
   })
 }
 function loadSessions(){
-  let saved_sessions  = JSON.parse(localStorage.saved_sessions);
-  let selected_dataset = document.getElementById("filter_dataset").value;
-  let dataset = (selected_dataset == "0") ? "omo" : "zambezi";
-  if(saved_sessions){
-    saved_sessions = saved_sessions.filter(s => s.dataset === dataset);
-
+  let saved_sessions    = null;
+  let selected_dataset  = document.getElementById("filter_dataset").value;
+  if(selected_dataset   === "0"){
+    saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
+  }else{
+    saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
   }
+  let dataset = (selected_dataset == "0") ? "omo" : "zambezi";
+
   let options = "";
   let option  = "<option value='{%val}'>{%val}</option>";
   if(saved_sessions !== null){
@@ -1010,16 +1009,20 @@ function loadSessions(){
   document.getElementById("saved_sessions_selector").innerHTML = options;
 }
 function loadSession(){
-  let saved_sessions  = JSON.parse(localStorage.saved_sessions);
+  let dataset = document.getElementById("filter_dataset").value;
+  let saved_sessions = null;
+  if(dataset === "0"){
+    saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
+  }else{
+    saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
+  }
 
-  // let i  = document.getElementById("saved_sessions_selector").selectedIndex;
   let y  = document.getElementById("saved_sessions_selector");
-
   let _indexes = Array.from(y.options).filter(options => options.selected).map(option => option.index)
-  // let _data = saved_sessions[i].data;
-   _data = [];
-  _colors = {};
-  for (var z = 0; z < _indexes.length ; z++) {
+
+  let _data = [];
+  let _colors = {};
+  for (var z = 0; z < _indexes.length; z++) {
     _carray = saved_sessions[_indexes[z]].data;
     _data = _data.concat(_carray);
     for (var ii = 0; ii < _carray.length; ii++) {
@@ -1086,49 +1089,6 @@ var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 elems.forEach(function(html) {
   var switchery = new Switchery(html, { size: 'small',color:"#468EEB" });
 });
-function loadMarkedPathways(){
-  saved_pathways = localStorage.getItem("saved_pathways");
-  if(saved_pathways == null){ //init db
-    localStorage.setItem("saved_pathways","[]");
-  }
-  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
-  saved_pathways = JSON.parse(saved_pathways);
-
-  saved_pathways = saved_pathways.map(p => p.Pathway);
-  render("Saved",saved_pathways)
-
-}
-function markPathway(){
-  if(MARKED_PATHWAY !=null){
-    saved_pathways = localStorage.getItem("saved_pathways");
-    if(saved_pathways == null){ //init db
-      localStorage.setItem("saved_pathways","[]");
-    }
-    saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
-    saved_pathways = JSON.parse(saved_pathways);
-    saved_pathways.push(MARKED_PATHWAY);
-    localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
-    var btn =  document.getElementById("mark_pathway_btn");
-    btn.innerHTML = "Save this pathway";
-    btn.setAttribute("onclick","unmarkPathway()")
-    updateSavedPathwaysList();
-
-  }
-}
-function clearPathways(){
-  document.getElementsByClassName("options")[0].style.display = "none";
-  localStorage.setItem("saved_pathways","[]");
-  var btn =  document.getElementById("mark_pathway_btn");
-  btn.innerHTML = "Save this pathway";
-  btn.setAttribute("onclick","markPathway()");
-  updateSavedPathwaysList();
-  _checked = document.getElementsByClassName("js-switch")[0].checked;
-  if(_checked){
-    handleSwitch();
-  }
-
-
-}
 function isPathwayMarked(){
   saved_pathways = localStorage.getItem("saved_pathways");
   if(saved_pathways == null){ //init db
@@ -1143,49 +1103,6 @@ function isPathwayMarked(){
     }
   });
   return _found;
-}
-function unmarkPathway(){
-  if(MARKED_PATHWAY !=null){
-    saved_pathways = localStorage.getItem("saved_pathways");
-    if(saved_pathways == null){ //init db
-      localStorage.setItem("saved_pathways","[]");
-    }
-    saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
-    saved_pathways = JSON.parse(saved_pathways);
-    saved_pathways.forEach(function(p,i){
-      if(p.Pathway == MARKED_PATHWAY.Pathway){
-        saved_pathways.splice(i,1)
-      }
-    });
-    localStorage.setItem("saved_pathways",JSON.stringify(saved_pathways));
-    var btn =  document.getElementById("mark_pathway_btn");
-    btn.innerHTML = "Save this pathway";
-    btn.setAttribute("onclick","markPathway()")
-    updateSavedPathwaysList();
-
-  }
-}
-function updateSavedPathwaysList(){
-  _option = "<option value='%s'>%s</option>";
-  _options = "";
-  _pSelector = document.getElementById("saved_pathways_selector");
-
-  saved_pathways = localStorage.getItem("saved_pathways");
-  if(saved_pathways == null){ //init db
-    localStorage.setItem("saved_pathways","[]");
-  }
-  saved_pathways = localStorage.getItem("saved_pathways"); //ensures we have the init list
-  saved_pathways = JSON.parse(saved_pathways);
-
-
-
-  saved_pathways.forEach(function(p){
-    _pSelector.innerHTML = "";
-    _options += _option.replace("%s",p.Pathway).replace("%s",p.Pathway);
-  });
-  _pSelector.innerHTML = _options;
-
-
 }
 function handleSwitch(){
   filterClear();
@@ -1203,7 +1120,6 @@ function handleSwitch(){
     document.getElementsByClassName("filter")[1].style.display = "none";
     document.getElementById("session_filter").style.display = "block";
 
-    loadMarkedPathways();
 
   }else{
     document.getElementsByClassName("filter")[0].style.display = "block";
@@ -1305,12 +1221,13 @@ function savePathway(){
   }
 }
 function saveSession(){
+  let dataset = document.getElementById("filter_dataset").value;
+  let d = dataset == "0" ? "omo": "zambezi";
 
-  // document.getElementsByClassName("options")[0].style.display = "none";
   let pw_name     = document.getElementById("session_name").value;
   let pw_color    = document.getElementById("session_color").value;
 
-  let saved_sessions = localStorage.getItem("saved_sessions");
+  let saved_sessions = localStorage.getItem("saved_sessions_"+d);
   saved_sessions = JSON.parse(saved_sessions);
   if(saved_sessions == null){
     saved_sessions = [];
@@ -1318,8 +1235,6 @@ function saveSession(){
 
   let data = d3.selectAll(".brushed").data();
 
-  let dataset = document.getElementById("filter_dataset").value;
-  let d = dataset == "0" ? "omo": "zambezi";
   let session = {
     "name":pw_name,
     "color":pw_color,
@@ -1327,7 +1242,7 @@ function saveSession(){
     "dataset": d
   }
   saved_sessions.push(session);
-  localStorage.setItem("saved_sessions",JSON.stringify(saved_sessions));
+  localStorage.setItem("saved_sessions_"+d,JSON.stringify(saved_sessions));
 }
 function loadColors(){
   saved_pathways = localStorage.getItem("saved_pathways");
@@ -1359,7 +1274,12 @@ function export_configuration(){
   download("export.csv",csv);
 }
 function delete_sessions(){
-  localStorage.saved_sessions = null;
+  let selected_dataset  = document.getElementById("filter_dataset").value;
+  if(selected_dataset   === "0"){
+    localStorage.saved_sessions_omo = null;
+  }else{
+    localStorage.saved_sessions_zambezi = null;
+  }
   loadSessions();
   filterClear();
 }
