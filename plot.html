@@ -1009,6 +1009,7 @@ function loadSessions(){
   document.getElementById("saved_sessions_selector").innerHTML = options;
 }
 function loadSession(){
+  resetClickEvent();
   let dataset = document.getElementById("filter_dataset").value;
   let saved_sessions = null;
   if(dataset === "0"){
@@ -1040,6 +1041,12 @@ function loadSession(){
   //update color in plot
 
 
+}
+function resetClickEvent(){
+  THRESHOLD_ACTIVE = false;
+  CLICK_MODE       = false;
+  document.getElementById("filterThresholdBtn").style.visibility = "hidden";
+  document.getElementById("filterClearBtn").style.visibility = "hidden";
 }
 function filterClear(){
   render("All",[]);
@@ -1132,7 +1139,7 @@ function handleSwitch(){
 
 }
 function handleAbsoluteValuesSwitch(){
-  filterClear();
+  resetClickEvent();
   let _absChecked = document.getElementsByClassName("js-switch")[1].checked;
   if(!_absChecked){
     document.getElementById("o_a_title").innerHTML = "Absolute";
