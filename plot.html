@@ -538,20 +538,27 @@ function render(_filter,_pathwaysList,color,_max){
       d3.selectAll(".foreground path").attr("display","none");
       d3.selectAll(".foreground path").attr("display","none");
 
-      d3.selectAll(".brushed").classed("brushed",false);
+      let brushed_pathways = d3.selectAll(".brushed");
+      brushed_pathways.classed("brushed","unbrushed");
+
+      //remove others clicked
+      d3.selectAll(".clicked").classed("clicked",false);
+
 
       SELECTED_PATHWAY = d3.select(this);
       SELECTED_PATHWAY.attr("display","block");
-      SELECTED_PATHWAY.attr("class","brushed");
+      SELECTED_PATHWAY.attr("class","brushed clicked");
       SELECTED_PATHWAY.attr("stroke","red");
       CLICK_MODE = !CLICK_MODE
-
-    }
-    d3.select("body").on("click",function(){
-      if(MARKED_PATHWAY != null){
-
+      if(!CLICK_MODE){
+        if(d3.selectAll(".brushed_selection")[0].length === 0){
+          filterClear();
+        }else{
+          document.getElementById("filterThresholdBtn").innerHTML = "Save all Pathways";
+          d3.selectAll(".brushed_selection").attr("display","block");
+        }
       }
-    });
+    }
     function handleMouseOut(d,i){
       if(!CLICK_MODE){
         document.getElementById("label").innerHTML = "Selected Pathway: -";
@@ -577,21 +584,16 @@ function render(_filter,_pathwaysList,color,_max){
         document.getElementById("label_z_3b").innerHTML = "-";
 
         var sel = d3.select(this);
+
         if(sel.attr("display") != "none"){
           sel.moveToBack();
           sel.style("stroke-width",PATH_OVER_WIDTH);
           _checked = document.getElementsByClassName("js-switch")[0].checked;
           sel.style("stroke",PATH_OVER_COLOR);
+          d3.selectAll(".brushed_selection").attr("display","block");
         }
 
       }
-
-
-
-      // paths = svg.selectAll("path");
-      // paths.style("stroke","steelblue");
-      // paths.style("stroke-width",1);
-
 
     }
     // Create Event Handlers for mouse
@@ -860,12 +862,15 @@ function render(_filter,_pathwaysList,color,_max){
          return _label.slice(3,_label.length).join(" ");
        });
     let _units = null;
+
     if(document.getElementById("filter_dataset").value == "0"){
-      _units = ['Twh/y','(m3/sec)^2','(m3/sec)^2','MT','%'];
+      _units = ['Gwh/y','(m3/sec)^2','(m3/sec)^2','MT','-'];
     }else{
       _units = ['Twh/y','(m3/sec)^2','-','BUSD'];
     }
-     g.append("g")
+    let absChecked = document.getElementsByClassName("js-switch")[1].checked;
+    if(!absChecked){
+      g.append("g")
       .attr("class", "axis")
       .append("text")
       .style("text-anchor", "middle")
@@ -874,6 +879,8 @@ function render(_filter,_pathwaysList,color,_max){
         _x = d.split(" ");
         return _units[i];
       });
+    }
+
       // Add and store a brush for each axis.
       g.append("g")
         .attr("class", "brush")
@@ -884,9 +891,7 @@ function render(_filter,_pathwaysList,color,_max){
         .attr("x", -8)
         .attr("width", 16);
         _checked = document.getElementsByClassName("js-switch")[0].checked;
-        if(_checked){
-          // loadColors();
-        }
+
       //add arrow
       svg.append("defs")
                 .append("marker")
@@ -946,8 +951,13 @@ function render(_filter,_pathwaysList,color,_max){
     foreground.attr("class", function(d) {
       return actives.every(function(p, i) {
         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-      }) ? "brushed" : null;
+      }) ? "brushed brushed_selection" : null;
     });
+    // foreground.attr("class", function(d) {
+    //   return actives.every(function(p, i) {
+    //     return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    //   }) ? "brushed_selection" : null;
+    // });
   }
 
 }
@@ -1045,6 +1055,7 @@ function loadSession(){
 function resetClickEvent(){
   THRESHOLD_ACTIVE = false;
   CLICK_MODE       = false;
+  d3.selectAll(".clicked").classed("clicked",false);
   document.getElementById("filterThresholdBtn").style.visibility = "hidden";
   document.getElementById("filterClearBtn").style.visibility = "hidden";
 }
@@ -1052,6 +1063,7 @@ function filterClear(){
   render("All",[]);
   THRESHOLD_ACTIVE = false;
   CLICK_MODE       = false;
+  d3.selectAll(".clicked").classed("clicked",false);
   document.getElementById("filterThresholdBtn").style.visibility = "hidden";
   document.getElementById("filterClearBtn").style.visibility = "hidden";
 
@@ -1239,8 +1251,12 @@ function saveSession(){
   if(saved_sessions == null){
     saved_sessions = [];
   }
-
-  let data = d3.selectAll(".brushed").data();
+  let data = null;
+  if(!CLICK_MODE){ //save many pathways
+    data = d3.selectAll(".brushed").data();
+  }else{ // save one pathway
+    data = d3.selectAll(".clicked").data();
+  }
 
   let session = {
     "name":pw_name,
