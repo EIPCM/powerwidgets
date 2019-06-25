@@ -271,6 +271,21 @@ var _LABELS ={
   "j_Irr_n":"Water deficit normalized w.r.t. irrigation demand",
   "j_Cost_n":"Total discounted construction cost"
 }
+let SECTORS = {
+  "omo":[
+    "ENERGY",
+    "ENVIRONMENT",
+    "FOOD",
+    "FOOD",
+    "FOOD",
+  ],
+  "zambezi":[
+    "ENERGY",
+    "ENVIRONMENT",
+    "FOOD",
+    "SOCIO-ECONOMIC"
+  ]
+}
 let RANGES = {
   "zambezi":[
     {"max":0,"min":0,"tickFormat":null,ticks:20},
@@ -310,7 +325,7 @@ function render(_filter,_pathwaysList,color,_max){
 
   d3.select("svg").html("");
 
-  var margin = {top: 110, right: 10, bottom: 10, left: 10},
+  var margin = {top: 130, right: 10, bottom: 10, left: 10},
       width = 960 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
@@ -747,12 +762,12 @@ function render(_filter,_pathwaysList,color,_max){
         .attr("class", "axis")
         .each(function(d,i) {
           _x = -22;
-          _y = -100;
+          _y = -120;
           if(i >= 2){
               _x = -25;
           }
           if(i == 3){
-            _y = -95;
+            _y = -115;
           }
           let fdVal = document.getElementById("filter_dataset").value;
           let axisImg   = "img/newtool/"+_images[i];
@@ -765,7 +780,30 @@ function render(_filter,_pathwaysList,color,_max){
           .attr("width",50)
           .attr("y", _y )
           .attr("x",_x);
-        })
+
+        });
+    let selectedDataset = document.getElementById("filter_dataset").value;
+    g.append("g")
+        .attr("class", "axis")
+        .each(function(d,i) {
+          _x = 0;
+          _y = -55;
+          d3.select(this)
+            .append("text")
+            .attr("y", _y)
+            .attr("x",_x)
+            .attr("text-anchor","middle")
+            .attr("fill","black")
+            .attr("font-size",13)
+            .style("fill","#5d5d5d")
+            .text(function(){
+              if(selectedDataset === "0"){
+                return SECTORS.omo[i];
+              }else{
+                return SECTORS.zambezi[i];
+              }
+            })
+        });
     if(!_absChecked && document.getElementById("filter_dataset").value === "0"){
       // Add an axis and ticks
       g.append("g")
@@ -793,6 +831,7 @@ function render(_filter,_pathwaysList,color,_max){
           .style("text-anchor", "middle")
           .style("font-weight","bold")
           .attr("y", -40)
+
           .text(function(d,i) {
              _x = d.split(" ");
              if(_x.length > 3) {
