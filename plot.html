@@ -384,11 +384,19 @@ function render(_filter,_pathwaysList,color,_max){
         // Extract the list of dimensions and create a scale for each.
         x.domain(dimensions = d3.keys(cars[0]).filter(function(d,i) {
           let fData = _fxChecked ? defaultData : cars;
+          let domain = null;
+          if (!d.includes("_n")){
+            if(d === "Hydropower Production"){
+              domain = [RANGES.omo[i].min,RANGES.omo[i].max] //flip Hydropower when in absolute mode;
+            }else{
+              domain = [RANGES.omo[i].max,RANGES.omo[i].min]
+            }
+          }
           return d != "Pathway" && !d.includes("_n") &&
                   (
                     y[d] = d3.scale.linear()
                     .domain(
-                      [RANGES.omo[i].max,RANGES.omo[i].min]
+                      domain
                     )
                     .range([height, 0])
                   );
