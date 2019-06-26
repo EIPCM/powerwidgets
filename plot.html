@@ -240,7 +240,7 @@ svg {
             <div class="label">Saved Sessions</div>
             <div class="label">(To Select 2 or more: Use Ctrl + Click / ⌘ + Click)</div>
 
-            <select multiple="multiple" id="saved_sessions_selector" style="width: 96%;" onchange="loadSession()">
+            <select multiple="multiple" id="saved_sessions_selector" style="width: 96%;font-size: 16px;" onchange="loadSession()">
             </select>
             <div class="button" onclick="export_sessions()">Export Selected Sessions</div>
             <div class="button" onclick="delete_sessions()">Delete All Sessions</div>
@@ -303,7 +303,21 @@ let RANGES = {
     {"max":2,"min":0,"tickFormat":null,ticks:10},
   ]
 }
+function createFavouritesObject(){
+  let ss = JSON.parse(localStorage.saved_sessions_omo);
+  if (ss === null)
+  return {};
+  ss.forEach(function(session){
+    if(session.favourite){
+      let pathways = session.data.map(d => d.Pathway);
+      pathways.forEach(function(p){
+          ss[p] = session.color;
+      });
+    }
 
+  });
+  return ss;
+}
 let LAST_FILTER = "All";
 let LAST_PATHWAY_LIST = [];
 let LAST_COLOR = null;
@@ -311,6 +325,7 @@ let LAST_MAX   = null;
 let PATH_OVER_WIDTH = 1;
 let PATH_OVER_COLOR = "steelblue";
 function render(_filter,_pathwaysList,color,_max){
+  let FAVOURITE_PATHWAYS = createFavouritesObject();
   LAST_FILTER       = _filter;
   LAST_PATHWAY_LIST = _pathwaysList;
   LAST_COLOR        = color;
@@ -323,6 +338,7 @@ function render(_filter,_pathwaysList,color,_max){
     _filter = "P"
   }
 
+  //cal
   d3.select("svg").html("");
 
   var margin = {top: 130, right: 10, bottom: 10, left: 10},
@@ -449,10 +465,11 @@ function render(_filter,_pathwaysList,color,_max){
     // Add grey background lines for context.
     background = svg.append("g")
         .attr("class", "background")
-      .selectAll("path")
+        .selectAll("path")
         .data(cars)
-      .enter().append("path")
-        .attr("d", path);
+        .enter()
+          .append("path")
+          .attr("d", path);
     if(color == null){
       // Add blue foreground lines for focus.
       let _showColorsCB = document.getElementById("showColorsCB").checked;
@@ -465,6 +482,11 @@ function render(_filter,_pathwaysList,color,_max){
           .enter().append("path")
           .attr("d", path)
           .style("stroke", function(d,i){
+            // d3.select(this).attr("class","not_favourite");
+            if(d.Pathway in FAVOURITE_PATHWAYS){
+              // d3.select(this).attr("class","favourite");
+              return FAVOURITE_PATHWAYS[d.Pathway]
+            }
             if(!_showColorsCB){
               return "steelblue";
             }
@@ -485,8 +507,8 @@ function render(_filter,_pathwaysList,color,_max){
       if(typeof(color) == "object"){
         // Add custom color
         foreground = svg.append("g")
-        .attr("class", "foreground")
-            .style("fill","none")
+          .attr("class", "foreground")
+          .style("fill","none")
           .selectAll("path")
             .data(cars)
           .enter().append("path")
@@ -507,10 +529,11 @@ function render(_filter,_pathwaysList,color,_max){
         .attr("class", "foreground")
             .style("fill","none")
             .style("stroke",color)
-          .selectAll("path")
+            .selectAll("path")
             .data(cars)
-          .enter().append("path")
-            .attr("d", path)
+            .enter()
+            .append("path")
+              .attr("d", path)
       }
 
     }
@@ -545,14 +568,10 @@ function render(_filter,_pathwaysList,color,_max){
                 .duration(0)
                 .attr("visibility", null);
           })
-
-
-          );
+        );
     svg.selectAll(".foreground path").on("mouseout",handleMouseOut);
     svg.selectAll(".foreground path").on("mouseover",handleMouseOver);
-
     svg.selectAll(".foreground path").on("click",handleMouseClick);
-
     function handleMouseClick(d,i){
       document.getElementById("filterThresholdBtn").style.visibility = "visible";
       document.getElementById("filterThresholdBtn").innerHTML = "Save Pathway";
@@ -567,7 +586,6 @@ function render(_filter,_pathwaysList,color,_max){
       //remove others clicked
       d3.selectAll(".clicked").classed("clicked",false);
 
-
       SELECTED_PATHWAY = d3.select(this);
       SELECTED_PATHWAY.attr("display","block");
       SELECTED_PATHWAY.attr("class","brushed clicked");
@@ -581,6 +599,8 @@ function render(_filter,_pathwaysList,color,_max){
           d3.selectAll(".brushed_selection").attr("display","block");
         }
       }
+      //show favourites
+      d3.selectAll(".favourite").attr("display","block")
     }
     function handleMouseOut(d,i){
       if(!CLICK_MODE){
@@ -615,9 +635,7 @@ function render(_filter,_pathwaysList,color,_max){
           sel.style("stroke",PATH_OVER_COLOR);
           d3.selectAll(".brushed_selection").attr("display","block");
         }
-
       }
-
     }
     // Create Event Handlers for mouse
     function handleMouseOver(d, i) {  // Add interactivity
@@ -723,15 +741,11 @@ function render(_filter,_pathwaysList,color,_max){
           document.getElementById("label_z_3b").innerHTML = z3b;
         }
 
-
-
         var sel = d3.select(this);
         if(sel.attr("display") != "none"){
-          // console.log("style",sel.style("stroke-width"));
           sel.moveToFront();
           PATH_OVER_WIDTH = sel.style("stroke-width");
           sel.style("stroke-width",2);
-          // _checked = document.getElementsByClassName("js-switch")[0].checked;
           PATH_OVER_COLOR = sel.style("stroke");
           sel.style("stroke","red");
         }
@@ -741,8 +755,6 @@ function render(_filter,_pathwaysList,color,_max){
     var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
-
-
 
     d3.selection.prototype.moveToFront = function() {
       return this.each(function(){
@@ -928,40 +940,40 @@ function render(_filter,_pathwaysList,color,_max){
       });
     }
 
-      // Add and store a brush for each axis.
-      g.append("g")
-        .attr("class", "brush")
-        .each(function(d) {
-          d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
-        })
-      .selectAll("rect")
-        .attr("x", -8)
-        .attr("width", 16);
-        _checked = document.getElementsByClassName("js-switch")[0].checked;
+    // Add and store a brush for each axis.
+    g.append("g")
+      .attr("class", "brush")
+      .each(function(d) {
+        d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush)).on("brushend",brushend);
 
-      //add arrow
-      svg.append("defs")
-                .append("marker")
-                .attr("id","arrow")
-                .attr("markerWidth",10)
-                .attr("markerHeight",10)
-                .attr("refX",0)
-                .attr("refY",3)
-                .attr("orient","auto")
-                .attr("markerUnits","strokeWidth")
-                .append("path")
-                  .attr("d","M0,0 L0,6 L9,3 z")
-                  .attr("fill","black");
-      svg.append("line")
-        .attr("x1", 40)
-        .attr("y1",385)
-        .attr("x2",40)
-        .attr("y2",20)
-        .attr("stroke", "black")
-        .attr("stroke-width", 2.5)
-        .attr("fill", "black")
-        .attr("marker-end","url(#arrow)")
+      })
+    .selectAll("rect")
+      .attr("x", -8)
+      .attr("width", 16);
+      _checked = document.getElementsByClassName("js-switch")[0].checked;
 
+    //add arrow
+    svg.append("defs")
+              .append("marker")
+              .attr("id","arrow")
+              .attr("markerWidth",10)
+              .attr("markerHeight",10)
+              .attr("refX",0)
+              .attr("refY",3)
+              .attr("orient","auto")
+              .attr("markerUnits","strokeWidth")
+              .append("path")
+                .attr("d","M0,0 L0,6 L9,3 z")
+                .attr("fill","black");
+    svg.append("line")
+      .attr("x1", 40)
+      .attr("y1",385)
+      .attr("x2",40)
+      .attr("y2",20)
+      .attr("stroke", "black")
+      .attr("stroke-width", 2.5)
+      .attr("fill", "black")
+      .attr("marker-end","url(#arrow)")
   });
 
   function position(d) {
@@ -981,34 +993,34 @@ function render(_filter,_pathwaysList,color,_max){
   function brushstart() {
     d3.event.sourceEvent.stopPropagation();
   }
-
+  function brushend(){
+    console.log("end");
+  }
   // Handles a brush event, toggling the display of foreground lines.
   function brush() {
     document.getElementById("filterThresholdBtn").style.visibility = "visible";
     document.getElementById("filterClearBtn").style.visibility = "visible";
     document.getElementById("filterThresholdBtn").innerHTML = "Save all Pathways";
 
-    var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
-        extents = actives.map(function(p) { return y[p].brush.extent(); });
-    foreground.style("display", function(d) {
-      return actives.every(function(p, i) {
-        return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-      }) ? null : "none";
+    var actives = dimensions.filter(function(p) {
+       return !y[p].brush.empty();
+      });
+    extents = actives.map(function(p) { return y[p].brush.extent(); });
+    foreground.style("display", function(d,i) {
+      // pw = foreground[i]
+      // console.log(pw);
+        return actives.every(function(p, i) {
+          return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+        }) ? null : "none";
     });
+    // d3.selectAll(".favourite").attr("display","block");
     foreground.attr("class", function(d) {
       return actives.every(function(p, i) {
         return extents[i][0] <= d[p] && d[p] <= extents[i][1];
       }) ? "brushed brushed_selection" : null;
     });
-    // foreground.attr("class", function(d) {
-    //   return actives.every(function(p, i) {
-    //     return extents[i][0] <= d[p] && d[p] <= extents[i][1];
-    //   }) ? "brushed_selection" : null;
-    // });
   }
-
 }
-
 function generateSessionHTML(){
   return '<div>'+
             '<div class="row" style="height: 40px;display:flex;justify-content: space-between;">'+
@@ -1019,9 +1031,11 @@ function generateSessionHTML(){
               '<span>Session Name:</span>'+
               '<input type="text" id="session_name" placeholder="Session Name" style="height: 20px;"></input>'+
             '</div>'+
+            '<div class="row" style="height: 40px;display:flex;justify-content: space-between;">'+
+              '<span>Make favourite:</span>'+
+              '<input type="checkbox" id="makeFavouriteCB"  style="height: 20px;"></input>'+
+            '</div>'+
           '</div>';
-
-
 }
 function filterMax(){
   let _max = parseFloat(document.getElementById("max_val").value);
@@ -1059,10 +1073,13 @@ function loadSessions(){
   let option  = "<option value='{%val}'>{%val}</option>";
   if(saved_sessions !== null){
     for (var i = 0; i < saved_sessions.length; i++) {
-      options += option.replace("{%val}",saved_sessions[i].name).replace("{%val}",saved_sessions[i].name);
+      let name = saved_sessions[i].name;
+      if(saved_sessions[i].favourite){
+        name += "   ★";
+      }
+      options += option.replace("{%val}",saved_sessions[i].name).replace("{%val}",name);
     }
   }
-
   document.getElementById("saved_sessions_selector").innerHTML = options;
 }
 function loadSession(){
@@ -1093,11 +1110,8 @@ function loadSession(){
     }
   }
   let _filter = _data.map( obj => {return obj.Pathway});
-  // saved_sessions[i].color
   render("All",_filter,_colors);
   //update color in plot
-
-
 }
 function resetClickEvent(){
   THRESHOLD_ACTIVE = false;
@@ -1309,7 +1323,8 @@ function saveSession(){
     "name":pw_name,
     "color":pw_color,
     "data":data,
-    "dataset": d
+    "dataset": d,
+    "favourite": document.getElementById("makeFavouriteCB").checked
   }
   saved_sessions.push(session);
   localStorage.setItem("saved_sessions_"+d,JSON.stringify(saved_sessions));
