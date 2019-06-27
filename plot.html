@@ -74,6 +74,8 @@ svg {
       <div class="bottomControls">
         <input type="checkbox" id="fixScaleCB"></input><label for="fixScaleCB">Fix the scales</label>
         <input type="checkbox" id="showColorsCB"></input><label for="showColorsCB">Show Colors</label>
+        <input type="checkbox" id="showFavsCB"></input><label for="showFavsCB">Show Favourites</label>
+
         <div style="color:red;font-size:small;font-weight:normal">The levels marked red represent the baseline </div>
       </div>
       <div class="controlsWrapper">
@@ -484,7 +486,7 @@ function render(_filter,_pathwaysList,color,_max){
           .style("stroke", function(d,i){
             // d3.select(this).attr("class","not_favourite");
             if(d.Pathway in FAVOURITE_PATHWAYS){
-              // d3.select(this).attr("class","favourite");
+              d3.select(this).attr("class","favourite");
               return FAVOURITE_PATHWAYS[d.Pathway]
             }
             if(!_showColorsCB){
@@ -944,8 +946,9 @@ function render(_filter,_pathwaysList,color,_max){
     g.append("g")
       .attr("class", "brush")
       .each(function(d) {
-        d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush)).on("brushend",brushend);
-
+        d3.select(this).call(
+            y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart)
+                         .on("brush", brush)).on("brushend",brushend);
       })
     .selectAll("rect")
       .attr("x", -8)
@@ -1004,11 +1007,12 @@ function render(_filter,_pathwaysList,color,_max){
 
     var actives = dimensions.filter(function(p) {
        return !y[p].brush.empty();
-      });
+    });
     extents = actives.map(function(p) { return y[p].brush.extent(); });
+    let foregrounds = d3.selectAll(".foreground").selectAll("path")[0];
     foreground.style("display", function(d,i) {
-      // pw = foreground[i]
-      // console.log(pw);
+        // console.log(foregrounds[i].attr("class"));
+        return "none";
         return actives.every(function(p, i) {
           return extents[i][0] <= d[p] && d[p] <= extents[i][1];
         }) ? null : "none";
