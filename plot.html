@@ -64,7 +64,7 @@ svg {
           </div>
           <!-- <button onclick="review()"> Review </button> -->
           <div style="display: flex;">
-            <div>Normalized Values</div>
+            <div>Satisfaction Values</div>
             <input type="checkbox" class="js-switch" />
             <div>Absolute Values</div>
          </div>
@@ -82,11 +82,11 @@ svg {
         <div class="controls">
           <div class="indicator_title red" id="label">Selected Pathway: -</div>
           <div class="indicators_wrapper" id="indicators_omo">
-            <div class="indicator" style="width:50px;">
+            <div class="indicator" style="width:100px;">
               <div class="indicator_img_wrapper">
               </div>
               <div class="label result" id="o_a_title">Absolute</div>
-              <div class="label resultb" id="o_b_title">Normalized</div>
+              <div class="label resultb" id="o_b_title">Satisfaction</div>
             </div>
 
             <div class="indicator">
@@ -140,7 +140,7 @@ svg {
               <div class="indicator_img_wrapper">
               </div>
               <div class="label result" id="z_a_title">Absolute</div>
-              <div class="label resultb" id="z_b_title">Normalized</div>
+              <div class="label resultb" id="o_b_title">Satisfaction</div>
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
@@ -1229,16 +1229,16 @@ function handleAbsoluteValuesSwitch(){
   let _absChecked = document.getElementsByClassName("js-switch")[1].checked;
   if(!_absChecked){
     document.getElementById("o_a_title").innerHTML = "Absolute";
-    document.getElementById("o_b_title").innerHTML = "Normalized";
+    document.getElementById("o_b_title").innerHTML = "Satisfaction";
 
     document.getElementById("z_a_title").innerHTML = "Absolute";
-    document.getElementById("z_b_title").innerHTML = "Normalized";
+    document.getElementById("z_b_title").innerHTML = "Satisfaction";
 
   }else{
-    document.getElementById("o_a_title").innerHTML = "Normalized";
+    document.getElementById("o_a_title").innerHTML = "Satisfaction";
     document.getElementById("o_b_title").innerHTML = "Absolute";
 
-    document.getElementById("z_a_title").innerHTML = "Normalized";
+    document.getElementById("z_a_title").innerHTML = "Satisfaction";
     document.getElementById("z_b_title").innerHTML = "Absolute";
 
   }
