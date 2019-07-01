@@ -310,9 +310,17 @@ function createFavouritesObject(){
   let _showFavs = document.getElementById("showFavsCB").checked;
 
   if(document.getElementById("filter_dataset").value === "0"){
-    ss = JSON.parse(localStorage.saved_sessions_omo);
+    try{
+      ss = JSON.parse(localStorage.saved_sessions_omo);
+    }catch(ex){
+      ss = null;
+    }
   }else{
-    ss = JSON.parse(localStorage.saved_sessions_zambezi);
+    try{
+      ss = JSON.parse(localStorage.saved_sessions_zambezi);
+    }catch(ex){
+      ss = null;
+    }
   }
   if(!_showFavs){
     ss = null;
