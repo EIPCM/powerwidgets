@@ -245,7 +245,7 @@ svg {
             <select multiple="multiple" id="saved_sessions_selector" style="width: 96%;font-size: 16px;" onchange="loadSession()">
             </select>
             <div class="button" onclick="export_sessions()">Export Selected Sessions</div>
-            <div class="button" onclick="delete_sessions()">Delete All Sessions</div>
+            <div class="button" onclick="delete_sessions()">Delete Selected Sessions</div>
 
           </div>
         </div>
@@ -651,7 +651,6 @@ function render(_filter,_pathwaysList,color,_max){
         if(sel.attr("display") != "none"){
           sel.moveToBack();
           sel.style("stroke-width",PATH_OVER_WIDTH);
-          _checked = document.getElementsByClassName("js-switch")[0].checked;
           sel.style("stroke",PATH_OVER_COLOR);
           d3.selectAll(".brushed_selection").attr("display","block");
         }
@@ -1386,10 +1385,17 @@ function export_configuration(){
 }
 function delete_sessions(){
   let selected_dataset  = document.getElementById("filter_dataset").value;
+  let selected_sessions = document.getElementById("saved_sessions_selector");
+  let selected_sessions_array = Array.from(selected_sessions.options).filter(options => options.selected).map(option => option.value)
+  let items = null;
   if(selected_dataset   === "0"){
-    localStorage.saved_sessions_omo = null;
+    items = JSON.parse(localStorage.saved_sessions_omo);
+    items = items.filter(i => !selected_sessions_array.includes(i.name));
+    localStorage.saved_sessions_omo = JSON.stringify(items);
   }else{
-    localStorage.saved_sessions_zambezi = null;
+    items = JSON.parse(localStorage.saved_sessions_zambezi);
+    items = items.filter(i => !selected_sessions_array.includes(i.name));
+    localStorage.saved_sessions_zambezi = JSON.stringify(items);
   }
   loadSessions();
   filterClear();
