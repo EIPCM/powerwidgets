@@ -1425,49 +1425,97 @@ function export_sessions(){
       "Turkana_Fish_n" : null,
       "Irr_Agricult_n" : null
     }
-  }else{
-    // items = JSON.parse(localStorage.saved_sessions_zambezi);
-    // items = items.filter(i => selected_sessions_array.includes(i.name));
-  }
-  const replacer  = (key, value) => value === null ? '' : value // specify how you want to handle null values here
-  const header    = Object.keys(headers);
+    const replacer  = (key, value) => value === null ? '' : value // specify how you want to handle null values here
+    const header    = Object.keys(headers);
 
+    let csv = items.map(
+      row => header.map(fieldName => {
+        JSON.stringify(row[fieldName], replacer)
+      }).join(',')
+    )
+    csv.unshift(header.join(','))
+    //data
+    for (var i = 0; i < items.length; i++) {
+      let _name   = items[i].name;
+      let _color  = items[i].color;
 
-  let csv = items.map(
-    row => header.map(fieldName => {
-      JSON.stringify(row[fieldName], replacer)
-    }).join(',')
-  )
-  csv.unshift(header.join(','))
-  //data
-  for (var i = 0; i < items.length; i++) {
-    let _name   = items[i].name;
-    let _color  = items[i].color;
+      let _data   = items[i].data;
+      for (var ii = 0; ii < _data.length; ii++) {
+        let row     = [];
+        row.push(_name);
+        row.push(_color);
+        row.push(_data[ii].Pathway);
 
-    let _data   = items[i].data;
-    for (var ii = 0; ii < _data.length; ii++) {
-      let row     = [];
-      row.push(_name);
-      row.push(_color);
-      row.push(_data[ii].Pathway);
-
-      row.push(_data[ii]["Hydropower Production"]);
-      row.push(_data[ii]["Deviation from natural condition (Omo) "]);
-      row.push(_data[ii]["Deviation from flood pulse (recession) "]);
-      row.push(_data[ii]["Deviation from natural fish production (Turkana)"]);
-      row.push(_data[ii]["Normalised water deficit (irrigation) "]);
-      row.push(_data[ii]["Energy_Prod_n"]);
-      row.push(_data[ii]["Natural_Omo_n"]);
-      row.push(_data[ii]["Rec_Agricult_n"]);
-      row.push(_data[ii]["Turkana_Fish_n"]);
-      row.push(_data[ii]["Irr_Agricult_n"]);
-      csv = csv  + row.join(",");
-      csv = csv + "\n";
+        row.push(_data[ii]["Hydropower Production"]);
+        row.push(_data[ii]["Deviation from natural condition (Omo) "]);
+        row.push(_data[ii]["Deviation from flood pulse (recession) "]);
+        row.push(_data[ii]["Deviation from natural fish production (Turkana)"]);
+        row.push(_data[ii]["Normalised water deficit (irrigation) "]);
+        row.push(_data[ii]["Energy_Prod_n"]);
+        row.push(_data[ii]["Natural_Omo_n"]);
+        row.push(_data[ii]["Rec_Agricult_n"]);
+        row.push(_data[ii]["Turkana_Fish_n"]);
+        row.push(_data[ii]["Irr_Agricult_n"]);
+        csv = csv  + row.join(",");
+        csv = csv + "\n";
+      }
     }
+
+
+    download("sessions.csv",csv);
+  }else{
+    items = JSON.parse(localStorage.saved_sessions_zambezi);
+    items = items.filter(i => selected_sessions_array.includes(i.name));
+    headers = {
+      "name" : null,
+      "color" : null,
+      "Pathway" : null,
+      "Hydropower production deficit in the ZRB system":null,
+      "Deviation from natural condition in the Zamebezi Delta":null,
+      "Water deficit normalized w.r.t. irrigation demand":null,
+      "Total discounted construction cost":null,
+      "j_Hyd_n":null,
+      "j_Env_n":null,
+      "j_Irr_n":null,
+      "j_Cost_n":null
+    }
+    const replacer  = (key, value) => value === null ? '' : value // specify how you want to handle null values here
+    const header    = Object.keys(headers);
+
+    let csv = items.map(
+      row => header.map(fieldName => {
+        JSON.stringify(row[fieldName], replacer)
+      }).join(',')
+    )
+    csv.unshift(header.join(','))
+    //data
+    for (var i = 0; i < items.length; i++) {
+      let _name   = items[i].name;
+      let _color  = items[i].color;
+
+      let _data   = items[i].data;
+      for (var ii = 0; ii < _data.length; ii++) {
+        let row     = [];
+        row.push(_name);
+        row.push(_color);
+        row.push(_data[ii].Pathway);
+        row.push(_data[ii]["Hydropower production deficit in the ZRB system"]);
+        row.push(_data[ii]["Deviation from natural condition in the Zamebezi Delta"]);
+        row.push(_data[ii]["Water deficit normalized w.r.t. irrigation demand"]);
+        row.push(_data[ii]["Total discounted construction cost"]);
+        row.push(_data[ii]["j_Hyd_n"]);
+        row.push(_data[ii]["j_Env_n"]);
+        row.push(_data[ii]["j_Irr_n"]);
+        row.push(_data[ii]["j_Cost_n"]);
+        csv = csv  + row.join(",");
+        csv = csv + "\n";
+      }
+    }
+
+
+    download("sessions.csv",csv);
   }
 
-
-  download("sessions.csv",csv);
 }
 function print_screen(){
     window.print();
