@@ -140,7 +140,7 @@ svg {
               <div class="indicator_img_wrapper">
               </div>
               <div class="label result" id="z_a_title">Absolute</div>
-              <div class="label resultb" id="o_b_title">Satisfaction</div>
+              <div class="label resultb" id="z_b_title">Satisfaction</div>
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
@@ -291,10 +291,10 @@ let SECTORS = {
 let RANGES = {
   "zambezi":[
     {"max":0,"min":0,"tickFormat":null,ticks:20},
-    {"max":104,"min":86,"tickFormat":null,ticks:20},
-    {"max":3500000,"min":2700000,"tickFormat":"M",ticks:20},
-    {"max":2.1,"min":1.2,"tickFormat":".1",ticks:20},
-    {"max":16000,"min":0,"tickFormat":"K",ticks:20},
+    {"max":73,"min":57,"tickFormat":null,ticks:20},
+    {"max":3700000,"min":2800000,"tickFormat":"M",ticks:20},
+    {"max":2.1,"min":1.20,"tickFormat":".1",ticks:20},
+    {"max":11000,"min":0,"tickFormat":"K",ticks:20},
   ],
   "omo":[
     {"max":0,"min":0,"tickFormat":null,ticks:0},
@@ -1373,16 +1373,16 @@ function download(filename, text) {
   element.click();
   document.body.removeChild(element);
 }
-function export_configuration(){
-  const items = JSON.parse(localStorage.saved_pathways);
-  const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
-  const header = Object.keys(items[0])
-  let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','))
-  csv.unshift(header.join(','))
-  csv = csv.join('\r\n')
-
-  download("export.csv",csv);
-}
+// function export_configuration(){
+//   const items = JSON.parse(localStorage.saved_pathways_omo);
+//   const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
+//   const header = Object.keys(items[0])
+//   let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','))
+//   csv.unshift(header.join(','))
+//   csv = csv.join('\r\n')
+//
+//   download("export.csv",csv);
+// }
 function delete_sessions(){
   let selected_dataset  = document.getElementById("filter_dataset").value;
   let selected_sessions = document.getElementById("saved_sessions_selector");
@@ -1401,16 +1401,71 @@ function delete_sessions(){
   filterClear();
 }
 function export_sessions(){
+  let selected_dataset  = document.getElementById("filter_dataset").value;
   let selected_sessions = document.getElementById("saved_sessions_selector");
   let selected_sessions_array = Array.from(selected_sessions.options).filter(options => options.selected).map(option => option.value)
-  let items = JSON.parse(localStorage.saved_sessions);
-  items       = items.filter(i => selected_sessions_array.includes(i.name));
 
-  const replacer = (key, value) => value === null ? '' : value // specify how you want to handle null values here
-  const header = Object.keys(items[0])
-  let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','))
+  let items = null;
+  let headers = null;
+  if(selected_dataset   === "0"){
+    items = JSON.parse(localStorage.saved_sessions_omo);
+    items = items.filter(i => selected_sessions_array.includes(i.name));
+    headers = {
+      "name" : null,
+      "color" : null,
+      "Pathway" : null,
+      "Hydropower Production" : null,
+      "Deviation from natural condition (Omo)" : null,
+      "Deviation from flood pulse (recession)" : null,
+      "Deviation from natural fish production (Turkana)" : null,
+      "Normalised water deficit (irrigation)" : null,
+      "Energy_Prod_n" : null,
+      "Natural_Omo_n" : null,
+      "Rec_Agricult_n" : null,
+      "Turkana_Fish_n" : null,
+      "Irr_Agricult_n" : null
+    }
+  }else{
+    // items = JSON.parse(localStorage.saved_sessions_zambezi);
+    // items = items.filter(i => selected_sessions_array.includes(i.name));
+  }
+  const replacer  = (key, value) => value === null ? '' : value // specify how you want to handle null values here
+  const header    = Object.keys(headers);
+
+
+  let csv = items.map(
+    row => header.map(fieldName => {
+      JSON.stringify(row[fieldName], replacer)
+    }).join(',')
+  )
   csv.unshift(header.join(','))
-  csv = csv.join('\r\n')
+  //data
+  for (var i = 0; i < items.length; i++) {
+    let _name   = items[i].name;
+    let _color  = items[i].color;
+
+    let _data   = items[i].data;
+    for (var ii = 0; ii < _data.length; ii++) {
+      let row     = [];
+      row.push(_name);
+      row.push(_color);
+      row.push(_data[ii].Pathway);
+
+      row.push(_data[ii]["Hydropower Production"]);
+      row.push(_data[ii]["Deviation from natural condition (Omo) "]);
+      row.push(_data[ii]["Deviation from flood pulse (recession) "]);
+      row.push(_data[ii]["Deviation from natural fish production (Turkana)"]);
+      row.push(_data[ii]["Normalised water deficit (irrigation) "]);
+      row.push(_data[ii]["Energy_Prod_n"]);
+      row.push(_data[ii]["Natural_Omo_n"]);
+      row.push(_data[ii]["Rec_Agricult_n"]);
+      row.push(_data[ii]["Turkana_Fish_n"]);
+      row.push(_data[ii]["Irr_Agricult_n"]);
+      csv = csv  + row.join(",");
+      csv = csv + "\n";
+    }
+  }
+
 
   download("sessions.csv",csv);
 }
