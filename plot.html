@@ -278,7 +278,7 @@ let SECTORS = {
     "ENERGY",
     "ENVIRONMENT",
     "FOOD",
-    "FOOD",
+    "FISH",
     "FOOD",
   ],
   "zambezi":[
@@ -927,7 +927,12 @@ function render(_filter,_pathwaysList,color,_max){
            });
 
     }
-
+    if(!_absChecked && document.getElementById("filter_dataset").value === "1"){
+      d3.select(d3.selectAll(".tick")[0][0]).selectAll("text").attr("fill","red");
+      d3.select(d3.selectAll(".tick")[0][21]).selectAll("text").attr("fill","red");
+      d3.select(d3.selectAll(".tick")[0][62]).selectAll("text").attr("fill","red");
+      d3.select(d3.selectAll(".tick")[0][83]).selectAll("text").attr("fill","red");
+    }
     g.append("g")
       .attr("class", "axis")
       .append("text")
@@ -947,7 +952,7 @@ function render(_filter,_pathwaysList,color,_max){
       _units = ['Twh/y','(m3/sec)^2','-','BUSD'];
     }
     let absChecked = document.getElementsByClassName("js-switch")[1].checked;
-    if(!absChecked){
+    if(absChecked){
       g.append("g")
       .attr("class", "axis")
       .append("text")
