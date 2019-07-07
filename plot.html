@@ -877,7 +877,7 @@ function render(_filter,_pathwaysList,color,_max){
            d3.select(d3.selectAll(".tick")[0][4]).selectAll("text").attr("fill","red");
            d3.select(d3.selectAll(".tick")[0][40]).selectAll("text").attr("fill","red");
            d3.select(d3.selectAll(".tick")[0][61]).selectAll("text").attr("fill","red");
-           d3.select(d3.selectAll(".tick")[0][81]).selectAll("text").attr("fill","red");
+           d3.select(d3.selectAll(".tick")[0][79]).selectAll("text").attr("fill","red");
 
     }else{
       // Add an axis and title.
@@ -1087,9 +1087,14 @@ function loadSessions(){
   let saved_sessions    = null;
   let selected_dataset  = document.getElementById("filter_dataset").value;
   if(selected_dataset   === "0"){
-    saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
+    if(localStorage.saved_pathways_omo !== undefined){
+      saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
+    }
   }else{
-    saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
+    if(localStorage.saved_sessions_zambezi !== undefined){
+      saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
+    }
+
   }
   let dataset = (selected_dataset == "0") ? "omo" : "zambezi";
 
