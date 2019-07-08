@@ -1087,13 +1087,9 @@ function loadSessions(){
   let saved_sessions    = null;
   let selected_dataset  = document.getElementById("filter_dataset").value;
   if(selected_dataset   === "0"){
-    if(localStorage.saved_pathways_omo !== undefined){
       saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
-    }
   }else{
-    if(localStorage.saved_sessions_zambezi !== undefined){
       saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
-    }
 
   }
   let dataset = (selected_dataset == "0") ? "omo" : "zambezi";
