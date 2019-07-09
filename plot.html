@@ -208,7 +208,17 @@ svg {
 
                 </select>
             </div>
+            <div id="filter_show_pathway_class_zambezi">
+              <div class="label">Show Pathway Class: </div>
+                <select onchange="filterPathwayZambezi()" id="filter_pathway_zambezi">
+                  <option value="All">All</option>
+                  <option value="P0">P0 - 5 reservoirs </option>
+                  <option value="P1">P1 - 6 reservoirs</option>
+                  <option value="P2">P2 - 7 reservoirs</option>
+                  <option value="P3">P3 - 8 reservoirs + Koysha</option>
 
+                </select>
+            </div>
           </div>
           <div class="filter" style="visibility:none;">
             <div class="label">Saved Pathways</div>
@@ -291,10 +301,10 @@ let SECTORS = {
 let RANGES = {
   "zambezi":[
     {"max":0,"min":0,"tickFormat":null,ticks:20},
-    {"max":73,"min":57,"tickFormat":null,ticks:20},
+    {"max":57,"min":42,"tickFormat":null,ticks:20},
     {"max":3700000,"min":2800000,"tickFormat":"M",ticks:20},
-    {"max":2.1,"min":1.20,"tickFormat":".1",ticks:20},
-    {"max":11000,"min":0,"tickFormat":"K",ticks:20},
+    {"max":1.610,"min":1.565,"tickFormat":".01",ticks:20},
+    {"max":26,"min":0,"tickFormat":".1",ticks:20},
   ],
   "omo":[
     {"max":0,"min":0,"tickFormat":null,ticks:0},
@@ -891,7 +901,6 @@ function render(_filter,_pathwaysList,color,_max){
             d3.select(this).call(
               axis.scale(y[xd]).ticks(RANGES[sdataset][xi+1].ticks).tickFormat(
                 function(d,i){
-
                   if(i % 2 === 0){
                     if(!absChecked){
                       return d;
@@ -930,7 +939,7 @@ function render(_filter,_pathwaysList,color,_max){
     if(!_absChecked && document.getElementById("filter_dataset").value === "1"){
       d3.select(d3.selectAll(".tick")[0][0]).selectAll("text").attr("fill","red");
       d3.select(d3.selectAll(".tick")[0][21]).selectAll("text").attr("fill","red");
-      d3.select(d3.selectAll(".tick")[0][62]).selectAll("text").attr("fill","red");
+      d3.select(d3.selectAll(".tick")[0][44]).selectAll("text").attr("fill","red");
       d3.select(d3.selectAll(".tick")[0][83]).selectAll("text").attr("fill","red");
     }
     g.append("g")
@@ -1162,11 +1171,15 @@ function changeDataSet(){
     document.getElementById("indicators_omo").style.display = "none";
     document.getElementById("indicators_zambezi").style.display = "flex"
     document.getElementById("filter_show_pathway_class").style.display = "none";
+    document.getElementById("filter_show_pathway_class_zambezi").style.display = "block";
+
     document.getElementsByClassName("title")[0].innerHTML = "Screening Tool for Solution Pathways in Zambezi"
   }else{
     document.getElementById("indicators_omo").style.display = "flex";
     document.getElementById("indicators_zambezi").style.display = "none"
     document.getElementById("filter_show_pathway_class").style.display = "block";
+    document.getElementById("filter_show_pathway_class_zambezi").style.display = "none";
+
     document.getElementsByClassName("title")[0].innerHTML = "Screening Tool for Solution Pathways in Omo Turkana Basin"
 
 
@@ -1176,6 +1189,11 @@ function changeDataSet(){
 function filterPathway(){
   filterClear();
   _filter = document.getElementById("filter_pathway").value;
+  render(_filter,[]);
+}
+function filterPathwayZambezi(){
+  filterClear();
+  _filter = document.getElementById("filter_pathway_zambezi").value;
   render(_filter,[]);
 }
 function filterPathwayList(){
