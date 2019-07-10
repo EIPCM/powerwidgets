@@ -215,7 +215,7 @@ svg {
                   <option value="P0">P0 - 5 reservoirs </option>
                   <option value="P1">P1 - 6 reservoirs</option>
                   <option value="P2">P2 - 7 reservoirs</option>
-                  <option value="P3">P3 - 8 reservoirs + Koysha</option>
+                  <option value="P3">P3 - 8 reservoirs</option>
 
                 </select>
             </div>
@@ -942,7 +942,7 @@ function render(_filter,_pathwaysList,color,_max){
       let x2 = d3.select(d3.selectAll(".tick")[0][21]);
       x2.append("text").text(" 0.061").style("text-anchor","right").attr("y",-4).attr("x",5).style("fill","red")
       let x = d3.select(d3.selectAll(".tick")[0][44]);
-      x.append("text").text(" 0.13").style("text-anchor","right").attr("y",-5).attr("x",5).style("fill","red")
+      x.append("text").text(" 0.13").style("text-anchor","right").attr("y",-10).attr("x",5).style("fill","red")
       d3.select(d3.selectAll(".tick")[0][83]).selectAll("text").attr("fill","red");
     }
     g.append("g")
@@ -1098,12 +1098,16 @@ function showSessionPopup(){
 function loadSessions(){
   let saved_sessions    = null;
   let selected_dataset  = document.getElementById("filter_dataset").value;
-  if(selected_dataset   === "0"){
-      saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
-  }else{
-      saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
+  try{
+    if(selected_dataset   === "0"){
+        saved_sessions  = JSON.parse(localStorage.saved_sessions_omo);
+    }else{
+        saved_sessions  = JSON.parse(localStorage.saved_sessions_zambezi);
+    }
+  }catch(ex){
 
   }
+
   let dataset = (selected_dataset == "0") ? "omo" : "zambezi";
 
   let options = "";
