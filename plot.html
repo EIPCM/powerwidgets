@@ -937,9 +937,12 @@ function render(_filter,_pathwaysList,color,_max){
 
     }
     if(!_absChecked && document.getElementById("filter_dataset").value === "1"){
-      d3.select(d3.selectAll(".tick")[0][0]).selectAll("text").attr("fill","red");
-      d3.select(d3.selectAll(".tick")[0][21]).selectAll("text").attr("fill","red");
-      d3.select(d3.selectAll(".tick")[0][44]).selectAll("text").attr("fill","red");
+      let x1 = d3.select(d3.selectAll(".tick")[0][0]);
+      x1.append("text").text(" 0.0185").style("text-anchor","right").attr("y",-1).attr("x",5).style("fill","red")
+      let x2 = d3.select(d3.selectAll(".tick")[0][21]);
+      x2.append("text").text(" 0.061").style("text-anchor","right").attr("y",-2).attr("x",5).style("fill","red")
+      let x = d3.select(d3.selectAll(".tick")[0][44]);
+      x.append("text").text(" 0.13").style("text-anchor","right").attr("y",-5).attr("x",5).style("fill","red")
       d3.select(d3.selectAll(".tick")[0][83]).selectAll("text").attr("fill","red");
     }
     g.append("g")
