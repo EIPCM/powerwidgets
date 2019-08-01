@@ -95,6 +95,8 @@ svg {
               </div>
               <div class="label result" id="label_ep">-</div>
               <div class="label resultb" id="label_epb">-</div>
+              <div class="label resultb result_u" id="label_ep_u">-</div>
+
             </div>
             <div class="indicator">
               <div class="indicator_img_wrapper">
@@ -102,7 +104,7 @@ svg {
               </div>
               <div class="label result" id="label_no">-</div>
               <div class="label resultb" id="label_nob">-</div>
-
+              <div class="label resultb result_u" id="label_nob_u">-</div>
 
             </div>
             <div class="indicator">
@@ -111,6 +113,7 @@ svg {
               </div>
               <div class="label result" id="label_ra">-</div>
               <div class="label resultb" id="label_rab">-</div>
+              <div class="label resultb result_u" id="label_rab_u">-</div>
 
 
             </div>
@@ -121,6 +124,8 @@ svg {
               </div>
               <div class="label result" id="label_tf">-</div>
               <div class="label resultb" id="label_tfb">-</div>
+              <div class="label resultb result_u" id="label_tfb_u">-</div>
+
 
 
             </div>
@@ -130,6 +135,8 @@ svg {
               </div>
               <div class="label result" id="label_ia">-</div>
               <div class="label resultb" id="label_iab">-</div>
+              <div class="label resultb result_u" id="label_iab_u">-</div>
+
 
 
             </div>
@@ -148,6 +155,8 @@ svg {
               </div>
               <div class="label result" id="label_z_0a">-</div>
               <div class="label resultb" id="label_z_0b">-</div>
+              <div class="label resultb result_u" id="label_z_0b_u">-</div>
+
 
             </div>
             <div class="indicator">
@@ -156,6 +165,8 @@ svg {
               </div>
               <div class="label result" id="label_z_1a">-</div>
               <div class="label resultb" id="label_z_1b">-</div>
+              <div class="label resultb result_u" id="label_z_1b_u">-</div>
+
 
             </div>
             <div class="indicator">
@@ -164,6 +175,8 @@ svg {
               </div>
               <div class="label result" id="label_z_2a">-</div>
               <div class="label resultb" id="label_z_2b">-</div>
+              <div class="label resultb result_u" id="label_z_2b_u">-</div>
+
 
             </div>
             <div class="indicator">
@@ -172,6 +185,8 @@ svg {
               </div>
               <div class="label result" id="label_z_3a">-</div>
               <div class="label resultb" id="label_z_3b">-</div>
+              <div class="label resultb result_u" id="label_z_3b_u">-</div>
+
 
             </div>
           </div>
@@ -298,6 +313,7 @@ let SECTORS = {
     "SOCIO-ECONOMIC"
   ]
 }
+let _units = null;
 let RANGES = {
   "zambezi":[
     {"max":0,"min":0,"tickFormat":null,ticks:20},
@@ -631,6 +647,11 @@ function render(_filter,_pathwaysList,color,_max){
       }
       //show favourites
       d3.selectAll(".favourite").attr("display","block")
+      //show units
+      let unitlabels = document.getElementsByClassName("result_u");
+      for (var i = 0; i < unitlabels.length; i++) {
+        unitlabels[i].style.display = "block";
+      }
     }
     function handleMouseOut(d,i){
       if(!CLICK_MODE){
@@ -754,10 +775,26 @@ function render(_filter,_pathwaysList,color,_max){
           document.getElementById("label_ia").innerHTML = ia;
 
           document.getElementById("label_epb").innerHTML = epb;
+
           document.getElementById("label_nob").innerHTML = nob;
           document.getElementById("label_rab").innerHTML = rab;
           document.getElementById("label_tfb").innerHTML = tfb;
           document.getElementById("label_iab").innerHTML = iab;
+
+          document.getElementById("label_ep_u").innerHTML  = _units[0];
+          document.getElementById("label_nob_u").innerHTML = _units[1];
+          document.getElementById("label_rab_u").innerHTML = _units[2];
+          document.getElementById("label_tfb_u").innerHTML = _units[3];
+          document.getElementById("label_iab_u").innerHTML = _units[4];
+
+
+
+
+
+
+
+
+
         }else{
           document.getElementById("label_z_0a").innerHTML = z0a;
           document.getElementById("label_z_1a").innerHTML = z1a;
@@ -768,6 +805,13 @@ function render(_filter,_pathwaysList,color,_max){
           document.getElementById("label_z_1b").innerHTML = z1b;
           document.getElementById("label_z_2b").innerHTML = z2b;
           document.getElementById("label_z_3b").innerHTML = z3b;
+
+          document.getElementById("label_z_0b_u").innerHTML  = _units[0];
+          document.getElementById("label_z_1b_u").innerHTML = _units[1];
+          document.getElementById("label_z_2b_u").innerHTML = _units[2];
+          document.getElementById("label_z_3b_u").innerHTML = _units[3];
+
+
         }
 
         var sel = d3.select(this);
@@ -956,7 +1000,6 @@ function render(_filter,_pathwaysList,color,_max){
          _label = _label.split(" ");
          return _label.slice(3,_label.length).join(" ");
        });
-    let _units = null;
 
     if(document.getElementById("filter_dataset").value == "0"){
       _units = ['Gwh/y','(m3/sec)^2','(m3/sec)^2','MT','-'];
@@ -1169,7 +1212,11 @@ function filterClear(){
   document.getElementById("filterThresholdBtn").style.visibility = "hidden";
   document.getElementById("filterClearBtn").style.visibility = "hidden";
 
-
+  //hide units
+  let unitlabels = document.getElementsByClassName("result_u");
+  for (var i = 0; i < unitlabels.length; i++) {
+    unitlabels[i].style.display = "none";
+  }
 }
 function changeDataSet(){
   filterClear();
