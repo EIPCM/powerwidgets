@@ -562,7 +562,7 @@
         }
         _inc = (size - _aug);
         _inc = (_inc / _aug) * 100;
-        if(true){
+        if(CURRENT_CITY !== "HA"){
           _barSize = (sizeWidth - 100);
           _barY1   = 20;
           _barY2   = _barY1 + 20;
@@ -581,71 +581,71 @@
           ctx.fillText(_increaseLeyend,0,80);
 
           ctx.stroke();
-        }
-        _fillBarcolor = "#4382b5";
-        ctx.fillStyle   = _fillBarcolor;
+          _fillBarcolor = "#4382b5";
+          ctx.fillStyle   = _fillBarcolor;
 
-        _barWidth = _barSize ;
-        // fill
-        ctx.beginPath();
-        _MAX_SIZE = 2000;
-        if(size >= _MAX_SIZE){
-          size  = _MAX_SIZE
-        }
-        if(size <= 100){
-          _sP = (size  * .33) / 100
-        }else if(size > 100 && size <=1000){
-          _sP =  (size/1000) * .66
-          console.log(_sP);
-        }else if(size >1001){
-          _sP =  (size/2000) * 1;
-        }
-        ctx.fillRect(0,_barY1,_barWidth * _sP ,20);
-        ctx.closePath();
-        ctx.fillStyle   = "#09244c";
+          _barWidth = _barSize ;
+          // fill
+          ctx.beginPath();
+          _MAX_SIZE = 2000;
+          if(size >= _MAX_SIZE){
+            size  = _MAX_SIZE
+          }
+          if(size <= 100){
+            _sP = (size  * .33) / 100
+          }else if(size > 100 && size <=1000){
+            _sP =  (size/1000) * .66
+            console.log(_sP);
+          }else if(size >1001){
+            _sP =  (size/2000) * 1;
+          }
+          ctx.fillRect(0,_barY1,_barWidth * _sP ,20);
+          ctx.closePath();
+          ctx.fillStyle   = "#09244c";
 
-        //left
-        ctx.beginPath();
-        ctx.moveTo(0,_barY1);
-        ctx.lineTo(0,_barY2);
-        ctx.closePath();
-        ctx.stroke();
-        //top
-        ctx.beginPath();
-        ctx.moveTo(0,_barY1);
-        ctx.lineTo(_barSize - marginRight,_barY1);
-        ctx.closePath();
-        ctx.stroke();
-        //bottom
-        ctx.beginPath();
-        ctx.moveTo(0,_barY2);
-        ctx.lineTo(_barSize - marginRight,_barY2);
-        ctx.closePath();
-        ctx.stroke();
-        //right
-        ctx.beginPath();
-        ctx.moveTo(_barSize - marginRight,_barY1);
-        ctx.lineTo(_barSize - marginRight,_barY2);
-        ctx.closePath();
-        ctx.stroke();
-        //l0
-        ctx.beginPath();
-        ctx.moveTo(_l1/5,_barY1 + 15);
-        ctx.lineTo(_l1/5,_barY1 + 25);
-        ctx.closePath();
-        ctx.stroke();
-        //l1
-        ctx.beginPath();
-        ctx.moveTo(_l1,_barY1 + 15);
-        ctx.lineTo(_l1,_barY1 + 25);
-        ctx.closePath();
-        ctx.stroke();
-        //l2
-        ctx.beginPath();
-        ctx.moveTo(_l2,_barY1 + 15);
-        ctx.lineTo(_l2,_barY1 + 25);
-        ctx.closePath();
-        ctx.stroke();
+          //left
+          ctx.beginPath();
+          ctx.moveTo(0,_barY1);
+          ctx.lineTo(0,_barY2);
+          ctx.closePath();
+          ctx.stroke();
+          //top
+          ctx.beginPath();
+          ctx.moveTo(0,_barY1);
+          ctx.lineTo(_barSize - marginRight,_barY1);
+          ctx.closePath();
+          ctx.stroke();
+          //bottom
+          ctx.beginPath();
+          ctx.moveTo(0,_barY2);
+          ctx.lineTo(_barSize - marginRight,_barY2);
+          ctx.closePath();
+          ctx.stroke();
+          //right
+          ctx.beginPath();
+          ctx.moveTo(_barSize - marginRight,_barY1);
+          ctx.lineTo(_barSize - marginRight,_barY2);
+          ctx.closePath();
+          ctx.stroke();
+          //l0
+          ctx.beginPath();
+          ctx.moveTo(_l1/5,_barY1 + 15);
+          ctx.lineTo(_l1/5,_barY1 + 25);
+          ctx.closePath();
+          ctx.stroke();
+          //l1
+          ctx.beginPath();
+          ctx.moveTo(_l1,_barY1 + 15);
+          ctx.lineTo(_l1,_barY1 + 25);
+          ctx.closePath();
+          ctx.stroke();
+          //l2
+          ctx.beginPath();
+          ctx.moveTo(_l2,_barY1 + 15);
+          ctx.lineTo(_l2,_barY1 + 25);
+          ctx.closePath();
+          ctx.stroke();
+        }
 
       }
     </script>
