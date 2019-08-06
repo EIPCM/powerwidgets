@@ -1120,7 +1120,9 @@ function updateCity(){
 
       for (var i = 0; i < SWITCHES.length; i++) {
         // SWITCHES[i].disable();
-        if(SWITCHES[i].isChecked()){
+        if(i === 2){
+          SWITCHES[i].setPosition(false);
+        }else if(SWITCHES[i].isChecked()){
           SWITCHES[i].setPosition(true);
         }
         SWITCHES[i].disable();
@@ -2331,19 +2333,20 @@ window.onload = function()
    _dataGlobalSocial    = _dataGlobal.social;
    _dataGlobalPolitical = _dataGlobal.political;
    _dataGlobalPersonal  = _dataGlobal.personal;
-
-   addPolygons([
-                    _dataGlobalPersonal["problem.awareness"],
-                    _dataGlobalSocial["problem.awareness"],
-                    _dataGlobalPolitical["problem.awareness"],
-                    _dataGlobalPersonal["ready.for.action"],
-                    _dataGlobalSocial["ready.for.action"],
-                    _dataGlobalPolitical["ready.for.action"],
-                    _dataGlobalPersonal["practical.knowledge"],
-                    _dataGlobalSocial["practical.knowledge"],
-                    _dataGlobalPolitical["practical.knowledge"],
-                    _dataGlobalPersonal["problem.awareness"],
-                  ],false); //global
+   if(_CURRENT_CITY !== "HA"){
+     addPolygons([
+                      _dataGlobalPersonal["problem.awareness"],
+                      _dataGlobalSocial["problem.awareness"],
+                      _dataGlobalPolitical["problem.awareness"],
+                      _dataGlobalPersonal["ready.for.action"],
+                      _dataGlobalSocial["ready.for.action"],
+                      _dataGlobalPolitical["ready.for.action"],
+                      _dataGlobalPersonal["practical.knowledge"],
+                      _dataGlobalSocial["practical.knowledge"],
+                      _dataGlobalPolitical["practical.knowledge"],
+                      _dataGlobalPersonal["problem.awareness"],
+                    ],false); //global
+   }
 
    if(toggleStatus){
      _dataPersonal = apiClient.getUser().obj.gamification;
