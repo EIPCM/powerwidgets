@@ -44,6 +44,7 @@ header{
   /* background-color: #214c91; */
   /* width: 495px;
   height: 452px; */
+  padding:5px;
 }
 .panel_left{
   flex:.3;
@@ -226,7 +227,6 @@ header{
   padding-right: 10px;
   height: 30px;
   font-weight: bold;
-  margin-top:26px;
 }
 .footer a{
   color: #88c9f8;
