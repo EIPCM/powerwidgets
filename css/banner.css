@@ -41,3 +41,9 @@ body{
 .join_now_button:hover {
     background-color: #f8a72e;
 }
+#banner_title{
+  max-width: 700px;
+}
+#banner_content{
+  max-width: 700px;
+}

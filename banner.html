@@ -203,7 +203,9 @@
         WIDTH  = window.innerWidth;
         if(WIDTH < 560){
           document.getElementById("banner_title").style.fontSize = "23px";
+          document.getElementById("banner_title").style.maxWidth = "500px";
           document.getElementById("banner_title").style.marginTop = "80px";
+          document.getElementById("banner_content").style.marginTop = "500px";
           document.getElementById("body").style.backgroundImage = "url('img/banner/b2m.png')";
           document.getElementById("body").style.backgroundPositionY = "180px";
 
@@ -213,7 +215,9 @@
 
         }else{
           document.getElementById("banner_title").style.fontSize = "40px";
+          document.getElementById("banner_title").style.maxWidth = "700px";
           document.getElementById("banner_title").style.marginTop = "50px";
+          document.getElementById("banner_content").style.marginTop = "700px";
           document.getElementsByTagName("ul")[0].style.fontSize = "25px";
           document.getElementsByTagName("ul")[0].style.width = "100%";
 
