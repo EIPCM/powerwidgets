@@ -129,7 +129,10 @@ a{
   color: blue;
   font-family: 'Fredoka One';
   color: #2c5bc5;
-  font-size: 17px;
+  font-size: 14px;
+  hyphens: auto;
+  width: 107px;
+  word-wrap: anywhere;
 }
 .hexaRow{
   display: flex;
@@ -177,7 +180,7 @@ a{
   -webkit-box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.75);
   box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.75);
-  border: 3px white solid;   
+  border: 3px white solid;
 }
 .start_now_button:hover{
   background-color: #f8a72e;
