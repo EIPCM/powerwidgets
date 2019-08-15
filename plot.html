@@ -1350,6 +1350,14 @@ document.getElementsByClassName("js-switch")[1].addEventListener("change",functi
   handleAbsoluteValuesSwitch();
 })
 window.onload = function(){
+  let u    = new URL(window.location);
+  let dataset = u.searchParams.get("dataset");
+  let fd = document.getElementById("filter_dataset")
+  if(dataset === "zambezi"){
+    fd.selectedIndex = 1;
+  }else{
+    fd.selectedIndex = 0;
+  }
   handleSwitch();
   loadSessions();
   changeDataSet();
