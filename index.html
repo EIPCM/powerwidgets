@@ -2304,6 +2304,13 @@ window.onload = function()
      document.getElementById("total_score").innerHTML = _totalProgress;
      setWardenProgress(_totalProgress);
      resize();
+     //--------------GET GROUPS INFORMATION-----------------------------------//
+     var groups = apiClient.getGroups();
+     debugger;
+     var groupArr = groups.get();
+     debugger;
+     console.log(groups);
+     console.log(groupArr);
 
    });
 
