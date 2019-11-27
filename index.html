@@ -2464,9 +2464,10 @@ var _h3 = 0;
 var SWITCHES = [];
 function loadGroupsLabels(){
   var groups = apiClient.getGroups();
+  var groupsArr = groups.get();
   var select = document.getElementById("groups_select");
-  for(index in groups) {
-      select.options[select.options.length] = new Option(myobject[index].obj.name, index);
+  for(index in groupsArr) {
+      select.options[select.options.length] = new Option(groupsArr[index].obj.name, index);
   }
   debugger;
 }
