@@ -2480,7 +2480,6 @@ function loadGroupsLabels(){
   for(index in groupsArr) {
       select.options[select.options.length] = new Option(groupsArr[index].obj.name, index);
   }
-  debugger;
 }
 function loadGroup(x){
   var groups = apiClient.getGroups();
@@ -2586,12 +2585,6 @@ window.onload = function()
      setWardenProgress(_totalProgress);
      resize();
      //--------------GET GROUPS INFORMATION-----------------------------------//
-     var groups = apiClient.getGroups();
-     debugger;
-     var groupArr = groups.get();
-     debugger;
-     console.log(groups);
-     console.log(groupArr);
      loadGroupsLabels();
 
    });
