@@ -251,7 +251,7 @@
         </div>
         <div style="padding-left:100px;display:flex;flex-direction:row;height: 25px;align-items: center;font-size: 14px;color: black;font-family: 'Montserrat', sans-serif;">
           <div>
-            Join a group by clicking <a href="" id="group_link" style="color:#0545a4;">here</a>
+            Join a group by clicking <a href="javascript:navigateToEditGroup()" id="group_link" style="color:#0545a4;">here</a>
           </div>
         </div>
 
@@ -1366,7 +1366,7 @@ function setLan(){
     }
   }
   updateCity();
-  updateGroupLink();
+
 
 }
 var circle = document.getElementById("circ_1");
@@ -2487,7 +2487,7 @@ function loadGroupsLabels(){
       select.options[select.options.length] = new Option(groupsArr[index].obj.name, index);
   }
 }
-function updateGroupLink(){
+function navigateToEditGroup(){
     let domain = '';
     switch (_CURRENT_CITY) {
       case "CI":
@@ -2509,8 +2509,7 @@ function updateGroupLink(){
 
     }
     let link = `https://${domain}.power-h2020.eu/?location=area#changeinfo`;
-    let groupLink  = document.getElementById("group_link")
-    groupLink.setAttribute("href",link)
+    window.location.href = link;
 }
 function loadGroup(x){
   var groups = apiClient.getGroups();
