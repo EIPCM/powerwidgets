@@ -240,6 +240,199 @@
 
 
       </div>
+      <!-- GROUP STARTS -->
+      <div class="powerTitle" id="preparedness"> <span class="lan_title_personal_preparedness"> Group View </span> <img src="img/information.png" height="22" width="22" class="infoButton" onclick="m1()"></img></div>
+      <div class="indicator indicatora">
+        <div style="padding-left:100px;display:flex;flex-direction:row;height: 25px;align-items: center;font-size: 16px;color: black;font-family: 'Montserrat', sans-serif;">
+          <div>Select a group:&nbsp;&nbsp;</div>
+          <select id="groups_select" onchange="loadGroup(this.selectedIndex)">
+            <option>Select a group</option>
+          </select>
+        </div>
+        <div class="powerMessage" style="height: 30px !important;color: white;">
+          <span style="display:flex;flex-direction:row;" >
+            <span style="font-size:1.5em !important;"><span class="lan_total_points" style="padding-left:100px;"> Total Score:&nbsp; </span><span id="total_score"></span></span>
+            <span style="display: flex;flex-direction: row;justify-content: space-between;flex: .8;" id="links">
+
+            </span>
+          </span>
+        </div>
+
+
+
+        <div class="powerTitle" id="preparedness"> <span class="lan_title_personal_preparedness" style="padding-left:100px;"> Group Preparedness </span> </div>
+        <div class="hideable-area">
+          <div class="circularWrapper">
+            <div class="svgWrapper">
+              <div class="circularTitle" ><span id="problem_awareness" style="color: #9e5e8d;">Problem<br> Awareness </span><br><span style="font-size: small;"></span></div>
+              <svg
+                 class="progress-ring"
+                 width="140"
+                 fill="#a86998"
+                 height="140"
+                 shape-rendering="geometricPrecision"
+                 >
+                <circle
+                  id="circ_g_1"
+                  class="progress-ring__circle"
+                  transform="rotate(-90 0 0)"
+                  stroke="#9e5e8d"
+                  stroke-width="50"
+                  fill="#9e5e8d"
+                  r="30"
+                  cx="70"
+                  cy="70"/>
+                <circle
+                  stroke="white"
+                  stroke-width="2"
+                  fill="#6d0949"
+                  r="30"
+                  cx="70"
+                  cy="70"/>
+                <circle
+                  stroke="#6d0949"
+                  stroke-width="2"
+                  fill="transparent"
+                  r="57"
+                  cx="70"
+                  cy="70"/>
+                <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(109,9,73);stroke-width:2"/>
+                <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(109,9,73);stroke-width:2"/>
+
+                <image xlink:href="img/prob_awe.png" height="140" width="140"  rx="15" ry="15" />
+
+              </svg>
+              <div class="points_flex">
+                <div class="points_row l">
+                  <div class="points_left" id="pa_pointsx" style="background-color: #9e5e8d !important;">
+                    0
+                  </div>
+                   <div class="circularLevelsWrapper" id="circularLevels1">
+                    <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                    <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                    <img src="img/circ_talk_gray.png" class="iconsmall"/>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="svgWrapper">
+              <div class="circularTitle" ><span id="know_how">Know- <br>How</span><br> <span  style="font-size: small;"></span></div>
+
+              <svg
+                 class="progress-ring"
+                 width="140"
+                 fill="#13377f"
+                 height="140"
+                 shape-rendering="geometricPrecision"
+                 >
+                <circle
+                  class="progress-ring__circle"
+                  transform="rotate(-90 0 0)"
+                  stroke="#537dc7"
+                  stroke-width="50"
+                  fill="#537dc7"
+                  r="30"
+                  cx="70"
+                  cy="70"
+                  id="circ_g_2"
+                  />
+                <circle
+                  stroke="white"
+                  stroke-width="2"
+                  fill="#13377f"
+                  r="30"
+                  cx="70"
+                  cy="70"/>
+                <circle
+                  stroke="#13377f"
+                  stroke-width="2"
+                  fill="transparent"
+                  r="57"
+                  cx="70"
+                  cy="70"/>
+                  <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(19,55,127);stroke-width:2"/>
+                  <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(19,55,127);stroke-width:2"/>
+                <image xlink:href="img/idea.png" height="140" width="140"  rx="15" ry="15" />
+              </svg>
+              <div class="points_flex">
+                <div class="points_row l">
+                  <div class="points_left kh_bg" id="kh_points" style="background-color: #537dc7 !important;">
+                    0
+                  </div>
+                  <div class="circularLevelsWrapper"  id="circularLevels2">
+                    <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                    <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                    <img src="img/circ_idea_gray.png" class="iconsmall"/>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <div class="svgWrapper">
+              <div class="circularTitle" ><span id="ready_to_act" class="ra_txt">Ready <br>to Act</span><br><span style="font-size: small;"></span></div>
+
+              <svg
+                 class="progress-ring"
+                 width="140"
+                 fill="#493f8d"
+                 height="140"
+                 shape-rendering="geometricPrecision"
+                 >
+                <circle
+                  class="progress-ring__circle"
+                  transform="rotate(-90 0 0)"
+                  stroke="#9291ec"
+                  stroke-width="50"
+                  fill="#9291ec"
+                  r="30"
+                  cx="70"
+                  cy="70"
+                  id="circ_g_3"
+                  />
+                <circle
+                  stroke="white"
+                  stroke-width="2"
+                  fill="#493f8d"
+                  r="30"
+                  cx="70"
+                  cy="70"/>
+                <circle
+                  stroke="#493f8d"
+                  stroke-width="2"
+                  fill="transparent"
+                  r="57"
+                  cx="70"
+                  cy="70"/>
+                  <line x1="0" y1="70" x2="140" y2="70" style="stroke:rgb(73,63,141);stroke-width:2"/>
+                  <line x1="70" y1="0" x2="70" y2="140" style="stroke:rgb(73,63,141);stroke-width:2"/>
+                <image xlink:href="img/ready_act.png" height="140" width="140"  rx="15" ry="15" />
+              </svg>
+              <div class="points_flex">
+                <div class="points_row l">
+                  <div class="points_left ra_bg" id="ra_points" style="background-color: #9291ec !important;" >
+                    0
+                  </div>
+                  <div class="circularLevelsWrapper" id="circularLevels3">
+                    <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                    <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                    <img src="img/circ_stopwatch_gray.png" class="iconsmall"/>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+      <div class="powerMessageText lan_power_message_1" id="achievement">Check the scores of other groups to see how well prepared your group is!</div>
+
+      </div>
+      <!-- GROUPS ENDS -->
     <div class="powerMessage">&nbsp;</div>
 
       <div class="indicator indicatorb">
@@ -1182,6 +1375,18 @@ var circle3 = document.getElementById("circ_3");
 var radius3 = circle.r.baseVal.value;
 var circumference3 = radius3 * 2 * Math.PI;
 
+var circleg1 = document.getElementById("circ_g_1");
+var radius = circle.r.baseVal.value;
+var circumferenceg1 = radius * 2 * Math.PI;
+
+var circleg2 = document.getElementById("circ_g_2");
+var radius2 = circle.r.baseVal.value;
+var circumferenceg2 = radius2 * 2 * Math.PI;
+
+var circleg3 = document.getElementById("circ_g_3");
+var radius3 = circle.r.baseVal.value;
+var circumferenceg3 = radius3 * 2 * Math.PI;
+
 circle.style.strokeDasharray = `${circumference} ${circumference}`;
 circle.style.strokeDashoffset = `${circumference}`;
 circle2.style.strokeDasharray = `${circumference} ${circumference}`;
@@ -1189,6 +1394,12 @@ circle2.style.strokeDashoffset = `${circumference}`;
 circle3.style.strokeDasharray = `${circumference} ${circumference}`;
 circle3.style.strokeDashoffset = `${circumference}`;
 
+circleg1.style.strokeDasharray = `${circumference} ${circumference}`;
+circleg1.style.strokeDashoffset = `${circumference}`;
+circleg2.style.strokeDasharray = `${circumference} ${circumference}`;
+circleg2.style.strokeDashoffset = `${circumference}`;
+circleg3.style.strokeDasharray = `${circumference} ${circumference}`;
+circleg3.style.strokeDashoffset = `${circumference}`;
 
 function setProgress(percent) {
   const offset = circumference - percent / 100 * circumference;
@@ -1219,6 +1430,18 @@ function setProgress3(percent) {
   circle3.style.strokeDashoffset = offset3;
 }
 
+function setProgressG1(percent) {
+  const offset3 = circumference3 - percent / 100 * circumference3;
+  circleg1.style.strokeDashoffset = offset3;
+}
+function setProgressG2(percent) {
+  const offset3 = circumference3 - percent / 100 * circumference3;
+  circleg2.style.strokeDashoffset = offset3;
+}
+function setProgressG3(percent) {
+  const offset3 = circumference3 - percent / 100 * circumference3;
+  circleg3.style.strokeDashoffset = offset3;
+}
 const input3 = document.getElementById('input3');
 /*setProgress3(input3.value);
 
@@ -1279,11 +1502,31 @@ function changeProgress(la,lb,lc){
   setProgress(lra);
   setProgress2(lrb);
   setProgress3(lrc);
+}
+function changeGroupProgress(la,lb,lc){
+  var _MAX_POINTS_LEVEL = 3000;
 
-  // addCircularLevelsPA(la);
-  // addCircularLevelsKH(lb);
-  // addCircularLevelsRA(lc);
+  // setPAPoints(la);
+  // setKHPoints(lb);
+  // setRAPoints(lc);
 
+  if(la > _MAX_POINTS_LEVEL){
+    la = _MAX_POINTS_LEVEL
+  }
+  if(lb > _MAX_POINTS_LEVEL){
+    lb = _MAX_POINTS_LEVEL
+  }
+  if(lc > _MAX_POINTS_LEVEL){
+    lc = _MAX_POINTS_LEVEL
+  }
+
+  lra = ( la / _MAX_POINTS_LEVEL )*100 ;
+  lrb = ( lb / _MAX_POINTS_LEVEL )*100 ;
+  lrc = ( lc / _MAX_POINTS_LEVEL )*100 ;
+
+  setProgressG1(lra);
+  setProgressG2(lrb);
+  setProgressG3(lrc);
 }
 function addCircularLevelsPA(l){
   _earned  = '<img src="img/circ_talk.png" class="iconsmall"/>'
@@ -2219,6 +2462,32 @@ var _h1 = 0;
 var _h2 = 0;
 var _h3 = 0;
 var SWITCHES = [];
+function loadGroupsLabels(){
+  var groups = apiClient.getGroups();
+  var select = document.getElementById("groups_select");
+  for(index in groups) {
+      select.options[select.options.length] = new Option(myobject[index].obj.name, index);
+  }
+  debugger;
+}
+function loadGroup(x){
+  var groups = apiClient.getGroups();
+  var groupArr  = groups.get();
+
+  let _p1 = groupArr[x].getGamification().personal["problem.awareness"];
+  _p1 += groupArr[x].getGamification().political["problem.awareness"];
+  _p1 += groupArr[x].getGamification().social["problem.awareness"];
+
+  // ---------------------------------------------------------------------//
+  let _p2 = groupArr[x].getGamification().personal["practical.knowledge"];
+  _p2 += groupArr[x].getGamification().political["practical.knowledge"];
+  _p2 += groupArr[x].getGamification().social["practical.knowledge"];
+
+  let _p3 = groupArr[x].getGamification().personal["ready.for.action"];
+  _p3 += groupArr[x].getGamification().political["ready.for.action"];
+  _p3 += groupArr[x].getGamification().social["ready.for.action"];
+  changeGroupProgress(_p1,_p2,_p3);
+}
 window.onload = function()
  {
 
@@ -2311,6 +2580,7 @@ window.onload = function()
      debugger;
      console.log(groups);
      console.log(groupArr);
+     loadGroupsLabels();
 
    });
 
