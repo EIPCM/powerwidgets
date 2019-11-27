@@ -2509,7 +2509,7 @@ function navigateToEditGroup(){
 
     }
     let link = `https://${domain}.power-h2020.eu/?location=area#changeinfo`;
-    window.location.href = link;
+    window.top.location.href = link;
 }
 function loadGroup(x){
   var groups = apiClient.getGroups();
