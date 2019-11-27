@@ -249,6 +249,12 @@
             <option>Select a group</option>
           </select>
         </div>
+        <div style="padding-left:100px;display:flex;flex-direction:row;height: 25px;align-items: center;font-size: 14px;color: black;font-family: 'Montserrat', sans-serif;">
+          <div>
+            Join a group by clicking <a href="" id="group_link" style="color:#0545a4;">here</a>
+          </div>
+        </div>
+
         <div class="powerMessage" style="height: 30px !important;color: white;">
           <span style="display:flex;flex-direction:row;" >
             <span style="font-size:1.5em !important;"><span class="lan_total_points" style="padding-left:100px;"> Total Score:&nbsp; </span><span id="total_score"></span></span>
@@ -1360,7 +1366,7 @@ function setLan(){
     }
   }
   updateCity();
-
+  updateGroupLink();
 
 }
 var circle = document.getElementById("circ_1");
@@ -2480,6 +2486,31 @@ function loadGroupsLabels(){
   for(index in groupsArr) {
       select.options[select.options.length] = new Option(groupsArr[index].obj.name, index);
   }
+}
+function updateGroupLink(){
+    let domain = '';
+    switch (_CURRENT_CITY) {
+      case "CI":
+        domain = "city";
+        break;
+      case "LE":
+        domain = "leicester";
+        break;
+      case "MI":
+        domain = "milton-keynes";
+        break;
+      case "SA":
+        domain = "sabadell";
+        break;
+      case "JE":
+        domain = "jerusalem";
+        break;
+      default:
+
+    }
+    let link = `https://${domain}.power-h2020.eu/?alterar#changeinfo`;
+    let groupLink  = document.getElementById("group_link")
+    groupLink.setAttribute("href",link)
 }
 function loadGroup(x){
   var groups = apiClient.getGroups();
