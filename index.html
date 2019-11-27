@@ -304,7 +304,7 @@
               </svg>
               <div class="points_flex">
                 <div class="points_row l">
-                  <div class="points_left" id="pa_pointsx" style="background-color: #9e5e8d !important;">
+                  <div class="points_left" id="pa_points_g" style="background-color: #9e5e8d !important;">
                     0
                   </div>
                    <div class="circularLevelsWrapper" id="circularLevels1">
@@ -358,7 +358,7 @@
               </svg>
               <div class="points_flex">
                 <div class="points_row l">
-                  <div class="points_left kh_bg" id="kh_points" style="background-color: #537dc7 !important;">
+                  <div class="points_left kh_bg" id="kh_points_g" style="background-color: #537dc7 !important;">
                     0
                   </div>
                   <div class="circularLevelsWrapper"  id="circularLevels2">
@@ -414,7 +414,7 @@
               </svg>
               <div class="points_flex">
                 <div class="points_row l">
-                  <div class="points_left ra_bg" id="ra_points" style="background-color: #9291ec !important;" >
+                  <div class="points_left ra_bg" id="ra_points_g" style="background-color: #9291ec !important;" >
                     0
                   </div>
                   <div class="circularLevelsWrapper" id="circularLevels3">
@@ -1478,6 +1478,17 @@ function setg_so(p){
 function setg_in(p){
   document.getElementById("g_in").innerHTML = "/ "+numberWithCommas(Math.round(p));
 }
+
+function setPAGPoints(p){
+  document.getElementById("pa_points_g").innerHTML = numberWithCommas(Math.round(p));
+}
+function setKHGPoints(p){
+  document.getElementById("kh_points_g").innerHTML = numberWithCommas(Math.round(p));
+}
+function setRAGPoints(p){
+  document.getElementById("ra_points_g").innerHTML = numberWithCommas(Math.round(p));
+}
+
 function changeProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 3000;
 
@@ -1506,9 +1517,9 @@ function changeProgress(la,lb,lc){
 function changeGroupProgress(la,lb,lc){
   var _MAX_POINTS_LEVEL = 3000;
 
-  // setPAPoints(la);
-  // setKHPoints(lb);
-  // setRAPoints(lc);
+  setPAGPoints(la);
+  setKHGPoints(lb);
+  setRAGPoints(lc);
 
   if(la > _MAX_POINTS_LEVEL){
     la = _MAX_POINTS_LEVEL
