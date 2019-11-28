@@ -2559,8 +2559,8 @@ window.onload = function()
       select: '#groups_select',
 
       showSearch:false,
-      onChange: (info,x) => {
-        loadGroup(x);
+      onChange: (info) => {
+        loadGroup(info.data.index);
       }
     });
    window.apiClient = new PowerApiClient(function(a){
