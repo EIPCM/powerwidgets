@@ -2512,22 +2512,28 @@ function navigateToEditGroup(){
     window.top.location.href = link;
 }
 function loadGroup(x){
+  let xx = x -1 ;
   var groups = apiClient.getGroups();
   var groupArr  = groups.get();
 
-  let _p1 = groupArr[x].getGamification().personal["problem.awareness"];
-  _p1 += groupArr[x].getGamification().political["problem.awareness"];
-  _p1 += groupArr[x].getGamification().social["problem.awareness"];
+  let _p1 = groupArr[xx].obj.gamification.personal["problem.awareness"];
+  _p1 += groupArr[xx].obj.gamification.political["problem.awareness"];
+  _p1 += groupArr[xx].obj.gamification.social["problem.awareness"];
 
   // ---------------------------------------------------------------------//
-  let _p2 = groupArr[x].getGamification().personal["practical.knowledge"];
-  _p2 += groupArr[x].getGamification().political["practical.knowledge"];
-  _p2 += groupArr[x].getGamification().social["practical.knowledge"];
+  let _p2 = groupArr[xx].obj.gamification.personal["practical.knowledge"];
+  _p2 += groupArr[xx].obj.gamification.political["practical.knowledge"];
+  _p2 += groupArr[xx].obj.gamification.social["practical.knowledge"];
 
-  let _p3 = groupArr[x].getGamification().personal["ready.for.action"];
-  _p3 += groupArr[x].getGamification().political["ready.for.action"];
-  _p3 += groupArr[x].getGamification().social["ready.for.action"];
-  changeGroupProgress(_p1,_p2,_p3);
+  let _p3 = groupArr[xx].obj.gamification.personal["ready.for.action"];
+  _p3 += groupArr[xx].obj.gamification.political["ready.for.action"];
+  _p3 += groupArr[xx].obj.gamification.social["ready.for.action"];
+  if(xx === 0){
+    changeGroupProgress(0,0,0);
+  }else{
+    changeGroupProgress(_p1,_p2,_p3);
+
+  }
 }
 window.onload = function()
  {
