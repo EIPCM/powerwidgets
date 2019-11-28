@@ -16,6 +16,8 @@
    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
    <link href="css/switchery.css" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.css" rel="stylesheet"></link>
    <script type="text/javascript" src="js/switchery.js"></script>
 
    <script type="text/javascript" src="https://hanau.baseform.com/redesign_js/client.js"></script> <!-- need to include this script to talk with the api -->
@@ -245,9 +247,7 @@
       <div class="indicator indicatora">
         <div style="padding-left:100px;display:flex;flex-direction:row;height: 25px;align-items: center;font-size: 16px;color: black;font-family: 'Montserrat', sans-serif;">
           <div>Select a group:&nbsp;&nbsp;</div>
-          <select id="groups_select" onchange="loadGroup(this.selectedIndex)">
-            <option>Select a group</option>
-          </select>
+          <select id="groups_select" style="width:200px"></select>
         </div>
         <div style="padding-left:100px;display:flex;flex-direction:row;height: 25px;align-items: center;font-size: 14px;color: black;font-family: 'Montserrat', sans-serif;">
           <div>
@@ -310,7 +310,7 @@
               </svg>
               <div class="points_flex">
                 <div class="points_row l">
-                  <div class="points_left" id="pa_points_g" style="background-color: #9e5e8d !important;">
+                  <div class="points_left" id="pa_points_g" style="background-color: #9e5e8d !important;border: 2px solid #620b40">
                     0
                   </div>
                    <div class="circularLevelsWrapper" id="circularLevels1">
@@ -364,7 +364,7 @@
               </svg>
               <div class="points_flex">
                 <div class="points_row l">
-                  <div class="points_left kh_bg" id="kh_points_g" style="background-color: #537dc7 !important;">
+                  <div class="points_left kh_bg" id="kh_points_g" style="background-color: #537dc7 !important;border: 2px solid #133073;">
                     0
                   </div>
                   <div class="circularLevelsWrapper"  id="circularLevels2">
@@ -420,7 +420,7 @@
               </svg>
               <div class="points_flex">
                 <div class="points_row l">
-                  <div class="points_left ra_bg" id="ra_points_g" style="background-color: #9291ec !important;" >
+                  <div class="points_left ra_bg" id="ra_points_g" style="background-color: #9291ec !important; border: 2px solid #403782;" >
                     0
                   </div>
                   <div class="circularLevelsWrapper" id="circularLevels3">
@@ -2483,8 +2483,16 @@ function loadGroupsLabels(){
   var groups = apiClient.getGroups();
   var groupsArr = groups.get();
   var select = document.getElementById("groups_select");
+  let data = [];
+
   for(index in groupsArr) {
-      select.options[select.options.length] = new Option(groupsArr[index].obj.name, index);
+      // select.options[select.options.length] = new Option( index);
+      data.push({
+        text : groupsArr[index].obj.name,
+        data : {
+          "index" : index
+        }
+      });
   }
 }
 function navigateToEditGroup(){
@@ -2512,10 +2520,9 @@ function navigateToEditGroup(){
     window.top.location.href = link;
 }
 function loadGroup(x){
-  let xx = x -1 ;
   var groups = apiClient.getGroups();
   var groupArr  = groups.get();
-
+  let xx = x;
   let _p1 = groupArr[xx].obj.gamification.personal["problem.awareness"];
   _p1 += groupArr[xx].obj.gamification.political["problem.awareness"];
   _p1 += groupArr[xx].obj.gamification.social["problem.awareness"];
@@ -2535,6 +2542,7 @@ function loadGroup(x){
 
   }
 }
+SL = null;
 window.onload = function()
  {
 
@@ -2545,6 +2553,15 @@ window.onload = function()
       SWITCHES.push(switchery);
     });
     setLan();
+    //init select
+    SL = new SlimSelect({
+      select: '#groups_select',
+
+      showSearch:false,
+      onChange: (info,x) => {
+        loadGroup(x);
+      }
+    });
    window.apiClient = new PowerApiClient(function(a){
      window.apiData = a;
      _p1 = apiClient.getUser().obj.gamification.personal["problem.awareness"];
