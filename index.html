@@ -2527,7 +2527,7 @@ function navigateToEditGroup(){
     window.top.location.href = link;
 }
 function loadGroup(x){
-  if(x === -1){
+  if(parseInt(x) === -1){
     changeGroupProgress(0,0,0);
     return true;
   }
