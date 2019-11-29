@@ -1523,7 +1523,8 @@ function changeProgress(la,lb,lc){
 function changeGroupProgress(la,lb,lc){
   let totalSGroupScore = la+lb+lc;
   var _MAX_POINTS_LEVEL = 3000;
-  document.getElementById("total_score_group").innerHTML = _totalProgress;
+  
+  document.getElementById("total_score_group").innerHTML = numberWithCommas(Math.round(totalSGroupScore));
   setPAGPoints(la);
   setKHGPoints(lb);
   setRAGPoints(lc);
